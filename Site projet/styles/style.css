@@ -1,24 +1,60 @@
+body {
+  flex-flow: row wrap;
+}
+
 h1 {
   color: darkcyan;
-  font-size: 3em ;
+  font-family: 'knights_quest', inherit;
+  font-size: 6em ;
   text-align : center;
 }
-html {
-  font-family: 'Cinzel Decorative', cursive;
-  background: url(http://ekladata.com/oG8-lZnJ8fKUhjz_FG4YFV0cmL8.jpg) fixed no-repeat center;
+h2{
+  color:cyan;
+  font-size: 2em ;
+  display : inline-block;
+  margin-left: 150px;
 }
 
+@font-face {
+  font-family: 'knights_quest';
+  src : url("Knght Quest.ttf");
+}
+
+html {
+  font-family: 'knights_quest',inherit;
+  background:white;
+  margin-color: white;
+
+}
+footer{
+  color:white;
+}
+
+#navext {
+  margin-left: 100px;
+  margin-right: 100px;
+  flex: 1 0 100%;
+  padding : 10px ;
+  background: darkgrey;
+  text-align: center;
+}
 #navext ul li{
+  margin: 0px 20px;
   display : inline-block;
   color : black;
-  background-color : #A15C13;
-  flex : 1  0 100%;
-  height: 20px;
 }
 
+#jeu section {
+    flex: 1 0 80%;
+    height: 80vh;
+    overflow-y: scroll;
+  }
+
 p1 {
-	opacity : 1;
-	color : red;
+	color : black;
+  margin-left: 125px;
+  margin-right: 125px;
+  display : inline-block;
 }
 
 a {
@@ -28,14 +64,14 @@ a {
 }
 
 a:link {
-  color: #CD30AA;
+  color: #FF0000;
 }
 
 a:visited {
-  color:#CD30AA;
+  color:#FF0000;
 }
 
 a:active {
-  background: #000000;
+  background: lightgrey;
   color: #CD00AA;
 }
