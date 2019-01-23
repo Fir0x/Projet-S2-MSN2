@@ -4,8 +4,9 @@ body {
 
 h1 {
   color: darkcyan;
-  font-family: 'knights_quest', inherit;
+  font-family: 'Knights Quest';
   font-size: 6em ;
+
   text-align : center;
 }
 h2{
@@ -16,13 +17,13 @@ h2{
 }
 
 @font-face {
-  font-family: 'knights_quest';
-  src : url("Knght Quest.ttf");
+  font-family: 'Knights Quest';
+  src: url("Kinghts Quest.eot?#iefix") format("embedded-opentype"), url("Knights Quest.ttf") format("ttf"), url("Knights Quest.ttf") format("truetype"), url("Knights Quest.svg#h5u") format("svg");
 }
 
 html {
-  font-family: 'knights_quest',inherit;
   background:white;
+  font-family: ;
   margin-color: white;
 
 }
