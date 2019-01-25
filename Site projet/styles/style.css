@@ -1,15 +1,18 @@
-body {
+html {
+  display : flex;
   flex-flow: row wrap;
+  background:white;
 }
 
-h1 {
-  color: darkcyan;
-  font-family: 'Knights Quest';
-  font-size: 6em ;
-
-  text-align : center;
+header{
+    flex: 1 0 100%;
+    text-align : center;
+    color: darkcyan;
+    font-family: 'Knights Quest';
+    font-size: 4em ;
 }
 h2{
+  flex: 1 0 100%;
   color:cyan;
   font-size: 2em ;
   display : inline-block;
@@ -21,16 +24,14 @@ h2{
   src: url("Kinghts Quest.eot?#iefix") format("embedded-opentype"), url("Knights Quest.ttf") format("ttf"), url("Knights Quest.ttf") format("truetype"), url("Knights Quest.svg#h5u") format("svg");
 }
 
-html {
-  background:white;
-  font-family: ;
-  margin-color: white;
-
-}
 footer{
-  color:white;
+    flex: 1 0 100%;
+    color:pink;
 }
-
+section {
+    flex: 1 0 100%;
+  overflow-y: scroll;
+}
 #navext {
   margin-left: 100px;
   margin-right: 100px;
@@ -40,13 +41,14 @@ footer{
   text-align: center;
 }
 #navext ul li{
+  flex: 1 0 100%;
   margin: 0px 20px;
   display : inline-block;
   color : black;
 }
 
 #jeu section {
-    flex: 1 0 80%;
+  flex : 1 0 90%;
     height: 80vh;
     overflow-y: scroll;
   }
@@ -58,6 +60,9 @@ p1 {
   display : inline-block;
 }
 
+#navint ul li: hover {
+  flex 1 0 10%
+}
 a {
   outline: none;
   text-decoration: none;
