@@ -48,7 +48,7 @@ section {
 }
 
 #jeu section {
-  flex : 1 0 90%;
+  flex : 1 0 80%;
     height: 80vh;
     overflow-y: scroll;
   }
