@@ -1,9 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapons : MonoBehaviour
 {
+    protected readonly string weaponName;
+    protected readonly int price;
     protected int damage;
     protected float cooldown;
     protected float reloadingTime;
@@ -11,6 +12,7 @@ public class Weapons : MonoBehaviour
     protected readonly int loaderCappacity;
     protected readonly int maxAmmunitions;
     protected int ammunitions;
+    protected readonly bool railgun;
 
     public int GetDamage()
     {
