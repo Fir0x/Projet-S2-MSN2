@@ -8,7 +8,7 @@ public class Loader : MonoBehaviour
 {
     private readonly string path;
     private Player player;
-    private Floor floor;
+    private Board board;
 
     public void Loading(string path)
     {
@@ -21,7 +21,7 @@ public class Loader : MonoBehaviour
 
         //All Game's attributes are stocked in one array in order to make their transfer more easy to do
         player = save.GetPlayer();
-        floor = save.GetFloor();
+        board = save.GetBoard();
     }
 
     public Player GetPlayer()
@@ -29,8 +29,8 @@ public class Loader : MonoBehaviour
         return player;
     }
 
-    public Floor GetFloor()
+    public Board GetFloor()
     {
-        return floor;
+        return board;
     }
 }

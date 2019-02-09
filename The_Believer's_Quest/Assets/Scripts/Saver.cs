@@ -9,12 +9,12 @@ public class Saver : MonoBehaviour
 {
     private readonly string path;
     private Player player;
-    private Floor floor;
+    private Board board;
 
-    public Saver(Player player, Floor floor)
+    public Saver(Player player, Board board)
     {
         this.player = player;
-        this.floor = floor;
+        this.board = board;
     }
 
     private void Saving()
@@ -33,8 +33,8 @@ public class Saver : MonoBehaviour
         return player;
     }
 
-    public Floor GetFloor()
+    public Board GetBoard()
     {
-        return floor;
+        return board;
     }
 }

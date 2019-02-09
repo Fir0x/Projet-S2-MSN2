@@ -53,8 +53,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Board.cs" />
      <Compile Include="Assets\Scripts\Ennemy.cs" />
-     <Compile Include="Assets\Scripts\Floor.cs" />
      <Compile Include="Assets\Scripts\Loader.cs" />
      <Compile Include="Assets\Scripts\MovingObject.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />

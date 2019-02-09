@@ -6,11 +6,34 @@ using UnityEngine;
 [Serializable]
 public class Room : MonoBehaviour
 {
-    private GameObject[,] tiles;
+    public int width;
+    public int height;
+    public GameObject[] floorTiles;
+    public GameObject[] wallTiles;
+    private GameObject[,] roomArray;
+    private Transform board;
 
-    public GameObject[,] GenerateRoom(int width, int height)
+    private void RoomSetup(int roomNumber)
     {
-        tiles = new GameObject[height, width];
+        roomArray = new GameObject[height, width];
+        board = new GameObject("Room " + roomNumber).transform;
+        GameObject tile;
+        GameObject instance;
 
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                tile = (i == 0 || i == height - 1 || j == 0 || j == width - 1) ? wallTiles[0] : floorTiles[0];
+                roomArray[i, j] = tile;
+                instance = Instantiate(tile, new Vector2((float) j / 3.125f, (float) i / 3.125f), Quaternion.identity) as GameObject;
+                instance.transform.SetParent(board);
+            }
+        }
+    }
+
+    public GameObject[,] GetRoom()
+    {
+        return roomArray;
     }
 }
