@@ -31,9 +31,16 @@ public class Room : MonoBehaviour
             }
         }
     }
+    
+    private void Collision()
 
     public GameObject[,] GetRoom()
     {
         return roomArray;
+    }
+
+    private void Start()
+    {
+        RoomSetup(1);
     }
 }
