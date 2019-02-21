@@ -220,15 +220,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1501080218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58caafe67a38cc544b63185d1638e912, type: 3}
+  m_Script: {fileID: 11500000, guid: 16aa0043f02cdad4fbc997e0015fbbac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 8
-  height: 8
-  floorTiles:
-  - {fileID: 1678515318413846380, guid: b7032e73806a5b54891096a4a842fa66, type: 3}
-  wallTiles:
-  - {fileID: 2870389649660121071, guid: 3be178135d7929a498420dddbe6389e4, type: 3}
+  width: 10
+  height: 10
+  roomWidth: 7
+  roomHeight: 3
+  roomNumber: 5
 --- !u!4 &1501080220
 Transform:
   m_ObjectHideFlags: 0
