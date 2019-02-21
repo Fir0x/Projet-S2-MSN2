@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -12,6 +10,7 @@ public class Room : MonoBehaviour
     public GameObject[] wallTiles;
     private GameObject[,] roomArray;
     private Transform board;
+
 
     private void RoomSetup(int roomNumber)
     {
@@ -31,8 +30,14 @@ public class Room : MonoBehaviour
             }
         }
     }
-    
-    private void Collision()
+
+    private void Collision(Collision2D other)
+    {
+        if (other.collider.CompareTag("Player"))
+        {
+            
+        }
+    }
 
     public GameObject[,] GetRoom()
     {

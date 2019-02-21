@@ -72,13 +72,9 @@ public class Player : MonoBehaviour
 
     private void Update()
     {   //déplacement et collision
-        float inputX = Input.GetAxis("Horizontal");
-        float inputY = Input.GetAxis("Vertical");
 
         float moveX = moveSpeed * Time.deltaTime;
         float moveY = moveSpeed * Time.deltaTime;
-        float antimoveX = inputX * moveSpeed * Time.deltaTime;
-        float antimoveY = inputY * moveSpeed * Time.deltaTime;
 
         if(Input.GetKey(KeyCode.LeftArrow))
         {
