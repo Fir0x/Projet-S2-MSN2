@@ -20,7 +20,7 @@ public class Board : MonoBehaviour
         List<int[]> usedPosition = new List<int[]>();
         print(width);
         print(height - 1);
-        int[] lastPosition = new int[] { randomizer.Next(0, width - 1), randomizer.Next(0, height - 1) } ;
+        int[] lastPosition = new int[] { randomizer.Next(0, width - 1), randomizer.Next(0, height - 1) };
         int[] newPosition = new int[2];
         int lastX;
         int lastY;
@@ -35,7 +35,7 @@ public class Board : MonoBehaviour
             {
                 newPosition[0] = randomizer.Next(lastX - 1, lastX + 1);
                 newPosition[1] = randomizer.Next(lastY - 1, lastY + 1);
-            } while (newPosition[0] == lastX || newPosition[0] < 0 || newPosition[0] >= width || 
+            } while (newPosition[0] == lastX || newPosition[0] < 0 || newPosition[0] >= width ||
                     newPosition[1] == lastY || newPosition[1] < 0 || newPosition[1] >= height ||
                     usedPosition.Contains(newPosition));
 

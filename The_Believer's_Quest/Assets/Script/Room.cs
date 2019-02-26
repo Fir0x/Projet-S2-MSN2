@@ -35,7 +35,7 @@ public class Room : MonoBehaviour
                 position[0] = j;
                 position[1] = i;
                 tile = (i == 0 || i == height - 1 || j == 0 || j == width - 1 || !doorsPosition.Contains(position)) ? wallTiles[0] : floorTiles[0];
-                instance = Instantiate(tile, new Vector2(anchor[0] + (float) j / 3.125f, anchor[1] + (float) i / 3.125f), Quaternion.identity) as GameObject;
+                instance = Instantiate(tile, new Vector2(anchor[0] + (float)j / 3.125f, anchor[1] + (float)i / 3.125f), Quaternion.identity) as GameObject;
                 instance.transform.SetParent(board);
                 roomArray[i, j] = instance;
             }

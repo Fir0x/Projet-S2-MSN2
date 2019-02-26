@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     private bool downKey = Input.GetKey(KeyCode.DownArrow);    //le joueur
     private bool leftKey = Input.GetKey(KeyCode.LeftArrow);
     private bool rightKey = Input.GetKey(KeyCode.RightArrow);
-    
+
     private int floor = 0;
     private int life = 3;
     private int effectGauge = 0;
@@ -76,26 +76,26 @@ public class Player : MonoBehaviour
         float moveX = moveSpeed * Time.deltaTime;
         float moveY = moveSpeed * Time.deltaTime;
 
-        if(Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             this.transform.Translate(-moveX, 0, 0);
         }
-        if(Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             this.transform.Translate(moveX, 0, 0);
         }
-        if(Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             this.transform.Translate(0, moveY, 0);
         }
-        if(Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             this.transform.Translate(0, -moveY, 0);
         }
-        
-        
+
+
         //déplacement honnete pour niveau glace
-        
+
         /*transform.Translate(moveX, moveY, 0f);   
         
         if(Input.GetKey( (KeyCode.LeftArrow)))
