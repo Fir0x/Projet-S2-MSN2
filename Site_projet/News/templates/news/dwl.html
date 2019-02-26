@@ -1,0 +1,7 @@
+{%extends "../base.html%}
+{% block content %}
+<h2>Plus d'informations</h2>
+<p1>Tu veux en savoir plus? Ici tu pourras trouver tous nos documents secret (ou pas). Bonne lecture!</p1>
+{% load static %}
+<a href= "{% static 'pdf/cahier_des_charges.pdf'%}" download="THE BELIEVER'S QUEST - CDC">Cahier des charges</a>
+{%endblock%}

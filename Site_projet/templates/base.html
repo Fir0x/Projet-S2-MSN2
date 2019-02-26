@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>{%block title%}THE BELIEVER'S QUEST{%endblock%}</title>
+	  </head>
+	{%load static%}
+	<!-- <link href="{%static 'css/style.css'%}" rel="stylesheet" type="text/css"> -->
+  <img src="{% static 'img/MSNlogo.png' %}" alt="MSNlogo" width="50px" height="50px"/>
+<body>
+<header>
+  <h1>The Believer's Quest</h1>
+</header>
+<nav id="navext">
+    {% block nav%}
+  <ul>
+    <li> <a href="/accueil">Accueil</a>
+    </li>
+    <li> <a href="/jeu">Principe du jeu</a>
+    </li>
+	<li><a href="/MSN2">Les développeurs</a>
+	</li><a href="/dwl">Plus d'informations</a>
+	<li>
+	</li>
+  </ul>
+  {% endblock %}
+</nav>
+<section>
+  {% block content %}
+   {% endblock %}
+  </section>
+  </br></br></br></br>
+  <footer><center> <a href= "https://www.facebook.com/TheBelieversQuest/">Facebook</a> - <a href= "https://www.instagram.com/thebelieversquest/"> Instagram </a>- <a href="mailto:msn2.TBQ@gmail.com">Contacter les développeurs</a></center> </footer>
+  </body>
+</html>
