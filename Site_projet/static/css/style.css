@@ -1,5 +1,5 @@
 html {
-  display : flex
+  display : flex;
   background:white;
 }
 
@@ -14,12 +14,12 @@ h2{
   flex: 1 0 100%;
   color:cyan;
   font-size: 2em ;
-  display : inline-block;
   margin-left: 150px;
 }
 h3{
   flex: 1 0 100%;
   font-size: 1em ;
+  display: block;
   margin-left: 150px;
 }
 
