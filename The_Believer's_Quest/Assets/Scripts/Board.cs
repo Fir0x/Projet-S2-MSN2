@@ -19,33 +19,51 @@ public class Board : MonoBehaviour
         roomsPosition = new bool[height, width];
         roomsArray = new Room[height, width];
         List<int[]> usedPosition = new List<int[]>();
-        //int[] lastPosition = new int[] { Random.Range(0, width - 1), Random.Range(0, height - 1) };
-        int[] startPoint = new int[] { 0, 0 };
+        //int[] startPoint = new int[] { Random.Range(0, width - 1), Random.Range(0, height - 1) };
+        int[] startPoint = new int[] { 0, 0 }; //BEBUG
         roomsPosition[startPoint[1], startPoint[0]] = true;
         usedPosition.Add(startPoint);
         int lastX;
         int lastY;
+        int nbFree;
+        int k = 1;
 
-        for (int i = 1; i < roomNumber; i++)
+        while (k < roomNumber)
         {
             int[] newPosition = new int[2];
+            startPoint = usedPosition[Random.Range(0, usedPosition.Count)];
             lastX = startPoint[0];
             lastY = startPoint[1];
+            nbFree = 0;
             //print("LastX = " + lastX + "\nLastY = " + lastY); //DEBUG
 
-            do
-            {
-                newPosition[0] = Random.Range(lastX - 1, lastX + 2);
-                if (newPosition[0] == lastX)
-                    newPosition[1] = Random.Range(lastY - 1, lastY + 2);
-            } while (newPosition == startPoint || newPosition[0] < 0 || newPosition[0] >= width ||
-                    newPosition[1] < 0 || newPosition[1] >= height || 
-                    usedPosition.Exists(pos => pos[0] == newPosition[0] && pos[1] == newPosition[1]));
+            nbFree += !usedPosition.Exists(pos => pos[0] == lastX - 1 && pos[1] == lastY) ? 1 : 0;
+            nbFree += !usedPosition.Exists(pos => pos[0] == lastX + 1 && pos[1] == lastY) ? 1 : 0;
+            nbFree += !usedPosition.Exists(pos => pos[0] == lastX && pos[1] == lastY - 1) ? 1 : 0;
+            nbFree += !usedPosition.Exists(pos => pos[0] == lastX && pos[1] == lastY + 1) ? 1 : 0;
 
-            //print("newX = " + newPosition[0] + "\nnewY = " + newPosition[1]); //DEBUG
-            roomsPosition[newPosition[1], newPosition[0]] = true;
-            usedPosition.Add(newPosition);
-            startPoint = usedPosition[Random.Range(0, usedPosition.Count)];
+            if (nbFree >= 1)
+            {
+
+                do
+                {
+                    newPosition[0] = Random.Range(lastX - 1, lastX + 2);
+                    if (newPosition[0] == lastX)
+                        newPosition[1] = Random.Range(lastY - 1, lastY + 2);
+
+                } while (newPosition[0] < 0 || newPosition[0] >= width ||
+                        newPosition[1] < 0 || newPosition[1] >= height ||
+                        usedPosition.Exists(pos => pos[0] == newPosition[0] && pos[1] == newPosition[1]));
+
+                //print("newX = " + newPosition[0] + "\nnewY = " + newPosition[1]); //DEBUG
+                roomsPosition[newPosition[1], newPosition[0]] = true;
+                usedPosition.Add(newPosition);
+                k++;
+            }
+            else
+            {
+                k--;
+            }
         }
         print(usedPosition.Count); //DEBUG
 
@@ -53,7 +71,7 @@ public class Board : MonoBehaviour
         int roomN = 1;
         float[] anchor = new float[2];
 
-        string visual = "";
+        /*string visual = "";
         for (int i = 0; i < height; i++)
         {
             for (int j = 0; j < width; j++)
@@ -62,7 +80,7 @@ public class Board : MonoBehaviour
             }
             visual += '\n';
         }
-        print(visual); //DEBUG
+        print(visual); //DEBUG*/
 
         for (int i = 0; i < height; i++)
         {
@@ -72,17 +90,17 @@ public class Board : MonoBehaviour
                 {
                     anchor[0] = j * roomWidth * 0.32f;
                     anchor[1] = i * roomHeight * 0.32f;
-                    if (j - 1 >= 0 && roomsPosition[i, j - 1])
+                    if (j - 1 >= 0 && roomsPosition[i, j - 1]) //left door
                         doorsPosition.Add(new int[] { 0, (roomHeight - 1) / 2 });
 
-                    if (j + 1 < width && roomsPosition[i, j + 1])
-                        doorsPosition.Add(new int[] { width - 1, (roomHeight - 1) / 2 });
+                    if (j + 1 < width && roomsPosition[i, j + 1]) //right door
+                        doorsPosition.Add(new int[] { roomWidth - 1, (roomHeight - 1) / 2 });
 
-                    if (i - 1 >= 0 && roomsPosition[i - 1, j])
+                    if (i - 1 >= 0 && roomsPosition[i - 1, j]) //upper door
                         doorsPosition.Add(new int[] { (roomWidth - 1) / 2, 0 });
 
-                    if (i + 1 < height && roomsPosition[i + 1, j])
-                        doorsPosition.Add(new int[] { (roomWidth - 1) / 2, height - 1 });
+                    if (i + 1 < height && roomsPosition[i + 1, j]) //lower door
+                        doorsPosition.Add(new int[] { (roomWidth - 1) / 2, roomHeight - 1 });
 
                     room = GetComponent<Room>();
                     room.RoomCreator(roomWidth, roomHeight, anchor, roomN, doorsPosition);
