@@ -148,7 +148,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -164,7 +164,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 0.7492135
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -188,8 +188,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.67, y: 0.7, z: -10}
+  m_LocalScale: {x: 1.075, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
   floorTiles:
   - {fileID: 5514134593279999127, guid: b1ae62bf3b557b64fae30aacfd1c219a, type: 3}
   wallTiles:
-  - {fileID: 3102514282232633296, guid: dd764b4681280364687614cb93e73c92, type: 3}
+  - {fileID: 0}
 --- !u!114 &1521822734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +256,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 10
   height: 5
-  roomWidth: 9
-  roomHeight: 6
+  roomWidth: 15
+  roomHeight: 10
   roomNumber: 4
