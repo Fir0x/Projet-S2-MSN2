@@ -32,8 +32,36 @@ public class Room : MonoBehaviour
         {
             for (int j = 0; j < width; j++)
             {
-                tile = ((i == 0 || i == height - 1 || j == 0 || j == width - 1) &&
-                    !doorsPosition.Exists(pos => pos[0] == j && pos[1] == i)) ? wallTiles[0] : floorTiles[0];
+                if (i == height - 1)
+                {
+                    if (j == 0)
+                        tile = wallTiles[5];
+                    else if (j == width - 1)
+                        tile = wallTiles[6];
+                    else if (!doorsPosition.Exists(pos => pos[0] == j && pos[1] == i))
+                        tile = wallTiles[1];
+                    else
+                        tile = floorTiles[0];
+                }
+                else if (i == height - 2 && j > 0 && j < width - 1 && !doorsPosition.Exists(pos => pos[0] == j && pos[1] == i + 1))
+                    tile = wallTiles[0];
+                else if (i == 0)
+                {
+                    if (j == 0)
+                        tile = wallTiles[8];
+                    else if (j == width - 1)
+                        tile = wallTiles[7];
+                    else if (!doorsPosition.Exists(pos => pos[0] == j && pos[1] == i))
+                        tile = wallTiles[3];
+                    else
+                        tile = floorTiles[0];
+                }
+                else if (j == 0 && !doorsPosition.Exists(pos => pos[0] == j && pos[1] == i))
+                    tile = wallTiles[4];
+                else if (j == width - 1 && !doorsPosition.Exists(pos => pos[0] == j && pos[1] == i))
+                    tile = wallTiles[2];
+                else
+                    tile = floorTiles[0];
 
                 instance = Instantiate(tile, new Vector2(anchor[0] + (float)j / 3.125f, anchor[1] + (float)i / 3.125f), 
                     Quaternion.identity) as GameObject;

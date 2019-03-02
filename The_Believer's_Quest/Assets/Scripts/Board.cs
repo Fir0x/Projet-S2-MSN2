@@ -15,57 +15,63 @@ public class Board : MonoBehaviour
 
     public void BoardCreation()
     {
+        if (roomNumber > width * height)
+            throw new System.Exception("Too much rooms.");
+
         board = new GameObject("Board").transform;
         roomsPosition = new bool[height, width];
         roomsArray = new Room[height, width];
         List<int[]> usedPosition = new List<int[]>();
-        //int[] startPoint = new int[] { Random.Range(0, width - 1), Random.Range(0, height - 1) };
-        int[] startPoint = new int[] { 0, 0 }; //BEBUG
+        int[] startPoint = new int[] { Random.Range(0, width - 1), Random.Range(0, height - 1) };
+        //int[] startPoint = new int[] { 0, 0 }; //BEBUG
         roomsPosition[startPoint[1], startPoint[0]] = true;
+        //print("Origin " + Utility.VisualArray(startPoint)); DEBUG
         usedPosition.Add(startPoint);
         int lastX;
         int lastY;
+        int newX;
+        int newY;
         int nbFree;
         int k = 1;
 
         while (k < roomNumber)
         {
-            int[] newPosition = new int[2];
-            startPoint = usedPosition[Random.Range(0, usedPosition.Count)];
+            k++;
             lastX = startPoint[0];
             lastY = startPoint[1];
             nbFree = 0;
             //print("LastX = " + lastX + "\nLastY = " + lastY); //DEBUG
 
-            nbFree += !usedPosition.Exists(pos => pos[0] == lastX - 1 && pos[1] == lastY) ? 1 : 0;
-            nbFree += !usedPosition.Exists(pos => pos[0] == lastX + 1 && pos[1] == lastY) ? 1 : 0;
-            nbFree += !usedPosition.Exists(pos => pos[0] == lastX && pos[1] == lastY - 1) ? 1 : 0;
-            nbFree += !usedPosition.Exists(pos => pos[0] == lastX && pos[1] == lastY + 1) ? 1 : 0;
+            nbFree += lastX - 1 > 0 && !usedPosition.Exists(pos => pos[0] == lastX - 1 && pos[1] == lastY) ? 1 : 0;
+            nbFree += lastX + 1 < width && !usedPosition.Exists(pos => pos[0] == lastX + 1 && pos[1] == lastY) ? 1 : 0;
+            nbFree += lastY - 1 > 0 && !usedPosition.Exists(pos => pos[0] == lastX && pos[1] == lastY - 1) ? 1 : 0;
+            nbFree += lastY + 1 < height && !usedPosition.Exists(pos => pos[0] == lastX && pos[1] == lastY + 1) ? 1 : 0;
 
             if (nbFree >= 1)
             {
 
                 do
                 {
-                    newPosition[0] = Random.Range(lastX - 1, lastX + 2);
-                    if (newPosition[0] == lastX)
-                        newPosition[1] = Random.Range(lastY - 1, lastY + 2);
+                    newX = Random.Range(lastX - 1, lastX + 2);
+                    newY = lastY;
+                    if (newX == lastX)
+                        newY = Random.Range(lastY - 1, lastY + 2);
 
-                } while (newPosition[0] < 0 || newPosition[0] >= width ||
-                        newPosition[1] < 0 || newPosition[1] >= height ||
-                        usedPosition.Exists(pos => pos[0] == newPosition[0] && pos[1] == newPosition[1]));
+                } while (newX < 0 || newX >= width ||
+                        newY < 0 || newY >= height ||
+                        usedPosition.Exists(pos => pos[0] == newX && pos[1] == newY));
 
                 //print("newX = " + newPosition[0] + "\nnewY = " + newPosition[1]); //DEBUG
-                roomsPosition[newPosition[1], newPosition[0]] = true;
-                usedPosition.Add(newPosition);
-                k++;
+                roomsPosition[newY, newX] = true;
+                usedPosition.Add(new int[] { newX, newY });
+                startPoint = usedPosition[Random.Range(0, usedPosition.Count)];
             }
             else
             {
+                startPoint = usedPosition[Random.Range(0, usedPosition.Count)];
                 k--;
             }
         }
-        print(usedPosition.Count); //DEBUG
 
         List<int[]> doorsPosition = new List<int[]>();
         int roomN = 1;
