@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour
@@ -8,25 +9,43 @@ public class Board : MonoBehaviour
     public int roomWidth = 9;
     public int roomHeight = 6;
     public int roomNumber = 3;
-    private bool[,] roomsPosition;
-    private Room[,] roomsArray;
-    private Room room;
+    private List<Room> roomList;
     private Transform board;
+
+    private class RoomBase
+    {
+        public int[] position;
+        public int roomNumber;
+        public List<int[]> doorsPosition;
+        public float[] anchor;
+
+        public RoomBase(int[] arrayPosition, int roomNumber, float[] anchor)
+        {
+            this.position = arrayPosition;
+            this.roomNumber = roomNumber;
+            this.anchor = anchor;
+            doorsPosition = new List<int[]>();
+        }
+
+        public void AddDoors(int[] doorPosition)
+        {
+            doorsPosition.Add(doorPosition);
+        }
+    }
 
     public void BoardCreation()
     {
+        //System.DateTime time = System.DateTime.Now; //DEBUG
         if (roomNumber > width * height)
             throw new System.Exception("Too much rooms.");
 
         board = new GameObject("Board").transform;
-        roomsPosition = new bool[height, width];
-        roomsArray = new Room[height, width];
-        List<int[]> usedPosition = new List<int[]>();
+        List<RoomBase> roomBaseList = new List<RoomBase>();
         int[] startPoint = new int[] { Random.Range(0, width - 1), Random.Range(0, height - 1) };
-        //int[] startPoint = new int[] { 0, 0 }; //BEBUG
-        roomsPosition[startPoint[1], startPoint[0]] = true;
-        //print("Origin " + Utility.VisualArray(startPoint)); DEBUG
-        usedPosition.Add(startPoint);
+        RoomBase parent = new RoomBase(startPoint, 1, new float[] { startPoint[0] * 0.32f * roomWidth, startPoint[1] * 0.32f * roomHeight });
+        roomBaseList.Add(parent);
+
+        RoomBase actual;
         int lastX;
         int lastY;
         int newX;
@@ -37,15 +56,16 @@ public class Board : MonoBehaviour
         while (k < roomNumber)
         {
             k++;
-            lastX = startPoint[0];
-            lastY = startPoint[1];
+            lastX = parent.position[0];
+            lastY = parent.position[1];
             nbFree = 0;
             //print("LastX = " + lastX + "\nLastY = " + lastY); //DEBUG
 
-            nbFree += lastX - 1 > 0 && !usedPosition.Exists(pos => pos[0] == lastX - 1 && pos[1] == lastY) ? 1 : 0;
-            nbFree += lastX + 1 < width && !usedPosition.Exists(pos => pos[0] == lastX + 1 && pos[1] == lastY) ? 1 : 0;
-            nbFree += lastY - 1 > 0 && !usedPosition.Exists(pos => pos[0] == lastX && pos[1] == lastY - 1) ? 1 : 0;
-            nbFree += lastY + 1 < height && !usedPosition.Exists(pos => pos[0] == lastX && pos[1] == lastY + 1) ? 1 : 0;
+            nbFree += lastX - 1 > 0 && !roomBaseList.Exists(roomBase => roomBase.position[0] == lastX - 1 && roomBase.position[1] == lastY) ? 1 : 0;
+            nbFree += lastX + 1 < width && !roomBaseList.Exists(roomBase => 
+                                                                roomBase.position[0] == lastX + 1 && roomBase.position[1] == lastY) ? 1 : 0;
+            nbFree += lastY - 1 > 0 && !roomBaseList.Exists(roomBase => roomBase.position[0] == lastX && roomBase.position[1] == lastY - 1) ? 1 : 0;
+            nbFree += lastY + 1 < height && !roomBaseList.Exists(roombase => roombase.position[0] == lastX && roombase.position[1] == lastY + 1) ? 1 : 0;
 
             if (nbFree >= 1)
             {
@@ -59,69 +79,57 @@ public class Board : MonoBehaviour
 
                 } while (newX < 0 || newX >= width ||
                         newY < 0 || newY >= height ||
-                        usedPosition.Exists(pos => pos[0] == newX && pos[1] == newY));
+                        roomBaseList.Exists(roomBase => roomBase.position[0] == newX && roomBase.position[1] == newY));
 
                 //print("newX = " + newPosition[0] + "\nnewY = " + newPosition[1]); //DEBUG
-                roomsPosition[newY, newX] = true;
-                usedPosition.Add(new int[] { newX, newY });
-                startPoint = usedPosition[Random.Range(0, usedPosition.Count)];
+
+                actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * 0.32f * roomWidth, newY * 0.32f * roomHeight });
+                roomBaseList.Add(actual);
+                if (newX > lastX)
+                {
+                    parent.AddDoors(new int[] { roomWidth - 1, (roomHeight - 1) / 2 });
+                    actual.AddDoors(new int[] { 0, (roomHeight - 1) / 2 });
+                }
+                else if (newX < lastX)
+                {
+                    parent.AddDoors(new int[] { 0, (roomHeight - 1) / 2 });
+                    actual.AddDoors(new int[] { roomWidth - 1, (roomHeight - 1) / 2 });
+                }
+                else if (newY > lastY)
+                {
+                    parent.AddDoors(new int[] { (roomWidth - 1) / 2, roomHeight - 1 });
+                    actual.AddDoors(new int[] { (roomWidth - 1) / 2, 0 });
+                }
+                else
+                {
+                    parent.AddDoors(new int[] { (roomWidth - 1) / 2, 0 });
+                    actual.AddDoors(new int[] { (roomWidth - 1) / 2, roomHeight - 1 });
+                }
+
+                parent = roomBaseList[Random.Range(0, roomBaseList.Count)];
             }
             else
             {
-                startPoint = usedPosition[Random.Range(0, usedPosition.Count)];
+                parent = roomBaseList[Random.Range(0, roomBaseList.Count)];
                 k--;
             }
         }
 
-        List<int[]> doorsPosition = new List<int[]>();
-        int roomN = 1;
-        float[] anchor = new float[2];
-
-        /*string visual = "";
-        for (int i = 0; i < height; i++)
+        Room room;
+        foreach (RoomBase roomBase in roomBaseList)
         {
-            for (int j = 0; j < width; j++)
-            {
-                visual += roomsPosition[i, j];
-            }
-            visual += '\n';
+            room = GetComponent<Room>();
+            room.RoomCreator(roomWidth, roomHeight, roomBase.anchor, roomBase.roomNumber, roomBase.doorsPosition);
+            room.transform.SetParent(board);
         }
-        print(visual); //DEBUG*/
 
-        for (int i = 0; i < height; i++)
-        {
-            for (int j = 0; j < width; j++)
-            {
-                if (roomsPosition[i,j])
-                {
-                    anchor[0] = j * roomWidth * 0.32f;
-                    anchor[1] = i * roomHeight * 0.32f;
-                    if (j - 1 >= 0 && roomsPosition[i, j - 1]) //left door
-                        doorsPosition.Add(new int[] { 0, (roomHeight - 1) / 2 });
-
-                    if (j + 1 < width && roomsPosition[i, j + 1]) //right door
-                        doorsPosition.Add(new int[] { roomWidth - 1, (roomHeight - 1) / 2 });
-
-                    if (i - 1 >= 0 && roomsPosition[i - 1, j]) //upper door
-                        doorsPosition.Add(new int[] { (roomWidth - 1) / 2, 0 });
-
-                    if (i + 1 < height && roomsPosition[i + 1, j]) //lower door
-                        doorsPosition.Add(new int[] { (roomWidth - 1) / 2, roomHeight - 1 });
-
-                    room = GetComponent<Room>();
-                    room.RoomCreator(roomWidth, roomHeight, anchor, roomN, doorsPosition);
-                    room.transform.SetParent(board);
-                    roomsArray[i, j] = room;
-                    doorsPosition.Clear();
-                    roomN += 1;
-                }
-            }
-        }
+        //System.TimeSpan deltaTime = System.DateTime.Now.Subtract(time); //DEBUG
+        //print(string.Format("Durée: {0} min {1} s {2} ms", deltaTime.Minutes, deltaTime.Seconds, deltaTime.Milliseconds)); //DEBUG
     }
 
     public void PrintBoard()
     {
-        foreach (Room room in roomsArray)
+        foreach (Room room in roomList)
             room.RoomSetup();
     }
 
