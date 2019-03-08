@@ -15,7 +15,7 @@ public class Room : MonoBehaviour
     private GameObject[,] roomArray;
     private Transform room;
 
-    public void RoomCreator(int width, int height, float[] anchor, int roomNumber, List<int[]> doorsPosition)
+    public void RoomCreator(Transform parent, int width, int height, float[] anchor, int roomNumber, List<int[]> doorsPosition)
     {
         this.width = width;
         this.height = height;
@@ -25,6 +25,7 @@ public class Room : MonoBehaviour
 
         roomArray = new GameObject[height, width];
         room = new GameObject("Room " + roomNumber).transform;
+        room.SetParent(parent);
         GameObject tile;
         GameObject instance;
 

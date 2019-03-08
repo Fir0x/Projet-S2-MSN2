@@ -35,7 +35,7 @@ public class Board : MonoBehaviour
 
     public void BoardCreation()
     {
-        //System.DateTime time = System.DateTime.Now; //DEBUG
+        //Utility.ExecutionTime.Set(); //DEBUG
         if (roomNumber > width * height)
             throw new System.Exception("Too much rooms.");
 
@@ -119,12 +119,10 @@ public class Board : MonoBehaviour
         foreach (RoomBase roomBase in roomBaseList)
         {
             room = GetComponent<Room>();
-            room.RoomCreator(roomWidth, roomHeight, roomBase.anchor, roomBase.roomNumber, roomBase.doorsPosition);
-            room.transform.SetParent(board);
+            room.RoomCreator(board, roomWidth, roomHeight, roomBase.anchor, roomBase.roomNumber, roomBase.doorsPosition);
         }
 
-        //System.TimeSpan deltaTime = System.DateTime.Now.Subtract(time); //DEBUG
-        //print(string.Format("Durée: {0} min {1} s {2} ms", deltaTime.Minutes, deltaTime.Seconds, deltaTime.Milliseconds)); //DEBUG
+        //Utility.ExecutionTime.PrintExecutionTime(); //DEBUG
     }
 
     public void PrintBoard()
