@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
+using UnityEngine.UI;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = System.Numerics.Vector3;
 
@@ -13,27 +14,56 @@ public class Player : MonoBehaviour
     private Rigidbody2D rigid;  //utile pour déplacement glace
 
 
-    private bool upKey = Input.GetKey(KeyCode.UpArrow);       //pourra ê modifié par
-    private bool downKey = Input.GetKey(KeyCode.DownArrow);    //le joueur
-    private bool leftKey = Input.GetKey(KeyCode.LeftArrow);
-    private bool rightKey = Input.GetKey(KeyCode.RightArrow);
+    private bool upKey;
+    private bool downKey;
+    private bool leftKey;
+    private bool rightKey;
 
     private int floor = 0;
-    private int life = 3;
-    private int effectGauge = 0;
+    private int hp = 3;
+    private int maxHP = 3;
+    private int effectValue = 0;
+    private int maxEffectValue = 10;
+    public Slider effectGauge;
+
     private int gold = 0;
     private int diamond = 0;
     private Weapons[] weaponsList = new Weapons[2];
     private Weapons inHand;
 
-    public int GetLife()
+    public void GetKeys()
     {
-        return life;
+        upKey = Input.GetKey(KeyCode.UpArrow);
+        downKey = Input.GetKey(KeyCode.DownArrow);
+        leftKey = Input.GetKey(KeyCode.LeftArrow);
+        rightKey = Input.GetKey(KeyCode.RightArrow);
     }
 
-    public void SetLife(int life)
+    public int GetHP()
     {
-        this.life = life;
+        return hp;
+    }
+
+    public void SetHP(int value)
+    {
+        hp = value;
+    }
+
+    public void SetMaxHP(int value)
+    {
+        maxHP += value;
+    }
+
+    public void SetEffectValue(int value)
+    {
+        effectValue = value;
+        effectGauge.value = value;
+    }
+
+    public void SetMaxEffectValue(int value)
+    {
+        maxEffectValue = value;
+        effectGauge.maxValue = value;
     }
 
     public int GetGold()
@@ -66,8 +96,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        GetKeys();
         rigid = GetComponent<Rigidbody2D>();
-        Update();
     }
 
     private void Update()

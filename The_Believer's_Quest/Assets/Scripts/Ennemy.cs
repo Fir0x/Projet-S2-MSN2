@@ -19,7 +19,7 @@ public class Ennemy : MonoBehaviour
 
     protected void Attack(Player player)
     {
-        player.SetLife(-1);
+        player.SetHP(player.GetHP() - 1);
     }
 
     protected void Move()
