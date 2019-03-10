@@ -14,6 +14,7 @@ public class Room : MonoBehaviour
     public GameObject[] wallTiles;
     private GameObject[,] roomArray;
     private Transform room;
+    public GameObject player;
 
     public void RoomCreator(Transform parent, int width, int height, float[] anchor, int roomNumber, List<int[]> doorsPosition)
     {
@@ -71,6 +72,9 @@ public class Room : MonoBehaviour
                 roomArray[i, j] = instance;
             }
         }
+
+        if (roomNumber == 1)
+            player.transform.position = new Vector3(anchor[0] + width * 0.32f / 2, anchor[1] + height * 0.32f / 2, 0);
     }
 
     public void RoomSetup()

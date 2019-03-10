@@ -829,6 +829,7 @@ MonoBehaviour:
   - {fileID: 3108766487819281452, guid: e09cd96443667a2488d625f038e17b29, type: 3}
   - {fileID: 311511819468652285, guid: dadb9c667aa23f44ead102ccbb0c3f95, type: 3}
   - {fileID: 7088348124399180762, guid: ac6162d1d36c6a747ac9aaa19a6835e0, type: 3}
+  player: {fileID: 1150661408}
 --- !u!114 &1521822735
 MonoBehaviour:
   m_ObjectHideFlags: 0

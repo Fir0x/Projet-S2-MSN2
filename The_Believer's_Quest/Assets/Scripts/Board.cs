@@ -21,7 +21,7 @@ public class Board : MonoBehaviour
 
         public RoomBase(int[] arrayPosition, int roomNumber, float[] anchor)
         {
-            this.position = arrayPosition;
+            position = arrayPosition;
             this.roomNumber = roomNumber;
             this.anchor = anchor;
             doorsPosition = new List<int[]>();
