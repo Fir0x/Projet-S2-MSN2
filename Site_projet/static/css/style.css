@@ -32,7 +32,7 @@ h3{
   flex: 1 0 100%;
   font-size: 1.3em ;
   display: block;
-  margin-left: 150px;
+  margin-left: 125px;
 }
 
 @font-face {
@@ -43,6 +43,9 @@ h3{
 footer{
     flex: 1 0 100%;
     color:pink;
+    padding : 1 ;
+    background: darkgrey;
+    text-align: center;
 }
 #navext {
   margin: 0;
@@ -62,8 +65,15 @@ p1 {
   margin-left: 125px;
   margin-right: 125px;
   display : inline-block;
+  text-indent: 2em;
 }
-
+#foot {
+	color : blue;
+  margin-left: 125px;
+  margin-right: 125px;
+  display : inline-block;
+  font-size: 3pt;
+}
 
 a {
   outline: none;
