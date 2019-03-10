@@ -1,9 +1,5 @@
 ### Unity ###
 [Ll]ibrary/metadata/
-[Ll]ibrary/PackageCache/
-[Ll]ibrary/ScriptAssemblies/
-[Ll]ibrary/ShaderCache/
-[Ll]ibrary/StateCache/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
@@ -12,8 +8,6 @@
 
 # Never ignore Asset meta data
 ![Aa]ssets/**/*.meta
-
-#Library ignore
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # [Aa]ssets/AssetStoreTools*
