@@ -1,26 +1,38 @@
-html {
-  display : flex;
-  background:white;
+html{
+  display: flex;
+  background-image:;
+  margin : 0;
 }
+body {
+  	line-height: 1;
+    -webkit-text-size-adjust: none;
+    font-family: helvetica;
+    font-weight: 300;
+    font-size: 14pt;
+    line-height: 1.75em;
+  }
+
 
 header{
     flex: 1 0 100%;
+    line-height: 1;
+    padding :1px ;
     text-align : center;
-    color: darkcyan;
+    color: darkred;
     font-family: 'Knights Quest';
     font-size: 4em ;
 }
 h2{
   flex: 1 0 100%;
   color:cyan;
-  font-size: 2em ;
+  font-size: 1.5em ;
   margin-left: 150px;
 }
 h3{
   flex: 1 0 100%;
-  font-size: 1em ;
+  font-size: 1.3em ;
   display: block;
-  margin-left: 150px;
+  margin-left: 125px;
 }
 
 @font-face {
@@ -31,20 +43,21 @@ h3{
 footer{
     flex: 1 0 100%;
     color:pink;
+    padding : 1 ;
+    background: darkgrey;
+    text-align: center;
 }
 #navext {
-  margin-left: 100px;
-  margin-right: 100px;
+  margin: 0;
   flex: 1 0 100%;
-  padding : 10px ;
+  padding : 1 ;
   background: darkgrey;
   text-align: center;
 }
 #navext ul li{
   flex: 1 0 100%;
-  margin: 0px 20px;
+  margin:10px;
   display : inline-block;
-  color : black;
 }
 
 p1 {
@@ -52,8 +65,15 @@ p1 {
   margin-left: 125px;
   margin-right: 125px;
   display : inline-block;
+  text-indent: 2em;
 }
-
+#foot {
+	color : blue;
+  margin-left: 125px;
+  margin-right: 125px;
+  display : inline-block;
+  font-size: 3pt;
+}
 
 a {
   outline: none;
