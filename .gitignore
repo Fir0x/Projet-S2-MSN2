@@ -1,13 +1,16 @@
 ### Unity ###
-![Ll]ibrary/
+[Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
 
-# Ignore Asset meta data
-[Aa]ssets/**/*.meta
+# Never ignore Asset meta data
+![Aa]ssets/**/*.meta
+
+#Library ignore
+![Ll]ibrary/CurrentLayout.dwlt
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # [Aa]ssets/AssetStoreTools*

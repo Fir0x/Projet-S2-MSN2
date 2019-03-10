@@ -541,7 +541,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: b6280000
     m_LastClickedID: 10422
-    m_ExpandedIDs: 000000002a260000482600005a26000034270000522800009a2900009c2900009e290000a0290000
+    m_ExpandedIDs: 000000002a260000482600005a26000034270000522800009c2900009e290000a0290000a2290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -569,7 +569,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 258}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000002a260000482600005a26000034270000522800009a2900009c2900009e290000a0290000
+    m_ExpandedIDs: 000000002a260000482600005a26000034270000522800009c2900009e290000a0290000a2290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -653,23 +653,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: da280000
-      m_LastClickedID: 10458
-      m_ExpandedIDs: 0ca2fcff10a2fcff9eaefcfffaeffcff6c26feff7026feffd472feff1c74feff2074feff6c0effffb80ffffff0aaffffccfbffffe028000006290000
+      m_SelectedIDs: f4280000
+      m_LastClickedID: 10484
+      m_ExpandedIDs: ccfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Room 1
-        m_OriginalName: Room 1
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -200714
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 6}
       m_SearchString: 
