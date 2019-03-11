@@ -1,0 +1,410 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.1.16)  8 FEB 2019 18:18
+entering extended mode
+**"./cahier des charges.tex"
+("cahier des charges.tex"
+LaTeX2e <2018-12-01>
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/extsizes\extarti
+cle.cls"
+Document Class: extarticle 1996/10/08 v1.0 Non Standard LaTeX document class
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size10.clo"
+File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+)
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\exscale.sty
+"
+Package: exscale 2018/09/24 v2.1i Standard LaTeX package exscale
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 57.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 57.
+\big@size=\dimen102
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen103
+)
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/fancyhdr\fancyhd
+r.sty"
+Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip43
+\f@nch@O@elh=\skip44
+\f@nch@O@erh=\skip45
+\f@nch@O@olh=\skip46
+\f@nch@O@orh=\skip47
+\f@nch@O@elf=\skip48
+\f@nch@O@erf=\skip49
+\f@nch@O@olf=\skip50
+\f@nch@O@orf=\skip51
+)
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\babel.st
+y"
+Package: babel 2018/11/13 3.27 The Babel package
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\switch.d
+ef"
+File: switch.def 2018/11/13 3.27 Babel switching mechanism
+)
+*************************************
+* Local config file bblopts.cfg used
+*
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/arabi\bblopts.cf
+g"
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel-french\f
+rench.ldf"
+Language: french 2018/09/14 v3.5c French support from the babel system
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\babel.de
+f"
+File: babel.def 2018/11/13 3.27 Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen104
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\txtbabel
+.def")
+\bbl@dirlevel=\count89
+)
+\l@acadian = a dialect from \language\l@french 
+\FB@nonchar=\count90
+Package babel Info: Making : an active character on input line 414.
+Package babel Info: Making ; an active character on input line 415.
+Package babel Info: Making ! an active character on input line 416.
+Package babel Info: Making ? an active character on input line 417.
+\FBguill@level=\count91
+\FBold@everypar=\toks14
+\FB@Mht=\dimen105
+\mc@charclass=\count92
+\mc@charfam=\count93
+\mc@charslot=\count94
+\std@mcc=\count95
+\dec@mcc=\count96
+\c@FBcaption@count=\count97
+\listindentFB=\dimen106
+\descindentFB=\dimen107
+\labelindentFB=\dimen108
+\labelwidthFB=\dimen109
+\leftmarginFB=\dimen110
+\parindentFFN=\dimen111
+\FBfnindent=\dimen112
+))
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/carlisle\scalefn
+t.sty")
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.
+sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xcolor\xcolor.st
+y"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\col
+or.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdf
+tex.def"
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+)
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/colortbl\colortb
+l.sty"
+Package: colortbl 2018/12/12 v1.0d Color table columns (DPC)
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\array.sty"
+Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
+\col@sep=\dimen113
+\ar@mcellbox=\box27
+\extrarowheight=\dimen114
+\NC@list=\toks16
+\extratabsurround=\skip52
+\backup@length=\skip53
+\ar@cellbox=\box28
+)
+\everycr=\toks17
+\minrowclearance=\skip54
+)
+\rownum=\count98
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xcolor\svgnam.de
+f"
+File: svgnam.def 2016/05/11 v2.12 Predefined colors according to SVG 1.1 (UK)
+))
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometr
+y.sty"
+Package: geometry 2018/04/16 v5.8 Page Geometry
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifpdf
+.sty"
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+)
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifvte
+x.sty"
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ifxetex\ifxete
+x.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count99
+\Gm@cntv=\count100
+\c@Gm@tempcnt=\count101
+\Gm@bindingoffset=\dimen115
+\Gm@wd@mp=\dimen116
+\Gm@odd@mp=\dimen117
+\Gm@even@mp=\dimen118
+\Gm@layoutwidth=\dimen119
+\Gm@layoutheight=\dimen120
+\Gm@layouthoffset=\dimen121
+\Gm@layoutvoffset=\dimen122
+\Gm@dimlist=\toks18
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometr
+y.cfg"))
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphic
+x.sty"
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphic
+s.sty"
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.st
+y"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\gra
+phics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+)
+\Gin@req@height=\dimen123
+\Gin@req@width=\dimen124
+) ("cahier des charges.aux")
+\openout1 = `"cahier des charges.aux"'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Info: Redefining \degres on input line 13.
+LaTeX Info: Redefining \dots on input line 13.
+LaTeX Info: Redefining \up on input line 13.
+
+
+Package french.ldf Warning: OT1 encoding should not be used for French.
+(french.ldf)                Add \usepackage[T1]{fontenc} to the preamble
+(french.ldf)                of your document; reported on input line 13.
+
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/context/base\supp-pdf.
+mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count102
+\scratchdimen=\dimen125
+\scratchbox=\box29
+\nofMPsegments=\count103
+\nofMParguments=\count104
+\everyMPshowfont=\toks19
+\MPscratchCnt=\count105
+\MPscratchDim=\dimen126
+\MPnumerator=\count106
+\makeMPintoPDFobject=\count107
+\everyMPtoPDFconversion=\toks20
+)
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopd
+f-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\infwa
+rerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\grfext.
+sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvdef
+inekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ltxcm
+ds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\kvoptio
+ns.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvset
+keys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\etexc
+mds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\iflua
+tex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+))))
+("C:\Users\Nicolas\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\pdfte
+xcmds.sty"
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(85.35826pt, 443.57848pt, 85.35826pt)
+* v-part:(T,H,B)=(71.13188pt, 652.70622pt, 71.13188pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=443.57848pt
+* \textheight=652.70622pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--19
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--19
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--19
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--19
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--19
+
+ []
+
+LaTeX Font Info:    External font `cmex7' loaded for size
+(Font)              <7> on input line 40.
+LaTeX Font Info:    External font `cmex7' loaded for size
+(Font)              <5> on input line 40.
+[1{C:/Users/Nicolas/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+]
+("cahier des charges.toc")
+\tf@toc=\write3
+\openout3 = `"cahier des charges.toc"'.
+
+ [2] [3] [4] [5]
+<Rogue.png, id=24, 639.38875pt x 372.39125pt>
+File: Rogue.png Graphic file (type png)
+<use Rogue.png>
+Package pdftex.def Info: Rogue.png  used on input line 135.
+(pdftex.def)             Requested size: 319.69359pt x 186.19516pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.07225pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[6 <./Rogue.png>] [7] [8] [9] [10] [11] [12] [13] [14] ("cahier des charges.aux
+") ) 
+Here is how much of TeX's memory you used:
+ 4095 strings out of 492946
+ 61279 string characters out of 3125378
+ 159375 words of memory out of 3000000
+ 7943 multiletter control sequences out of 15000+200000
+ 6641 words of font info for 24 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 41i,12n,43p,839b,423s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/Nicolas/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmbx10.pfb><C:/Users/Nicolas/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Nicolas/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Nicolas/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Nico
+las/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+<C:/Users/Nicolas/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmr7.pfb><C:/Users/Nicolas/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmsl10.pfb><C:/Users/Nicolas/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Nicolas/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb>
+Output written on "cahier des charges.pdf" (14 pages, 165429 bytes).
+PDF statistics:
+ 85 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+

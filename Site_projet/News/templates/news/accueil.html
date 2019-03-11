@@ -1,0 +1,12 @@
+{%extends "../base.html%}
+
+  {% block content %}
+    <h2>WELCOME!</h2>
+    <p1 style="text-indent: 40px">Bienvenue à toi chasseur de la coupe sacrée!</br>
+    Ici tu trouveras tous les éléments nécéssaires qui te mènerons au bout de ta quète. Nous te souhaitons bonne chance et <i>"Puisse le sort vous être favorable"</i> (-S. Collins)</p1>
+    <h2>NEWS</h2>
+   {%for post in object_list %}
+		<h3>{{post.date|date:"d/m/Y"}} - {{post.titre|upper}}</h3>
+		<p1>{{post.texte|linebreaks}}</p1>
+   {%endfor%}
+   {% endblock %}
