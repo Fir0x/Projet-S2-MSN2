@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
         
         float moveX = moveSpeed * Time.deltaTime;
         float moveY = moveSpeed * Time.deltaTime;
-        
+
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             this.transform.Translate(-moveX, 0, 0);
