@@ -1,4 +1,5 @@
 ### Unity ###
+[Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
@@ -9,13 +10,6 @@
 ![Aa]ssets/**/*.meta
 
 # Library ignore
-**/[Ll]ibrary/metadata/
-**/[Ll]ibrary/PackageCache/
-**/[Ll]ibrary/ScriptAssemblies/
-**/[Ll]ibrary/ShaderCache/
-**/[Ll]ibrary/StateCache/
-**/[Ll]ibrary/shadercompiler-UnityShaderCompiler.exe0.log
-**/[Ll]ibrary/CurrentLayout.dwlt
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # [Aa]ssets/AssetStoreTools*

@@ -8,7 +8,7 @@ public class MovingObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mask = LayerMask.GetMask("Default");
+        mask = LayerMask.GetMask("Blocks");
     }
 
 
@@ -22,11 +22,17 @@ public class MovingObject : MonoBehaviour
     public bool Collision(Vector2 pos, float x, float y)
     {
         bool noCollision = true;
+        RaycastHit2D hit1 = Physics2D.Raycast(pos + new Vector2(0.15f, 0.15f), new Vector2(x, y), 0.03f);
+        RaycastHit2D hit2 = Physics2D.Raycast(pos + new Vector2(0.15f, -0.15f), new Vector2(x, y), 0.03f);
+        RaycastHit2D hit3 = Physics2D.Raycast(pos + new Vector2(-0.15f, 0.15f), new Vector2(x, y), 0.03f);
+        RaycastHit2D hit4 = Physics2D.Raycast(pos + new Vector2(-0.15f, -0.15f), new Vector2(x, y), 0.03f);
 
-        RaycastHit hit;
+        Debug.DrawRay(pos + new Vector2(0.15f, 0.15f), new Vector2(x, y) * 0.03f, Color.red);
+        Debug.DrawRay(pos + new Vector2(0.15f, -0.15f), new Vector2(x, y) * 0.03f, Color.red);
+        Debug.DrawRay(pos + new Vector2(-0.15f, 0.15f), new Vector2(x, y) * 0.03f, Color.red);
+        Debug.DrawRay(pos + new Vector2(-0.15f, -0.15f), new Vector2(x, y) * 0.03f, Color.red);
 
-        Debug.DrawRay(pos, new Vector2(x, y) * 0.2f, Color.red);
-        if (Physics2D.Raycast(pos, new Vector2(x, y), 0.2f)) //origine, direction, taille)
+        if (hit1 || hit2 || hit3 || hit4) //origine, direction, taille)
         {
             print("lol");
             noCollision = false;
