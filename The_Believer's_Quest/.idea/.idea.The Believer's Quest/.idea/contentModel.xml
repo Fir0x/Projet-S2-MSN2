@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\nlorr\.Rider2018.2\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\nlorr\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\nlorr\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_The Believer's Quest.-814373297.00" t="ExcludeRecursive" />
+    <e p="C:\Users\nlorr\Desktop\Projet-S2-MSN2\The_Believer's_Quest" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Board.cs" t="Include" />
+          <e p="Ennemy.cs" t="Include" />
+          <e p="Loader.cs" t="Include" />
+          <e p="MovingObject.cs" t="Include" />
+          <e p="Player.cs" t="Include" />
+          <e p="Room.cs" t="Include" />
+          <e p="Saver.cs" t="Include" />
+          <e p="Weapons.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="The Believer's Quest.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
