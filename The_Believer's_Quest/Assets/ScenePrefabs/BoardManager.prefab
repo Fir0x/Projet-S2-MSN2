@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9097178050967337223
+--- !u!1 &4190746646339321592
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9097178050967337216}
-  - component: {fileID: 9097178050967337217}
-  - component: {fileID: 9097178050967337219}
+  - component: {fileID: 4190746646339321594}
+  - component: {fileID: 6234433374268652263}
+  - component: {fileID: 4190746646339321595}
   m_Layer: 0
   m_Name: BoardManager
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9097178050967337216
+--- !u!4 &4190746646339321594
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9097178050967337223}
+  m_GameObject: {fileID: 4190746646339321592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,13 +32,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9097178050967337217
+--- !u!114 &6234433374268652263
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9097178050967337223}
+  m_GameObject: {fileID: 4190746646339321592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd4b31984c4d0240b97f58b1ca4de3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 10
+  height: 5
+  roomWidth: 9
+  roomHeight: 6
+  roomNumber: 20
+--- !u!114 &4190746646339321595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4190746646339321592}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c9eb1b3ff1e6e04a86a718ff3375ec1, type: 3}
@@ -57,20 +74,3 @@ MonoBehaviour:
   - {fileID: 311511819468652285, guid: dadb9c667aa23f44ead102ccbb0c3f95, type: 3}
   - {fileID: 7088348124399180762, guid: ac6162d1d36c6a747ac9aaa19a6835e0, type: 3}
   player: {fileID: 0}
---- !u!114 &9097178050967337219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9097178050967337223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfd4b31984c4d0240b97f58b1ca4de3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  width: 10
-  height: 10
-  roomWidth: 9
-  roomHeight: 6
-  roomNumber: 60
