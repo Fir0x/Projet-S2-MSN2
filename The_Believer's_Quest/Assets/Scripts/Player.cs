@@ -8,7 +8,7 @@ using Vector2 = UnityEngine.Vector2;
 using Vector3 = System.Numerics.Vector3;
 
 [Serializable]
-public class Player : MonoBehaviour
+public class Player : MovingObject
 {
     private int moveSpeed = 2; //pour déplacement
     private Rigidbody2D rigid;  //utile pour déplacement glace
@@ -100,27 +100,39 @@ public class Player : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
-    {   //déplacement et collision
-        
+    private void FixedUpdate()
+    {  //déplacement et collision
+
         float moveX = moveSpeed * Time.deltaTime;
         float moveY = moveSpeed * Time.deltaTime;
-        
+
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            this.transform.Translate(-moveX, 0, 0);
+            if (this.Collision(transform.position, -1, 0))
+            {
+                this.transform.Translate(-moveX, 0, 0);
+            }
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            this.transform.Translate(moveX, 0, 0);
+            if (this.Collision(transform.position, 1, 0))
+            {
+                this.transform.Translate(moveX, 0, 0);
+            }
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            this.transform.Translate(0, moveY, 0);
+            if (this.Collision(transform.position, 0, 1))
+            {
+                this.transform.Translate(0, moveY, 0);
+            }
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            this.transform.Translate(0, -moveY, 0);
+            if (this.Collision(transform.position, 0, -1))
+            {
+                this.transform.Translate(0, -moveY, 0);
+            }
         }
 
 
@@ -144,5 +156,10 @@ public class Player : MonoBehaviour
         {
             this.rigid.AddForce(new Vector2 (0, -1) * moveSpeed * Time.deltaTime);
         }*/
+
+    }
+    private void Update()
+    {   
+
     }
 }
