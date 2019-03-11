@@ -74,7 +74,7 @@ public class Room : MonoBehaviour
         }
 
         if (roomNumber == 1)
-            player.transform.position = new Vector3(anchor[0] + width * 0.32f / 2, anchor[1] + height * 0.32f / 2, 0);
+            player.transform.position = new Vector3(anchor[0] + width * 0.32f / 2, anchor[1] + height * 0.32f / 2, -0.1f);
     }
 
     public void RoomSetup()
