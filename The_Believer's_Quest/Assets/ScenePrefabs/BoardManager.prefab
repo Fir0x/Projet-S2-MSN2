@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8244749174977215485
+--- !u!1 &5202475380373786966
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8244749174977215482}
-  - component: {fileID: 8244749174977215483}
-  - component: {fileID: 8244749174977215484}
+  - component: {fileID: 3688633446872613183}
+  - component: {fileID: 8981345498103605062}
+  - component: {fileID: 416202075394253419}
   m_Layer: 0
   m_Name: BoardManager
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8244749174977215482
+--- !u!4 &3688633446872613183
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8244749174977215485}
+  m_GameObject: {fileID: 5202475380373786966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,13 +32,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8244749174977215483
+--- !u!114 &8981345498103605062
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8244749174977215485}
+  m_GameObject: {fileID: 5202475380373786966}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfd4b31984c4d0240b97f58b1ca4de3b, type: 3}
@@ -49,13 +49,13 @@ MonoBehaviour:
   roomWidth: 12
   roomHeight: 7
   roomNumber: 20
---- !u!114 &8244749174977215484
+--- !u!114 &416202075394253419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8244749174977215485}
+  m_GameObject: {fileID: 5202475380373786966}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c9eb1b3ff1e6e04a86a718ff3375ec1, type: 3}
@@ -73,4 +73,4 @@ MonoBehaviour:
   - {fileID: 306075682403456740, guid: e09cd96443667a2488d625f038e17b29, type: 3}
   - {fileID: 7269450109776654642, guid: dadb9c667aa23f44ead102ccbb0c3f95, type: 3}
   - {fileID: 2290008860719186336, guid: ac6162d1d36c6a747ac9aaa19a6835e0, type: 3}
-  player: {fileID: 1265837264191040470, guid: 321cef1288d49514fa043b3adc2c08b7, type: 3}
+  player: {fileID: 7739121492923898463, guid: 321cef1288d49514fa043b3adc2c08b7, type: 3}
