@@ -1,13 +1,8 @@
 html{
   display: flex;
-  background-image:;
-  margin : 0;
 }
 body {
   	line-height: 1;
-    -webkit-text-size-adjust: none;
-    font-family: helvetica;
-    font-weight: 300;
     font-size: 14pt;
     line-height: 1.75em;
   }
@@ -41,11 +36,9 @@ h3{
 }
 
 footer{
-    flex: 1 0 100%;
-    color:pink;
     padding : 1 ;
     background: darkgrey;
-    text-align: center;
+    color: #FF0000;
 }
 #navext {
   margin: 0;

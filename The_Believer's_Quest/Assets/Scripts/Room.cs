@@ -65,7 +65,7 @@ public class Room : MonoBehaviour
                 else
                     tile = floorTiles[0];
 
-                instance = Instantiate(tile, new Vector2(anchor[0] + (float)j / 3.125f, anchor[1] + (float)i / 3.125f), 
+                instance = Instantiate(tile, new Vector2(anchor[0] + (float)j , anchor[1] + (float)i ), 
                     Quaternion.identity) as GameObject;
 
                 instance.transform.SetParent(room);
@@ -74,7 +74,7 @@ public class Room : MonoBehaviour
         }
 
         if (roomNumber == 1)
-            player.transform.position = new Vector3(anchor[0] + width * 0.32f / 2, anchor[1] + height * 0.32f / 2, 0);
+            player.transform.position = new Vector3(anchor[0] + width / 2, anchor[1] + height / 2, -0.1f);
     }
 
     public void RoomSetup()

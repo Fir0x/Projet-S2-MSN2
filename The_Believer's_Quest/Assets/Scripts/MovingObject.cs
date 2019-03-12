@@ -37,7 +37,7 @@ public class MovingObject : MonoBehaviour
             print("lol");
             noCollision = false;
         }
-
+        print(noCollision);
         return noCollision;
 
 
