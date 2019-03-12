@@ -1,21 +1,22 @@
 fileFormatVersion: 2
-guid: 5a324278bc41cb94595c0bd11231394f
+guid: 630658238eea98745b5fd0c068d01329
 TextureImporter:
   fileIDToRecycleName:
     21300000: UpperWallTop
     21300002: UpperWallBase
-    21300004: RightWall
-    21300006: LeftWall
-    21300008: LowerRightCorner
-    21300010: LowWall
-    21300012: UpperLeftCorner
-    21300014: LowerLeftCorner
-    21300016: UpperRightCorner
+    21300004: LeftWall
+    21300006: LowerLeftCorner
+    21300008: UpperLeftCorner
+    21300010: LowerRightCorner
+    21300012: UpperRightCorner
+    21300014: Floor
+    21300016: RightWall
+    21300018: LowWall
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -40,7 +41,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -54,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,18 +97,18 @@ TextureImporter:
       name: UpperWallTop
       rect:
         serializedVersion: 2
-        x: 52
-        y: 444
+        x: 5
+        y: 464
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0a783f6d298f61498cdcb951f49937f
+      spriteID: 567915acb9f83a54cbd2dafac3b69ed3
       vertices: []
       indices: 
       edges: []
@@ -116,38 +117,18 @@ TextureImporter:
       name: UpperWallBase
       rect:
         serializedVersion: 2
-        x: 42
-        y: 403
+        x: 5
+        y: 428
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d12d8ded6af6cd47a8f0556fd8da613
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RightWall
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 411
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fab16926996d5394580bb435935aa789
+      spriteID: bf5e349dd512ca44bb9435a00a2babad
       vertices: []
       indices: 
       edges: []
@@ -156,48 +137,8 @@ TextureImporter:
       name: LeftWall
       rect:
         serializedVersion: 2
-        x: 118
-        y: 444
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 227b86407ae1fed49abc0445e9c8f7d1
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LowerRightCorner
-      rect:
-        serializedVersion: 2
-        x: 184
-        y: 411
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b32f1c6c3974cfc4aae2e98b4dbf835a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LowWall
-      rect:
-        serializedVersion: 2
-        x: 118
-        y: 411
+        x: 41
+        y: 464
         width: 32
         height: 32
       alignment: 0
@@ -207,27 +148,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf8c8cfe58469134db2514e5d335494d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UpperLeftCorner
-      rect:
-        serializedVersion: 2
-        x: 151
-        y: 444
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d0b2f180aae8ed54daff51a940aac26a
+      spriteID: 4bdba267c0d3bdb42afca0f2e4608494
       vertices: []
       indices: 
       edges: []
@@ -236,8 +157,8 @@ TextureImporter:
       name: LowerLeftCorner
       rect:
         serializedVersion: 2
-        x: 151
-        y: 411
+        x: 41
+        y: 428
         width: 32
         height: 32
       alignment: 0
@@ -247,7 +168,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd70058ebcd5afc46bb63c391213b99a
+      spriteID: 1dd02a46a7571cd498a9845ef3f0eb54
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UpperLeftCorner
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 464
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbd6539c939bb9047865ba7b998efe31
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowerRightCorner
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 428
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f36b45c6348b5347a13b2f9c2e492e4
       vertices: []
       indices: 
       edges: []
@@ -256,8 +217,8 @@ TextureImporter:
       name: UpperRightCorner
       rect:
         serializedVersion: 2
-        x: 184
-        y: 444
+        x: 113
+        y: 464
         width: 32
         height: 32
       alignment: 0
@@ -267,7 +228,67 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6a950e50fbf1214a813d9dbb02691db
+      spriteID: f182467ab81cd474899126f41b77d9f5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Floor
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 428
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d9b96ac435c8d140a254becb547e148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RightWall
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 464
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2daf557fb70c764493bbd4e67c4d2bf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowWall
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 464
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 484c1b0b8098eb545a3cbf8765bf060d
       vertices: []
       indices: 
       edges: []
@@ -275,7 +296,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 13d104d6318f00443b20843a57c1bb25
+    spriteID: e9dd5090a1e55b540a9f76036ed50011
     vertices: []
     indices: 
     edges: []
