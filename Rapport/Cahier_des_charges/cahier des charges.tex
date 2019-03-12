@@ -153,7 +153,7 @@ Le projet est un jeu de type rogue-like hybride nommé \og The Believer’s Ques
 \bigbreak
 Il y aura 4 types de salles : les salles normales, les salles de coffre, le magasin, la salle du boss d’étage. Dans les salles normales, le joueur affrontera des ennemis qui, lorsqu’il les aura battus, lui fourniront de l’argent qui lui permettra d’acheter de l’équipement et des objets, et donc d’améliorer ses chances de descendre plus bas dans le donjon. Le magasin permettra au joueur d’acheter de nouvelles armes et de nouveaux objets. Les salles de coffre contiendront un coffre nécessitant une clé pour être ouvert. A l’intérieur le joueur pourra trouver une arme ou un objet aléatoire. Ce type de salle ne sera pas généré aléatoirement. Dans la salle du boss, le joueur affrontera le boss de l’étage. S’il gagne il a alors accès à l’étage suivant.
 
-De plus, seules les salles normales seront générées de manière aléatoire.
+De plus, les salles normales seront générées en fonction d'un pattern choisi au hasard parmi plusieurs.
 \bigbreak
 La mort sera permanente, c’est-à-dire que si le joueur meurt, il perd tous ses objets et armes, sa progression est perdue et il doit tout recommencer. Cependant l’existence d’une monnaie permanente que le joueur conservera après sa mort lui permettra de débloquer de nouvelles armes dans le hub (description du hub plus bas).
 \bigbreak
@@ -200,28 +200,28 @@ Il y aura 6 étages, chacun ayant leurs propres caractéristiques :
 \begin{itemize}
 \item Ennemis : type feu
 \item Charte graphique : pierre en fusion
-\item Salles : 9 (2 salles de coffre + 1 magasin + 5 salles normales + 1 salle de boss)
+\item Salles : 9 (2 salles de coffre + 1 magasin + 9 salles normales + 1 salle de boss)
 \end{itemize}
 \bigbreak
 \item Étage de glace :
 \begin{itemize}
 \item Ennemis : type glace
 \item Charte graphique : glace
-\item Salles : 9 (2 salles de coffre + 1 magasin + 5 salles normales + 1 salle de boss)
+\item Salles : 9 (2 salles de coffre + 1 magasin + 13 salles normales + 1 salle de boss)
 \end{itemize}
 \bigbreak
 \item Étage d’air :
 \begin{itemize}
 \item Ennemis : type volant
 \item Charte graphique : nuages et ailes
-\item Salles : 9 (2 salles de coffre + 1 magasin + 5 salles normales + 1 salle de boss)
+\item Salles : 9 (2 salles de coffre + 1 magasin + 17 salles normales + 1 salle de boss)
 \end{itemize}
 \bigbreak
 \item Étage corrompu :
 \begin{itemize}
 \item Ennemis : type corrompu
 \item Charte graphique : corruption (-> vert, violet, sombre)
-\item Salles : 9 (2 salles de coffre + 1 magasin + 5 salles normales + 1 salle de boss)
+\item Salles : 9 (2 salles de coffre + 1 magasin + 21 salles normales + 1 salle de boss)
 \end{itemize}
 \bigbreak
 \item Étage final :
@@ -262,9 +262,8 @@ Le joueur contrôlera un personnage pouvant réaliser plusieurs actions :
 \item Utiliser l’objet équipé.
 \item Se déplacer dans toutes les directions.
 \item Esquiver sous la forme d’un dash (accélération rapide et courte dans la direction souhaitée). Le dash permet d’éviter les attaques et de passer au-dessus des trous.
-\item Récupérer l’argent lâché par les ennemis en passant dessus.
+\item Récupérer l’argent lâché par les ennemis.
 \item Acheter des objets au marchand.
-\item Jeter l’arme dans la main.
 \end{itemize}
 
 Le joueur possèdera 4 vies. Chaque fois qu’il sera touché par une attaque ennemie (même de la part d’un boss) il perdra 1 vie.
@@ -325,7 +324,7 @@ L’interface sera composée de plusieurs choses :
 \item La jauge d’effet.
 \item La quantité d’or possédé par le joueur (seulement dans le donjon).
 \item La quantité de diamants possédés par le joueur (seulement dans le hub).
-\item L’arme sélectionnée et son nombre d’utilisation restante.
+\item L’arme sélectionnée et son nombre de balles restantes (dans le chargeur et au total).
 \item L’objet possédé par le joueur.
 \end{itemize}
 \bigbreak
@@ -361,8 +360,6 @@ Le menu pause donnera à l’utilisateur 5 choix :
 	\hline
 	\rowcolor{Lavender}\multicolumn{5}{|c|}{ENNEMIS} \\
 	\hline	
-	\cellcolor{WhiteSmoke} Classes & \textcolor{red}{X} & X & & \\
-	\hline
 	\cellcolor{WhiteSmoke}Déplacements & & & X & \textcolor{red}{X} \\
 	\hline
 	\cellcolor{WhiteSmoke}Hitbox & & & \textcolor{red}{X} & X \\
@@ -370,8 +367,6 @@ Le menu pause donnera à l’utilisateur 5 choix :
 	\cellcolor{WhiteSmoke}Attaques & & \textcolor{red}{X} & & X \\
 	\hline
 	\rowcolor{Lavender}\multicolumn{5}{|c|}{JOUEUR} \\
-	\hline
-	\cellcolor{WhiteSmoke}Classes & \textcolor{red}{X} & & X & \\
 	\hline
 	\cellcolor{WhiteSmoke}Déplacements & & & X & \textcolor{red}{X} \\
 	\hline
@@ -395,7 +390,7 @@ Le menu pause donnera à l’utilisateur 5 choix :
 	\hline
 	\cellcolor{WhiteSmoke}Interface & & \textcolor{red}{X} & & X \\
 	\hline
-	\cellcolor{WhiteSmoke}Sauvegardes & X & & & \textcolor{red}{X} \\
+	\cellcolor{WhiteSmoke}Sauvegardes & \textcolor{red}{X} & & & X \\
 	\hline
 	\cellcolor{WhiteSmoke}Options & & \textcolor{red}{X} & X & \\
 	\hline
@@ -419,8 +414,6 @@ Le menu pause donnera à l’utilisateur 5 choix :
 	\hline
 	\rowcolor{Lavender}\multicolumn{4}{|c|}{ENNEMIS} \\
 	\hline	
-	\cellcolor{WhiteSmoke} Classes & 100\% & 100\% & 100\% \\
-	\hline
 	\cellcolor{WhiteSmoke}Déplacements & 100\% & 100\% & 100\% \\
 	\hline
 	\cellcolor{WhiteSmoke}Hitbox & 0\% & 50\% & 100\% \\
@@ -428,8 +421,6 @@ Le menu pause donnera à l’utilisateur 5 choix :
 	\cellcolor{WhiteSmoke}Attaques & 30\% & 60\% & 100\% \\
 	\hline
 	\rowcolor{Lavender}\multicolumn{4}{|c|}{JOUEUR} \\
-	\hline
-	\cellcolor{WhiteSmoke}Classes & 100\% & 100\% & 100\% \\
 	\hline
 	\cellcolor{WhiteSmoke}Déplacements & 100\% & 100\% & 100\% \\
 	\hline
@@ -489,7 +480,8 @@ Le menu pause donnera à l’utilisateur 5 choix :
 \item Cloud : Github
 \end{itemize}
 \bigbreak
-
+\bigbreak
+\bigbreak
 	\subsection{Communication}
 \bigbreak
 \bigbreak
