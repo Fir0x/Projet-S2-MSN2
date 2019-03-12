@@ -73,4 +73,4 @@ MonoBehaviour:
   - {fileID: 306075682403456740, guid: e09cd96443667a2488d625f038e17b29, type: 3}
   - {fileID: 7269450109776654642, guid: dadb9c667aa23f44ead102ccbb0c3f95, type: 3}
   - {fileID: 2290008860719186336, guid: ac6162d1d36c6a747ac9aaa19a6835e0, type: 3}
-  player: {fileID: 7739121492923898463, guid: 321cef1288d49514fa043b3adc2c08b7, type: 3}
+  player: {fileID: 7985191293914268312, guid: 321cef1288d49514fa043b3adc2c08b7, type: 3}

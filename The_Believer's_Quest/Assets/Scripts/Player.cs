@@ -102,7 +102,7 @@ public class Player : MovingObject
 
     private void FixedUpdate()
     {  //déplacement et collision
-
+        print(this.transform.position);
         float moveX = moveSpeed * Time.deltaTime;
         float moveY = moveSpeed * Time.deltaTime;
 

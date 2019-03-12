@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e536353e55262a47b1eb9f1deb9403b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGO: {fileID: 7739121492923898463, guid: 321cef1288d49514fa043b3adc2c08b7,
+  playerGO: {fileID: 7985191293914268312, guid: 321cef1288d49514fa043b3adc2c08b7,
     type: 3}
   effectController: {fileID: 2228598894853474981}
 --- !u!1001 &6103930597615970972
@@ -263,12 +263,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3257621422838301830, guid: ef04df9236490534b95e887214c69f18,
+    - target: {fileID: 5214004161947380239, guid: ef04df9236490534b95e887214c69f18,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5214004161947380239, guid: ef04df9236490534b95e887214c69f18,
+    - target: {fileID: 3257621422838301830, guid: ef04df9236490534b95e887214c69f18,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
