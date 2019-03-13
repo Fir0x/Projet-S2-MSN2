@@ -39,6 +39,11 @@ public class Player : MovingObject
         rightKey = Input.GetKey(KeyCode.RightArrow);
     }
 
+    public Vector2 GetPos()
+    {
+        return this.transform.position;
+    }
+
     public int GetHP()
     {
         return hp;
@@ -102,7 +107,6 @@ public class Player : MovingObject
 
     private void FixedUpdate()
     {  //déplacement et collision
-        print(this.transform.position);
         float moveX = moveSpeed * Time.deltaTime;
         float moveY = moveSpeed * Time.deltaTime;
 
