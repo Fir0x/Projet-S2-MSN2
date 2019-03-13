@@ -38,6 +38,10 @@ public class Weapons : MonoBehaviour
             location -= location - maximum;
     }
 
+    public int GetLoaderAmmo()
+    {
+        return loader;
+    }
     IEnumerator ReloadTimer()
     {
         yield return new WaitForSeconds(reloadingTime);
