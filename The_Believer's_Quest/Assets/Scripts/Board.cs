@@ -42,7 +42,7 @@ public class Board : MonoBehaviour
         board = new GameObject("Board").transform;
         List<RoomBase> roomBaseList = new List<RoomBase>();
         int[] startPoint = new int[] { Random.Range(0, width - 1), Random.Range(0, height - 1) };
-        RoomBase parent = new RoomBase(startPoint, 1, new float[] { startPoint[0] * 0.32f * roomWidth, startPoint[1] * 0.32f * roomHeight });
+        RoomBase parent = new RoomBase(startPoint, 1, new float[] { startPoint[0] * roomWidth, startPoint[1] * roomHeight });
         roomBaseList.Add(parent);
 
         RoomBase actual;
@@ -83,7 +83,7 @@ public class Board : MonoBehaviour
 
                 //print("newX = " + newPosition[0] + "\nnewY = " + newPosition[1]); //DEBUG
 
-                actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * 0.32f * roomWidth, newY * 0.32f * roomHeight });
+                actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth, newY * roomHeight });
                 roomBaseList.Add(actual);
                 if (newX > lastX)
                 {
