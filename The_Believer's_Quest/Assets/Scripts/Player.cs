@@ -163,6 +163,27 @@ public class Player : MovingObject
     }
     private void Update()
     {
+        float moveX = moveSpeed * Time.deltaTime;
+        float moveY = moveSpeed * Time.deltaTime;
 
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            this.transform.Translate(-moveX, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            this.transform.Translate(moveX, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            this.transform.Translate(0, moveY, 0);
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            this.transform.Translate(0, -moveY, 0);
+        }
     }
 }
+
+
+
