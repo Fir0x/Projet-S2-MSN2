@@ -32,7 +32,8 @@ h3{
 
 @font-face {
   font-family: 'Knights Quest';
-  src: url("Kinghts Quest.eot?#iefix") format("embedded-opentype"), url("Knights Quest.ttf") format("ttf"), url("Knights Quest.ttf") format("truetype"), url("Knights Quest.svg#h5u") format("svg");
+  src: url ('{% static 'fonts/Knights Quest.ttf' %}');
+  /*url("Kinghts Quest.eot?#iefix") format("embedded-opentype"), url("Knights Quest.ttf") format("ttf"), url("Knights Quest.ttf") format("truetype"), url("Knights Quest.svg#h5u") format("svg");*/
 }
 
 footer{

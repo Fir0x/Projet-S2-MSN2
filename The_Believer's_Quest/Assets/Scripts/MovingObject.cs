@@ -3,22 +3,6 @@ using Vector2 = UnityEngine.Vector2;
 
 public class MovingObject : MonoBehaviour
 {
-    private LayerMask mask;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        mask = LayerMask.GetMask("Blocks");
-    }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public bool Collision(Vector2 pos, float x, float y)
     {
         bool noCollision = true;
@@ -34,12 +18,9 @@ public class MovingObject : MonoBehaviour
 
         if (hit1 || hit2 || hit3 || hit4) //origine, direction, taille)
         {
-            print("lol");
             noCollision = false;
         }
         print(noCollision);
         return noCollision;
-
-
     }
 }

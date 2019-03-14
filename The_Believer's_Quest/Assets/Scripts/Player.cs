@@ -25,11 +25,17 @@ public class Player : MovingObject
     private int effectValue = 0;
     private int maxEffectValue = 10;
     public Slider effectGauge;
+    public Slider hpGauge;
 
     private int gold = 0;
     private int diamond = 0;
     private Weapons[] weaponsList = new Weapons[2];
     private Weapons inHand;
+
+    public Text nbGold;
+    public Text nbDiamond;
+    public Text nbAmmo;
+    public Image ImgWeapon;
 
     public void GetKeys()
     {
@@ -52,11 +58,13 @@ public class Player : MovingObject
     public void SetHP(int value)
     {
         hp = value;
+        hpGauge.value = value;
     }
 
     public void SetMaxHP(int value)
     {
         maxHP += value;
+        hpGauge.maxValue = value;
     }
 
     public void SetEffectValue(int value)
@@ -138,7 +146,10 @@ public class Player : MovingObject
                 this.transform.Translate(0, -moveY, 0);
             }
         }
-
+        //UI
+        nbGold.text = gold + " Ors";
+        nbDiamond.text = diamond + " Diamants";
+        nbAmmo.text = inHand.GetAmmunitions() + " / " + inHand.GetLoaderAmmo();
         //déplacement honnete pour niveau glace
 
         /*transform.Translate(moveX, moveY, 0f);   
