@@ -149,7 +149,7 @@ Notre jeu sera un rogue-lite et se rapprochera donc des mécaniques habituelles 
 		\subsubsection{Généralités}
 \bigbreak
 \bigbreak
-Le projet est un jeu de type rogue-like hybride nommé \og The Believer’s Quest \fg, et sera réalisé sous Unity. Le joueur évoluera donc dans un donjon composé de 6 étages, chacun composé de plusieurs salles générées de manière aléatoire, sauf le dernier qui ne sera composé que d’une salle de boss. Le joueur pourra choisir le nom de son personnage.
+Le projet est un jeu de type rogue-like hybride nommé \og The Believer’s Quest \fg, et sera réalisé sous Unity. Le joueur évoluera donc dans un donjon composé de 5 étages, chacun composé de plusieurs salles générées de manière aléatoire, sauf le dernier qui ne sera composé que d’une salle de boss. Pour un étage $n$, on trouvera $12 + (n - 1) * 6$ salles normales. Le joueur pourra de plus choisir le nom de son personnage.
 \bigbreak
 Il y aura 4 types de salles : les salles normales, les salles de coffre, le magasin, la salle du boss d’étage. Dans les salles normales, le joueur affrontera des ennemis qui, lorsqu’il les aura battus, lui fourniront de l’argent qui lui permettra d’acheter de l’équipement et des objets, et donc d’améliorer ses chances de descendre plus bas dans le donjon. Le magasin permettra au joueur d’acheter de nouvelles armes et de nouveaux objets. Les salles de coffre contiendront un coffre nécessitant une clé pour être ouvert. A l’intérieur le joueur pourra trouver une arme ou un objet aléatoire. Ce type de salle ne sera pas généré aléatoirement. Dans la salle du boss, le joueur affrontera le boss de l’étage. S’il gagne il a alors accès à l’étage suivant.
 
@@ -193,28 +193,28 @@ Il y aura 5 étages, chacun ayant leurs propres caractéristiques :
 \begin{itemize}
 \item Ennemis : sans type secondaire
 \item Charte graphique : pierre
-\item Salles : 9 (2 salles de coffre + 1 magasin + 5 salles normales + 1 salle de boss)
+\item Salles : 12 (2 salles de coffre + 1 magasin + 8 salles normales + 1 salle de boss)
 \end{itemize}
 \bigbreak
 \item Étage de feu :
 \begin{itemize}
 \item Ennemis : type feu
 \item Charte graphique : pierre en fusion
-\item Salles : 9 (2 salles de coffre + 1 magasin + 9 salles normales + 1 salle de boss)
+\item Salles : 18 (2 salles de coffre + 1 magasin + 14 salles normales + 1 salle de boss)
 \end{itemize}
 \bigbreak
 \item Étage de glace :
 \begin{itemize}
 \item Ennemis : type glace
 \item Charte graphique : glace
-\item Salles : 9 (2 salles de coffre + 1 magasin + 13 salles normales + 1 salle de boss)
+\item Salles : 24 (2 salles de coffre + 1 magasin + 20 salles normales + 1 salle de boss)
 \end{itemize}
 \bigbreak
 \item Étage d’air :
 \begin{itemize}
 \item Ennemis : type volant
 \item Charte graphique : nuages et ailes
-\item Salles : 9 (2 salles de coffre + 1 magasin + 17 salles normales + 1 salle de boss)
+\item Salles : 30 (2 salles de coffre + 1 magasin + 24 salles normales + 1 salle de boss)
 \end{itemize}
 \bigbreak
 \item Étage final :
