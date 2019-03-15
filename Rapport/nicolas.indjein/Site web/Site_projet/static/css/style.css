@@ -1,0 +1,89 @@
+html{
+  display: flex;
+}
+body {
+  	line-height: 1;
+    font-size: 14pt;
+    line-height: 1.75em;
+  }
+
+
+header{
+    flex: 1 0 100%;
+    line-height: 1;
+    padding :1px ;
+    text-align : center;
+    color: darkred;
+    font-family: 'Knights Quest';
+    font-size: 4em ;
+}
+h2{
+  flex: 1 0 100%;
+  color:cyan;
+  font-size: 1.5em ;
+  margin-left: 150px;
+}
+h3{
+  flex: 1 0 100%;
+  font-size: 1.3em ;
+  display: block;
+  margin-left: 125px;
+}
+
+@font-face {
+  font-family: 'Knights Quest';
+  src: url ('{% static 'fonts/Knights Quest.ttf' %}');
+  /*url("Kinghts Quest.eot?#iefix") format("embedded-opentype"), url("Knights Quest.ttf") format("ttf"), url("Knights Quest.ttf") format("truetype"), url("Knights Quest.svg#h5u") format("svg");*/
+}
+
+footer{
+    padding : 1 ;
+    background: darkgrey;
+    color: #FF0000;
+}
+#navext {
+  margin: 0;
+  flex: 1 0 100%;
+  padding : 1 ;
+  background: darkgrey;
+  text-align: center;
+}
+#navext ul li{
+  flex: 1 0 100%;
+  margin:10px;
+  display : inline-block;
+}
+
+p1 {
+	color : black;
+  margin-left: 125px;
+  margin-right: 125px;
+  display : inline-block;
+  text-indent: 2em;
+}
+#foot {
+	color : blue;
+  margin-left: 125px;
+  margin-right: 125px;
+  display : inline-block;
+  font-size: 3pt;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+a:link {
+  color: #FF0000;
+}
+
+a:visited {
+  color:#FF0000;
+}
+
+a:active {
+  background: lightgrey;
+  color: #CD00AA;
+}
