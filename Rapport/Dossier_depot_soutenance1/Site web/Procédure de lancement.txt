@@ -9,6 +9,6 @@ set DJANGO_SETTINGS_MODULE=Site_projet.settings
 
 py -m django runserver
 
-Le site devrait être lancer et se trouve ensuite à l'adresse : https://localhost:80000/accueil
+Le site devrait être lancé et se trouve ensuite à l'adresse : https://localhost:80000/accueil
 
 Pour arrêter le serveur il suffit de faire CTRL + BREAK.
