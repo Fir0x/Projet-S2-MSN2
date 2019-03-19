@@ -1,0 +1,14 @@
+Procédure de lancement du serveur Django sous Windows:
+
+Tout d'abord il faut installer Django sur l'ordinateur. On utilise la commande suivante:
+py -3.7 -m pip install Django==2.1.5
+
+Ensuite on se place dans le dossier "\Site_projet" et on fait les deux commandes :
+
+set DJANGO_SETTINGS_MODULE=Site_projet.settings
+
+py -m django runserver
+
+Le site devrait être lancé et se trouve ensuite à l'adresse : localhost:80000/accueil
+
+Pour arrêter le serveur il suffit de faire CTRL + BREAK.

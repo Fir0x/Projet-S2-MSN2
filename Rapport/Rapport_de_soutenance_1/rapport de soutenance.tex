@@ -60,7 +60,7 @@ PROJET S2 2019
 \bigbreak
 \bigbreak
 
-Lors de cette première période de développement, nous avons tous commencés à utiliser Unity. Notre jeu est donc dans sa phase première, c’est-à-dire qu’il contient les éléments de base permettant de nous donner les outils nécessaires au bon développement de \textit{The Believer’s Quest}. Actuellement notre projet possède différentes fonctionnalités comme le déplacement du joueur, avec une animation, la génération de salles pour avoir un plateau de jeu, ou encore une interface utilisateur de base pour donner les informations nécessaires et faire des tests. Il comporte aussi un site web, des musiques et des graphismes en cours de développement. 
+Lors de cette première période de développement, nous avons tous commencé à utiliser Unity. Notre jeu est donc dans sa phase première, c’est-à-dire qu’il contient les éléments de base permettant de nous donner les outils nécessaires au bon développement de \textit{The Believer’s Quest}. Actuellement notre projet possède différentes fonctionnalités comme le déplacement du joueur, avec une animation, la génération de salles pour avoir un plateau de jeu, ou encore une interface utilisateur de base pour donner les informations nécessaires et faire des tests. Il comporte aussi un site web, des musiques et des graphismes en cours de développement. 
 \bigbreak
 \bigbreak
 \bigbreak
@@ -72,7 +72,7 @@ Lors de cette première période de développement, nous avons tous commencés �
 
 \bigbreak
 \bigbreak
-Dans notre cahier des charges certains détails ont été modifiés. Le produit final que nous allons créer sera toujours le même mais avec quelques détails différents. Pour les étages nous avons décidé de changer le nombre de salles. Pour l’étage numéro $n$ il y aura $(n\times4) + 5$ salles et non 9 salles pour tous les étages, de cette façon on obtient une difficulté et un temps de jeu croissants lorsqu'on avance à travers les niveaux.
+Dans notre cahier des charges certains détails ont été modifiés. Le produit final que nous allons créer sera toujours le même mais avec quelques détails différents. Pour les étages nous avons décidé de changer le nombre de salles. Pour l’étage numéro $n$ il y aura $6 \times (n - 1) + 12$ salles et non 9 salles pour tous les étages, de cette façon on obtient une difficulté et un temps de jeu croissants lorsqu'on avance à travers les niveaux.
 \bigbreak
 Dans les salles, les trous et les murs devaient être générés aléatoirement mais nous avons pris la décision de réaliser des motifs de salles qui seront choisis aléatoirement suivant les différents étages. 
 \bigbreak
@@ -126,7 +126,7 @@ Tout d’abord avant de se lancer il a fallu décider comment se présenterait n
 \bigbreak
 La page d’accueil est la page qui contient un court message de bienvenue. Cette première partie du site contient aussi tout ce qui concerne les « news » c’est-à-dire les actualités sur l’avancée de notre projet, du jeu et de nos problèmes rencontrés. Cette partie est donc la première que les visiteurs du site verront. En conséquent, il faut qu'elle soit attrayante et qu’elle ne soit pas trop surchargée pour ne pas être noyée par les informations.
 \bigbreak
-La page « Présentation du jeu » est celle qui donnera les détails du jeu. Comment nous est venue l'idée, comment va-t-il être réalisé, le principe de celui-ci mais aussi quel est le type de notre jeu. Cette page est importante car c’est celle qui va expliquer les bases de \textit{The Believer's Quest} et ainsi faire comprendre pourquoi on réalise celui-ci. Ici avoir beaucoup d’informations est essentiel.
+La page « Présentation du jeu » est celle qui donnera les détails du jeu. Comment nous est venue l'idée, comment va-t-il être réalisé, le principe de celui-ci mais aussi quel est son type. Cette page est importante car c’est celle qui va expliquer les bases de \textit{The Believer's Quest} et ainsi faire comprendre pourquoi on le réalise. Ici, avoir beaucoup d’informations est essentiel.
 \bigbreak
 « Les développeurs » est l’onglet qui contient toutes les données sur ce qu’est MSN$^2$ et ses membres.
 \newpage
@@ -366,7 +366,7 @@ Je trouvais que mon algorithme de génération de salle n'était pas « propre �
 C'est le 9 mars que j'ai commencé à faire des recherches pour la réalisation de l'interface (UI) même si ce n’est pas dans le travail qui m'est attribué car Sarah et Maxence était concentrés sur d'autres parties du projet et je voulais commencer à créer une interface de développement permettant de modifier les différentes variables en cours de jeu pour nous aider dans nos tests. De plus, le développement de l'UI me concerne aussi par rapport à l'aspect graphique de l’interface. J'ai donc commencé l'UI du joueur, en ajoutant la jauge d'effet, et l'UI de développement en ajoutant un slider pour modifier l'attribut correspondant au pourcentage d'effet.
 \newpage
 
-Le 11 mars : Fin sprites joueurs. Découpe pour animation.
+Le 11 mars, j'ai fini les sprites du joueur, et je les ai découpés pour l'animation.
  \bigbreak
 \begin{center}
 \includegraphics[scale = 0.25]{spritePerso.png}
@@ -553,6 +553,60 @@ Le 11 mars, le sprite du personnage ayant été implémenté dans le projet, j�
 \section{Conclusion}
 \bigbreak
 \bigbreak
-Dans un premier temps, nous avons pris notre temps car nous ne pensions pas que coder sous Unity serait si différent. Mais après avoir eu autant d'erreurs sous Unity et après de très nombreuses recherches sur Internet, nous avons pris conscience de la difficulté de la chose. Nous nous rendons bien compte désormais du travail que nous aurons à fournir si nous voulons avoir un jeu complet. 
+Dans un premier temps, nous avons pris notre temps car nous ne pensions pas que coder sous Unity serait si différent. Mais après avoir eu autant d'erreurs sous Unity et après de très nombreuses recherches sur Internet, nous avons pris conscience de la difficulté de la chose. Nous nous rendons bien compte désormais du travail que nous aurons à fournir si nous voulons avoir un jeu complet. Voici un aperçu du jeu tel qu'il est à présent :
+\bigbreak
+\begin{center}
+\includegraphics[scale = 0.35]{affichagejeu.PNG}
+\end{center}
 \end{spacing}
+\newpage
+\section{Annexe}
+\bigbreak
+\bigbreak
+\begin{center}
+\includegraphics[scale = 1]{boucle_for.png}
+\smallbreak
+Figure 1 : Boucle for
+\bigbreak
+\bigbreak
+\includegraphics[scale = 1]{image_TBQ.png}
+\smallbreak
+Figure 2 : Favicon du site Web
+\bigbreak
+\bigbreak
+\includegraphics[scale = 0.32]{interface.jpg}
+\smallbreak
+Figure 3 : Première interface
+\bigbreak
+\bigbreak
+\includegraphics[scale = 0.18]{ceoil.png}
+\smallbreak
+Figure 4 : Logiciel de musique Bosca Ceoil
+\bigbreak
+\bigbreak
+\includegraphics[scale = 0.18]{fruitloop.png}
+\smallbreak
+Figure 5 : Logiciel de musique FLStudio
+\bigbreak
+\bigbreak
+\includegraphics[scale = 0.3]{coupe.png}
+\smallbreak
+Figure 6 : Logo du groupe dans son état actuel
+\bigbreak
+\bigbreak
+\includegraphics[scale = 0.25]{spritePerso.png}
+\smallbreak
+Figure 7 : Sprites actuelles du joueur
+\bigbreak
+\bigbreak
+\includegraphics[scale = 0.23]{generation.PNG}
+\smallbreak
+Figure 8 : Génération d'une salle sans sprites sous Unity
+\bigbreak
+\bigbreak
+\includegraphics[scale = 0.35]{affichagejeu.PNG}
+\smallbreak
+Figure 9 : Notre jeu au moment de la soutenance
+
+\end{center}
 \end{document}
