@@ -1,0 +1,488 @@
+fileFormatVersion: 2
+guid: 630658238eea98745b5fd0c068d01329
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: UpperWallTop
+    21300002: UpperWallBase
+    21300004: LeftWall
+    21300006: LowerLeftCorner
+    21300008: UpperLeftCorner
+    21300010: LowerRightCorner
+    21300012: UpperRightCorner
+    21300014: Floor
+    21300016: RightWall
+    21300018: LowWall
+    21300020: Misc_prite_sheet_0
+    21300022: Misc_prite_sheet_1
+    21300024: Misc_prite_sheet_2
+    21300026: Misc_prite_sheet_3
+    21300028: Misc_prite_sheet_4
+    21300030: Misc_prite_sheet_5
+    21300032: Misc_prite_sheet_6
+    21300034: Misc_prite_sheet_7
+    21300036: Misc_prite_sheet_8
+    21300038: Misc_prite_sheet_9
+    21300040: Misc_prite_sheet_10
+    21300042: Misc_prite_sheet_11
+    21300044: Misc_prite_sheet_12
+    21300046: Misc_prite_sheet_13
+    21300048: Misc_prite_sheet_14
+    21300050: Misc_prite_sheet_15
+    21300052: Misc_prite_sheet_16
+    21300054: Misc_prite_sheet_17
+    21300056: Misc_prite_sheet_18
+    21300058: Misc_prite_sheet_19
+    21300060: Misc_prite_sheet_20
+    21300062: Misc_prite_sheet_21
+    21300064: Misc_prite_sheet_22
+    21300066: Misc_prite_sheet_23
+    21300068: Misc_prite_sheet_24
+    21300070: Misc_prite_sheet_25
+    21300072: Misc_prite_sheet_26
+    21300074: Misc_prite_sheet_27
+    21300076: Misc_prite_sheet_28
+    21300078: Misc_prite_sheet_29
+    21300080: Misc_prite_sheet_30
+    21300082: Misc_prite_sheet_31
+    21300084: Misc_prite_sheet_32
+    21300086: Misc_prite_sheet_33
+    21300088: Misc_prite_sheet_34
+    21300090: Misc_prite_sheet_35
+    21300092: Misc_prite_sheet_36
+    21300094: Misc_prite_sheet_37
+    21300096: Misc_prite_sheet_38
+    21300098: Misc_prite_sheet_39
+    21300100: Misc_prite_sheet_40
+    21300102: Misc_prite_sheet_41
+    21300104: Misc_prite_sheet_42
+    21300106: Misc_prite_sheet_43
+    21300108: Misc_prite_sheet_44
+    21300110: Misc_prite_sheet_45
+    21300112: Misc_prite_sheet_46
+    21300114: Misc_prite_sheet_47
+    21300116: Misc_prite_sheet_48
+    21300118: Misc_prite_sheet_49
+    21300120: Misc_prite_sheet_50
+    21300122: Misc_prite_sheet_51
+    21300124: Misc_prite_sheet_52
+    21300126: Misc_prite_sheet_53
+    21300128: Misc_prite_sheet_54
+    21300130: Misc_prite_sheet_55
+    21300132: Misc_prite_sheet_56
+    21300134: Misc_prite_sheet_57
+    21300136: Misc_prite_sheet_58
+    21300138: Misc_prite_sheet_59
+    21300140: Misc_prite_sheet_60
+    21300142: Misc_prite_sheet_61
+    21300144: Misc_prite_sheet_62
+    21300146: Misc_prite_sheet_63
+    21300148: Misc_prite_sheet_64
+    21300150: Misc_prite_sheet_65
+    21300152: Misc_prite_sheet_66
+    21300154: Misc_prite_sheet_67
+    21300156: Misc_prite_sheet_68
+    21300158: Misc_prite_sheet_69
+    21300160: Misc_prite_sheet_70
+    21300162: Misc_prite_sheet_71
+    21300164: Misc_prite_sheet_72
+    21300166: Misc_prite_sheet_73
+    21300168: Misc_prite_sheet_74
+    21300170: Misc_prite_sheet_75
+    21300172: Misc_prite_sheet_76
+    21300174: Misc_prite_sheet_77
+    21300176: Misc_prite_sheet_78
+    21300178: Misc_prite_sheet_79
+    21300180: Misc_prite_sheet_80
+    21300182: Misc_prite_sheet_81
+    21300184: Misc_prite_sheet_82
+    21300186: Misc_prite_sheet_83
+    21300188: Misc_prite_sheet_84
+    21300190: Misc_prite_sheet_85
+    21300192: Misc_prite_sheet_86
+    21300194: Misc_prite_sheet_87
+    21300196: Misc_prite_sheet_88
+    21300198: Misc_prite_sheet_89
+    21300200: Misc_prite_sheet_90
+    21300202: Misc_prite_sheet_91
+    21300204: Misc_prite_sheet_92
+    21300206: Misc_prite_sheet_93
+    21300208: Misc_prite_sheet_94
+    21300210: Misc_prite_sheet_95
+    21300212: Misc_prite_sheet_96
+    21300214: Misc_prite_sheet_97
+    21300216: Misc_prite_sheet_98
+    21300218: Misc_prite_sheet_99
+    21300220: Misc_prite_sheet_100
+    21300222: Misc_prite_sheet_101
+    21300224: Misc_prite_sheet_102
+    21300226: Misc_prite_sheet_103
+    21300228: Misc_prite_sheet_104
+    21300230: Misc_prite_sheet_105
+    21300232: Misc_prite_sheet_106
+    21300234: Misc_prite_sheet_107
+    21300236: Misc_prite_sheet_108
+    21300238: Misc_prite_sheet_109
+    21300240: Misc_prite_sheet_110
+    21300242: Misc_prite_sheet_111
+    21300244: Misc_prite_sheet_112
+    21300246: Misc_prite_sheet_113
+    21300248: Misc_prite_sheet_114
+    21300250: Misc_prite_sheet_115
+    21300252: Misc_prite_sheet_116
+    21300254: Misc_prite_sheet_117
+    21300256: Misc_prite_sheet_118
+    21300258: Misc_prite_sheet_119
+    21300260: Misc_prite_sheet_120
+    21300262: Misc_prite_sheet_121
+    21300264: Misc_prite_sheet_122
+    21300266: Misc_prite_sheet_123
+    21300268: Misc_prite_sheet_124
+    21300270: Misc_prite_sheet_125
+    21300272: Misc_prite_sheet_126
+    21300274: Misc_prite_sheet_127
+    21300276: Misc_prite_sheet_128
+    21300278: Misc_prite_sheet_129
+    21300280: Misc_prite_sheet_130
+    21300282: Misc_prite_sheet_131
+    21300284: Misc_prite_sheet_132
+    21300286: Misc_prite_sheet_133
+    21300288: Misc_prite_sheet_134
+    21300290: Misc_prite_sheet_135
+    21300292: Misc_prite_sheet_136
+    21300294: Misc_prite_sheet_137
+    21300296: Misc_prite_sheet_138
+    21300298: Misc_prite_sheet_139
+    21300300: Misc_prite_sheet_140
+    21300302: Misc_prite_sheet_141
+    21300304: Misc_prite_sheet_142
+    21300306: Misc_prite_sheet_143
+    21300308: Misc_prite_sheet_144
+    21300310: Misc_prite_sheet_145
+    21300312: Misc_prite_sheet_146
+    21300314: Misc_prite_sheet_147
+    21300316: Misc_prite_sheet_148
+    21300318: Misc_prite_sheet_149
+    21300320: Misc_prite_sheet_150
+    21300322: Misc_prite_sheet_151
+    21300324: Misc_prite_sheet_152
+    21300326: Misc_prite_sheet_153
+    21300328: Misc_prite_sheet_154
+    21300330: Misc_prite_sheet_155
+    21300332: Misc_prite_sheet_156
+    21300334: Misc_prite_sheet_157
+    21300336: Misc_prite_sheet_158
+    21300338: Misc_prite_sheet_159
+    21300340: Misc_prite_sheet_160
+    21300342: Misc_prite_sheet_161
+    21300344: Misc_prite_sheet_162
+    21300346: Misc_prite_sheet_163
+    21300348: Misc_prite_sheet_164
+    21300350: Misc_prite_sheet_165
+    21300352: Misc_prite_sheet_166
+    21300354: Misc_prite_sheet_167
+    21300356: Misc_prite_sheet_168
+    21300358: Misc_sprite_sheet_0
+    21300360: Misc_sprite_sheet_1
+    21300362: Misc_sprite_sheet_2
+    21300364: Misc_sprite_sheet_3
+    21300366: Misc_sprite_sheet_4
+    21300368: Misc_sprite_sheet_5
+    21300370: Misc_sprite_sheet_6
+    21300372: Misc_sprite_sheet_7
+    21300374: Misc_sprite_sheet_8
+    21300376: Misc_sprite_sheet_9
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Misc_sprite_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 464
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92a8ef2d25cc703408109bb5c317854b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Misc_sprite_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 464
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e51537d575d16b24d9a44c40a9a9d019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Misc_sprite_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 464
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cad8dcfd496ccee48ab9c6600c4e062c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Misc_sprite_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 464
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f367ebd764b154746b8c05ae72f1a7ee
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Misc_sprite_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 464
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a99a86514638204b8c62f6352ff80fe
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Misc_sprite_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 464
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f467db6c9ca5cab4687d31bb2e4ebaab
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Misc_sprite_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 428
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80e36e36d15f3af46b4cf51eeb592120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Misc_sprite_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 428
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab738fb3367eb1a4fb9dd05a819d95c0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Misc_sprite_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 428
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b41e3c972322474cbd380796d3b5f64
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Misc_sprite_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 428
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 539c495fe84afca4e940eba9fe9f7663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: e9dd5090a1e55b540a9f76036ed50011
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

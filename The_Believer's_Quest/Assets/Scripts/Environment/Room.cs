@@ -14,7 +14,7 @@ public class Room : MonoBehaviour
     public GameObject[] wallTiles;
     private GameObject[,] roomArray;
     private Transform room;
-    public GameObject player;
+    [SerializeField] protected GameObject player;
 
     public void RoomCreator(Transform parent, int width, int height, float[] anchor, int roomNumber, List<int[]> doorsPosition)
     {

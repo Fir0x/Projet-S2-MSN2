@@ -6,7 +6,7 @@ public class Ennemy : MonoBehaviour
 {
     protected int life = 3;
     protected int effectGauge = 0;
-    private Player player = new Player();
+    private PlayerAsset player;
     private float moveSpeed = 1.5f;
 
     public Vector2 GetPos()
@@ -23,14 +23,14 @@ public class Ennemy : MonoBehaviour
         this.life = life;
     }
 
-    protected void Attack(Player player)
+    protected void Attack()
     {
-        player.SetHP(player.GetHP() - 1);
+        player.Hp -= 2;
     }
 
     protected void Move()
     {
-        Vector2 posPlayer = player.GetPos();
+        Vector2 posPlayer = player.Position;
         float moveX = moveSpeed * Time.deltaTime;
         float moveY = moveSpeed * Time.deltaTime;
 

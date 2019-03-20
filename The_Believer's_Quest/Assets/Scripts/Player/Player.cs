@@ -21,23 +21,17 @@ public class Player : MovingObject
     private bool leftKey;
     private bool rightKey;
 
-    private int floor = 0;
-    private int hp = 3;
-    private int maxHP = 3;
-    private int effectValue = 0;
-    private int maxEffectValue = 10;
+    [SerializeField] private PlayerAsset playerAsset;
+
     public Slider effectGauge;
     public Slider hpGauge;
-
-    private int gold = 0;
-    private int diamond = 0;
-    private Weapons[] weaponsList = new Weapons[2];
-    private Weapons inHand;
 
     public Text nbGold;
     public Text nbDiamond;
     public Text nbAmmo;
     public Image ImgWeapon;
+
+    protected PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
 
     public void GetKeys()
     {
@@ -52,62 +46,15 @@ public class Player : MovingObject
         return this.transform.position;
     }
 
-    public int GetHP()
+    public void SetLife(int value)
     {
-        return hp;
-    }
-
-    public void SetHP(int value)
-    {
-        hp = value;
-        hpGauge.value = value;
-    }
-
-    public void SetMaxHP(int value)
-    {
-        maxHP += value;
-        hpGauge.maxValue = value;
-    }
-
-    public void SetEffectValue(int value)
-    {
-        effectValue = value;
-        effectGauge.value = value;
-    }
-
-    public void SetMaxEffectValue(int value)
-    {
-        maxEffectValue = value;
-        effectGauge.maxValue = value;
-    }
-
-    public int GetGold()
-    {
-        return gold;
-    }
-
-    public void SetGold(int gold)
-    {
-        this.gold = gold;
-    }
-
-    public int GetDiamond()
-    {
-        return diamond;
-    }
-
-    public void SetDiamond(int diamond)
-    {
-        this.diamond = diamond;
-    }
-
-    private void Attack(Ennemy ennemy)
-    {
-        ennemy.SetLife(inHand.GetDamage());
+        playerAsset.Hp = value;
     }
 
     public void Dash()
-    { }
+    {
+        throw new NotImplementedException();
+    }
 
     private void Start()
     {
@@ -151,10 +98,6 @@ public class Player : MovingObject
 
         camera.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, camera.transform.position.z);
 
-        //UI
-        nbGold.text = gold + " Ors";
-        nbDiamond.text = diamond + " Diamants";
-        nbAmmo.text = inHand.GetAmmunitions() + " / " + inHand.GetLoaderAmmo();
         //déplacement honnete pour niveau glace
 
         /*transform.Translate(moveX, moveY, 0f);   
