@@ -11,6 +11,7 @@ public class PlayerAsset : ScriptableObject
     [SerializeField] private int gold;
     [SerializeField] private int diamond;
     [SerializeField] private Weapons[] weaponsList = new Weapons[2];
+    [SerializeField] private int ammo;
     [SerializeField] private Weapons inHand;
     [SerializeField] private Vector2 position;
 
@@ -24,4 +25,5 @@ public class PlayerAsset : ScriptableObject
     public Weapons[] WeaponsList { get => weaponsList; set => weaponsList = value; }
     public Weapons InHand { get => inHand; set => inHand = value; }
     public Vector2 Position { get => position; set => position = value; }
+    public int Ammo { get => ammo; set => ammo = value; }
 }
