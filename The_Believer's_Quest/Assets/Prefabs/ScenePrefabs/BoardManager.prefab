@@ -61,16 +61,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9eb1b3ff1e6e04a86a718ff3375ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorTiles:
-  - {fileID: 7944458347843465591, guid: 6aed4f479dadaaf41bbbc2728f0961b9, type: 3}
-  wallTiles:
-  - {fileID: 7356805019193784528, guid: d2e986b4232877b458a76d879e5e60da, type: 3}
-  - {fileID: 2180425687716303699, guid: c0c067a64a3d0dc42b82ac9ec84b1760, type: 3}
-  - {fileID: 7514521209541588042, guid: b0a8e864d9794d4439b638a9c7e93b98, type: 3}
-  - {fileID: 2588265015290118627, guid: 696a422fd0ada0b49942fe03d0015883, type: 3}
-  - {fileID: 1320750925112048198, guid: 4fa7a22af5e8d22499fbc7eaa79c77e2, type: 3}
-  - {fileID: 7995876637326998153, guid: 5d0a65d21bf2c75438f6c3d2b2053971, type: 3}
-  - {fileID: 306075682403456740, guid: e09cd96443667a2488d625f038e17b29, type: 3}
-  - {fileID: 7269450109776654642, guid: dadb9c667aa23f44ead102ccbb0c3f95, type: 3}
-  - {fileID: 2290008860719186336, guid: ac6162d1d36c6a747ac9aaa19a6835e0, type: 3}
   player: {fileID: 7985191293914268312, guid: 321cef1288d49514fa043b3adc2c08b7, type: 3}
+  spriteAsset: {fileID: 11400000, guid: e3aa9d4c9a496764d8980415607c93ef, type: 2}
+  sprite: {fileID: 1098392154317777563, guid: 10dc6d65a29975a4fa4c7c8361d58062, type: 3}

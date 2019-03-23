@@ -10,11 +10,12 @@ public class Room : MonoBehaviour
     private float[] anchor;
     private int roomNumber;
     private List<int[]> doorsPosition;
-    public GameObject[] floorTiles;
-    public GameObject[] wallTiles;
     private GameObject[,] roomArray;
     private Transform room;
     [SerializeField] protected GameObject player;
+    [SerializeField] protected SpriteAsset spriteAsset;
+    [SerializeField] protected GameObject wall;
+    [SerializeField] protected GameObject floor;
 
     public void RoomCreator(Transform parent, int width, int height, float[] anchor, int roomNumber, List<int[]> doorsPosition)
     {
@@ -27,59 +28,71 @@ public class Room : MonoBehaviour
         roomArray = new GameObject[height, width];
         room = new GameObject("Room " + roomNumber).transform;
         room.SetParent(parent);
-        GameObject tile;
+        Sprite tile;
+        bool is_wall = true;
+        GameObject sprite;
         GameObject instance;
-
+        
         for (int i = 0; i < height; i++)
         {
             for (int j = 0; j < width; j++)
             {
-                if (i == height - 1)
+                if (i == height - 1) //haut
                 {
-                    if (j == 0)
-                        tile = wallTiles[5];
-                    else if (j == width - 1)
-                        tile = wallTiles[6];
-                    else if (!doorsPosition.Exists(pos => pos[0] == j && pos[1] == i))
-                        tile = wallTiles[1];
+                    if (j == 0) //coin gauche
+                        tile = spriteAsset.Wall[8];
+                    else if (j == width - 1) //coin droit
+                        tile = spriteAsset.Wall[2];
+                    else if (!doorsPosition.Exists(pos => pos[0] == j && pos[1] == i)) //mur
+                        tile = spriteAsset.Wall[1];
                     else
-                        tile = floorTiles[0];
+                    {
+                        tile = spriteAsset.Floor[0]; //porte
+                        is_wall = false;
+                    }
                 }
-                else if (i == height - 2 && j > 0 && j < width - 1 && !doorsPosition.Exists(pos => pos[0] == j && pos[1] == i + 1))
-                    tile = wallTiles[0];
-                else if (i == 0)
+                else if (i == height - 2 && j > 0 && j < width - 1 && !doorsPosition.Exists(pos => pos[0] == j && pos[1] == i + 1)) //haut2
+                    tile = spriteAsset.Wall[0];
+                else if (i == 0) //bas
                 {
-                    if (j == 0)
-                        tile = wallTiles[8];
-                    else if (j == width - 1)
-                        tile = wallTiles[7];
-                    else if (!doorsPosition.Exists(pos => pos[0] == j && pos[1] == i))
-                        tile = wallTiles[3];
+                    if (j == 0) //coin gauche
+                        tile = spriteAsset.Wall[6];
+                    else if (j == width - 1) //coin droit
+                        tile = spriteAsset.Wall[4];
+                    else if (!doorsPosition.Exists(pos => pos[0] == j && pos[1] == i)) //mur
+                        tile = spriteAsset.Wall[5];
                     else
-                        tile = floorTiles[0];
+                    {
+                        tile = spriteAsset.Floor[0]; //porte
+                        is_wall = false;
+                    }
                 }
-                else if (j == 0 && !doorsPosition.Exists(pos => pos[0] == j && pos[1] == i))
-                    tile = wallTiles[4];
-                else if (j == width - 1 && !doorsPosition.Exists(pos => pos[0] == j && pos[1] == i))
-                    tile = wallTiles[2];
+                else if (j == 0 && !doorsPosition.Exists(pos => pos[0] == j && pos[1] == i)) //gauche
+                    tile = spriteAsset.Wall[7];
+                else if (j == width - 1 && !doorsPosition.Exists(pos => pos[0] == j && pos[1] == i)) //droite
+                    tile = spriteAsset.Wall[3];
                 else
-                    tile = floorTiles[0];
+                {
+                    tile = spriteAsset.Floor[0]; //sol ou porte
+                    is_wall = false;
+                }
 
-                instance = Instantiate(tile, new Vector2(anchor[0] + (float)j , anchor[1] + (float)i ), 
+                sprite = is_wall ? wall : floor;
+                instance = Instantiate(sprite, new Vector2(anchor[0] + (float)j , anchor[1] + (float)i ), 
                     Quaternion.identity) as GameObject;
+                instance.GetComponent<SpriteRenderer>().sprite = tile;
 
                 instance.transform.SetParent(room);
                 roomArray[i, j] = instance;
+                is_wall = true;
             }
         }
 
         if (roomNumber == 1)
         {
-            print(player.transform.position);
             player.transform.Translate(new Vector3(anchor[0] + width / 2 - player.transform.position.x, 
                                                    anchor[1] + height / 2 - player.transform.position.y,
                                                    player.transform.position.z));
-            print(player.transform.position);
         }
     }
 

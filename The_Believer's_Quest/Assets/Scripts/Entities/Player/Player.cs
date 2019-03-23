@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
-using UnityEngine.UI;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -21,17 +17,8 @@ public class Player : MovingObject
     private bool leftKey;
     private bool rightKey;
 
-    [SerializeField] private PlayerAsset playerAsset;
-
-    public Slider effectGauge;
-    public Slider hpGauge;
-
-    public Text nbGold;
-    public Text nbDiamond;
-    public Text nbAmmo;
-    public Image ImgWeapon;
-
-    protected PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
+    [SerializeField] protected PlayerAsset playerAsset;
+    [SerializeField] protected Animator animator;
 
     public void GetKeys()
     {
@@ -95,8 +82,8 @@ public class Player : MovingObject
                 this.transform.Translate(0, -moveY, 0);
             }
         }
-
-        camera.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, camera.transform.position.z);
+        
+        camera.transform.position = new Vector3(transform.position.x, transform.position.y, camera.transform.position.z);
 
         //déplacement honnete pour niveau glace
 

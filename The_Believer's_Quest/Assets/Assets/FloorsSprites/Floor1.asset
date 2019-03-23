@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Floor1
   m_EditorClassIdentifier: 
   wall:
+  - {fileID: 21300370, guid: 630658238eea98745b5fd0c068d01329, type: 3}
   - {fileID: 21300358, guid: 630658238eea98745b5fd0c068d01329, type: 3}
-  - {fileID: 21300360, guid: 630658238eea98745b5fd0c068d01329, type: 3}
-  - {fileID: 21300362, guid: 630658238eea98745b5fd0c068d01329, type: 3}
   - {fileID: 21300364, guid: 630658238eea98745b5fd0c068d01329, type: 3}
   - {fileID: 21300366, guid: 630658238eea98745b5fd0c068d01329, type: 3}
-  - {fileID: 21300368, guid: 630658238eea98745b5fd0c068d01329, type: 3}
-  - {fileID: 21300370, guid: 630658238eea98745b5fd0c068d01329, type: 3}
-  - {fileID: 21300372, guid: 630658238eea98745b5fd0c068d01329, type: 3}
   - {fileID: 21300374, guid: 630658238eea98745b5fd0c068d01329, type: 3}
+  - {fileID: 21300368, guid: 630658238eea98745b5fd0c068d01329, type: 3}
+  - {fileID: 21300372, guid: 630658238eea98745b5fd0c068d01329, type: 3}
+  - {fileID: 21300360, guid: 630658238eea98745b5fd0c068d01329, type: 3}
+  - {fileID: 21300362, guid: 630658238eea98745b5fd0c068d01329, type: 3}
   floor:
   - {fileID: 21300376, guid: 630658238eea98745b5fd0c068d01329, type: 3}
