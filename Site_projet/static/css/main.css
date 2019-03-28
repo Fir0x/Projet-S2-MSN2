@@ -5,7 +5,6 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
-/*312450*/
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -98,7 +97,7 @@ input, select, textarea {
 	}
 
 	body {
-		background: #990000;
+		background: #4fb595;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -197,10 +196,10 @@ input, select, textarea {
 		}
 
 			h1.major:after {
-				background-image: -moz-linear-gradient(to right, #5e42a6, #b74e91);
-				background-image: -webkit-linear-gradient(to right, #5e42a6, #b74e91);
-				background-image: -ms-linear-gradient(to right, #5e42a6, #b74e91);
-				background-image: linear-gradient(to right, #5e42a6, #b74e91);
+				background-image: -moz-linear-gradient(to right, #69c3b0, #b3ffde);
+				background-image: -webkit-linear-gradient(to right, #69c3b0, #b3ffde);
+				background-image: -ms-linear-gradient(to right, #69c3b0, #b3ffde);
+				background-image: linear-gradient(to right, #69c3b0, #b3ffde);
 				-moz-transition: max-width 0.2s ease;
 				-webkit-transition: max-width 0.2s ease;
 				-ms-transition: max-width 0.2s ease;
@@ -1915,7 +1914,7 @@ input, select, textarea {
 		button.primary,
 		.button.primary {
 			background-color: #ffffff;
-			color: #990000 !important;
+			color: #4fb595 !important;
 		}
 
 			input[type="submit"].primary:after,
@@ -2356,7 +2355,7 @@ input, select, textarea {
 
 		select option {
 			color: #ffffff;
-			background: #990000/*312450*/;
+			background: #14ad4a/*312450*/;
 		}
 
 		select:focus::-ms-value {
@@ -2439,7 +2438,7 @@ input, select, textarea {
 		input[type="radio"]:checked + label:before {
 			background: #ffffff;
 			border-color: #ffffff;
-			color: #b74e91;
+			color: #14ad4a;
 			content: '\f00c';
 		}
 
@@ -2504,7 +2503,7 @@ input, select, textarea {
 			display: block;
 			background: #ffffff;
 			border-radius: 100%;
-			color: #990000/*312450*/;
+			color: #14ad4a	;
 			text-align: center;
 			line-height: 2.5em;
 			margin: 0 0 1.3em 0;
@@ -2515,27 +2514,27 @@ input, select, textarea {
 			}
 
 				.wrapper.style1 .icon.major:before {
-					color: #5e42a6;
+					color: #05bd4b;
 				}
 
 				.wrapper.style1-alt .icon.major:before {
-					color: #493382;
+					color: #32816d;
 				}
 
 				.wrapper.style2 .icon.major:before {
-					color: #5052b5;
+					color: #05c24d;
 				}
 
 				.wrapper.style2-alt .icon.major:before {
-					color: #3e4094;
+					color: #008a35;
 				}
 
 				.wrapper.style3 .icon.major:before {
-					color: #b74e91;
+					color: #4eb79b;
 				}
 
 				.wrapper.style3-alt .icon.major:before {
-					color: #953d75;
+					color: #339e87;
 				}
 
 /* Image */
@@ -3011,7 +3010,7 @@ input, select, textarea {
 				-webkit-transition: opacity 1s ease;
 				-ms-transition: opacity 1s ease;
 				transition: opacity 1s ease;
-				background: rgba(49, 36, 80, 0.9);
+				background: rgba(44, 99, 86, 0.9);
 				content: '';
 				display: block;
 				height: 100%;
@@ -3222,31 +3221,31 @@ input, select, textarea {
 			}
 
 		.wrapper.alt {
-			background-color: #261c3e;
+			background-color: #1c3f3d;
 		}
 
 		.wrapper.style1 {
-			background-color: #5e42a6;
+			background-color: #41a48b;
 		}
 
 		.wrapper.style1-alt {
-			background-color: #493382;
+			background-color: #32815d;
 		}
 
 		.wrapper.style2 {
-			background-color: #5052b5;
+			background-color: #4fb595;
 		}
 
 		.wrapper.style2-alt {
-			background-color: #3e4094;
+			background-color: #3e9388;
 		}
 
 		.wrapper.style3 {
-			background-color: #b74e91;
+			background-color: #3acb59;
 		}
 
 		.wrapper.style3-alt {
-			background-color: #953d75;
+			background-color: #29b347;
 		}
 
 		.wrapper.fullscreen {
@@ -3353,7 +3352,7 @@ input, select, textarea {
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
-		background-color: #5e42a6;
+		background-color: #008066;
 		cursor: default;
 		padding: 1.75em 2em;
 	}
@@ -3507,7 +3506,7 @@ input, select, textarea {
 
 	#sidebar {
 		padding: 2.5em 2.5em 0.5em 2.5em ;
-		background: #312450;
+		background: #008066;
 		cursor: default;
 		height: 100vh;
 		left: 0;
@@ -3744,14 +3743,14 @@ input, select, textarea {
 			}
 
 			#sidebar nav a:before {
-				background: #3c2c62;
+				background: #003829;
 			}
 
 			#sidebar nav a:after {
-				background-image: -moz-linear-gradient(to right, #5e42a6, #b74e91);
-				background-image: -webkit-linear-gradient(to right, #5e42a6, #b74e91);
-				background-image: -ms-linear-gradient(to right, #5e42a6, #b74e91);
-				background-image: linear-gradient(to right, #5e42a6, #b74e91);
+				background-image: -moz-linear-gradient(to right, #69c3b0, #b3ffde);
+				background-image: -webkit-linear-gradient(to right, #69c3b0, #b3ffde);
+				background-image: -ms-linear-gradient(to right,#69c3b0,#b3ffde);
+				background-image: linear-gradient(to right, #69c3b0,#b3ffde);
 				-moz-transition: max-width 0.2s ease;
 				-webkit-transition: max-width 0.2s ease;
 				-ms-transition: max-width 0.2s ease;
@@ -3840,7 +3839,7 @@ input, select, textarea {
 
 						#sidebar nav a:after {
 							background-image: none;
-							background-color: #b74e91;
+							background-color: #b3ffde;
 						}
 
 		}
