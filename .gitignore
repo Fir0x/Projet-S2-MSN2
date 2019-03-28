@@ -54,3 +54,6 @@ crashlytics-build.properties
 # Graphismes
 *autosave.kra
 *.kra~
+
+#Site
+*/__pycache__/
