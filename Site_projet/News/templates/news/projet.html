@@ -1,19 +1,33 @@
 {%extends "../base.html"%}
 {% block content%}
-    <h2>La génèse du jeu</h2>
-   <p1 style="text-indent: 40px">The Believer's Quest est un jeu de type rogue-like hybride 2D crée sous Unity. Le rogue-like est un genre de jeux vidéo
+<header id="header">
+  <a href="/accueil" class="title">The Believer's Quest</a>
+  <nav>
+    <ul>
+      <li><a href="/accueil">Accueil</a></li>
+      <li><a href="/jeu" class="active">Principe du jeu</a></li>
+      <li><a href="/MSN2">Les développeurs</a></li>
+      <li><a href="/dwl">Plus d'informations</a></li>
+    </ul>
+  </nav>
+</header>
+<div id="wrapper">
+  <section id="main" class="wrapper">
+    <div class="inner">
+      <h1 class= "major">La génèse du jeu</h1>
+   <p style="text-indent: 40px">The Believer's Quest est un jeu de type rogue-like hybride 2D crée sous Unity. Le rogue-like est un genre de jeux vidéo
 dont le gameplay est inspiré de Rogue, sorti sur Berkeley Unix en 1980. Le principe est généralement
-d'explorer un donjon dont les salles sont générées de manière algorithmique.Le joueur aura pour but d'arriver au bout du donjon en battant les dierents ennemis et boss qu'il rencontrera pour récupérer une coupe magique.</p1>
- </br>
- <p1 style="text-indent: 40px">Nous nous sommes inspirés de jeux comme The Binding of Isaac, Dead Cells ou encore Enter The
+d'explorer un donjon dont les salles sont générées de manière algorithmique.Le joueur aura pour but d'arriver au bout du donjon en battant les différents ennemis et boss qu'il rencontrera pour récupérer une coupe magique.</p>
+ <br>
+ <p style="text-indent: 40px">Nous nous sommes inspirés de jeux comme The Binding of Isaac, Dead Cells ou encore Enter The
 Gungeon. Certains membres du groupe ayant déjà joué à ce type de jeu, et le concept étant original
 nous avons décidé de nous orienter vers cette idée. L'organisation avec des salles carrées provient
 notamment de Isaac, quant au système d'armes et d'objets il nous est inspiré de jeux comme Enter
-The Gungeon.</p1>
-</br><p1 style="text-indent: 40px">Le joueur évoluera donc dans un donjon composé de 6 étages, chacun composé de plusieurs
+The Gungeon.</p>
+<br><p style="text-indent: 40px">Le joueur évoluera donc dans un donjon composé de 6 étages, chacun composé de plusieurs
 salles générées de maniére aléatoire, sauf le dernier qui ne sera composé que d'une salle de boss. Le
-joueur pourra choisir le nom de son personnage.</p1></br>
-<p1 style="text-indent: 40px">
+joueur pourra choisir le nom de son personnage.</p><br>
+<p style="text-indent: 40px">
 Il y aura 4 types de salles : les salles normales, les salles de coffre, le magasin, la salle du boss
 d'étage. Dans les salles normales, le joueur affrontera des ennemis qui, lorsqu'il les aura battus, lui
 fourniront de l'argent qui lui permettra d'acheter de l'équipement et des objets, et donc d'améliorer ses
@@ -21,15 +35,15 @@ chances de descendre plus bas dans le donjon. Le magasin permettra au joueur d'a
 armes et de nouveaux objets. Les salles de coffre contiendront un coffre nécessitant une clé pour être
 ouvert. A l'intérieur le joueur pourra trouver une arme ou un objet aléatoire. Ce type de salle ne sera
 pas généré aléatoirement. Dans la salle du boss, le joueur affrontera le boss de l'étage. S'il gagne il a
-alors accès à l'étage suivant.</p1>
-</br></br>
-<h2>Un Rogue quoi??</h2>
-<p1 style="text-indent: 40px"> Le rogue-like est un type de jeux vidéo qui s'inspire du jeu Rogue sortie en 1980 sur BSD Unix.
+alors accès à l'étage suivant.</p>
+<br><br>
+<h1 class="major">Un Rogue quoi??</h1>
+<p style="text-indent: 40px"> Le rogue-like est un type de jeux vidéo qui s'inspire du jeu Rogue sortie en 1980 sur BSD Unix.
 Dans ce type de jeu, le joueur explore au tour par tour des souterrains générés aléatoirement. Les
 graphismes sont très simplistes, réalisés à partir des caractères de la table ASCII. Les jeux rogue-like
-classiques sont soumis à des codes définis en 2008 lors de "l'International Roguelike Conference" à
-Berlin.</p1>
-<p1>Voici quelques-uns de ces codes :
+classiques sont soumis à des codes définis en 2008 lors de "l'International Roguelike Conference" à
+Berlin.</p>
+<p>Voici quelques-uns de ces codes :
 <ul>
 <li>Le jeu doit être en solo.
 </li>
@@ -42,16 +56,19 @@ Berlin.</p1>
     <li> Le joueur doit découvrir par lui-même les effets des objets.
       </li>
 </ul>
-</p1>
-<p1 style="text-indent: 40px">Le genre rogue-like hybride (ou rogue-like-like ou encore rogue-lite) auquel appartient notre projet
+</p>
+<p style="text-indent: 40px">Le genre rogue-like hybride (ou rogue-like-like ou encore rogue-lite) auquel appartient notre projet
 est bien plus connu du grand public. Il est bien moins soumis à ces règles. Parmi les rogue-like hybrides
 les plus connus aujourd'hui on trouve The Binding of Isaac (2011), Dead Cells (2017), Enter the
-Gungeon (2016).</p1>
-<p1 style="text-indent:40px">Notre jeu sera un rogue-lite et se rapprochera donc des mécaniques habituelles de ce genre, comme
+Gungeon (2016).</p>
+<p style="text-indent:40px">Notre jeu sera un rogue-lite et se rapprochera donc des mécaniques habituelles de ce genre, comme
 par exemple des actions en temps réel et pas en tour par tour. Nous avons décidé de nous inspirer
 principalement de Binding of Isaac et de Enter The Gungeon. La disposition des salles sera la même
 que celle de Binding of Isaac, tandis que la façon de tirer et surtout le dash qui permettra d'esquiver
 les attaques seront inspirés de Enter The Gungeon. En soit, les mécaniques de notre jeu seront un
 mélange de celles de ces deux jeux. Cependant nous essaieront aussi de nous affranchir d'eux et de
-trouver nos propres mécaniques.</p1>
+trouver nos propres mécaniques.</p>
+</div>
+</section>
+</div>
 {% endblock %}
