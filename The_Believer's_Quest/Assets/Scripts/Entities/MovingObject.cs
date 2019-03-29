@@ -20,7 +20,7 @@ public class MovingObject : MonoBehaviour
         {
             noCollision = false;
         }
-        print(noCollision);
+        //print(noCollision);
         return noCollision;
     }
 }

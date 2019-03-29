@@ -18,7 +18,10 @@ public class Player : MovingObject
     private bool rightKey;
 
     [SerializeField] protected PlayerAsset playerAsset;
-    [SerializeField] protected Animator animator;
+    //[SerializeField] protected Animator animator;
+    private Animator animator;
+    private int animMoveHashID = Animator.StringToHash("Move");
+    private int animDirectionHashID = Animator.StringToHash("Direction");
 
     public void GetKeys()
     {
@@ -46,7 +49,7 @@ public class Player : MovingObject
     private void Start()
     {
         GetKeys();
-        rigid = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -54,34 +57,47 @@ public class Player : MovingObject
         float moveX = moveSpeed * Time.deltaTime;
         float moveY = moveSpeed * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.anyKey)
         {
-            if (this.Collision(transform.position, -1, 0))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
-                this.transform.Translate(-moveX, 0, 0);
+                animator.SetInteger(animDirectionHashID, 3);
+                animator.SetBool(animMoveHashID, true);
+                if (this.Collision(transform.position, -1, 0))
+                {
+                    this.transform.Translate(-moveX, 0, 0);
+                }
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                animator.SetInteger(animDirectionHashID, 1);
+                animator.SetTrigger(animMoveHashID);
+                if (this.Collision(transform.position, 1, 0))
+                {
+                    this.transform.Translate(moveX, 0, 0);
+                }
+            }
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                animator.SetInteger(animDirectionHashID, 0);
+                animator.SetTrigger(animMoveHashID);
+                if (this.Collision(transform.position, 0, 1))
+                {
+                    this.transform.Translate(0, moveY, 0);
+                }
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                animator.SetInteger(animDirectionHashID, 2);
+                animator.SetTrigger(animMoveHashID);
+                if (this.Collision(transform.position, 0, -1))
+                {
+                    this.transform.Translate(0, -moveY, 0);
+                }
             }
         }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            if (this.Collision(transform.position, 1, 0))
-            {
-                this.transform.Translate(moveX, 0, 0);
-            }
-        }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            if (this.Collision(transform.position, 0, 1))
-            {
-                this.transform.Translate(0, moveY, 0);
-            }
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            if (this.Collision(transform.position, 0, -1))
-            {
-                this.transform.Translate(0, -moveY, 0);
-            }
-        }
+        else
+            animator.SetBool(animMoveHashID, false);
         
         camera.transform.position = new Vector3(transform.position.x, transform.position.y, camera.transform.position.z);
 
