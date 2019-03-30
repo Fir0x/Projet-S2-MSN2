@@ -55,7 +55,7 @@ crashlytics-build.properties
 *autosave.kra
 *.kra~
 
-#Site
+# Django
 *.log
 *.pot
 *.pyc
