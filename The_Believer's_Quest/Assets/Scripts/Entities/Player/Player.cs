@@ -22,6 +22,8 @@ public class Player : MovingObject
     private Animator animator;
     private int animMoveHashID = Animator.StringToHash("Move");
     private int animDirectionHashID = Animator.StringToHash("Direction");
+    private int animDashID = Animator.StringToHash("Dash");
+    private int animDeathID = Animator.StringToHash("Death");
 
     public void GetKeys()
     {
@@ -94,6 +96,23 @@ public class Player : MovingObject
                 {
                     this.transform.Translate(0, -moveY, 0);
                 }
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                animator.SetInteger(animDirectionHashID, 2);
+                animator.SetTrigger(animMoveHashID);
+                if (this.Collision(transform.position, 0, -1))
+                {
+                    this.transform.Translate(0, -moveY, 0);
+                }
+            }
+            if (Input.GetKey(KeyCode.Space))
+            {
+                animator.SetTrigger(animDeathID);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                animator.SetTrigger(animDashID);
             }
         }
         else
