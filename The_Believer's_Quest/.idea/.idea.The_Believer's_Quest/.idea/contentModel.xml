@@ -1,21 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\nlorr\.Rider2018.2\config\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\nlorr\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\nlorr\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_The_Believer's_Quest.120383407.00" t="ExcludeRecursive" />
-    <e p="C:\Users\nlorr\Desktop\Projet-S2-MSN2\The_Believer's_Quest" t="IncludeRecursive">
+    <e p="C:\Users\Golguette\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Golguette\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_The_Believer's_Quest.1045905134.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Golguette\Desktop\The Believer's Quest-MSN²\Projet-S2-MSN2\The_Believer's_Quest" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
-          <e p="Board.cs" t="Include" />
-          <e p="Ennemy.cs" t="Include" />
-          <e p="Loader.cs" t="Include" />
-          <e p="MovingObject.cs" t="Include" />
-          <e p="Player.cs" t="Include" />
-          <e p="Room.cs" t="Include" />
-          <e p="Saver.cs" t="Include" />
-          <e p="Weapons.cs" t="Include" />
+          <e p="AssetsCreators" t="Include">
+            <e p="AnimationsAsset.cs" t="Include" />
+            <e p="EnemyAsset.cs" t="Include" />
+            <e p="PlayerAsset.cs" t="Include" />
+            <e p="SpriteAsset.cs" t="Include" />
+          </e>
+          <e p="Entities" t="Include">
+            <e p="Ennemy.cs" t="Include" />
+            <e p="MovingObject.cs" t="Include" />
+            <e p="Player" t="Include">
+              <e p="Player.cs" t="Include" />
+              <e p="Weapons.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Environment" t="Include">
+            <e p="Board.cs" t="Include" />
+            <e p="Room.cs" t="Include" />
+          </e>
+          <e p="Save&amp;Load" t="Include">
+            <e p="Loader.cs" t="Include" />
+            <e p="Saver.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="Development.cs" t="Include" />
+            <e p="DisappearSlider.cs" t="Include" />
+            <e p="MainMenu.cs" t="Include" />
+          </e>
+          <e p="Utilities" t="Include">
+            <e p="Utility.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />
