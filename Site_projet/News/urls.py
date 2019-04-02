@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 from django.views.generic import ListView, DetailView
-from News.models import Article
+from News.models import Article, Snippet
 
 
 urlpatterns = [

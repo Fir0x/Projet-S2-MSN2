@@ -15,31 +15,31 @@
 <div id="wrapper">
   <section id="main" class="wrapper">
     <div class="inner">
-<h1 class="major">Contacte Nous!</h1>
-<form method="post">
-{% csrf_token %}
-<div class="fields">
-  {{ form.non_field_errors }}
-  <div class="field half">
-      {{ form.subject.errors }}
-      <label for="{{ form.name.id_for_label }}">Nom</label>
-      {{ form.name }}
-  </div>
-  <div class="field half">
-      {{ form.email.errors }}
-      <label for="{{ form.email.id_for_label }}">Adresse mail</label>
-      {{ form.email }}
-  </div>
+      <h1 class="major">Contacte Nous!</h1>
+      <form method="post">
+        {% csrf_token %}
+        <div class="fields">
+            {{ form.non_field_errors }}
+              <div class="field half">
+                      {{ form.subject.errors }}
+                      <label for="{{ form.name.id_for_label }}">Nom</label>
+                      {{ form.name }}
+              </div>
+              <div class="field half">
+                      {{ form.email.errors }}
+                      <label for="{{ form.email.id_for_label }}">Adresse mail</label>
+                      {{ form.email }}
+             </div>
   <div class="field">
       {{ form.message.errors }}
       <label for="{{ form.message.id_for_label }}">Ton message</label>
       {{ form.message }}
-      <br>
   </div>
   </div>
   <ul class="actions"><button type= "submit"> Envoyer </button> </ul>
 </form>
 </div>
+</section>
 </div>
 
 
