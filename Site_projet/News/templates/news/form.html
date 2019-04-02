@@ -16,8 +16,7 @@
   <section id="main" class="wrapper">
     <div class="inner">
       <h1 class="major">Contacte Nous!</h1>
-      <form method="post">
-        {% csrf_token %}
+      <form method="post"> {% csrf_token %}
         <div class="fields">
             {{ form.non_field_errors }}
               <div class="field half">
