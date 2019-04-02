@@ -6,7 +6,8 @@ from News.models import Article
 
 urlpatterns = [
     path('jeu', views.propos_projet ),
-    path('accueil',ListView.as_view(queryset=Article.objects.all().order_by("-date"),template_name="news/accueil.html")),
+    path('',ListView.as_view(queryset=Article.objects.all().order_by("-date"),template_name="news/accueil.html")),
     path('MSN2', views.team),
     path('dwl',views.files),
+    path('contact', views.snippet_detail),
              ]
