@@ -6,8 +6,8 @@ public class Board : MonoBehaviour
 {
     public int width = 10;
     public int height = 5;
-    public int roomWidth = 9;
-    public int roomHeight = 6;
+    public int roomWidth = 17;
+    public int roomHeight = 13;
     public int roomNumber = 3;
     private List<Room> roomList;
     private Transform board;
@@ -44,7 +44,7 @@ public class Board : MonoBehaviour
         int[] startPoint = new int[] { Random.Range(0, width - 1), Random.Range(0, height - 1) };
         RoomBase parent = new RoomBase(startPoint, 1, new float[] { startPoint[0] * roomWidth, startPoint[1] * roomHeight });
         roomBaseList.Add(parent);
-
+        print(Utility.VisualArray<int>(startPoint));
         RoomBase actual;
         int lastX;
         int lastY;
@@ -61,16 +61,17 @@ public class Board : MonoBehaviour
             nbFree = 0;
             //print("LastX = " + lastX + "\nLastY = " + lastY); //DEBUG
 
+            //Count how many spaces around the actual room are free
             nbFree += lastX - 1 > 0 && !roomBaseList.Exists(roomBase => roomBase.position[0] == lastX - 1 && roomBase.position[1] == lastY) ? 1 : 0;
             nbFree += lastX + 1 < width && !roomBaseList.Exists(roomBase => 
                                                                 roomBase.position[0] == lastX + 1 && roomBase.position[1] == lastY) ? 1 : 0;
             nbFree += lastY - 1 > 0 && !roomBaseList.Exists(roomBase => roomBase.position[0] == lastX && roomBase.position[1] == lastY - 1) ? 1 : 0;
             nbFree += lastY + 1 < height && !roomBaseList.Exists(roombase => roombase.position[0] == lastX && roombase.position[1] == lastY + 1) ? 1 : 0;
 
-            if (nbFree >= 1)
+            if (nbFree != 0)
             {
 
-                do
+                do //Choose randomly one place in the free
                 {
                     newX = Random.Range(lastX - 1, lastX + 2);
                     newY = lastY;
@@ -84,7 +85,9 @@ public class Board : MonoBehaviour
                 //print("newX = " + newPosition[0] + "\nnewY = " + newPosition[1]); //DEBUG
 
                 actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth, newY * roomHeight });
+                print(newX + ":" + newY);
                 roomBaseList.Add(actual);
+                //Add doors between the parent and his child
                 if (newX > lastX)
                 {
                     parent.AddDoors(new int[] { roomWidth - 1, (roomHeight - 1) / 2 });
@@ -119,7 +122,7 @@ public class Board : MonoBehaviour
         foreach (RoomBase roomBase in roomBaseList)
         {
             room = GetComponent<Room>();
-            room.RoomCreator(board, roomWidth, roomHeight, roomBase.anchor, roomBase.roomNumber, roomBase.doorsPosition);
+            room.RoomCreator(board, roomBase.anchor, roomBase.roomNumber, roomBase.doorsPosition);
         }
 
         //Utility.ExecutionTime.PrintExecutionTime(); //DEBUG
