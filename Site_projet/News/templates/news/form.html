@@ -15,7 +15,7 @@
 <div id="wrapper">
   <section id="main" class="wrapper">
     <div class="inner">
-      <h1 class="major">Contacte Nous!</h1>
+      <h1 class="major">Contactez nous!</h1>
       <form method="post"> {% csrf_token %}
         <div class="fields">
             {{ form.non_field_errors }}
@@ -31,7 +31,7 @@
              </div>
   <div class="field">
       {{ form.message.errors }}
-      <label for="{{ form.message.id_for_label }}">Ton message</label>
+      <label for="{{ form.message.id_for_label }}">Votre message</label>
       {{ form.message }}
   </div>
   </div>
