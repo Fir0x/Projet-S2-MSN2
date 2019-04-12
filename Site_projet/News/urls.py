@@ -10,4 +10,5 @@ urlpatterns = [
     path('MSN2', views.team),
     path('dwl',views.files),
     path('contact', views.snippet_detail),
+	path('conf', views.conf),
              ]

@@ -11,7 +11,9 @@ def team(request):
     return render(request,'news/MSN2.html')
 def files(request):
     return render(request,'news/dwl.html')
-
+def conf(request):
+    return render(request,'news/Confidentialité.html')
+	
 def snippet_detail(request):
         if request.method == 'POST':
             form = SnippetForm(request.POST)
