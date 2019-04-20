@@ -6,9 +6,8 @@ using Vector3 = UnityEngine.Vector3;
 [Serializable]
 public class Player : MovingObject
 {
-    public GameObject camera;
+    [SerializeField] private GameObject camera;
 
-    private int moveSpeed = 2; //pour déplacement
     private Rigidbody2D rigid;  //utile pour déplacement glace
 
 
@@ -18,12 +17,14 @@ public class Player : MovingObject
     private bool rightKey;
 
     [SerializeField] protected PlayerAsset playerAsset;
-    //[SerializeField] protected Animator animator;
+
     private Animator animator;
     private int animMoveHashID = Animator.StringToHash("Move");
     private int animDirectionHashID = Animator.StringToHash("Direction");
     private int animDashID = Animator.StringToHash("Dash");
     private int animDeathID = Animator.StringToHash("Death");
+
+    public GameObject Camera { get => camera; set => camera = value; }
 
     public void GetKeys()
     {
@@ -56,8 +57,8 @@ public class Player : MovingObject
 
     private void FixedUpdate()
     {  //déplacement et collision
-        float moveX = moveSpeed * Time.deltaTime;
-        float moveY = moveSpeed * Time.deltaTime;
+        float moveX = playerAsset.Speed * Time.deltaTime;
+        float moveY = playerAsset.Speed * Time.deltaTime;
 
         if (Input.anyKey)
         {
@@ -118,7 +119,7 @@ public class Player : MovingObject
         else
             animator.SetBool(animMoveHashID, false);
         
-        camera.transform.position = new Vector3(transform.position.x, transform.position.y, camera.transform.position.z);
+        Camera.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.transform.position.z);
 
         //déplacement honnete pour niveau glace
 

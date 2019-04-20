@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a16be206d0f9f0744acf113275a09d1d, type: 3}
-  m_Name: NewPatternAsset
+  m_Name: FistFloor
   m_EditorClassIdentifier: 
   pattern:
   - {fileID: 3352009372005613585, guid: d59e9682d3767cb4791ab1a68f5c4dca, type: 3}
