@@ -10,12 +10,6 @@ public class Player : MovingObject
 
     private Rigidbody2D rigid;  //utile pour déplacement glace
 
-
-    private bool upKey;
-    private bool downKey;
-    private bool leftKey;
-    private bool rightKey;
-
     [SerializeField] protected PlayerAsset playerAsset;
 
     private Animator animator;
@@ -24,15 +18,10 @@ public class Player : MovingObject
     private int animDashID = Animator.StringToHash("Dash");
     private int animDeathID = Animator.StringToHash("Death");
 
-    public GameObject Camera { get => camera; set => camera = value; }
+    private float moveX;
+    private float moveY;
 
-    public void GetKeys()
-    {
-        upKey = Input.GetKey(KeyCode.UpArrow);
-        downKey = Input.GetKey(KeyCode.DownArrow);
-        leftKey = Input.GetKey(KeyCode.LeftArrow);
-        rightKey = Input.GetKey(KeyCode.RightArrow);
-    }
+    public GameObject Camera { get => camera; set => camera = value; }
 
     public Vector2 GetPos()
     {
@@ -51,62 +40,55 @@ public class Player : MovingObject
 
     private void Start()
     {
-        GetKeys();
         animator = GetComponent<Animator>();
+        moveX = playerAsset.Speed * Time.deltaTime;
+        moveY = playerAsset.Speed * Time.deltaTime;
+    }
+
+    public void MoveUp()
+    {
+        animator.SetInteger(animDirectionHashID, 0);
+        animator.SetTrigger(animMoveHashID);
+        if (this.Collision(transform.position, 0, 1))
+        {
+            this.transform.Translate(0, moveY, 0);
+        }
+    }
+
+    public void MoveRight()
+    {
+        animator.SetInteger(animDirectionHashID, 1);
+        animator.SetTrigger(animMoveHashID);
+        if (this.Collision(transform.position, 1, 0))
+        {
+            this.transform.Translate(moveX, 0, 0);
+        }
+    }
+
+    public void MoveDown()
+    {
+        animator.SetInteger(animDirectionHashID, 2);
+        animator.SetTrigger(animMoveHashID);
+        if (this.Collision(transform.position, 0, -1))
+        {
+            this.transform.Translate(0, -moveY, 0);
+        }
+    }
+
+    public void MoveLeft()
+    {
+        animator.SetInteger(animDirectionHashID, 3);
+        animator.SetBool(animMoveHashID, true);
+        if (this.Collision(transform.position, -1, 0))
+        {
+            this.transform.Translate(-moveX, 0, 0);
+        }
     }
 
     private void FixedUpdate()
     {  //déplacement et collision
-        float moveX = playerAsset.Speed * Time.deltaTime;
-        float moveY = playerAsset.Speed * Time.deltaTime;
-
         if (Input.anyKey)
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                animator.SetInteger(animDirectionHashID, 3);
-                animator.SetBool(animMoveHashID, true);
-                if (this.Collision(transform.position, -1, 0))
-                {
-                    this.transform.Translate(-moveX, 0, 0);
-                }
-            }
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                animator.SetInteger(animDirectionHashID, 1);
-                animator.SetTrigger(animMoveHashID);
-                if (this.Collision(transform.position, 1, 0))
-                {
-                    this.transform.Translate(moveX, 0, 0);
-                }
-            }
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                animator.SetInteger(animDirectionHashID, 0);
-                animator.SetTrigger(animMoveHashID);
-                if (this.Collision(transform.position, 0, 1))
-                {
-                    this.transform.Translate(0, moveY, 0);
-                }
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                animator.SetInteger(animDirectionHashID, 2);
-                animator.SetTrigger(animMoveHashID);
-                if (this.Collision(transform.position, 0, -1))
-                {
-                    this.transform.Translate(0, -moveY, 0);
-                }
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                animator.SetInteger(animDirectionHashID, 2);
-                animator.SetTrigger(animMoveHashID);
-                if (this.Collision(transform.position, 0, -1))
-                {
-                    this.transform.Translate(0, -moveY, 0);
-                }
-            }
             if (Input.GetKey(KeyCode.Space))
             {
                 animator.SetTrigger(animDeathID);

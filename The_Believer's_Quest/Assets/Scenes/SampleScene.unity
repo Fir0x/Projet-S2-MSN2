@@ -861,6 +861,11 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 437078746}
+    - target: {fileID: 6295750534380910213, guid: 321cef1288d49514fa043b3adc2c08b7,
+        type: 3}
+      propertyPath: playerAsset
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5710170098172399849, guid: 321cef1288d49514fa043b3adc2c08b7,
         type: 3}
       propertyPath: m_LocalScale.x

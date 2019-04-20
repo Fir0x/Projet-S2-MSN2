@@ -13,6 +13,7 @@ public class WeaponAsset : ScriptableObject
     [SerializeField] private int maxAmmunitions;
     [SerializeField] private int ammunitions;
     [SerializeField] private bool railgun;
+    [SerializeField] private bool cqc;
 
     public string WeaponName { get => weaponName; set => weaponName = value; }
     public int Price { get => price; set => price = value; }
@@ -24,4 +25,5 @@ public class WeaponAsset : ScriptableObject
     public int MaxAmmunitions { get => maxAmmunitions; set => maxAmmunitions = value; }
     public int Ammunitions { get => ammunitions; set => ammunitions = value; }
     public bool Railgun { get => railgun; set => railgun = value; }
+    public bool Cqc { get => cqc; set => cqc = value; }
 }

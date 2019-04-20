@@ -13,7 +13,6 @@ public class PlayerAsset : ScriptableObject
     [SerializeField] private int gold;
     [SerializeField] private int diamond;
     [SerializeField] private WeaponAsset[] weaponsList = new WeaponAsset[2];
-    [SerializeField] private WeaponAsset inHand;
     [SerializeField] private Vector2 position;
 
     public int Floor { get => floor; set => floor = value; }
@@ -26,6 +25,5 @@ public class PlayerAsset : ScriptableObject
     public int Gold { get => gold; set => gold = value; }
     public int Diamond { get => diamond; set => diamond = value; }
     public WeaponAsset[] WeaponsList { get => weaponsList; set => weaponsList = value; }
-    public WeaponAsset InHand { get => inHand; set => inHand = value; }
     public Vector2 Position { get => position; set => position = value; }
 }

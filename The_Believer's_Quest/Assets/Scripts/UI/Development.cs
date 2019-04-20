@@ -47,6 +47,6 @@ public class Development : MonoBehaviour
 
     public void ChangeAmmo(Slider slider)
     {
-        player.InHand.Ammunitions = (int)slider.value;
+        player.WeaponsList[0].Ammunitions = (int)slider.value;
     }
 }
