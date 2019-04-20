@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8557945033747606932}
   - component: {fileID: 8557945033747606935}
   - component: {fileID: 8557945033747606934}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBehind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,7 +749,7 @@ GameObject:
   - component: {fileID: 8557945033964496738}
   - component: {fileID: 8557945033964496733}
   - component: {fileID: 8557945033964496732}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}

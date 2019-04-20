@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3688633446872613183}
   - component: {fileID: 8981345498103605062}
   - component: {fileID: 416202075394253419}
+  - component: {fileID: 6054801525269501119}
   m_Layer: 0
   m_Name: BoardManager
   m_TagString: Untagged
@@ -61,6 +62,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9eb1b3ff1e6e04a86a718ff3375ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patterns: {fileID: 0}
   player: {fileID: 7985191293914268312, guid: 321cef1288d49514fa043b3adc2c08b7, type: 3}
-  spriteAsset: {fileID: 11400000, guid: e3aa9d4c9a496764d8980415607c93ef, type: 2}
-  sprite: {fileID: 1098392154317777563, guid: 10dc6d65a29975a4fa4c7c8361d58062, type: 3}
+  spriteAsset: {fileID: 0}
+  wall: {fileID: 0}
+  floor: {fileID: 0}
+--- !u!114 &6054801525269501119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5202475380373786966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074d16909fd879a4bb5ac6dca691ec35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: {fileID: 0}
+  notObstacle: {fileID: 11400000, guid: fe0f2e553beb73e4ea299ae6f48499b6, type: 2}
+  nodePrefab: {fileID: 5631079942676170018, guid: 3b47272225af73e4d957166d3741f750,
+    type: 3}
+  scanStartX: -7
+  scanStartY: 7
+  scanFinishX: -5
+  scanFinishY: 5
+  gridBoundX: 15
+  gridBoundY: 11
+  unsortedNodes: []
