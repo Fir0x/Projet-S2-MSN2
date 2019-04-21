@@ -53,6 +53,10 @@ public class Weapon : MonoBehaviour
     public void Shot ()
     {
         weapon.Ammunitions--;
-        //FIX ME
+        //attaque de base pour l'instant, en ligne
+        if (weapon.Cqc)
+            Attack.Cqc();
+        //if (weapon.Railgun) Attack.Launcher(Attack.Trajectory.Line, GameObject.FindGameObjectWithTag("Player").transform.position,  ,1.0,weapon.Damage); 
+            
     }
 }
