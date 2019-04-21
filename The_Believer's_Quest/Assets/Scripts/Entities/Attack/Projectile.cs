@@ -22,5 +22,9 @@ public class Projectile : MovingObject
         {
             Destroy(gameObject);
         }
+
+        gameObject.transform.position = new Vector3(position.x + direction.x * speed * Time.deltaTime,
+                                                    position.y + direction.y * speed * Time.deltaTime,
+                                                    position.y);
     }
 }
