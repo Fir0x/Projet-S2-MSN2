@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1024341247632904857}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 8643787426481538859, guid: fddef213d0325fa4b9ebd046b3e9ea98, type: 3}
-  playerAsset: {fileID: 11400000, guid: 9873f59dc5d14424eb7a4defdb5b679d, type: 2}
+  playerAsset: {fileID: 0}
 --- !u!212 &4659674338766441832
 SpriteRenderer:
   m_ObjectHideFlags: 0

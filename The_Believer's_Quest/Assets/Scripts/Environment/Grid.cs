@@ -24,10 +24,10 @@ public class Grid : MonoBehaviour
     {
         unsortedNodes = new List<GameObject>();
         Tilemap tilemap = floor.GetComponentInChildren<Tilemap>();
-        createNodes();
+        CreateNodes();
     }
      
-    public void createNodes()
+    public void CreateNodes()
     {
         TileBase tile;
         bool isObstacle;;
@@ -162,5 +162,10 @@ public class Grid : MonoBehaviour
         }
 
         return neighbors;
+    }
+
+    public Node GetPos()
+    {
+        throw new System.NotImplementedException();
     }
 }
