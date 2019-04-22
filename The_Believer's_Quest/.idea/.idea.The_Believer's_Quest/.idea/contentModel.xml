@@ -4,6 +4,7 @@
     <e p="C:\Users\nlorr\.Rider2018.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\nlorr\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_The_Believer's_Quest.120383407.00" t="ExcludeRecursive" />
     <e p="C:\Users\nlorr\Desktop\Projet-S2-MSN2\The_Believer's_Quest" t="IncludeRecursive">
+	
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
@@ -16,18 +17,20 @@
             <e p="WeaponAsset.cs" t="Include" />
           </e>
           <e p="Entities" t="Include">
-            <e p="AerialPathfinding.cs" t="Include" />
             <e p="Attack" t="Include">
               <e p="Attack.cs" t="Include" />
               <e p="Projectile.cs" t="Include" />
             </e>
             <e p="Enemies" t="Include">
+              <e p="AerialPathfinding.cs" t="Include" />
               <e p="Enemies.cs" t="Include" />
               <e p="EnnemiesAnimations.cs" t="Include" />
+              <e p="RealPathfinding.cs" t="Include" />
             </e>
             <e p="MovingObject.cs" t="Include" />
-            <e p="Pathfinding.cs" t="Include" />
             <e p="Player" t="Include">
+              <e p="KeyBoardManager.cs" t="Include" />
+              <e p="Object.cs" t="Include" />
               <e p="ObjectEffects.cs" t="Include" />
               <e p="Player.cs" t="Include" />
               <e p="Weapon.cs" t="Include" />
@@ -35,6 +38,7 @@
           </e>
           <e p="Environment" t="Include">
             <e p="Board.cs" t="Include" />
+            <e p="Chest.cs" t="Include" />
             <e p="Grid.cs" t="Include" />
             <e p="Node.cs" t="Include" />
             <e p="Room.cs" t="Include" />
@@ -43,11 +47,15 @@
             <e p="Loader.cs" t="Include" />
             <e p="Saver.cs" t="Include" />
           </e>
+          <e p="SoundManager" t="Include">
+            <e p="SoundManager.cs" t="Include" />
+          </e>
           <e p="UI" t="Include">
             <e p="Development.cs" t="Include" />
             <e p="DisappearSlider.cs" t="Include" />
             <e p="MainMenu.cs" t="Include" />
             <e p="Menupause.cs" t="Include" />
+            <e p="UIController.cs" t="Include" />
           </e>
           <e p="Utilities" t="Include">
             <e p="Utility.cs" t="Include" />

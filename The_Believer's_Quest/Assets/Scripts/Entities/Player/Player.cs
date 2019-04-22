@@ -20,12 +20,18 @@ public class Player : MovingObject
 
     private float moveX;
     private float moveY;
+    private Vector2 firstPos;
 
     public GameObject Camera { get => camera; set => camera = value; }
 
     public Vector2 GetPos()
     {
         return this.transform.position;
+    }
+
+    public Vector2 GetFirstPos()
+    {
+        return firstPos;
     }
 
     public void SetLife(int value)
@@ -40,6 +46,8 @@ public class Player : MovingObject
 
     private void Start()
     {
+        firstPos = this.transform.position;
+        
         animator = GetComponent<Animator>();
         moveX = playerAsset.Speed * Time.deltaTime;
         moveY = playerAsset.Speed * Time.deltaTime;
