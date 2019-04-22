@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\maxwk\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\maxwk\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_The_Believer's_Quest.-711902904.00" t="ExcludeRecursive" />
-    <e p="C:\Users\maxwk\Desktop\Projet-S2-MSN2\The_Believer's_Quest" t="IncludeRecursive">
+    <e p="C:\Users\nlorr\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\nlorr\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_The_Believer's_Quest.120383407.00" t="ExcludeRecursive" />
+    <e p="C:\Users\nlorr\Desktop\Projet-S2-MSN2\The_Believer's_Quest" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
@@ -28,6 +28,7 @@
             </e>
             <e p="MovingObject.cs" t="Include" />
             <e p="Player" t="Include">
+              <e p="Object.cs" t="Include" />
               <e p="ObjectEffects.cs" t="Include" />
               <e p="Player.cs" t="Include" />
               <e p="Weapon.cs" t="Include" />
@@ -35,6 +36,7 @@
           </e>
           <e p="Environment" t="Include">
             <e p="Board.cs" t="Include" />
+            <e p="Chest.cs" t="Include" />
             <e p="Grid.cs" t="Include" />
             <e p="Node.cs" t="Include" />
             <e p="Room.cs" t="Include" />
@@ -44,9 +46,7 @@
             <e p="Saver.cs" t="Include" />
           </e>
           <e p="SoundManager" t="Include">
-            <e p="AudioManager.cs" t="Include" />
             <e p="SoundManager.cs" t="Include" />
-            <e p="SwitchMusic.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
             <e p="Development.cs" t="Include" />
