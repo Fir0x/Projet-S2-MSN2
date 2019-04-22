@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   floor: 0
-  hp: 50
-  maxHP: 50
-  effectValue: 0
+  hp: 0
+  maxHP: 5
+  effectValue: 1
   maxEffectValue: 30
   speed: 0.2
   invicibility: 0
   gold: 0
   diamond: 0
   weaponsList:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: a36dd98b1df1aae4fbd8b8ca5c1517e2, type: 2}
   - {fileID: 0}
   position: {x: 0, y: 0}
