@@ -1,23 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 
-public class Pathfinding : MonoBehaviour
+public class RealPathfinding : MonoBehaviour
 {
+    
     private List<Node> finalPath;
     Grid grid;
-    public Transform startPosition;
-    public Transform finishPosition;
+
+    private Player player;
+    private Vector2 startPosition;
+    private Vector2 finishPosition;
+
+    private float posSalleX;
+    private float posSalleY;
 
     private void Start()
     {
-        grid = GetComponent<Grid>();
+        posSalleX = ( /*posX du centre de la salle*/ - player.GetFirstPos().x) / 16f;
+        posSalleY = ( /*posY du centre de la salle*/ - player.GetFirstPos().y) / 13f;
+        
+        //if(/*posX centre salle*/ < player.GetFirstPos().x)
+            posSalleX = -posSalleX;
+                                                                                                                                            //il faut la position de l'ennemi !!!
+       // if(/*posY centre salle*/ < player.GetFirstPos().y)
+            posSalleY = -posSalleY;
+           
+        // grid = ;
     }
 
-    private void FindPath(Vector3 startpos, Vector3 finishpos) //pos par rapport à la salle
+    private void FixedUpdate()
+    {
+        finishPosition = new Vector2(player.GetPos().x - posSalleX * 15, player.GetPos().y - posSalleY * 15);
+    }
+
+    private void FindPath(Vector3 startpos) //pos par rapport à la salle
     {
         Node startNode = grid.GetPos(startpos);
-        Node finishNode = grid.GetPos(finishpos);
+        Node finishNode = grid.GetPos(finishPosition);
 
         List<Node> possibleNodes = new List<Node>();
         HashSet<Node> doneNodes = new HashSet<Node>();

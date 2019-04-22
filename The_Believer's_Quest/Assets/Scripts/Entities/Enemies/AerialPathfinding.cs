@@ -6,8 +6,8 @@ namespace Entities
 {
     public class AerialPathfinding : MonoBehaviour
     {
-        public float speedE;
-        public float stoppingDistance;
+        private float speedE = 0.1f;
+        private float stoppingDistance = 2f;
         private Transform target;
 
         private void Start()

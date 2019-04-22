@@ -5,6 +5,8 @@ using UnityEngine;
 [Serializable]
 public class Room : MonoBehaviour
 {
+    private Grid grid;
+    
     private float[] anchor;
     private int roomNumber;
     private List<int[]> doorsPosition;
@@ -30,9 +32,12 @@ public class Room : MonoBehaviour
                                                    anchor[1] + 6 - player.transform.position.y,
                                                    player.transform.position.z));
         }
+
+        
     }
 
     public void RoomSetup()
     {
+        
     }
 }

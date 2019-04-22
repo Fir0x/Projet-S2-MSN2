@@ -4,10 +4,8 @@ using UnityEngine.Tilemaps;
 
 public class Grid : MonoBehaviour
 {
-    public GameObject floor;
-    public TileBase notObstacle;
+    public Tilemap notObstacle;
     public GameObject nodePrefab;
-    private Tilemap tilemap;
 
     public int scanStartX = -7;
     public int scanStartY = 7;
@@ -23,13 +21,12 @@ public class Grid : MonoBehaviour
     private void Awake()
     {
         unsortedNodes = new List<GameObject>();
-        Tilemap tilemap = floor.GetComponentInChildren<Tilemap>();
         CreateNodes();
     }
      
     public void CreateNodes()
     {
-        TileBase tile;
+        TileBase tile;             //dans les patterns, un tilemap ou tile null si mur 
         bool isObstacle;;
 
         for (int x = scanStartX; x <= scanFinishX; x++)
@@ -37,8 +34,8 @@ public class Grid : MonoBehaviour
             isObstacle = false;
             for (int y = scanStartY; y <= scanFinishY; y++)
             {
-                tile = tilemap.GetTile(new Vector3Int((int)x, (int)y, 0));
-                if (tile != notObstacle || tile == null)
+                tile = notObstacle.GetTile(new Vector3Int((int)x, (int)y, 0));
+                if (tile == null)
                     isObstacle = true;
 
                 if (!isObstacle)

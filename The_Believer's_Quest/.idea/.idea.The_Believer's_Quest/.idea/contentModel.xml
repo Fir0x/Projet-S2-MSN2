@@ -16,17 +16,17 @@
             <e p="WeaponAsset.cs" t="Include" />
           </e>
           <e p="Entities" t="Include">
-            <e p="AerialPathfinding.cs" t="Include" />
             <e p="Attack" t="Include">
               <e p="Attack.cs" t="Include" />
               <e p="Projectile.cs" t="Include" />
             </e>
             <e p="Enemies" t="Include">
+              <e p="AerialPathfinding.cs" t="Include" />
               <e p="Enemies.cs" t="Include" />
               <e p="EnnemiesAnimations.cs" t="Include" />
+              <e p="RealPathfinding.cs" t="Include" />
             </e>
             <e p="MovingObject.cs" t="Include" />
-            <e p="Pathfinding.cs" t="Include" />
             <e p="Player" t="Include">
               <e p="ObjectEffects.cs" t="Include" />
               <e p="Player.cs" t="Include" />
