@@ -6,15 +6,7 @@ using UnityEngine.Events;
 public class KeyboardManager : MonoBehaviour
 {
     private Player player;
-    private Weapon Weapon;
-
-    private bool upKey;
-    private bool downKey;
-    private bool leftKey;
-    private bool rightKey;
-    private bool interactKey;
-    private bool useKey;
-    private bool shotKey;
+    private Weapon weapon;
 
     UnityEvent moveUp;
     UnityEvent moveRight;
@@ -28,14 +20,7 @@ public class KeyboardManager : MonoBehaviour
     void Start()
     {
         player = gameObject.GetComponent<Player>();
-
-        upKey = Input.GetKey(KeyCode.UpArrow);
-        downKey = Input.GetKey(KeyCode.DownArrow);
-        leftKey = Input.GetKey(KeyCode.LeftArrow);
-        rightKey = Input.GetKey(KeyCode.RightArrow);
-        interactKey = Input.GetKey(KeyCode.E);
-        useKey = Input.GetKey(KeyCode.Space);
-        shotKey = Input.GetKey(KeyCode.Mouse0);
+        weapon = gameObject.GetComponent<Weapon>();
 
         if (moveUp == null)
         {
@@ -53,7 +38,7 @@ public class KeyboardManager : MonoBehaviour
         {
             moveDown = new UnityEvent();
         }
-        moveDown.AddListener(player.MoveRight);
+        moveDown.AddListener(player.MoveDown);
 
         if (moveLeft == null)
         {
@@ -64,8 +49,25 @@ public class KeyboardManager : MonoBehaviour
         {
             shot = new UnityEvent();
         }
-        shot.AddListener(Weapon.Shot);
+        shot.AddListener(weapon.Shot);
         
+    }
+
+    private void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            moveUp.Invoke();
+        }
+        
+        if (Input.GetKey(KeyCode.LeftArrow))
+            moveLeft.Invoke();
+        
+        if (Input.GetKey(KeyCode.DownArrow))
+            moveDown.Invoke();
+        
+        if (Input.GetKey(KeyCode.RightArrow))
+            moveRight.Invoke();
     }
 }
 

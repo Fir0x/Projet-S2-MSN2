@@ -61,19 +61,22 @@ public class Grid : MonoBehaviour
             }
         }
 
-        nodes = new GameObject[gridBoundX, gridBoundY];
+        nodes = new GameObject[gridBoundX + 1, gridBoundY + 1];
         foreach (GameObject go in unsortedNodes)
         {
             Node node = go.GetComponent<Node>();
             nodes[node.gridX, node.gridY] = go;
         }
 
-        for (int x = 0; x < gridBoundX; x++)
+        for (int x = 0; x < gridBoundX - 1; x++)
         {
-            for(int y = 0; y < gridBoundY; y++)
+            for (int y = 0; y < gridBoundY - 1; y++)
             {
-                Node node = nodes[x, y].GetComponent<Node>();
-                node.neighbors = getNeighbors(x, y, gridBoundX, gridBoundY);
+                if (nodes[x, y] != null)
+                {
+                    Node node = nodes[x, y].GetComponent<Node>();
+                    node.neighbors = getNeighbors(x, y, gridBoundX, gridBoundY);
+                }
             }
         }
     }

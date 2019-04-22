@@ -48,7 +48,7 @@ public class Board : MonoBehaviour
         int[] startPoint = new int[] { Random.Range(0, Width - 1), Random.Range(0, Height - 1) };
         RoomBase parent = new RoomBase(startPoint, 1, new float[] { startPoint[0] * roomWidth, startPoint[1] * roomHeight });
         roomBaseList.Add(parent);
-        print(Utility.VisualArray<int>(startPoint));
+        //print(Utility.VisualArray<int>(startPoint));
         RoomBase actual;
         int lastX;
         int lastY;

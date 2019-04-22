@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using System.Threading;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -18,7 +16,7 @@ public class SoundManager : MonoBehaviour
         
         void Awake ()
         {
-            musics = new[] {musicmenu, fstlvl};
+            musics = new[] {musicmenu, fstlvl, fstlvlBoss};
             
             if (instance == null)
                 instance = this;
@@ -44,6 +42,7 @@ public class SoundManager : MonoBehaviour
         public void ChangeBO(int x)
         {
             musicmenu.Stop();
+            Thread.Sleep(300);
             musicmenu.clip = musics[x].clip;
             musicmenu.Play();
         }
