@@ -13,35 +13,29 @@ public class Attack : MonoBehaviour
     }
 
 
-    public void Launcher(Trajectory trajectory, Sprite sprite, Vector3 origin, Vector2 direction, float speed,
+    public static void Launcher(Trajectory trajectory, Sprite sprite, Vector3 origin, Vector3 direction, float speed,
         int damage)
     {
         if (trajectory == Trajectory.Line)
             LineShot(sprite, origin, direction, speed, damage);
         if (trajectory == Trajectory.Arc)
-            ArcShot(sprite, origin, direction, speed, damage);
+            ArcShot(/*default*/ 6,sprite, origin, direction, speed, damage);
         if (trajectory == Trajectory.Circle)
-            LineShot(sprite, origin, direction, speed, damage);
+            CircleShot(/*default*/ 10,sprite, origin, direction, speed, damage);
     }
 
     public static void Cqc()
     {   
     }
 
-    private void LineShot(Sprite sprite, Vector3 origin, Vector2 direction, float speed, int damage)
+    private static void LineShot(Sprite sprite, Vector3 origin, Vector3 direction, float speed, int damage)
     {
         GameObject projectile = Instantiate(Resources.Load("Projectile") as GameObject, origin, new Quaternion());
         projectile.GetComponent<Projectile>().Init(sprite, speed, damage, direction);
     }
+   
     
-    private void ArcShot(Sprite sprite, Vector3 origin, Vector2 direction, float speed, int damage)
-    {
-        GameObject projectile = Instantiate(Resources.Load("Projectile") as GameObject, origin, new Quaternion());
-        
-        projectile.GetComponent<Projectile>().Init(sprite, speed, damage, direction);
-    }
-    
-    private void CircleShot(int nbprojectile, Sprite sprite, Vector3 origin, Vector2 direction, float speed, int damage)
+    private static void CircleShot(int nbprojectile, Sprite sprite, Vector3 origin, Vector3 direction, float speed, int damage)
     {
         GameObject projectile = Instantiate(Resources.Load("Projectile") as GameObject, origin, new Quaternion());
         double angle = 360 / nbprojectile;
@@ -49,11 +43,11 @@ public class Attack : MonoBehaviour
         for (int i = 0; i < nbprojectile; i++)
         {
             projectile.GetComponent<Projectile>().Init(sprite, speed, damage, direction);
-            direction = new Vector2(direction.x, (int) (direction.y * Math.Sin(angle)));
+            direction = new Vector3(direction.x, (int) (direction.y * Math.Sin(angle)), direction.z);
         } 
     }
     
-    private void ArcShot(int nbprojectile, Sprite sprite, Vector3 origin, Vector2 direction, float speed, int damage)
+    private static void ArcShot(int nbprojectile, Sprite sprite, Vector3 origin, Vector3 direction, float speed, int damage)
     {
         GameObject projectile = Instantiate(Resources.Load("Projectile") as GameObject, origin, new Quaternion());
         double angle = 120 / nbprojectile;
@@ -61,14 +55,14 @@ public class Attack : MonoBehaviour
         
         for (int i = 1; i < nbprojectile/2; i++)
         {
-            direction = new Vector2(direction.x, (int) (direction.y * Math.Sin(angle)));
+            direction = new Vector3(direction.x, (int) (direction.y * Math.Sin(angle)), direction.z);
             projectile.GetComponent<Projectile>().Init(sprite, speed, damage, direction);
         } 
         
         for (int i = 1; i < nbprojectile/2; i++)
         {
             
-            direction = new Vector2(direction.x, (int) (direction.y * Math.Sin(-angle)));
+            direction = new Vector3(direction.x, (int) (direction.y * Math.Sin(-angle)), direction.z);
             projectile.GetComponent<Projectile>().Init(sprite, speed, damage, direction);
         } 
     }

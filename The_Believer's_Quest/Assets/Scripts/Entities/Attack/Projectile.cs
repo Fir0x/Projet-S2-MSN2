@@ -4,10 +4,10 @@ public class Projectile : MovingObject
 {
     private float speed;
     private int damage;
-    private Vector2 direction;
+    private Vector3 direction;
     private Vector3 position;
 
-    public void Init(Sprite sprite, float speed, int damage, Vector2 direction)
+    public void Init(Sprite sprite, float speed, int damage, Vector3 direction)
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         this.speed = speed;
