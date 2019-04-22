@@ -85,7 +85,7 @@ public class Board : MonoBehaviour
                 //print("newX = " + newPosition[0] + "\nnewY = " + newPosition[1]); //DEBUG
 
                 actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth, newY * roomHeight });
-                print(newX + ":" + newY);
+                //print(newX + ":" + newY); //DEBUG
                 roomBaseList.Add(actual);
                 //Add doors between the parent and his child
                 if (newX > lastX)
