@@ -52,6 +52,7 @@
             <e p="SwitchMusic.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
+            <e p="DataManager.cs" t="Include" />
             <e p="Development.cs" t="Include" />
             <e p="DisappearSlider.cs" t="Include" />
             <e p="MainMenu.cs" t="Include" />
