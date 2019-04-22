@@ -41,10 +41,8 @@ public class Player : MovingObject
     private void Start()
     {
         animator = GetComponent<Animator>();
-        //moveX = playerAsset.Speed * Time.deltaTime;
-        //moveY = playerAsset.Speed * Time.deltaTime;
-        moveX = 2 * Time.deltaTime;
-        moveY = 2 * Time.deltaTime;
+        moveX = playerAsset.Speed * Time.deltaTime;
+        moveY = playerAsset.Speed * Time.deltaTime;
     }
 
     public void MoveUp()

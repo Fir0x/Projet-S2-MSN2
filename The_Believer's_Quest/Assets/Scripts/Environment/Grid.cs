@@ -163,4 +163,18 @@ public class Grid : MonoBehaviour
 
         return neighbors;
     }
+
+    public Node GetPos(Vector3 pos)
+    {
+        int x = (int) pos.x;
+        int y = (int) pos.y;
+
+        return nodes[x, y].GetComponent<Node>();
+    }
+
+    public List<Node> GetNeighboringNodes(Node node)
+    {
+        List<Node> neighboringNodes = new List<Node>();
+        return neighboringNodes;
+    }
 }

@@ -7,7 +7,7 @@ public class Board : MonoBehaviour
     public int width = 10;
     public int height = 5;
     public int roomWidth = 17;
-    public int roomHeight = 13;
+    public int roomHeight = 16;
     public int roomNumber = 3;
     private List<Room> roomList;
     private Transform board;
