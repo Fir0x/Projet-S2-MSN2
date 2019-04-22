@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    public int width = 10;
-    public int height = 5;
-    public int roomWidth = 17;
-    public int roomHeight = 16;
-    public int roomNumber = 3;
+    [SerializeField] private int width = 10;
+    [SerializeField] private int height = 5;
+    private int roomWidth = 16;
+    private int roomHeight = 13;
+    [SerializeField] private int roomNumber = 3;
     private List<Room> roomList;
     private Transform board;
+
+    public int Width { get => width; set => width = value; }
+    public int Height { get => height; set => height = value; }
+    public int RoomNumber { get => roomNumber; set => roomNumber = value; }
 
     private class RoomBase
     {
@@ -36,12 +40,12 @@ public class Board : MonoBehaviour
     public void BoardCreation()
     {
         //Utility.ExecutionTime.Set(); //DEBUG
-        if (roomNumber > width * height)
+        if (RoomNumber > Width * Height)
             throw new System.Exception("Too much rooms.");
 
         board = new GameObject("Board").transform;
         List<RoomBase> roomBaseList = new List<RoomBase>();
-        int[] startPoint = new int[] { Random.Range(0, width - 1), Random.Range(0, height - 1) };
+        int[] startPoint = new int[] { Random.Range(0, Width - 1), Random.Range(0, Height - 1) };
         RoomBase parent = new RoomBase(startPoint, 1, new float[] { startPoint[0] * roomWidth, startPoint[1] * roomHeight });
         roomBaseList.Add(parent);
         print(Utility.VisualArray<int>(startPoint));
@@ -53,7 +57,7 @@ public class Board : MonoBehaviour
         int nbFree;
         int k = 1;
 
-        while (k < roomNumber)
+        while (k < RoomNumber)
         {
             k++;
             lastX = parent.position[0];
@@ -63,10 +67,10 @@ public class Board : MonoBehaviour
 
             //Count how many spaces around the actual room are free
             nbFree += lastX - 1 > 0 && !roomBaseList.Exists(roomBase => roomBase.position[0] == lastX - 1 && roomBase.position[1] == lastY) ? 1 : 0;
-            nbFree += lastX + 1 < width && !roomBaseList.Exists(roomBase => 
+            nbFree += lastX + 1 < Width && !roomBaseList.Exists(roomBase => 
                                                                 roomBase.position[0] == lastX + 1 && roomBase.position[1] == lastY) ? 1 : 0;
             nbFree += lastY - 1 > 0 && !roomBaseList.Exists(roomBase => roomBase.position[0] == lastX && roomBase.position[1] == lastY - 1) ? 1 : 0;
-            nbFree += lastY + 1 < height && !roomBaseList.Exists(roombase => roombase.position[0] == lastX && roombase.position[1] == lastY + 1) ? 1 : 0;
+            nbFree += lastY + 1 < Height && !roomBaseList.Exists(roombase => roombase.position[0] == lastX && roombase.position[1] == lastY + 1) ? 1 : 0;
 
             if (nbFree != 0)
             {
@@ -78,8 +82,8 @@ public class Board : MonoBehaviour
                     if (newX == lastX)
                         newY = Random.Range(lastY - 1, lastY + 2);
 
-                } while (newX < 0 || newX >= width ||
-                        newY < 0 || newY >= height ||
+                } while (newX < 0 || newX >= Width ||
+                        newY < 0 || newY >= Height ||
                         roomBaseList.Exists(roomBase => roomBase.position[0] == newX && roomBase.position[1] == newY));
 
                 //print("newX = " + newPosition[0] + "\nnewY = " + newPosition[1]); //DEBUG

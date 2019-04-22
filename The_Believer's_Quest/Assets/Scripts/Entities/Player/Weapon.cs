@@ -7,6 +7,11 @@ public class Weapon : MonoBehaviour
 {
     private WeaponAsset weapon;
 
+    public WeaponAsset GetAsset()
+    {
+        return weapon;
+    }
+
     public void SetWeapon(WeaponAsset weapon)
     {
         this.weapon = weapon;
