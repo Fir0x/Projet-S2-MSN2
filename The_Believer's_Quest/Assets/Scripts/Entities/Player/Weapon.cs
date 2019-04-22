@@ -6,7 +6,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     private WeaponAsset weapon;
-
+    [SerializeField] protected PlayerAsset playerAsset;
     public WeaponAsset GetAsset()
     {
         return weapon;
@@ -55,13 +55,16 @@ public class Weapon : MonoBehaviour
         print("Reload ends"); //DEBUG
     }
 
-    public void Shot ()
+    public void Shot () //réalisé par Sarah
     {
         weapon.Ammunitions--;
-        //attaque de base pour l'instant, en ligne
         if (weapon.Cqc)
             Attack.Cqc();
-        //if (weapon.Railgun) Attack.Launcher(Attack.Trajectory.Line, GameObject.FindGameObjectWithTag("Player").transform.position,  ,1.0,weapon.Damage); 
-            
+        if (weapon.Railgun) //attaque en ligne avec RailGun
+            Attack.Launcher(Attack.Trajectory.Line, gameObject.GetComponent<SpriteRenderer>().sprite, playerAsset.Position, Input.mousePosition  ,weapon.Speed,weapon.Damage); 
+        if (weapon.Shotgun) //attaque en Arc avec Shotgun
+            Attack.Launcher(Attack.Trajectory.Arc, gameObject.GetComponent<SpriteRenderer>().sprite, playerAsset.Position, Input.mousePosition ,weapon.Speed,weapon.Damage); 
+        //attaque en cercle avec Circleshot
+        Attack.Launcher(Attack.Trajectory.Circle, gameObject.GetComponent<SpriteRenderer>().sprite, playerAsset.Position, Input.mousePosition  ,weapon.Speed,weapon.Damage); 
     }
 }
