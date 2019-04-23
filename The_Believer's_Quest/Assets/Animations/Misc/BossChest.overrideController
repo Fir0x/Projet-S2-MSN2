@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BossChest
+  m_Controller: {fileID: 9100000, guid: c9dccbc5ba98f354784e60787689ac76, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 4f720cedd9d22c84da4d31d71c11ac7d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8f3e9877904277c4db8fbe3b4850337c, type: 2}
