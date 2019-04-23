@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -25,22 +26,22 @@ public class TileGrid : MonoBehaviour
     void CreateGrid()
     {
         grid = new Node[gridSizeX, gridSixeY];
-
-        for (float x = startScan.x; x < finishScan.x + 1; x++)
+        for (float x = startScan.x; x <= finishScan.x; x++)
         {
-            for (float y = startScan.y; y < finishScan.y + 1; y++)
+            for (float y = startScan.y; y <= finishScan.y; y++)
             {
                 TileBase tile = isObstacle.GetTile(new Vector3Int((int) x, (int) y, 0));
                 bool walkable = tile == null;
-                Node node = new Node(walkable, new Vector3((int) x, (int) y, 0), (int) x, (int) y);
+                Node node = new Node(walkable, new Vector3((int) x, (int) y, 0), (int) (x - startScan.x), (int) (y - startScan.y));
+
+                grid[(int)x - (int)startScan.x, (int)y - (int)startScan.y] = node;
             }
         }
     }
 
     public Node NodeFromPos(Vector3 worldPos)
     {
-        return grid[(int) worldPos.x - (int) this.transform.position.x,
-            (int) worldPos.y - (int) this.transform.position.y];
+        return grid[(int) worldPos.x  - (int)startScan.x, (int) worldPos.y - (int) startScan.y];
 
     }
 
@@ -56,16 +57,14 @@ public class TileGrid : MonoBehaviour
                 {
                     int neighX = node.gridX + x;
                     int neighY = node.gridY + y;
-
                     if (neighX >= 0 && neighX < gridSizeX && neighY >= 0 && neighY < gridSixeY)
                     {
                         neighbors.Add(grid[neighX, neighY]);
-
                     }
                 }
             }
         }
-
+        
         return neighbors;
     }
 }

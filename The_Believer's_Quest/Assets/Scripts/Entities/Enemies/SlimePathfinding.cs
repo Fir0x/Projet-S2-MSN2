@@ -24,30 +24,30 @@ namespace Entities
             HashSet<Node> closedSet = new HashSet<Node>();
             
             openSet.Add(startNode);
-            
+            print("finishnode : " + finishNode.gridX + " " + finishNode.gridY);
             bool temp = true;
             while (openSet.Count > 0 && temp)
             {
                 Node currentNode = openSet[0];
                 for (int i = 1; i < openSet.Count; i++)
                 {
-                    if (openSet[i].fCost < currentNode.fCost || (openSet[i].fCost == currentNode.fCost && openSet[i].hCost < currentNode.hCost))
+                    if (openSet[i].fCost < currentNode.fCost || (openSet[i].fCost == currentNode.fCost))
                     {
-                        currentNode = openSet[i];
-                        //print("x : " + openSet[i].gridX + " y : " + openSet[i].gridY);
+                        if (openSet[i].hCost < currentNode.hCost)
+                            currentNode = openSet[i];
                     }
                 }
-                
                 openSet.Remove(currentNode);
                 closedSet.Add(currentNode);
-
+                print(currentNode.gridX + " " + currentNode.gridY);
+                
                 if (currentNode == finishNode)
                 {
+                    print("YES");
                     nextNode = (RetracePath(startNode, finishNode))[0];
                     temp = false;
                 }
 
-                
                 foreach (Node neighbor in grid.GetNeighbors(currentNode))
                 {
                     if (neighbor.walkable && !closedSet.Contains(neighbor))
@@ -69,7 +69,7 @@ namespace Entities
                     }
                 }
             }
-
+            print(nextNode);
             return nextNode;
         }
         

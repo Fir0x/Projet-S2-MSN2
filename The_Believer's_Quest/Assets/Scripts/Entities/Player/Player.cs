@@ -13,6 +13,8 @@ public class Player : MovingObject
 
     [SerializeField] protected PlayerAsset playerAsset;
 
+    private Weapon weapon;
+    
     private List<Room> listRoom;
     private Animator animator;
     private int animMoveHashID = Animator.StringToHash("Move");
@@ -40,6 +42,13 @@ public class Player : MovingObject
     {
         playerAsset.Hp = value;
     }
+    
+    public void Attack()
+    {
+        print("Weapon GO: " + weapon);
+        print(weapon.GetAsset());
+        //weapon.Shot();
+    }
 
     public void Dash()
     {
@@ -49,14 +58,19 @@ public class Player : MovingObject
     private void Start()
     {
         firstPos = this.transform.position;
-        
+
         animator = GetComponent<Animator>();
         moveX = playerAsset.Speed * Time.deltaTime;
         moveY = playerAsset.Speed * Time.deltaTime;
+
+        weapon = GetComponentInChildren<Weapon>();
+        weapon.SetWeapon(playerAsset.WeaponsList[0]);
+        weapon.SetPlayer(playerAsset);
     }
 
     public void MoveUp()
     {
+        print("l");
         animator.SetInteger(animDirectionHashID, 0);
         animator.SetTrigger(animMoveHashID);
         if (this.Collision(transform.position, 0, 1))
@@ -96,7 +110,11 @@ public class Player : MovingObject
     }
 
     private void FixedUpdate()
-    {  //déplacement et collision
+    {  
+        moveX = playerAsset.Speed * Time.deltaTime;
+        moveY = playerAsset.Speed * Time.deltaTime;
+        
+        //déplacement et collision
         if (Input.anyKey)
         {
             if (Input.GetKey(KeyCode.Space))

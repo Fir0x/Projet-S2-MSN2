@@ -4,7 +4,7 @@ using System.Xml.Linq;
 using Entities;
 using UnityEngine;
 
-public class RealPathfinding
+public class RealPathfinding : MonoBehaviour
 {
     /*public GameObject enemy;
     private List<Node> finalPath;

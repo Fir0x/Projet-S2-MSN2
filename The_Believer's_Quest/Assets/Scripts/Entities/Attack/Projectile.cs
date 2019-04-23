@@ -6,6 +6,7 @@ public class Projectile : MovingObject
     private int damage;
     private Vector3 direction;
     private Vector3 position;
+    private int range;
 
     public void Init(Sprite sprite, float speed, int damage, Vector3 direction)
     {
@@ -13,8 +14,16 @@ public class Projectile : MovingObject
         this.speed = speed;
         this.damage = damage;
         this.direction = direction;
+        range = -1;
     }
-
+    public void Init(Sprite sprite, float speed, int damage, Vector3 direction, int range)
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
+        this.speed = speed;
+        this.damage = damage;
+        this.direction = direction;
+        this.range = range;
+    }
     private void FixedUpdate()
     {
         position = gameObject.transform.position;

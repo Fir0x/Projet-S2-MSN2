@@ -22,10 +22,12 @@ public class Attack : MonoBehaviour
             ArcShot(/*default*/ 6,sprite, origin, direction, speed, damage);
         if (trajectory == Trajectory.Circle)
             CircleShot(/*default*/ 10,sprite, origin, direction, speed, damage);
+        if (trajectory == Trajectory.Cqc)
+            Cqc(sprite, origin, direction, speed, damage);
     }
-
-    public static void Cqc()
-    {   
+    public static void Cqc(Sprite sprite, Vector3 origin, Vector3 direction, float speed, int damage){
+        GameObject projectile = Instantiate(Resources.Load("Projectile") as GameObject, origin, new Quaternion());
+        projectile.GetComponent<Projectile>().Init(sprite, speed, damage, direction);
     }
 
     private static void LineShot(Sprite sprite, Vector3 origin, Vector3 direction, float speed, int damage)
