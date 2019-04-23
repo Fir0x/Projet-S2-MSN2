@@ -9,6 +9,7 @@ TextureImporter:
     21300008: WeaponSlot
     21300010: UIGold
     21300012: UIDiamond
+    21300014: InventoryPlayer
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -206,6 +207,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 54ba6ae6379fd2843824341a4f2f3da8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InventoryPlayer
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 31
+        width: 124
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5a9e88e894cda84dbac9658514db92e
       vertices: []
       indices: 
       edges: []
