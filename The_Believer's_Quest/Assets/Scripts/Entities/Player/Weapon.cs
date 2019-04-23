@@ -59,7 +59,7 @@ public class Weapon : MonoBehaviour
     {
         weapon.Ammunitions--;
         if (weapon.Cqc)
-            Attack.Cqc();
+            Attack.Cqc(gameObject.GetComponent<SpriteRenderer>().sprite, playerAsset.Position, Input.mousePosition, weapon.Speed, weapon.Damage,10);
         if (weapon.Railgun) //attaque en ligne avec RailGun
             Attack.Launcher(Attack.Trajectory.Line, gameObject.GetComponent<SpriteRenderer>().sprite, playerAsset.Position, Input.mousePosition  ,weapon.Speed,weapon.Damage); 
         if (weapon.Shotgun) //attaque en Arc avec Shotgun
