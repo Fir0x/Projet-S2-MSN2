@@ -9,7 +9,7 @@ public class Board : MonoBehaviour
     private int roomWidth = 16;
     private int roomHeight = 13;
     [SerializeField] private int roomNumber = 3;
-    private List<Room> roomList;
+    public static List<GameObject> roomList;
     private Transform board;
 
     public int Width { get => width; set => width = value; }
@@ -122,24 +122,30 @@ public class Board : MonoBehaviour
             }
         }
 
+        bool spawningRoom = true;
+        GameObject roomPattern;
         Room room;
         foreach (RoomBase roomBase in roomBaseList)
         {
             room = GetComponent<Room>();
-            room.RoomCreator(board, roomBase.anchor, roomBase.roomNumber, roomBase.doorsPosition);
+            roomPattern = room.RoomCreator(board, roomBase.anchor, roomBase.roomNumber, roomBase.doorsPosition, spawningRoom);
+            spawningRoom = false;
+            
+            /*roomList.Add(roomPattern);*/
         }
 
         //Utility.ExecutionTime.PrintExecutionTime(); //DEBUG
     }
-
-    public void PrintBoard()
-    {
-        foreach (Room room in roomList)
-            room.RoomSetup();
-    }
+   // public void PrintBoard()
+    //{
+    //    foreach (Room room in roomList)
+    //        room.RoomSetup();
+   // }
 
     public void Start()
     {
         BoardCreation();
     }
+    
+    
 }

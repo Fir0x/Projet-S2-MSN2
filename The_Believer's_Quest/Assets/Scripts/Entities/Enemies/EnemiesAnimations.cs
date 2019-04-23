@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnnemiesAnimations : MonoBehaviour
+public class EnemiesAnimations : MonoBehaviour
 {
     [SerializeField] protected AnimationClip[] animationClips;
     private Animator animator;

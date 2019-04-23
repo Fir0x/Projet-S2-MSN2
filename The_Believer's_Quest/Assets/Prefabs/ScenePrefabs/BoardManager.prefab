@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3688633446872613183}
   - component: {fileID: 8981345498103605062}
   - component: {fileID: 416202075394253419}
-  - component: {fileID: 6054801525269501119}
   m_Layer: 0
   m_Name: BoardManager
   m_TagString: Untagged
@@ -47,8 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 10
   height: 5
-  roomWidth: 12
-  roomHeight: 7
   roomNumber: 20
 --- !u!114 &416202075394253419
 MonoBehaviour:
@@ -67,26 +64,3 @@ MonoBehaviour:
   spriteAsset: {fileID: 0}
   wall: {fileID: 0}
   floor: {fileID: 0}
---- !u!114 &6054801525269501119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5202475380373786966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 074d16909fd879a4bb5ac6dca691ec35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floor: {fileID: 0}
-  notObstacle: {fileID: 11400000, guid: fe0f2e553beb73e4ea299ae6f48499b6, type: 2}
-  nodePrefab: {fileID: 5631079942676170018, guid: 3b47272225af73e4d957166d3741f750,
-    type: 3}
-  scanStartX: -7
-  scanStartY: 7
-  scanFinishX: -5
-  scanFinishY: 5
-  gridBoundX: 15
-  gridBoundY: 11
-  unsortedNodes: []

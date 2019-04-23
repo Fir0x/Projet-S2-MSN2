@@ -23,7 +23,9 @@
             <e p="Enemies" t="Include">
               <e p="AerialPathfinding.cs" t="Include" />
               <e p="Enemies.cs" t="Include" />
-              <e p="EnnemiesAnimations.cs" t="Include" />
+              <e p="EnemiesAnimations.cs" t="Include" />
+              <e p="EnemiesList.cs" t="Include" />
+              <e p="EnemiesRoom.cs" t="Include" />
               <e p="RealPathfinding.cs" t="Include" />
             </e>
             <e p="MovingObject.cs" t="Include" />

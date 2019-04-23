@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7fa40ba4b50ecf4780829f9b1e17631, type: 3}
-  m_Name: Nenoeil
+  m_Name: EarthSentinel
   m_EditorClassIdentifier: 
-  hp: 2
-  speed: 0
-  damage: 0
-  maxLoot: 8
+  hp: 10
+  speed: 0.15
+  damage: 1
+  minLoot: 2
+  maxLoot: 10
+  weight: 3

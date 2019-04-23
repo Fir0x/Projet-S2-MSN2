@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8460906556170232232}
   - component: {fileID: 2828400066342608304}
   - component: {fileID: 6865763758594020295}
+  - component: {fileID: 7332203270038196431}
   m_Layer: 0
   m_Name: BlueSlime
   m_TagString: Untagged
@@ -132,5 +133,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e0940097c76de49bc51162a32e0d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedE: 1
-  stoppingDistance: 3
+--- !u!114 &7332203270038196431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917192810353389789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9814d3ed1ecf61948ac2c476531fe997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAsset: {fileID: 11400000, guid: 732ee87fe84556744af620d652bb6d96, type: 2}

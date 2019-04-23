@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -12,6 +13,7 @@ public class Player : MovingObject
 
     [SerializeField] protected PlayerAsset playerAsset;
 
+    private List<Room> listRoom;
     private Animator animator;
     private int animMoveHashID = Animator.StringToHash("Move");
     private int animDirectionHashID = Animator.StringToHash("Direction");
@@ -132,6 +134,11 @@ public class Player : MovingObject
             this.rigid.AddForce(new Vector2 (0, -1) * moveSpeed * Time.deltaTime);
         }*/
 
+        
+        
+        
+        //faire spawner les ennemis
+        
     }
 }
 
