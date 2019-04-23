@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class KeyboardManager : MonoBehaviour
 {
     private Player player;
+    private Weapon weapon;
 
     UnityEvent moveUp;
     UnityEvent moveRight;
@@ -19,6 +20,7 @@ public class KeyboardManager : MonoBehaviour
     void Start()
     {
         player = gameObject.GetComponent<Player>();
+        weapon = gameObject.GetComponent<Weapon>();
 
         if (moveUp == null)
         {
@@ -47,7 +49,7 @@ public class KeyboardManager : MonoBehaviour
         {
             shot = new UnityEvent();
         }
-        shot.AddListener(player.Attack);
+        shot.AddListener(weapon.Shot);
         
     }
 
@@ -66,8 +68,6 @@ public class KeyboardManager : MonoBehaviour
         
         if (Input.GetKey(KeyCode.RightArrow))
             moveRight.Invoke();
-        if (Input.GetKey(KeyCode.Mouse0))
-            shot.Invoke();
     }
 }
 

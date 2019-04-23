@@ -24,11 +24,8 @@ public class Attack : MonoBehaviour
             CircleShot(/*default*/ 10,sprite, origin, direction, speed, damage);
     }
 
-    public static void Cqc(Sprite sprite, Vector3 origin, Vector3 direction, float speed,
-        int damage, int range)
+    public static void Cqc()
     {   
-        GameObject projectile = Instantiate(Resources.Load("Projectile") as GameObject, origin, new Quaternion());
-        projectile.GetComponent<Projectile>().Init(sprite, speed, damage, direction, range);
     }
 
     private static void LineShot(Sprite sprite, Vector3 origin, Vector3 direction, float speed, int damage)

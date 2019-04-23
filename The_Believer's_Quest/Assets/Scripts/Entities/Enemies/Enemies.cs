@@ -20,7 +20,7 @@ public class Enemies : MovingObject
     {
         HP = enemyAsset.Hp;
 
-        //RealPathfinding.Init();
+        RealPathfinding.Init();
     }
     
     public int GetWeight()

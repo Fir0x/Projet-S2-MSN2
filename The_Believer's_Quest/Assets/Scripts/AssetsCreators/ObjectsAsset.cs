@@ -4,7 +4,6 @@
 public class ObjectsAsset : ScriptableObject
 {
     [SerializeField] private Sprite sprite;
-    [SerializeField] private bool passive;
     [SerializeField] private int price;
     [SerializeField] private int hP;
     [SerializeField] private int maxHP;
@@ -16,7 +15,6 @@ public class ObjectsAsset : ScriptableObject
     [SerializeField] private uint duration;
 
     public Sprite Sprite { get => sprite; set => sprite = value; }
-    public bool Passive { get => passive; set => passive = value; }
     public int Price { get => price; set => price = value; }
     public int HP { get => hP; set => hP = value; }
     public int MaxHP { get => maxHP; set => maxHP = value; }

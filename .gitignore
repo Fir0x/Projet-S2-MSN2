@@ -54,7 +54,6 @@ crashlytics-build.properties
 # Graphismes
 *autosave.kra
 *.kra~
-*.png~
 
 # Django
 *.log
@@ -64,6 +63,3 @@ __pycache__/
 local_settings.py
 db.sqlite3
 media
-
-#Rider
-.idea
