@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Chest : MonoBehaviour
+public class ItemChooser : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> allItems;
+    [SerializeField] private AllItemsAsset allItems;
 
-    private GameObject[] ChooseContent()
+    public List<GameObject> ChooseContent()
     {
         int nbItems = Random.Range(1, 5);
-        GameObject[] items = new GameObject[nbItems];
+        List<GameObject> items = new List<GameObject>();
         int index = 0;
 
         float minRarity = Random.Range(0.2f, ((10 / 7) - 0.19f) / 2);
         float maxRarity = Random.Range(((10 / 7) - 0.2f) / 2, 10 / 7);
-        List<GameObject> choosen = (from item in allItems
+        List<GameObject> choosen = (from item in allItems.AllItems
                                     where (100 / item.GetComponent<Weapon>().GetAsset().Price >= minRarity &&
                                           100 / item.GetComponent<Weapon>().GetAsset().Price <= maxRarity) ||
                                           (100 / item.GetComponent<Object>().GetAsset().Price >= minRarity &&
