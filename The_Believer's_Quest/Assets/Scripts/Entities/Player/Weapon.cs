@@ -7,6 +7,7 @@ public class Weapon : MonoBehaviour
 {
     private WeaponAsset weapon;
     [SerializeField] protected PlayerAsset playerAsset;
+    
     public WeaponAsset GetAsset()
     {
         return weapon;
@@ -58,13 +59,14 @@ public class Weapon : MonoBehaviour
     public void Shot () //réalisé par Sarah
     {
         weapon.Ammunitions--;
-        if (weapon.Cqc)
-            Attack.Cqc();
+        /*if (weapon.Cqc)//essai attaque corps à corps
+            Attack.Cqc(gameObject.GetComponent<SpriteRenderer>().sprite, playerAsset.Position, Input.mousePosition, weapon.Speed, weapon.Damage,10);*/
         if (weapon.Railgun) //attaque en ligne avec RailGun
-            Attack.Launcher(Attack.Trajectory.Line, gameObject.GetComponent<SpriteRenderer>().sprite, playerAsset.Position, Input.mousePosition  ,weapon.Speed,weapon.Damage); 
+            Attack.Launcher(Attack.Trajectory.Line, gameObject.GetComponent<SpriteRenderer>().sprite, playerAsset.Position, Input.mousePosition, weapon.Speed,weapon.Damage); 
         if (weapon.Shotgun) //attaque en Arc avec Shotgun
-            Attack.Launcher(Attack.Trajectory.Arc, gameObject.GetComponent<SpriteRenderer>().sprite, playerAsset.Position, Input.mousePosition ,weapon.Speed,weapon.Damage); 
+            Attack.Launcher(Attack.Trajectory.Arc, gameObject.GetComponent<SpriteRenderer>().sprite, playerAsset.Position, Input.mousePosition, weapon.Speed,weapon.Damage); 
         //attaque en cercle avec Circleshot
-        Attack.Launcher(Attack.Trajectory.Circle, gameObject.GetComponent<SpriteRenderer>().sprite, playerAsset.Position, Input.mousePosition  ,weapon.Speed,weapon.Damage); 
+        if (weapon.Circleshot)
+            Attack.Launcher(Attack.Trajectory.Circle, gameObject.GetComponent<SpriteRenderer>().sprite, playerAsset.Position, Input.mousePosition, weapon.Speed,weapon.Damage); 
     }
 }
