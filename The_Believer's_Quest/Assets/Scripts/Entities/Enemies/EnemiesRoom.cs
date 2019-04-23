@@ -5,7 +5,7 @@ namespace Entities
 {
     public class EnemiesRoom : EnemiesList
     {
-        private List<GameObject> enemies = new List<GameObject>();
+        /*private List<GameObject> enemies = new List<GameObject>();
         private int totalWeight = 7;             //pour étage 1 seulement
         
         public void CreateEnemies()
@@ -31,6 +31,6 @@ namespace Entities
         public List<GameObject> GetEnemiesRoom()
         {
             return enemies;
-        }
+        }*/
     }
 }

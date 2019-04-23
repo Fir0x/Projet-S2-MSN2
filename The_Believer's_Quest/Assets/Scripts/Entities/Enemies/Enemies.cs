@@ -7,25 +7,13 @@ using Vector3 = UnityEngine.Vector3;
 
 public class Enemies : MovingObject
 {
-    [SerializeField] private EnemyAsset asset;
-    public EnemyAsset enemyAsset
-    {
-        get => asset;
-        set => asset = value;
-    }
+    [SerializeField] private EnemyAsset enemyAsset;
 
     private int HP;
     
     void Start()
     {
-        HP = enemyAsset.Hp;
-
-        //RealPathfinding.Init();
-    }
-    
-    public int GetWeight()
-    {
-        return enemyAsset.Weight;
+        
     }
 
     private void FixedUpdate()

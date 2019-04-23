@@ -3,15 +3,27 @@ using System.Collections.Generic;
 
 public class Node
 {
+    public bool walkable;
+    public Vector3 worldPos;
+
     public int gCost;
     public int hCost;
-    public int gridX, gridY;
-    public bool walkable = true;
-    public List<Node> neighbors;
-    public Node parent;
 
-    public int fCost()
+    public int gridX;
+    public int gridY;
+
+    public Node parent;
+    
+    public Node(bool walkable, Vector3 pos, int gridX, int gridY)
     {
-        return gCost + hCost;
+        this.walkable = walkable;
+        worldPos = pos;
+        this.gridX = gridX;
+        this.gridY = gridY;
+    }
+    
+    public int fCost
+    {
+        get => gCost + hCost;
     }
 }
