@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6295750534380910213}
   - component: {fileID: 4659674338766441832}
   - component: {fileID: 1024341247632904857}
-  - component: {fileID: 8245448492886440594}
+  - component: {fileID: 553230732804121268}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 8643787426481538859, guid: fddef213d0325fa4b9ebd046b3e9ea98, type: 3}
-  playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
+  playerAsset: {fileID: 0}
 --- !u!212 &4659674338766441832
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -116,7 +116,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8245448492886440594
+--- !u!114 &553230732804121268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,6 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5710170098172399849}
   - component: {fileID: 464341575224665629}
+  - component: {fileID: 4123028222976605783}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -207,3 +208,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4123028222976605783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7892602917040036623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa3792fed4fb024b81246d02702eae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}

@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Room : MonoBehaviour
 {
-    private Grid grid;
+    public static List<GameObject> allRooms;
     
     private float[] anchor;
     private int roomNumber;
@@ -17,7 +17,11 @@ public class Room : MonoBehaviour
     [SerializeField] protected SpriteAsset spriteAsset;
     [SerializeField] protected GameObject wall;
     [SerializeField] protected GameObject floor;
-    
+
+    void Awake()
+    {
+        allRooms = new List<GameObject>();
+    }
     public GameObject RoomCreator(Transform parent, float[] anchor, int roomNumber, List<int[]> doorsPosition, bool spawningRoom)
     {
         this.anchor = anchor;
@@ -42,7 +46,7 @@ public class Room : MonoBehaviour
                                                    player.transform.position.z));
         }
         roomPattern.AddComponent<EnemiesRoom>();
-        
+        allRooms.Add(roomPattern);
 
         return roomPattern;
     }

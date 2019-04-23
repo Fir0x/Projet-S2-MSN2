@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class KeyBoardManager : MonoBehaviour
+public class KeyboardManager : MonoBehaviour
 {
     private Player player;
-    private Weapon weapon;
 
     UnityEvent moveUp;
     UnityEvent moveRight;
@@ -20,7 +19,6 @@ public class KeyBoardManager : MonoBehaviour
     void Start()
     {
         player = gameObject.GetComponent<Player>();
-        weapon = gameObject.GetComponent<Weapon>();
 
         if (moveUp == null)
         {
@@ -49,7 +47,7 @@ public class KeyBoardManager : MonoBehaviour
         {
             shot = new UnityEvent();
         }
-        shot.AddListener(weapon.Shot);
+        shot.AddListener(player.Attack);
         
     }
 

@@ -19,10 +19,17 @@ public class Enemies : MovingObject
     void Start()
     {
         HP = enemyAsset.Hp;
+
+        //RealPathfinding.Init();
     }
     
     public int GetWeight()
     {
         return enemyAsset.Weight;
+    }
+
+    private void FixedUpdate()
+    {
+         
     }
 }
