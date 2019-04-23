@@ -196,12 +196,12 @@ PrefabInstance:
     - target: {fileID: 4856094373651073593, guid: 20ce829acefb8324c8df9f6352811168,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4856094373651073593, guid: 20ce829acefb8324c8df9f6352811168,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4856094373651073593, guid: 20ce829acefb8324c8df9f6352811168,
         type: 3}
@@ -254,14 +254,39 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 732ee87fe84556744af620d652bb6d96,
         type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6865763758594020295, guid: 20ce829acefb8324c8df9f6352811168, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 20ce829acefb8324c8df9f6352811168, type: 3}
+--- !u!1839735485 &1595019440 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 7938655012475989574, guid: c092d4dba3cf00543bd6a2b43da6e751,
+    type: 3}
+  m_PrefabInstance: {fileID: 1986189742}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1725714468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7918954668063294900, guid: c092d4dba3cf00543bd6a2b43da6e751,
     type: 3}
   m_PrefabInstance: {fileID: 1986189742}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1805816124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7337496812596094357, guid: c092d4dba3cf00543bd6a2b43da6e751,
+    type: 3}
+  m_PrefabInstance: {fileID: 1986189742}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1805816125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805816124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0368ddfd19364f08b85df9e8e57721ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1986189742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -724,5 +749,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5156795690436429077, guid: c092d4dba3cf00543bd6a2b43da6e751,
+        type: 3}
+      propertyPath: isObstacle
+      value: 
+      objectReference: {fileID: 1595019440}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c092d4dba3cf00543bd6a2b43da6e751, type: 3}
