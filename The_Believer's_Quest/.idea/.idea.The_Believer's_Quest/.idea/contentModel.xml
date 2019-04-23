@@ -47,7 +47,8 @@
             <e p="Saver.cs" t="Include" />
           </e>
           <e p="Shop_Chest_Inventory" t="Include">
-            <e p="ShopControlScript.cs" t="Include" />
+            <e p="ItemControl.cs" t="Include" />
+            <e p="ShopControl.cs" t="Include" />
           </e>
           <e p="SoundManager" t="Include">
             <e p="SoundManager.cs" t="Include" />

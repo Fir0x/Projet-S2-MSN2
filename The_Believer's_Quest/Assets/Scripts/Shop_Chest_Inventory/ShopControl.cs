@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Shop : MonoBehaviour
+public class ShopControl : MonoBehaviour
 {
     public Text moneyAmountText;
     public Text itemPrice;
@@ -11,10 +11,17 @@ public class Shop : MonoBehaviour
     [SerializeField] private PlayerAsset playerasset;
     private int GoldAmountP;
     private int DiamondAmountP;
+    [SerializeField] private ObjectsAsset objectasset;
+    
 
     public PlayerAsset Playerasset
     {
         get  => playerasset; set => playerasset = value; 
+    }
+
+    public ObjectsAsset Objectasset
+    {
+        get => objectasset; set => objectasset = value; 
     }
 
     void Start()
@@ -23,7 +30,6 @@ public class Shop : MonoBehaviour
         DiamondAmountP = playerasset.Diamond;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
