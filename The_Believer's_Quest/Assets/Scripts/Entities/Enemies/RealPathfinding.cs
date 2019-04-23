@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class RealPathfinding
 {
-    public GameObject enemy;
+    /*public GameObject enemy;
     private List<Node> finalPath;
     TileGrid grid;
 
@@ -37,7 +37,7 @@ public class RealPathfinding
 
     private void FixedUpdate()
     {
-        finishPosition = player.transform.position;//new Vector2(player.GetPos().x/* - posSalleX * 15*/, player.GetPos().y/* - posSalleY * 15*/);
+        finishPosition = player.transform.position;//new Vector2(player.GetPos().x/* - posSalleX * 15, player.GetPos().y/* - posSalleY * 15);
         startPosition = enemy.transform.position;
         FindPath(startPosition, finishPosition);
     }
@@ -112,5 +112,5 @@ public class RealPathfinding
     private int GetDistance(Node node1, Node node2)
     {
         return (Math.Abs(node1.gridX - node2.gridX) + Math.Abs(node1.gridY - node2.gridY));
-    }
+    }*/
 }

@@ -1,180 +1,71 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TileGrid : MonoBehaviour
 {
-    public Tilemap notObstacle;
-    public GameObject nodePrefab;
+    public Tilemap isObstacle;
+    private Node[,] grid;
 
-    public int scanStartX = -7;
-    public int scanStartY = 7;
-    public int scanFinishX = -5;
-    public int scanFinishY = 5;
+    private int gridSizeX = 15;
+    private int gridSixeY = 11;
 
-    public int gridBoundX = 15;
-    public int gridBoundY = 11;
+    private Vector2 startScan;
+    private Vector2 finishScan;
 
-    public List<GameObject> unsortedNodes;
-    public GameObject[,] nodes;
-
-    private void Awake()
+    void Start()
     {
-        unsortedNodes = new List<GameObject>();
-        CreateNodes();
+        Vector2 position = this.transform.position;
+        startScan = new Vector2(position.x - 7, position.y - 5);
+        finishScan = new Vector2(position.x + 7, position.y + 5);
+        CreateGrid();
     }
-     
-    public void CreateNodes()
+
+    void CreateGrid()
     {
-        TileBase tile;             //dans les patterns, un tilemap ou tile null si mur 
-        bool isObstacle;;
+        grid = new Node[gridSizeX, gridSixeY];
 
-        for (int x = scanStartX; x <= scanFinishX; x++)
+        for (float x = startScan.x; x < finishScan.x + 1; x++)
         {
-            isObstacle = false;
-            for (int y = scanStartY; y <= scanFinishY; y++)
+            for (float y = startScan.y; y < finishScan.y + 1; y++)
             {
-                tile = notObstacle.GetTile(new Vector3Int((int)x, (int)y, 0));
-                if (tile == null)
-                    isObstacle = true;
-
-                if (!isObstacle)
-                {
-                    GameObject go = (GameObject)Instantiate(nodePrefab, new Vector3(x + 0.5f, y + 0.5f, 0), Quaternion.Euler(0, 0, 0));
-                    Node node = go.GetComponent<Node>();
-                    node.gridX = x + scanFinishX;
-                    node.gridY = y + scanFinishY;
-
-                    unsortedNodes.Add(go);
-                }
-
-                else
-                {
-                    GameObject go = (GameObject)Instantiate(nodePrefab, new Vector3(x + 0.5f, y + 0.5f, 0), Quaternion.Euler(0, 0, 0));
-                    Node node = go.GetComponent<Node>();
-                    node.gridX = x + scanFinishX;
-                    node.gridY = y + scanFinishY;
-                    node.walkable = false;
-
-                    unsortedNodes.Add(go);
-                }
-            }
-        }
-
-        nodes = new GameObject[gridBoundX + 1, gridBoundY + 1];
-        foreach (GameObject go in unsortedNodes)
-        {
-            Node node = go.GetComponent<Node>();
-            nodes[node.gridX, node.gridY] = go;
-        }
-
-        for (int x = 0; x < gridBoundX - 1; x++)
-        {
-            for (int y = 0; y < gridBoundY - 1; y++)
-            {
-                if (nodes[x, y] != null)
-                {
-                    Node node = nodes[x, y].GetComponent<Node>();
-                    node.neighbors = getNeighbors(x, y, gridBoundX, gridBoundY);
-                }
+                TileBase tile = isObstacle.GetTile(new Vector3Int((int) x, (int) y, 0));
+                bool walkable = tile == null;
+                Node node = new Node(walkable, new Vector3((int) x, (int) y, 0), (int) x, (int) y);
             }
         }
     }
 
-    public List<Node> getNeighbors(int x, int y, int width, int height)
+    public Node NodeFromPos(Vector3 worldPos)
+    {
+        return grid[(int) worldPos.x - (int) this.transform.position.x,
+            (int) worldPos.y - (int) this.transform.position.y];
+
+    }
+
+    public List<Node> GetNeighbors(Node node)
     {
         List<Node> neighbors = new List<Node>();
 
-        if( x > 0 && x < width - 1)
+        for (int x = -1; x <= 1; x++)
         {
-            Node node = nodes[x + 1, y].GetComponent<Node>();
-            neighbors.Add(node);
+            for (int y = -1; y <= 1; y++)
+            {
+                if (x != 0 || y != 0)
+                {
+                    int neighX = node.gridX + x;
+                    int neighY = node.gridY + y;
 
-            Node node2 = nodes[x - 1, y].GetComponent<Node>();
-            neighbors.Add(node2);
+                    if (neighX >= 0 && neighX < gridSizeX && neighY >= 0 && neighY < gridSixeY)
+                    {
+                        neighbors.Add(grid[neighX, neighY]);
 
-            if (y > 0 && y < height - 1)
-            {
-                Node node3 = nodes[x, y + 1].GetComponent<Node>();
-                neighbors.Add(node3);
-
-                Node node4 = nodes[x, y - 1].GetComponent<Node>();
-                neighbors.Add(node4);
-            }
-            else if (y == 0)
-            {
-                Node node3 = nodes[x, y + 1].GetComponent<Node>();
-                neighbors.Add(node3);
-            }
-            else
-            {
-                Node node4 = nodes[x, y - 1].GetComponent<Node>();
-                neighbors.Add(node4);
-            }
-        }
-        else if(x == 0)
-        {
-            Node node = nodes[x + 1, y].GetComponent<Node>();
-            neighbors.Add(node);
-
-            if(y > 0 && y < height - 1)
-            {
-                Node node3 = nodes[x, y + 1].GetComponent<Node>();
-                neighbors.Add(node3);
-
-                Node node4 = nodes[x, y - 1].GetComponent<Node>();
-                neighbors.Add(node4);
-            }
-            else if (y == 0)
-            {
-                Node node3 = nodes[x, y + 1].GetComponent<Node>();
-                neighbors.Add(node3);
-            }
-            else
-            {
-                Node node4 = nodes[x, y - 1].GetComponent<Node>();
-                neighbors.Add(node4);
-            }
-        }
-        else
-        {
-            Node node2 = nodes[x - 1, y].GetComponent<Node>();
-            neighbors.Add(node2);
-
-            if (y > 0 && y < height - 1)
-            {
-                Node node3 = nodes[x, y + 1].GetComponent<Node>();
-                neighbors.Add(node3);
-
-                Node node4 = nodes[x, y - 1].GetComponent<Node>();
-                neighbors.Add(node4);
-            }
-            else if (y == 0)
-            {
-                Node node3 = nodes[x, y + 1].GetComponent<Node>();
-                neighbors.Add(node3);
-            }
-            else
-            {
-                Node node4 = nodes[x, y - 1].GetComponent<Node>();
-                neighbors.Add(node4);
+                    }
+                }
             }
         }
 
         return neighbors;
-    }
-
-    public Node GetPos(Vector3 pos)
-    {
-        int x = (int) pos.x;
-        int y = (int) pos.y;
-
-        return nodes[x, y].GetComponent<Node>();
-    }
-
-    public List<Node> GetNeighboringNodes(Node node)
-    {
-        List<Node> neighboringNodes = new List<Node>();
-        return neighboringNodes;
     }
 }
