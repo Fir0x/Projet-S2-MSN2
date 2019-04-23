@@ -46,6 +46,13 @@ public class Player : MovingObject
         throw new NotImplementedException();
     }
 
+    public void Attack()
+    {
+        Weapon w = new Weapon();
+        w.SetWeapon(playerAsset.WeaponsList[0]);
+        w.Shot();
+    }
+
     private void Start()
     {
         firstPos = this.transform.position;
