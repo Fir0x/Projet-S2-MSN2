@@ -3,7 +3,7 @@
 [CreateAssetMenu (fileName = "NewWeapon", menuName = "Items/Weapon")]
 public class WeaponAsset : ScriptableObject
 {
-    [SerializeField] private string weaponName;
+    [SerializeField] private Sprite sprite;
     [SerializeField] private int price;
     [SerializeField] private int damage;
     [SerializeField] private float cooldown;
@@ -18,7 +18,7 @@ public class WeaponAsset : ScriptableObject
     [SerializeField] private bool cqc;
     [SerializeField] private bool circleshot;
 
-    public string WeaponName { get => weaponName; set => weaponName = value; }
+    public Sprite Sprite { get => sprite; set => sprite = value; }
     public int Price { get => price; set => price = value; }
     public int Damage { get => damage; set => damage = value; }
     public float Cooldown { get => cooldown; set => cooldown = value; }

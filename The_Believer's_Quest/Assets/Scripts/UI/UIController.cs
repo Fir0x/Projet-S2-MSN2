@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
     public Text gold;
     public Text diamond;
     public Text Ammo;
+    public Image weaponSprite;
     
     [SerializeField] public PlayerAsset player;
 
@@ -23,9 +24,10 @@ public class UIController : MonoBehaviour
         maxHp.value = player.MaxHP;
         effect.value = player.EffectValue;
         maxEffect.value = player.MaxEffectValue;
-        
-        gold.text = player.Gold + " Ors";
-        diamond.text = player.Diamond + " Diamants";
+        Weapon w = gameObject.GetComponentInChildren<Weapon>();
+        weaponSprite.sprite = w.GetAsset().Sprite;
+        gold.text = player.Gold +"";
+        diamond.text = player.Diamond +"";
         Ammo.text = player.WeaponsList[0].Loader + " / " + player.WeaponsList[0].Ammunitions;
     }
 }
