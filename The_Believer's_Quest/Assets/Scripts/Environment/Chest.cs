@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-
+//Nicolas I
 public class Chest : ItemChooser
 {
     [SerializeField] private AllItemsAsset allItems;

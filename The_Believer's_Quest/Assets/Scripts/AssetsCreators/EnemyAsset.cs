@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+//Nicolas I
 [CreateAssetMenu(fileName = "NewEnemyAsset", menuName = "Entity/Enemy")]
 public class EnemyAsset : ScriptableObject
 {

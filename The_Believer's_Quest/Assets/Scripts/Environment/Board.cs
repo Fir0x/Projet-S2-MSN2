@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicolas I
 public class Board : MonoBehaviour
 {
     [SerializeField] private int width = 10;
     [SerializeField] private int height = 5;
-    private int roomWidth = 15;
+    private int roomWidth = 17;
     private int roomHeight = 14;
     [SerializeField] private int roomNumber = 3;
     public static List<GameObject> roomList;
@@ -16,22 +16,40 @@ public class Board : MonoBehaviour
     public int Height { get => height; set => height = value; }
     public int RoomNumber { get => roomNumber; set => roomNumber = value; }
 
+    public enum DoorPos
+    {
+        Up,
+        Right,
+        Down,
+        Left
+    };
+
+    public enum Type
+    {
+        Normal,
+        Chest,
+        Shop,
+        Boss
+    };
+
     private class RoomBase
     {
         public int[] position;
         public int roomNumber;
-        public List<int[]> doorsPosition;
+        public List<DoorPos> doorsPosition;
         public float[] anchor;
+        public Type type;
 
-        public RoomBase(int[] arrayPosition, int roomNumber, float[] anchor)
+        public RoomBase(int[] arrayPosition, int roomNumber, float[] anchor, Type type)
         {
             position = arrayPosition;
             this.roomNumber = roomNumber;
             this.anchor = anchor;
-            doorsPosition = new List<int[]>();
+            doorsPosition = new List<DoorPos>();
+            this.type = type;
         }
 
-        public void AddDoors(int[] doorPosition)
+        public void AddDoors(DoorPos doorPosition)
         {
             doorsPosition.Add(doorPosition);
         }
@@ -46,7 +64,7 @@ public class Board : MonoBehaviour
         board = new GameObject("Board").transform;
         List<RoomBase> roomBaseList = new List<RoomBase>();
         int[] startPoint = new int[] { Random.Range(0, Width - 1), Random.Range(0, Height - 1) };
-        RoomBase parent = new RoomBase(startPoint, 1, new float[] { startPoint[0] * roomWidth, startPoint[1] * roomHeight });
+        RoomBase parent = new RoomBase(startPoint, 1, new float[] { startPoint[0] * roomWidth, startPoint[1] * roomHeight }, Type.Normal);
         roomBaseList.Add(parent);
         //print(Utility.VisualArray<int>(startPoint));
         RoomBase actual;
@@ -87,30 +105,40 @@ public class Board : MonoBehaviour
                         roomBaseList.Exists(roomBase => roomBase.position[0] == newX && roomBase.position[1] == newY));
 
                 //print("newX = " + newPosition[0] + "\nnewY = " + newPosition[1]); //DEBUG
-
-                actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth, newY * roomHeight });
+                if (k == (int)(0.3333f * RoomNumber))
+                {
+                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth, newY * roomHeight }, Type.Chest);
+                }
+                else if (k == (int)(0.5f * RoomNumber))
+                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth, newY * roomHeight }, Type.Shop);
+                else if (k == (int)(0.6666f * RoomNumber))
+                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth, newY * roomHeight }, Type.Chest);
+                else if (k == RoomNumber)
+                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth, newY * roomHeight }, Type.Boss);
+                else
+                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth, newY * roomHeight }, Type.Normal);
                 //print(newX + ":" + newY); //DEBUG
                 roomBaseList.Add(actual);
                 //Add doors between the parent and his child
                 if (newX > lastX)
                 {
-                    parent.AddDoors(new int[] { roomWidth - 1, (roomHeight - 1) / 2 });
-                    actual.AddDoors(new int[] { 0, (roomHeight - 1) / 2 });
+                    parent.AddDoors(DoorPos.Right);
+                    actual.AddDoors(DoorPos.Left);
                 }
                 else if (newX < lastX)
                 {
-                    parent.AddDoors(new int[] { 0, (roomHeight - 1) / 2 });
-                    actual.AddDoors(new int[] { roomWidth - 1, (roomHeight - 1) / 2 });
+                    parent.AddDoors(DoorPos.Left);
+                    actual.AddDoors(DoorPos.Right);
                 }
                 else if (newY > lastY)
                 {
-                    parent.AddDoors(new int[] { (roomWidth - 1) / 2, roomHeight - 1 });
-                    actual.AddDoors(new int[] { (roomWidth - 1) / 2, 0 });
+                    parent.AddDoors(DoorPos.Down);
+                    actual.AddDoors(DoorPos.Up);
                 }
                 else
                 {
-                    parent.AddDoors(new int[] { (roomWidth - 1) / 2, 0 });
-                    actual.AddDoors(new int[] { (roomWidth - 1) / 2, roomHeight - 1 });
+                    parent.AddDoors(DoorPos.Up);
+                    actual.AddDoors(DoorPos.Down);
                 }
 
                 parent = roomBaseList[Random.Range(0, roomBaseList.Count)];
@@ -121,23 +149,16 @@ public class Board : MonoBehaviour
                 k--;
             }
         }
-
-        bool spawningRoom = true;
+        
         Room room;
         foreach (RoomBase roomBase in roomBaseList)
         {
             room = GetComponent<Room>();
-            room.RoomCreator(board, roomBase.anchor, roomBase.roomNumber, roomBase.doorsPosition, spawningRoom);
-            spawningRoom = false;
+            room.RoomCreator(board, roomBase.anchor, roomBase.roomNumber, roomBase.doorsPosition, roomBase.type);
         }
 
         //Utility.ExecutionTime.PrintExecutionTime(); //DEBUG
     }
-   // public void PrintBoard()
-    //{
-    //    foreach (Room room in roomList)
-    //        room.RoomSetup();
-   // }
 
     public void Start()
     {

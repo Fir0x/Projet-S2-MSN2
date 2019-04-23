@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
-
+//Nicolas I, Nicolas L et Sarah
 [Serializable]
 public class Player : MovingObject
 {

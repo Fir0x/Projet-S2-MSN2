@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//Nicolas I
 public class SlotController : MonoBehaviour
 {
     [SerializeField] private Image icon;

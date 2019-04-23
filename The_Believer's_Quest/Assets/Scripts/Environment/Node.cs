@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-
+//Nicolas L
 public class Node
 {
     public bool walkable;

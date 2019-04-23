@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//Sarah
 public class UIController : MonoBehaviour
 {
     public Text gold;

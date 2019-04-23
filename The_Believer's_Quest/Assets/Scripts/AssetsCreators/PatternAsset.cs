@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+//Nicolas I
 [CreateAssetMenu(fileName = "NewPatternAsset", menuName = "FloorPattern")]
 public class PatternAsset : ScriptableObject
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Entities;
 using UnityEngine;
-
+//Nicolas I
 [Serializable]
 public class Room : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class Room : MonoBehaviour
     
     private float[] anchor;
     private int roomNumber;
-    private List<int[]> doorsPosition;
+    private List<Board.DoorPos> doorsPosition;
     private GameObject room;
     [SerializeField] private PatternAsset patterns;
     [SerializeField] private GameObject player;
@@ -22,13 +22,13 @@ public class Room : MonoBehaviour
     {
         allRooms = new List<GameObject>();
     }
-    public GameObject RoomCreator(Transform parent, float[] anchor, int roomNumber, List<int[]> doorsPosition, bool spawningRoom)
+    public GameObject RoomCreator(Transform parent, float[] anchor, int roomNumber, List<Board.DoorPos> doorsPosition, Board.Type type)
     {
         this.anchor = anchor;
         this.roomNumber = roomNumber;
         this.doorsPosition = doorsPosition;
 
-        if (spawningRoom)
+        if (roomNumber == 1 || type != Board.Type.Normal)
         {
             room = Patterns.Pattern[0];
         }
@@ -38,6 +38,14 @@ public class Room : MonoBehaviour
         }
         GameObject roomPattern = Instantiate(room, new Vector3(anchor[0], anchor[1], 0), Quaternion.identity) as GameObject;
         roomPattern.transform.parent = parent;
+        if (type == Board.Type.Normal)
+            roomPattern.name = "Room " + roomNumber;
+        else if (type == Board.Type.Chest)
+            roomPattern.name = "Chest";
+        else if (type == Board.Type.Shop)
+            roomPattern.name = "Shop";
+        else
+            roomPattern.name = "Boss";
         
         if (roomNumber == 1)
         {
@@ -45,6 +53,7 @@ public class Room : MonoBehaviour
                                                    anchor[1] + 0.5f - Player.transform.position.y,
                                                    Player.transform.position.z));
         }
+
         roomPattern.AddComponent<EnemiesRoom>();
         allRooms.Add(roomPattern);
 

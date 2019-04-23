@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+//Sarah
 public class DisappearSlider : MonoBehaviour
 {
     public void Disappear(Slider slider)

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicolas I
 public class Object : MonoBehaviour
 {
     [SerializeField] private ObjectsAsset objectsAsset;

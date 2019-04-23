@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
-
+//Nicolas I
 [Serializable]
 public class Weapon : MonoBehaviour
 {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using Image = UnityEngine.UI.Image;
-
+//Maxence
 public class ItemControl : MonoBehaviour
 {
     [SerializeField] public typeArea enumShop;
@@ -22,16 +22,5 @@ public class ItemControl : MonoBehaviour
     {
         icon.sprite = itemadd.Sprite;
         icon.enabled = true;
-    }
-    
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

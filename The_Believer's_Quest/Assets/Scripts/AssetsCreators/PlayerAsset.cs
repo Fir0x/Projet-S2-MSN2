@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+//Nicolas I
 [CreateAssetMenu(fileName = "NewPlayerAsset", menuName = "Entity/Player")]
 public class PlayerAsset : ScriptableObject
 {

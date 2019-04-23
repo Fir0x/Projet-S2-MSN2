@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicolas I
 public class ItemPanel : MonoBehaviour
 { 
     private List<GameObject> items = new List<GameObject>();

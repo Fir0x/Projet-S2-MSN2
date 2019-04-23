@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+//Nicolas I
 public class EnemiesAnimations : MonoBehaviour
 {
     [SerializeField] protected AnimationClip[] animationClips;

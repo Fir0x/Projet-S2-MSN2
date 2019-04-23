@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[CreateAssetMenu (fileName = "AllItem", menuName = "Item/AllItem")]
+//Nicolas I
+[CreateAssetMenu (fileName = "AllItem", menuName = "Items/AllItem")]
 public class AllItemsAsset : ScriptableObject
 {
     [SerializeField] private List<GameObject> allItems;

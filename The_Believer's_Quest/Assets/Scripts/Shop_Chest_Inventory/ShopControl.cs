@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//Maxence
 public class ShopControl : MonoBehaviour
 {
     public Text moneyAmountText;

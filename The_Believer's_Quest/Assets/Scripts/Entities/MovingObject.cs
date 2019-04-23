@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
-
+//Nicolas L
 public class MovingObject : MonoBehaviour
 {
     public bool Collision(Vector2 pos, float x, float y)

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+//Nicolas I
 [CreateAssetMenu(fileName = "NewSpriteAsset", menuName = "Sprite/Floor")]
 public class SpriteAsset : ScriptableObject
 {
