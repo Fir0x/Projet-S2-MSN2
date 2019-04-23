@@ -4,11 +4,11 @@ using System.Xml.Linq;
 using Entities;
 using UnityEngine;
 
-public class RealPathfinding : MonoBehaviour
+public class RealPathfinding
 {
     public GameObject enemy;
     private List<Node> finalPath;
-    Grid grid;
+    TileGrid grid;
 
     private List<GameObject> roomList;
 
@@ -19,19 +19,19 @@ public class RealPathfinding : MonoBehaviour
     private float posSalleX;
     private float posSalleY;
 
-    private void Start()
+    public void Init()
     {
-        roomList = Board.roomList;
+        roomList = Room.allRooms;
         posSalleX = (roomList[0].transform.position.x + 0.5f - player.GetFirstPos().x) / 16f;
         posSalleY = (roomList[0].transform.position.y + 0.5f - player.GetFirstPos().y) / 13f;
         
-        //if(/*posX centre salle*/ < player.GetFirstPos().x)
-            //posSalleX = -posSalleX;
+        if(grid.gameObject.transform.position.x < player.GetFirstPos().x)
+            posSalleX = -posSalleX;
                                                                                                                                             //il faut la position de l'ennemi !!!
-       // if(/*posY centre salle*/ < player.GetFirstPos().y)
-            //posSalleY = -posSalleY;
+       if(grid.gameObject.transform.position.y < player.GetFirstPos().y)
+            posSalleY = -posSalleY;
 
-        //grid = gameObject.GetComponent<Enemies>().parent;
+        grid = roomList[0].GetComponent<TileGrid>();
 
     }
 
@@ -42,7 +42,7 @@ public class RealPathfinding : MonoBehaviour
         FindPath(startPosition, finishPosition);
     }
 
-    private void FindPath(Vector3 startpos, Vector3 finishpos) //pos par rapport à la salle
+    public void FindPath(Vector3 startpos, Vector3 finishpos) //pos par rapport à la salle
     {
         Node startNode = grid.GetPos(startpos);
         Node finishNode = grid.GetPos(finishpos);

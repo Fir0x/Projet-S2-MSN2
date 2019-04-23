@@ -123,15 +123,12 @@ public class Board : MonoBehaviour
         }
 
         bool spawningRoom = true;
-        GameObject roomPattern;
         Room room;
         foreach (RoomBase roomBase in roomBaseList)
         {
             room = GetComponent<Room>();
-            roomPattern = room.RoomCreator(board, roomBase.anchor, roomBase.roomNumber, roomBase.doorsPosition, spawningRoom);
+            room.RoomCreator(board, roomBase.anchor, roomBase.roomNumber, roomBase.doorsPosition, spawningRoom);
             spawningRoom = false;
-            
-            /*roomList.Add(roomPattern);*/
         }
 
         //Utility.ExecutionTime.PrintExecutionTime(); //DEBUG

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class KeyBoardManager : MonoBehaviour
+public class KeyboardManager : MonoBehaviour
 {
     private Player player;
     private Weapon weapon;
@@ -68,8 +68,6 @@ public class KeyBoardManager : MonoBehaviour
         
         if (Input.GetKey(KeyCode.RightArrow))
             moveRight.Invoke();
-        if (Input.GetKey(KeyCode.Mouse0))
-            shot.Invoke();
     }
 }
 
