@@ -12,11 +12,11 @@ public class Room : MonoBehaviour
     private int roomNumber;
     private List<int[]> doorsPosition;
     private GameObject room;
-    [SerializeField] public PatternAsset patterns;
-    [SerializeField] protected GameObject player;
-    [SerializeField] protected SpriteAsset spriteAsset;
-    [SerializeField] protected GameObject wall;
-    [SerializeField] protected GameObject floor;
+    [SerializeField] private PatternAsset patterns;
+    [SerializeField] private GameObject player;
+
+    public PatternAsset Patterns { get => patterns; set => patterns = value; }
+    public GameObject Player { get => player; set => player = value; }
 
     void Awake()
     {
@@ -30,20 +30,20 @@ public class Room : MonoBehaviour
 
         if (spawningRoom)
         {
-            room = patterns.Pattern[0];
+            room = Patterns.Pattern[0];
         }
         else
         {
-            room = patterns.Pattern[UnityEngine.Random.Range(0, patterns.Pattern.Length)];
+            room = Patterns.Pattern[UnityEngine.Random.Range(0, Patterns.Pattern.Length)];
         }
         GameObject roomPattern = Instantiate(room, new Vector3(anchor[0], anchor[1], 0), Quaternion.identity) as GameObject;
         roomPattern.transform.parent = parent;
         
         if (roomNumber == 1)
         {
-            player.transform.Translate(new Vector3(anchor[0] + 0.5f - player.transform.position.x, 
-                                                   anchor[1] + 0.5f - player.transform.position.y,
-                                                   player.transform.position.z));
+            Player.transform.Translate(new Vector3(anchor[0] + 0.5f - Player.transform.position.x, 
+                                                   anchor[1] + 0.5f - Player.transform.position.y,
+                                                   Player.transform.position.z));
         }
         roomPattern.AddComponent<EnemiesRoom>();
         allRooms.Add(roomPattern);

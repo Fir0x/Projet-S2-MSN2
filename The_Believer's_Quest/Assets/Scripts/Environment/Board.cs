@@ -6,8 +6,8 @@ public class Board : MonoBehaviour
 {
     [SerializeField] private int width = 10;
     [SerializeField] private int height = 5;
-    private int roomWidth = 16;
-    private int roomHeight = 13;
+    private int roomWidth = 15;
+    private int roomHeight = 14;
     [SerializeField] private int roomNumber = 3;
     public static List<GameObject> roomList;
     private Transform board;

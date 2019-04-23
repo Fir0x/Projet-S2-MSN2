@@ -12,9 +12,9 @@ public class ItemPanel : MonoBehaviour
 
     public Transform Parent { get => parent; set => parent = value; }
 
-    public void Init()
+    public void Init(AllItemsAsset allItems)
     {
-        items = GetComponent<ItemChooser>().ChooseContent();
+        items = GetComponent<ItemChooser>().ChooseContent(allItems);
         slots = Parent.GetComponentsInChildren<SlotController>();
     }
 

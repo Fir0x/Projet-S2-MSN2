@@ -16,7 +16,6 @@ public class Weapon : MonoBehaviour
 
     public void SetWeapon(WeaponAsset weapon)
     {
-        print("Test: " + this.weapon);
         this.weapon = weapon;
     }
 

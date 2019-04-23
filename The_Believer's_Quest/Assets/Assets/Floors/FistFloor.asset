@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FistFloor
   m_EditorClassIdentifier: 
   pattern:
-  - {fileID: 8557945035501648176, guid: d59e9682d3767cb4791ab1a68f5c4dca, type: 3}
-  - {fileID: 7337496812596094357, guid: c092d4dba3cf00543bd6a2b43da6e751, type: 3}
+  - {fileID: 8906051720377335331, guid: c092d4dba3cf00543bd6a2b43da6e751, type: 3}
+  - {fileID: 9043607351194054891, guid: 4e6665a9900fd1743bd0c566676a347b, type: 3}
   - {fileID: 3864157006646243532, guid: 0a614340c421cd740a89b65b970de899, type: 3}

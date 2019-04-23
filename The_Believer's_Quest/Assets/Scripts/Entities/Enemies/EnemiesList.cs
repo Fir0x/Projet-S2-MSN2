@@ -7,8 +7,11 @@ namespace Entities
     public class EnemiesList : MonoBehaviour
     {
         private GameObject[] allMobs;
-        [SerializeField] private GameObject BlueSlime;
-        [SerializeField] private GameObject EarthSentinel;
+        [SerializeField] private GameObject blueSlime;
+        [SerializeField] private GameObject earthSentinel;
+
+        public GameObject BlueSlime { get => blueSlime; set => blueSlime = value; }
+        public GameObject EarthSentinel { get => earthSentinel; set => earthSentinel = value; }
 
         void Start()
         {

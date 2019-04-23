@@ -17,6 +17,8 @@ public class Enemies : MovingObject
     private SlimePathfinding slimePathfinding;
     private Transform transform1;
 
+    public EnemyAsset EnemyAsset { get => enemyAsset; set => enemyAsset = value; }
+
     void Start()
     {
         transform1 = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -27,6 +29,6 @@ public class Enemies : MovingObject
     private void FixedUpdate()
     {
         nextNode = slimePathfinding.FindPath(this.transform.position, transform1.position);
-        transform.position = Vector2.MoveTowards(startPos, nextNode.worldPos, enemyAsset.Speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(startPos, nextNode.worldPos, EnemyAsset.Speed * Time.deltaTime);
     }
 }
