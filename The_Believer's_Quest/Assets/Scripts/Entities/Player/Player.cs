@@ -70,11 +70,11 @@ public class Player : MovingObject
 
     public void MoveUp()
     {
-        print("l");
         animator.SetInteger(animDirectionHashID, 0);
         animator.SetTrigger(animMoveHashID);
         if (this.Collision(transform.position, 0, 1))
         {
+            print("ok");
             this.transform.Translate(0, moveY, 0);
         }
     }

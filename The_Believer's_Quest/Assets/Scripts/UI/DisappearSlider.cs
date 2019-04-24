@@ -5,7 +5,6 @@ public class DisappearSlider : MonoBehaviour
 {
     public void Disappear(Slider slider)
     {
-        print("ok");
         if (slider.value == 0)
         {
             slider.gameObject.transform.Find("Fill Area").gameObject.SetActive(false);
