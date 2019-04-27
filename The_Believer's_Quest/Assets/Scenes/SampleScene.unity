@@ -192,6 +192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 416202075394253419, guid: 6d25af751e6b66f41af00f81e941231e,
         type: 3}
+      propertyPath: closeDoors.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416202075394253419, guid: 6d25af751e6b66f41af00f81e941231e,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 7281622167015739582}
@@ -212,6 +217,28 @@ PrefabInstance:
       propertyPath: patterns
       value: 
       objectReference: {fileID: 11400000, guid: 2a13a7c1053de474eb3df32feeb33d85,
+        type: 2}
+    - target: {fileID: 416202075394253419, guid: 6d25af751e6b66f41af00f81e941231e,
+        type: 3}
+      propertyPath: closeDoors.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 416202075394253419, guid: 6d25af751e6b66f41af00f81e941231e,
+        type: 3}
+      propertyPath: closeDoors.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 416202075394253419, guid: 6d25af751e6b66f41af00f81e941231e,
+        type: 3}
+      propertyPath: doorTiles
+      value: 
+      objectReference: {fileID: 11400000, guid: c180910e995dbb94cbdd3af7b6665b60,
+        type: 2}
+    - target: {fileID: 416202075394253419, guid: 6d25af751e6b66f41af00f81e941231e,
+        type: 3}
+      propertyPath: playerAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c,
         type: 2}
     - target: {fileID: 8981345498103605062, guid: 6d25af751e6b66f41af00f81e941231e,
         type: 3}
@@ -420,7 +447,7 @@ PrefabInstance:
     - target: {fileID: 5913179110228629238, guid: 11b0b391ac9e63348bfabb422d4d177b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 12.074226
+      value: 131.29997
       objectReference: {fileID: 0}
     - target: {fileID: 3320182713237652179, guid: 11b0b391ac9e63348bfabb422d4d177b,
         type: 3}

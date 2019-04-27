@@ -53,7 +53,6 @@ public class KeyboardManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        print("KeyBoard update");
         if (Input.GetKey(KeyCode.UpArrow))
         {
             moveUp.Invoke();
@@ -68,7 +67,9 @@ public class KeyboardManager : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
             moveRight.Invoke();
         if (Input.GetKey(KeyCode.Mouse0))
+        {
             print("Attack");
-        shot.Invoke();
+            //shot.Invoke();
+        }
     }
 }

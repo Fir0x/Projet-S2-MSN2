@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a973be43bac814ead0410aa21261a0, type: 3}
   m_Name: TileAsset
   m_EditorClassIdentifier: 
-  tile:
-  - {fileID: 11400000, guid: 06c9f78e7a9451846b1168792b2ac9cf, type: 2}
-  - {fileID: 11400000, guid: af3bedf0eb2b48543a62834e4cd00aea, type: 2}
-  - {fileID: 11400000, guid: 4f1d3dc50ce6bd54696ac588f8df8e04, type: 2}
-  - {fileID: 11400000, guid: 4354bed65bade154bb70ec3d3ad28fd1, type: 2}
-  - {fileID: 11400000, guid: 15e043f646adcdc408b0e4551e1dbb9e, type: 2}
+  tiles:
+  - {fileID: 11400000, guid: fb3beaf703d47e94c96e36905c4f0006, type: 2}
+  - {fileID: 11400000, guid: 6146dbd48c8060c4589cb42114bbcdbb, type: 2}
+  - {fileID: 11400000, guid: ff67fb3888146d04cbd972febbaf8942, type: 2}
+  - {fileID: 11400000, guid: 0f2e2227cf6577d4fa276cd0033db06b, type: 2}
+  - {fileID: 11400000, guid: ee69c26c4f973b443b2484587319a566, type: 2}

@@ -1,16 +1,22 @@
-﻿using System.Collections;
+﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+
 //Nicolas I
 public class RoomManager : MonoBehaviour
 {
+    private int floor;
     private bool firstEntry = true;
     private List<Ennemy> ennemies = new List<Ennemy>();
     private List<Board.DoorPos> doors;
-    [SerializeField] private TileAsset tiles;
+    private TileAsset doorTiles;
 
-    public List<Board.DoorPos> Doors { get => doors; set => doors = value; }
-    public TileAsset Tiles { get => tiles; set => tiles = value; }
+    public void Init(List<Board.DoorPos> doors, int floor, TileAsset doorTiles)
+    {
+        this.floor = floor;
+        this.doors = doors;
+        this.doorTiles = doorTiles;
+    }
 
     private void OnTriggerEnter(Collider col)
     {
@@ -20,23 +26,26 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    private void SetDoorsFront()
+    public void CloseDoors()
     {
+        if (doors.Contains(Board.DoorPos.Up))
+            gameObject.GetComponentInChildren<LayerFront>().SetTile(doorTiles.Tiles[(floor - 1) * 5]);
 
+        foreach (LayerBehind script in gameObject.GetComponentsInChildren<LayerBehind>())
+        {
+            script.SetTiles(doors, doorTiles, floor);
+        }
     }
 
-    private void SetDoorsBehind()
+    public void OpenDoors()
     {
+        print("Open");
+        if (doors.Contains(Board.DoorPos.Up))
+            gameObject.GetComponentInChildren<LayerFront>().ClearTile();
 
-    }
-
-    public void ClearDoorsFront()
-    {
-
-    }
-
-    public void ClearDoorsBehind()
-    {
-
+        foreach (LayerBehind script in gameObject.GetComponentsInChildren<LayerBehind>())
+        {
+            script.ClearTiles(doors);
+        }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 [CreateAssetMenu (fileName = "TileAsset", menuName = "TileContainer")]
 public class TileAsset : ScriptableObject
 {
-    [SerializeField] private TileBase[] tile;
+    [SerializeField] private TileBase[] tiles;
 
-    public TileBase[] Tile { get => tile; set => tile = value; }
+    public TileBase[] Tiles { get => tiles; set => tiles = value; }
 }

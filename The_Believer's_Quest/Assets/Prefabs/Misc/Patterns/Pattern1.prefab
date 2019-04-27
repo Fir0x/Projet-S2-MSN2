@@ -4248,6 +4248,8 @@ GameObject:
   - component: {fileID: 532957397651085190}
   - component: {fileID: 5906491559065306941}
   - component: {fileID: 2194360175530052740}
+  - component: {fileID: 1111570022759575022}
+  - component: {fileID: 2135870981527115142}
   m_Layer: 0
   m_Name: Pattern1
   m_TagString: Untagged
@@ -4311,3 +4313,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 14.673998, y: 10.8594475}
   m_EdgeRadius: 0
+--- !u!114 &1111570022759575022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8906051720377335331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455af69a2b74eb04189a3ad7372b59d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 8112702316658212126}
+--- !u!114 &2135870981527115142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8906051720377335331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bd6d3643e19b944adbb4a6352d46c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 5890083176420601658}

@@ -74,7 +74,6 @@ public class Player : MovingObject
         animator.SetTrigger(animMoveHashID);
         if (this.Collision(transform.position, 0, 1))
         {
-            print("ok");
             this.transform.Translate(0, moveY, 0);
         }
     }
