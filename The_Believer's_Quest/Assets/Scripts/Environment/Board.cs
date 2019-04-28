@@ -132,13 +132,13 @@ public class Board : MonoBehaviour
                 }
                 else if (newY > lastY)
                 {
-                    parent.AddDoors(DoorPos.Down);
-                    actual.AddDoors(DoorPos.Up);
+                    parent.AddDoors(DoorPos.Up);
+                    actual.AddDoors(DoorPos.Down);
                 }
                 else
                 {
-                    parent.AddDoors(DoorPos.Up);
-                    actual.AddDoors(DoorPos.Down);
+                    parent.AddDoors(DoorPos.Down);
+                    actual.AddDoors(DoorPos.Up);
                 }
 
                 parent = roomBaseList[Random.Range(0, roomBaseList.Count)];
@@ -150,14 +150,22 @@ public class Board : MonoBehaviour
             }
         }
         
-        Room room;
+        Room room = GetComponent<Room>();
         foreach (RoomBase roomBase in roomBaseList)
         {
-            room = GetComponent<Room>();
             room.RoomCreator(board, roomBase.anchor, roomBase.roomNumber, roomBase.doorsPosition, roomBase.type);
         }
+        
+        StartCoroutine(testing(room)); //DEBUG
 
         //Utility.ExecutionTime.PrintExecutionTime(); //DEBUG
+    }
+
+    private IEnumerator testing(Room room)
+    {
+        room.Open();
+        yield return new WaitForSeconds(5);
+        room.Close();
     }
 
     public void Start()

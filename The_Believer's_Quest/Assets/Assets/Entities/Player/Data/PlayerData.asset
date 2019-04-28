@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d028474a3df4e38438ea9fa2b2749674, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  floor: 0
+  floor: 1
   hp: 0
   maxHP: 5
   effectValue: 1

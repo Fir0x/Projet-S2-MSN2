@@ -28,6 +28,7 @@ public class RoomManager : MonoBehaviour
 
     public void CloseDoors()
     {
+        print("Close");
         if (doors.Contains(Board.DoorPos.Up))
             gameObject.GetComponentInChildren<LayerFront>().SetTile(doorTiles.Tiles[(floor - 1) * 5]);
 

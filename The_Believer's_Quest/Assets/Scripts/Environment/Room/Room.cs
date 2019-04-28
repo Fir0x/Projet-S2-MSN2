@@ -9,11 +9,6 @@ using UnityEngine.Events;
 public class Room : MonoBehaviour
 {
     public static List<GameObject> allRooms = new List<GameObject>();
-    
-    private float[] anchor;
-    private int roomNumber;
-    private List<Board.DoorPos> doorsPosition;
-    private GameObject room;
 
     [SerializeField] private PatternAsset patterns;
     [SerializeField] private TileAsset doorTiles;
@@ -24,13 +19,15 @@ public class Room : MonoBehaviour
     public GameObject Player { get => player; set => player = value; }
     public TileAsset DoorTiles { get => doorTiles; set => doorTiles = value; }
 
-    public UnityEvent closeDoors;
-    public UnityEvent openDoors;
+    UnityEvent closeDoors;
+    UnityEvent openDoors;
 
-    private void Start()
+    void Awake()
     {
         if (closeDoors == null)
+        {
             closeDoors = new UnityEvent();
+        }
 
         if (openDoors == null)
             openDoors = new UnityEvent();
@@ -40,10 +37,7 @@ public class Room : MonoBehaviour
 
     public GameObject RoomCreator(Transform parent, float[] anchor, int roomNumber, List<Board.DoorPos> doorsPosition, Board.Type type)
     {
-        this.anchor = anchor;
-        this.roomNumber = roomNumber;
-        this.doorsPosition = doorsPosition;
-
+        GameObject room;
         if (roomNumber == 1 || type != Board.Type.Normal)
         {
             room = Patterns.Pattern[0];
@@ -90,7 +84,7 @@ public class Room : MonoBehaviour
 
     public void Open()
     {
-        print(openDoors.GetPersistentEventCount());
+        print("Invoke");
         openDoors.Invoke();
     }
 
@@ -101,6 +95,6 @@ public class Room : MonoBehaviour
 
     public void RoomSetup()
     {
-        print("test");
+        throw new System.NotImplementedException();
     }
 }
