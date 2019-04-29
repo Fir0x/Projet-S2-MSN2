@@ -24,7 +24,7 @@ namespace Entities
             HashSet<Node> closedSet = new HashSet<Node>();
             
             openSet.Add(startNode);
-            print("finishnode : " + finishNode.gridX + " " + finishNode.gridY);
+            //print("finishnode : " + finishNode.gridX + " " + finishNode.gridY);
             bool temp = true;
             while (openSet.Count > 0 && temp)
             {
@@ -39,11 +39,11 @@ namespace Entities
                 }
                 openSet.Remove(currentNode);
                 closedSet.Add(currentNode);
-                print(currentNode.gridX + " " + currentNode.gridY);
+                //print(currentNode.gridX + " " + currentNode.gridY);
                 
                 if (currentNode == finishNode)
                 {
-                    print("YES");
+                    //print("YES");
                     nextNode = (RetracePath(startNode, finishNode))[0];
                     temp = false;
                 }
@@ -69,7 +69,7 @@ namespace Entities
                     }
                 }
             }
-            print(nextNode);
+            //print(nextNode);
             return nextNode;
         }
         

@@ -4250,6 +4250,8 @@ GameObject:
   - component: {fileID: 2194360175530052740}
   - component: {fileID: 1111570022759575022}
   - component: {fileID: 2135870981527115142}
+  - component: {fileID: 6373499424967194864}
+  - component: {fileID: 2281708326647631596}
   m_Layer: 0
   m_Name: Pattern1
   m_TagString: Untagged
@@ -4339,3 +4341,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 5890083176420601658}
+--- !u!114 &6373499424967194864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8906051720377335331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074d16909fd879a4bb5ac6dca691ec35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isObstacle: {fileID: 4051659913793689455}
+--- !u!114 &2281708326647631596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8906051720377335331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0368ddfd19364f08b85df9e8e57721ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

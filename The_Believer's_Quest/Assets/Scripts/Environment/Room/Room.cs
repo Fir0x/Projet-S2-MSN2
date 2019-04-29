@@ -84,7 +84,7 @@ public class Room : MonoBehaviour
 
     public void Open()
     {
-        print("Invoke");
+        //print("Invoke");
         openDoors.Invoke();
     }
 

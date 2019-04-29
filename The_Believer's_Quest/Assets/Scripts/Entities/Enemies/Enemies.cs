@@ -23,12 +23,13 @@ public class Enemies : MovingObject
     {
         transform1 = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         slimePathfinding = this.GetComponentInParent<SlimePathfinding>();
-        startPos = this.transform.position;
     }
 
     private void FixedUpdate()
     {
-        nextNode = slimePathfinding.FindPath(this.transform.position, transform1.position);
-        transform.position = Vector2.MoveTowards(startPos, nextNode.worldPos, EnemyAsset.Speed * Time.deltaTime);
+        startPos = this.transform.position;
+        nextNode = slimePathfinding.FindPath(startPos, transform1.position);
+        print("startpos: " + startPos.x + " " + startPos.y + " nextpos: " + nextNode.gridX + " " + nextNode.gridY);
+        transform.position = Vector3.MoveTowards(startPos, nextNode.worldPos + new Vector3(0.5f, 0.5f, 0), EnemyAsset.Speed * Time.deltaTime);
     }
 }

@@ -26,12 +26,33 @@ public class TileGrid : MonoBehaviour
     void CreateGrid()
     {
         grid = new Node[gridSizeX, gridSixeY];
+        
+        isObstacle.CompressBounds();
+        TileBase[] tileArray = isObstacle.GetTilesBlock(isObstacle.cellBounds); //tableau à une dimension
+
+        //test
+        //foreach (TileBase b in tileArray)
+        //{
+          //  print((b == null).ToString());
+        //}
+
+        TileBase[,] twoTileArray = new TileBase[15, 11];
+        for (int i = 0; i < tileArray.Length; i++)
+        {
+            int x = i % 15;
+            int y = i / 15;
+            //print(x + " " + y);
+            twoTileArray[x, y] = tileArray[i];
+        }
+        
         for (float x = startScan.x; x <= finishScan.x; x++)
         {
             for (float y = startScan.y; y <= finishScan.y; y++)
             {
-                TileBase tile = isObstacle.GetTile(new Vector3Int((int) x, (int) y, 0));
-                bool walkable = tile == null;
+                //print((x - startScan.x) + " " + (y - startScan.y));
+                TileBase tile = twoTileArray[(int)x - (int)startScan.x, (int)y - (int)startScan.y];
+                bool walkable = tile != null;
+                print(walkable.ToString());
                 Node node = new Node(walkable, new Vector3((int) x, (int) y, 0), (int) (x - startScan.x), (int) (y - startScan.y));
 
                 grid[(int)x - (int)startScan.x, (int)y - (int)startScan.y] = node;
@@ -55,6 +76,7 @@ public class TileGrid : MonoBehaviour
             {
                 if (x != 0 || y != 0)
                 {
+                    
                     int neighX = node.gridX + x;
                     int neighY = node.gridY + y;
                     if (neighX >= 0 && neighX < gridSizeX && neighY >= 0 && neighY < gridSixeY)
