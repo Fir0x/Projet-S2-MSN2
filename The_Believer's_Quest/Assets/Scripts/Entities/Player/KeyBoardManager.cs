@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class KeyBoardManager : MonoBehaviour
 {
     private Player player;
+    private Enemies enemy;
 
     UnityEvent moveUp;
     UnityEvent moveRight;
@@ -54,9 +55,7 @@ public class KeyBoardManager : MonoBehaviour
     private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.UpArrow))
-        {
             moveUp.Invoke();
-        }
         
         if (Input.GetKey(KeyCode.LeftArrow))
             moveLeft.Invoke();
@@ -66,6 +65,7 @@ public class KeyBoardManager : MonoBehaviour
         
         if (Input.GetKey(KeyCode.RightArrow))
             moveRight.Invoke();
+        
         if (Input.GetKey(KeyCode.Mouse0))
         {
             print("Attack");
