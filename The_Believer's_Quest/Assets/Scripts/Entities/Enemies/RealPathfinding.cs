@@ -14,11 +14,11 @@ namespace Entities
             grid = GetComponent<TileGrid>();
         }
 
-        public Node FindPath(Vector3 startPos, Vector3 finishPos)
+        public List<Node> FindPath(Vector3 startPos, Vector3 finishPos)
         {
             Node startNode = grid.NodeFromPos(startPos);
             Node finishNode = grid.NodeFromPos(finishPos);
-            Node nextNode = null;
+            List<Node> nextNodes = null;
 
             List<Node> openSet = new List<Node>();
             HashSet<Node> closedSet = new HashSet<Node>();
@@ -41,7 +41,7 @@ namespace Entities
                 
                 if (currentNode == finishNode)
                 {
-                    nextNode = (RetracePath(startNode, finishNode))[0];
+                    nextNodes = RetracePath(startNode, finishNode);
                     temp = false;
                 }
 
@@ -66,7 +66,7 @@ namespace Entities
                     }
                 }
             }
-            return nextNode;
+            return nextNodes;
         }
         
         

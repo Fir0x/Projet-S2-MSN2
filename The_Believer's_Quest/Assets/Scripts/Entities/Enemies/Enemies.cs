@@ -15,7 +15,8 @@ public class Enemies : MovingObject
 
     private LayerMask mask;
     
-    private Node nextNode;
+    private List<Node> nextNodes;
+    private KeyBoardManager keyBoard;
     private Transform transformPlayer;
 
     private ChoosePathfinding pathfinding;
@@ -28,21 +29,23 @@ public class Enemies : MovingObject
     {
         realPathfinding = GetComponentInParent<RealPathfinding>();
         aerialPathfinding = GetComponentInParent<AerialPathfinding>();
-        
-        transformPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
+        keyBoard = playerGO.GetComponent<KeyBoardManager>();
+        transformPlayer = playerGO.GetComponent<Transform>();
         mask = gameObject.layer;
 
         if (mask == 9)
         {
-            pathfinding = AStarPathfinding;
+            pathfinding = AStarPathfindingStanding;
+            nextNodes = AStarPathfindingMoving();
         }
         else
         {
             pathfinding = SimplePathfinding;
         }
-        
+
     }
-    
 
     private void FixedUpdate()
     {
@@ -51,11 +54,20 @@ public class Enemies : MovingObject
 
     delegate void ChoosePathfinding();
 
-    private void AStarPathfinding()
+    private List<Node> AStarPathfindingMoving()
     {
         startPos = this.transform.position;
-        nextNode = realPathfinding.FindPath(startPos, transformPlayer.position);
-        transform.position = Vector3.MoveTowards(startPos, nextNode.worldPos + new Vector3(0.5f, 0.5f, 0), EnemyAsset.Speed * Time.deltaTime);
+        
+        return realPathfinding.FindPath(startPos, transformPlayer.position);
+    }
+
+    private void AStarPathfindingStanding()
+    {
+        if (transform.position == nextNodes[0].worldPos + new Vector3(0.5f, 0.5f, 0))
+        {
+            nextNodes.RemoveAt(0);
+        }
+        transform.position = Vector3.MoveTowards(startPos, nextNodes[0].worldPos + new Vector3(0.5f, 0.5f, 0), EnemyAsset.Speed * Time.deltaTime);
     }
 
     private void SimplePathfinding()
