@@ -14,12 +14,11 @@ namespace Entities
         {
             target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         }
-
-        private void Update()
+        public void Move(Enemies enemy)
         {
-            if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
+            if (Vector2.Distance(enemy.transform.position, target.position) > stoppingDistance)
             {
-                transform.position = Vector2.MoveTowards(transform.position, target.position, speedE + Time.deltaTime);
+                enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, target.position, speedE + Time.deltaTime);
             }
         }
     }

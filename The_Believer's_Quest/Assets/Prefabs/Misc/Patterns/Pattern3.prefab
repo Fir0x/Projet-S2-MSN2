@@ -1705,7 +1705,8 @@ GameObject:
   - component: {fileID: 4205171535172721641}
   - component: {fileID: 9153956395507642266}
   - component: {fileID: 245996048293363115}
-  - component: {fileID: 409288462057861604}
+  - component: {fileID: 3628379724640659548}
+  - component: {fileID: 4850784774456585815}
   m_Layer: 0
   m_Name: Pattern3
   m_TagString: Untagged
@@ -1808,7 +1809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObstacle: {fileID: 5331156639212487900}
---- !u!114 &409288462057861604
+--- !u!114 &3628379724640659548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1818,6 +1819,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0368ddfd19364f08b85df9e8e57721ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4850784774456585815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3864157006646243532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f18183e032451eb71560d4db4a0520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7838169658030074136

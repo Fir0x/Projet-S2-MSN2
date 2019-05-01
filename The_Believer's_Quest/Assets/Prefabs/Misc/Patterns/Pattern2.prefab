@@ -4296,7 +4296,8 @@ GameObject:
   - component: {fileID: 2336548853129304866}
   - component: {fileID: 8918816669062459018}
   - component: {fileID: 4048633891633086913}
-  - component: {fileID: 8021014440937950324}
+  - component: {fileID: 4046540604989327697}
+  - component: {fileID: 7572088696685652495}
   m_Layer: 0
   m_Name: Pattern2
   m_TagString: Untagged
@@ -4399,7 +4400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObstacle: {fileID: 3541356807441947900}
---- !u!114 &8021014440937950324
+--- !u!114 &4046540604989327697
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4409,5 +4410,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0368ddfd19364f08b85df9e8e57721ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7572088696685652495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9043607351194054891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f18183e032451eb71560d4db4a0520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

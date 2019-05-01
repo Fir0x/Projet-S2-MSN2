@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8460906556170232232}
   - component: {fileID: 2828400066342608304}
   - component: {fileID: 7332203270038196431}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BlueSlime
   m_TagString: Untagged
   m_Icon: {fileID: 0}

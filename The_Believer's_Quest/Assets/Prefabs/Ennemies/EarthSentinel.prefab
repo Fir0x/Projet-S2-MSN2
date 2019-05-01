@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 275647289109319040}
   - component: {fileID: 5396344658721706096}
   - component: {fileID: 2397394942925314983}
-  - component: {fileID: 2294477559792251581}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EarthSentinel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,8 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAsset: {fileID: 11400000, guid: d111dc0555081e143a9824f7b950a222, type: 2}
-  BlueSlime: {fileID: 0}
-  EarthSentinel: {fileID: 0}
 --- !u!114 &2397394942925314983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,15 +133,3 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
   - {fileID: 7400000, guid: 0f9c3f52c01a30b4e863a70401dd464e, type: 2}
   - {fileID: 7400000, guid: 08c36bd21fecc014fa926009988d9603, type: 2}
---- !u!114 &2294477559792251581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193622213193343670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7f18183e032451eb71560d4db4a0520, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
