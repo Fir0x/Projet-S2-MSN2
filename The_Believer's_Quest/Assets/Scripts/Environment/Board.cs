@@ -64,7 +64,7 @@ public class Board : MonoBehaviour
         board = new GameObject("Board").transform;
         List<RoomBase> roomBaseList = new List<RoomBase>();
         int[] startPoint = new int[] { Random.Range(0, Width - 1), Random.Range(0, Height - 1) };
-        RoomBase parent = new RoomBase(startPoint, 1, new float[] { startPoint[0] * roomWidth, startPoint[1] * roomHeight }, Type.Normal);
+        RoomBase parent = new RoomBase(startPoint, 1, new float[] { startPoint[0] * roomWidth + 8, startPoint[1] * roomHeight + 6 }, Type.Normal);
         roomBaseList.Add(parent);
         //print(Utility.VisualArray<int>(startPoint));
         RoomBase actual;
@@ -107,16 +107,16 @@ public class Board : MonoBehaviour
                 //print("newX = " + newPosition[0] + "\nnewY = " + newPosition[1]); //DEBUG
                 if (k == (int)(0.3333f * RoomNumber))
                 {
-                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth, newY * roomHeight }, Type.Chest);
+                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth + 8, newY * roomHeight + 6 }, Type.Chest);
                 }
                 else if (k == (int)(0.5f * RoomNumber))
-                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth, newY * roomHeight }, Type.Shop);
+                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth + 8, newY * roomHeight + 6 }, Type.Shop);
                 else if (k == (int)(0.6666f * RoomNumber))
-                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth, newY * roomHeight }, Type.Chest);
+                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth + 8, newY * roomHeight + 6 }, Type.Chest);
                 else if (k == RoomNumber)
-                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth, newY * roomHeight }, Type.Boss);
+                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth + 8, newY * roomHeight + 6 }, Type.Boss);
                 else
-                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth, newY * roomHeight }, Type.Normal);
+                    actual = new RoomBase(new int[] { newX, newY }, k, new float[] { newX * roomWidth + 8, newY * roomHeight + 6 }, Type.Normal);
                 //print(newX + ":" + newY); //DEBUG
                 roomBaseList.Add(actual);
                 //Add doors between the parent and his child
