@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 //Sarah et Nicolas I
-public class KeyboardManager : MonoBehaviour
+public class KeyBoardManager : MonoBehaviour
 {
     private Player player;
 

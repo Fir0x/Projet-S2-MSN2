@@ -37,16 +37,14 @@ public class TileGrid : MonoBehaviour
             int y = i / 15;
 
             twoTileArray[x, y] = tileArray[i];
-        }
+        }                                                                    //tableau à deux dimensions
         
         for (float x = startScan.x; x <= finishScan.x; x++)
         {
             for (float y = startScan.y; y <= finishScan.y; y++)
             {
-                //print((x - startScan.x) + " " + (y - startScan.y));
                 TileBase tile = twoTileArray[(int)x - (int)startScan.x, (int)y - (int)startScan.y];
                 bool walkable = tile != null;
-                print(walkable.ToString());
                 Node node = new Node(walkable, new Vector3((int) x, (int) y, 0), (int) (x - startScan.x), (int) (y - startScan.y));
 
                 grid[(int)x - (int)startScan.x, (int)y - (int)startScan.y] = node;

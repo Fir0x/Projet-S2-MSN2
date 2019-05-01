@@ -15,9 +15,9 @@ MonoBehaviour:
   floor: 1
   hp: 0
   maxHP: 5
-  effectValue: 1
-  maxEffectValue: 30
-  speed: 5
+  effectValue: 0
+  maxEffectValue: 0
+  speed: 2
   invicibility: 0
   gold: 0
   diamond: 0
