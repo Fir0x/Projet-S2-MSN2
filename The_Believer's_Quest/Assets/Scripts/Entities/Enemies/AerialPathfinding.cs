@@ -14,7 +14,7 @@ namespace Entities
         {
             target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         }
-        public void Move(Enemies enemy)
+        public void Move(Enemy enemy)
         {
             if (Vector2.Distance(enemy.transform.position, target.position) > stoppingDistance)
             {

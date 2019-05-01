@@ -6,18 +6,23 @@ using UnityEngine.Events;
 public class KeyBoardManager : MonoBehaviour
 {
     private Player player;
-    private Enemies enemy;
+    private Enemy enemy;
 
     UnityEvent moveUp;
     UnityEvent moveRight;
     UnityEvent moveDown;
     UnityEvent moveLeft;
     UnityEvent interact;
-    UnityEvent use;
+    UnityEvent useLeft;
+    UnityEvent useRight;
     UnityEvent shot;
 
+    [SerializeField] private GameObject developmentTool;
+
+    public GameObject DevelopmentTool { get => developmentTool; set => developmentTool = value; }
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         player = gameObject.GetComponent<Player>();
 
@@ -44,6 +49,17 @@ public class KeyBoardManager : MonoBehaviour
             moveLeft = new UnityEvent();
         }
         moveLeft.AddListener(player.MoveLeft);
+
+        if (useLeft == null)
+        {
+            useLeft = new UnityEvent();
+        }
+
+        if (useRight == null)
+        {
+            useRight = new UnityEvent();
+        }
+
         if (shot == null)
         {
             shot = new UnityEvent();
@@ -54,6 +70,9 @@ public class KeyBoardManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Backspace) && Input.GetKeyDown(KeyCode.M))
+            developmentTool.SetActive(!developmentTool.activeInHierarchy); //Make development toll appear/disappear
+
         if (Input.GetKey(KeyCode.UpArrow))
             moveUp.Invoke();
         
@@ -71,5 +90,31 @@ public class KeyBoardManager : MonoBehaviour
             print("Attack");
             //shot.Invoke();
         }
+    }
+
+    public void AddToMove(UnityAction call)
+    {
+        moveUp.AddListener(call);
+        moveRight.AddListener(call);
+        moveDown.AddListener(call);
+        moveLeft.AddListener(call);
+    }
+
+    public void RemoveFromMove(UnityAction call)
+    {
+        moveUp.RemoveListener(call);
+        moveRight.RemoveListener(call);
+        moveDown.RemoveListener(call);
+        moveLeft.RemoveListener(call);
+    }
+
+    public void AddToInteract(UnityAction call)
+    {
+        interact.AddListener(call);
+    }
+
+    public void RemoveFromInteract(UnityAction call)
+    {
+        interact.RemoveListener(call);
     }
 }

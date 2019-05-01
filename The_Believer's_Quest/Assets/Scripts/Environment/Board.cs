@@ -155,17 +155,8 @@ public class Board : MonoBehaviour
         {
             room.RoomCreator(board, roomBase.anchor, roomBase.roomNumber, roomBase.doorsPosition, roomBase.type);
         }
-        
-        StartCoroutine(testing(room)); //DEBUG
 
         //Utility.ExecutionTime.PrintExecutionTime(); //DEBUG
-    }
-
-    private IEnumerator testing(Room room)
-    {
-        room.Open();
-        yield return new WaitForSeconds(5);
-        room.Close();
     }
 
     public void Start()

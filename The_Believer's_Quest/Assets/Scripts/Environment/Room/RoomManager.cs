@@ -7,7 +7,7 @@ public class RoomManager : MonoBehaviour
 {
     private int floor;
     private bool firstEntry = true;
-    private List<Ennemy> ennemies = new List<Ennemy>();
+    private List<Enemy> ennemies = new List<Enemy>();
     private List<Board.DoorPos> doors;
     private TileAsset doorTiles;
 
@@ -28,7 +28,6 @@ public class RoomManager : MonoBehaviour
 
     public void CloseDoors()
     {
-        print("Close");
         if (doors.Contains(Board.DoorPos.Up))
             gameObject.GetComponentInChildren<LayerFront>().SetTile(doorTiles.Tiles[(floor - 1) * 5]);
 
@@ -40,7 +39,6 @@ public class RoomManager : MonoBehaviour
 
     public void OpenDoors()
     {
-        print("Open");
         if (doors.Contains(Board.DoorPos.Up))
             gameObject.GetComponentInChildren<LayerFront>().ClearTile();
 

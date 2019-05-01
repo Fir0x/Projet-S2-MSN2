@@ -31,8 +31,6 @@ public class Room : MonoBehaviour
 
         if (openDoors == null)
             openDoors = new UnityEvent();
-
-        openDoors.AddListener(RoomSetup);
     }
 
     public GameObject RoomCreator(Transform parent, float[] anchor, int roomNumber, List<Board.DoorPos> doorsPosition, Board.Type type)
@@ -84,7 +82,7 @@ public class Room : MonoBehaviour
 
     public void Open()
     {
-        //print("Invoke");
+        //print("Invoke"); //DEBUG
         openDoors.Invoke();
     }
 

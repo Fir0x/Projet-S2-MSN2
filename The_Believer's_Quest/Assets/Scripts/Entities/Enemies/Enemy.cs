@@ -6,7 +6,7 @@ using UnityEditor;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 //Nicolas L
-public class Enemies : MovingObject
+public class Enemy : MovingObject
 {
     [SerializeField] private EnemyAsset enemyAsset;
 
@@ -25,7 +25,7 @@ public class Enemies : MovingObject
 
     public EnemyAsset EnemyAsset { get => enemyAsset; set => enemyAsset = value; }
 
-    void Start()
+    void Awake()
     {
         realPathfinding = GetComponentInParent<RealPathfinding>();
         aerialPathfinding = GetComponentInParent<AerialPathfinding>();
@@ -37,7 +37,8 @@ public class Enemies : MovingObject
 
         if (mask == 9)
         {
-            pathfinding = AStarPathfindingStanding;
+            keyBoard.AddToMove(AStarPathfindingStanding);
+            //pathfinding = AStarPathfindingStanding;
             nextNodes = AStarPathfindingMoving();
         }
         else
@@ -49,7 +50,7 @@ public class Enemies : MovingObject
 
     private void FixedUpdate()
     {
-        pathfinding();
+        pathfinding?.Invoke();
     }
 
     delegate void ChoosePathfinding();
