@@ -14,7 +14,7 @@ namespace Entities
             grid = GetComponent<TileGrid>();
         }
 
-        public List<Node> FindPath(Vector3 startPos, Vector3 finishPos)
+        public Node FindPath(Vector3 startPos, Vector3 finishPos)
         {
             Node startNode = grid.NodeFromPos(startPos);
             Node finishNode = grid.NodeFromPos(finishPos);
@@ -49,11 +49,11 @@ namespace Entities
                 {
                     if (neighbor.walkable && !closedSet.Contains(neighbor))
                     {
-                        int newMoveCosttoNeighbor = currentNode.gCost + GetDistance(currentNode, neighbor);
+                        int newMoveCostToNeighbor = currentNode.gCost + GetDistance(currentNode, neighbor);
 
-                        if (newMoveCosttoNeighbor < neighbor.gCost || !openSet.Contains(neighbor))
+                        if (newMoveCostToNeighbor < neighbor.gCost || !openSet.Contains(neighbor))
                         {
-                            neighbor.gCost = newMoveCosttoNeighbor;
+                            neighbor.gCost = newMoveCostToNeighbor;
                             neighbor.hCost = GetDistance(neighbor, finishNode);
 
                             neighbor.parent = currentNode;
@@ -66,7 +66,8 @@ namespace Entities
                     }
                 }
             }
-            return nextNodes;
+            
+            return nextNodes[0];
         }
         
         

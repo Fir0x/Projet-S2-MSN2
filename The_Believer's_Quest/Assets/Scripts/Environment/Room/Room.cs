@@ -8,8 +8,7 @@ using UnityEngine.Events;
 [Serializable]
 public class Room : MonoBehaviour
 {
-    public static List<GameObject> allRooms = new List<GameObject>();
-
+    [SerializeField] private AllEnemyAsset allEnemies;
     [SerializeField] private PatternAsset patterns;
     [SerializeField] private TileAsset doorTiles;
     [SerializeField] private GameObject player;
@@ -61,7 +60,7 @@ public class Room : MonoBehaviour
         roomPattern.AddComponent<RoomManager>(); //Component set
 
         RoomManager manager = roomPattern.GetComponent<RoomManager>();
-        manager.Init(doorsPosition, playerAsset.Floor, doorTiles);
+        manager.Init(doorsPosition, playerAsset.Floor, doorTiles, allEnemies.AllEnemies);
 
         closeDoors.AddListener(manager.CloseDoors); //Add this pattern's component method to close his doors
         openDoors.AddListener(manager.OpenDoors); //Add this pattern's component method to close his doors)
@@ -74,8 +73,6 @@ public class Room : MonoBehaviour
                                                    Player.transform.position.z));
         }
 
-        roomPattern.AddComponent<EnemiesRoom>();
-        allRooms.Add(roomPattern);
 
         return roomPattern;
     }

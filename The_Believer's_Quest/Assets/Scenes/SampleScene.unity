@@ -240,6 +240,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c,
         type: 2}
+    - target: {fileID: 416202075394253419, guid: 6d25af751e6b66f41af00f81e941231e,
+        type: 3}
+      propertyPath: allEnemies
+      value: 
+      objectReference: {fileID: 11400000, guid: 73ac7689ed5938e4bb86311ae5218ccc,
+        type: 2}
     - target: {fileID: 8981345498103605062, guid: 6d25af751e6b66f41af00f81e941231e,
         type: 3}
       propertyPath: roomNumber
@@ -1172,5 +1178,10 @@ PrefabInstance:
       propertyPath: developmentTool
       value: 
       objectReference: {fileID: 1216451338}
+    - target: {fileID: 6878027935278444835, guid: 321cef1288d49514fa043b3adc2c08b7,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 321cef1288d49514fa043b3adc2c08b7, type: 3}

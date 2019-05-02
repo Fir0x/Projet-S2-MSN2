@@ -92,22 +92,6 @@ public class KeyBoardManager : MonoBehaviour
         }
     }
 
-    public void AddToMove(UnityAction call)
-    {
-        moveUp.AddListener(call);
-        moveRight.AddListener(call);
-        moveDown.AddListener(call);
-        moveLeft.AddListener(call);
-    }
-
-    public void RemoveFromMove(UnityAction call)
-    {
-        moveUp.RemoveListener(call);
-        moveRight.RemoveListener(call);
-        moveDown.RemoveListener(call);
-        moveLeft.RemoveListener(call);
-    }
-
     public void AddToInteract(UnityAction call)
     {
         interact.AddListener(call);

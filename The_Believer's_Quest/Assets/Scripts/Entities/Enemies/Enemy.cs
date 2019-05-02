@@ -15,64 +15,58 @@ public class Enemy : MovingObject
 
     private LayerMask mask;
     
-    private List<Node> nextNodes;
-    private KeyBoardManager keyBoard;
+    private Node nextNode;
     private Transform transformPlayer;
 
-    private ChoosePathfinding pathfinding;
+    private ChoosePathfinding Pathfinding;
     private RealPathfinding realPathfinding;
     private AerialPathfinding aerialPathfinding;
 
     public EnemyAsset EnemyAsset { get => enemyAsset; set => enemyAsset = value; }
 
-    void Awake()
+    void Start()
     {
         realPathfinding = GetComponentInParent<RealPathfinding>();
         aerialPathfinding = GetComponentInParent<AerialPathfinding>();
 
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
-        keyBoard = playerGO.GetComponent<KeyBoardManager>();
         transformPlayer = playerGO.GetComponent<Transform>();
         mask = gameObject.layer;
 
         if (mask == 9)
         {
-            keyBoard.AddToMove(AStarPathfindingStanding);
-            //pathfinding = AStarPathfindingStanding;
-            nextNodes = AStarPathfindingMoving();
+            Pathfinding = AStarPathfindingMoving;
         }
         else
         {
-            pathfinding = SimplePathfinding;
+            Pathfinding = SimplePathfinding;
         }
 
     }
 
     private void FixedUpdate()
     {
-        pathfinding?.Invoke();
+        Pathfinding();
     }
 
     delegate void ChoosePathfinding();
 
-    private List<Node> AStarPathfindingMoving()
+    private void AStarPathfindingMoving()
     {
         startPos = this.transform.position;
         
-        return realPathfinding.FindPath(startPos, transformPlayer.position);
-    }
-
-    private void AStarPathfindingStanding()
-    {
-        if (transform.position == nextNodes[0].worldPos + new Vector3(0.5f, 0.5f, 0))
-        {
-            nextNodes.RemoveAt(0);
-        }
-        transform.position = Vector3.MoveTowards(startPos, nextNodes[0].worldPos + new Vector3(0.5f, 0.5f, 0), EnemyAsset.Speed * Time.deltaTime);
+        nextNode = realPathfinding.FindPath(startPos, transformPlayer.position);
+        
+        transform.position = Vector3.MoveTowards(startPos, nextNode.worldPos + new Vector3(0.5f, 0.1f, 0), EnemyAsset.Speed * Time.deltaTime);
     }
 
     private void SimplePathfinding()
     {
         aerialPathfinding.Move(this);
+    }
+
+    public int GetWeight()
+    {
+        return EnemyAsset.Weight;
     }
 }

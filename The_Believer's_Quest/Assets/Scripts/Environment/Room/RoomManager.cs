@@ -5,25 +5,62 @@ using UnityEngine;
 //Nicolas I
 public class RoomManager : MonoBehaviour
 {
+    private List<GameObject> allEnemiesList;
+    
     private int floor;
     private bool firstEntry = true;
-    private List<Enemy> ennemies = new List<Enemy>();
+    private List<GameObject> enemies = new List<GameObject>();
     private List<Board.DoorPos> doors;
     private TileAsset doorTiles;
+    private int totalWeight = 7; //uniquement pour étage 1
 
-    public void Init(List<Board.DoorPos> doors, int floor, TileAsset doorTiles)
+    public void Init(List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> allEnemiesList)
     {
         this.floor = floor;
         this.doors = doors;
         this.doorTiles = doorTiles;
+        this.allEnemiesList = allEnemiesList;
+        CreateEnemies();
     }
 
-    private void OnTriggerEnter(Collider col)
+   private void CreateEnemies()
+   {
+        while (totalWeight > 0)
+        {
+            GameObject enemy = allEnemiesList[Random.Range(0, allEnemiesList.Count)];
+
+            enemies.Add(enemy);
+
+            if (totalWeight - enemy.GetComponent<Enemy>().GetWeight() < 0)
+            {
+                totalWeight = 0;
+            }
+            else
+            {
+                enemies.Add(enemy);
+                totalWeight -= enemy.GetComponent<Enemy>().GetWeight();
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
     {
+        print("coucou");
         if (firstEntry && col.name == "Player")
         {
             firstEntry = false;
+            
+            foreach (GameObject enemy in enemies)
+            {
+                //Instantiate(enemy, this.transform, true) as GameObject;
+            }
         }
+
+    }
+
+    private void DestroyEnemy(Enemy enemy)
+    {
+        
     }
 
     public void CloseDoors()
