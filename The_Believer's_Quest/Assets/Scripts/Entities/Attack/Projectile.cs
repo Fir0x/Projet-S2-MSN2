@@ -2,6 +2,7 @@
 //Nicolas I
 public class Projectile : MovingObject
 {
+    [SerializeField] protected PlayerAsset playerAsset;
     private float speed;
     private int damage;
     private Vector3 direction;
@@ -29,9 +30,7 @@ public class Projectile : MovingObject
         position = gameObject.transform.position;
         if (Collision(new Vector2(position.x, position.y), direction.x, direction.y))
             Destroy(gameObject);
-        
-        gameObject.transform.position = new Vector3(position.x + direction.x * speed * Time.deltaTime,
-                                                    position.y + direction.y * speed * Time.deltaTime,
-                                                    position.y);
+        gameObject.transform.Translate(position + direction * speed * Time.deltaTime);
+        //gameObject.transform.position = new Vector3(position.x + direction.x * speed * Time.deltaTime,position.y + direction.y * speed * Time.deltaTime,position.y);
     }
 }
