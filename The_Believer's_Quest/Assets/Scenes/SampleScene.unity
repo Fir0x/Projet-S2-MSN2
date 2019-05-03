@@ -704,6 +704,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Open
       objectReference: {fileID: 0}
+    - target: {fileID: 6161974391879433215, guid: 11b0b391ac9e63348bfabb422d4d177b,
+        type: 3}
+      propertyPath: playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11b0b391ac9e63348bfabb422d4d177b, type: 3}
 --- !u!1001 &1219426361542153915
@@ -798,6 +804,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241710226174738885, guid: 06705fef10342644c87cfd71544c31d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4241710226174738881, guid: 06705fef10342644c87cfd71544c31d3,
         type: 3}
@@ -1146,6 +1157,11 @@ PrefabInstance:
     - target: {fileID: 8643787426481538856, guid: fddef213d0325fa4b9ebd046b3e9ea98,
         type: 3}
       propertyPath: orthographic size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8643787426481538856, guid: fddef213d0325fa4b9ebd046b3e9ea98,
+        type: 3}
+      propertyPath: m_ClearFlags
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

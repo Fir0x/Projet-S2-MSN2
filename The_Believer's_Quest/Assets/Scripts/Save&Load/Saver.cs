@@ -1,40 +1,57 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 //Nicolas I
-[Serializable]
 public class Saver : MonoBehaviour
 {
-    private readonly string path;
-    private Player player;
-    private Board board;
+    [SerializeField] private PlayerAsset playerData;
 
-    public Saver(Player player, Board board)
+    public PlayerAsset PlayerData { get => playerData; set => playerData = value; }
+
+    [Serializable]
+    public class PlayerSave
     {
-        this.player = player;
-        this.board = board;
+        string diamond;
+        List<string> unlockedWeapons = new List<string>();
+
+        public PlayerSave(string diamond, List<string> unlockedWeapons)
+        {
+            this.diamond = diamond;
+            this.unlockedWeapons = unlockedWeapons;
+        }
     }
 
-    private void Saving()
+    private void Saving(PlayerSave save, string filename)
     {
-        print("Saving process begins");
-        IFormatter formatter = new BinaryFormatter();
-        //Binary save file opening
-        Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-        formatter.Serialize(stream, this); //Saving of the Saver object in the binary file
-        stream.Close();
-        print("Save is successful.");
+        if (!filename.Contains(".json"))
+            filename += ".json";
+
+        string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), filename);
+        print("File path: " + path); //DEBUG
+        File.WriteAllText(path, JsonUtility.ToJson(save));
     }
 
-    public Player GetPlayer()
+    public void SavePlayerData()
     {
-        return player;
+        Saving(new PlayerSave(Cipher(PlayerData.Diamond), new List<string>()), "playerData");
     }
 
-    public Board GetBoard()
+    private string Cipher(int value)
     {
-        return board;
+        List<int> digits = new List<int>();
+
+        while (value > 10)
+        {
+            digits.Add(value % 10);
+            value /= 10;
+        }
+        digits.Add(value);
+
+        string result = "";
+        for (int i = 0; i < digits.Count; i++)
+            result += (char) ((digits[i] * 10 + 10 - digits[i]) * 2 + 17);
+
+        return result;
     }
 }
