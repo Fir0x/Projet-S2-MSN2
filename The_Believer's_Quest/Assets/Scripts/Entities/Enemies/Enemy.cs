@@ -58,8 +58,11 @@ public class Enemy : MovingObject
         startPos = this.transform.position;
         
         nextNode = realPathfinding.FindPath(startPos, transformPlayer.position);
-        
-        transform.position = Vector3.MoveTowards(startPos, nextNode.worldPos + new Vector3(0.5f, 0.1f, 0), EnemyAsset.Speed * Time.deltaTime);
+
+        if (nextNode != null)
+        {
+            transform.position = Vector3.MoveTowards(startPos, nextNode.worldPos + new Vector3(0.5f, 0.1f, 0), EnemyAsset.Speed * Time.deltaTime);
+        }
     }
 
     private void SimplePathfinding()

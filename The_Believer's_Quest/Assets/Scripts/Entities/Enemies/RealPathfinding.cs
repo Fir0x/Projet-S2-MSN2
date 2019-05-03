@@ -20,57 +20,62 @@ namespace Entities
             Node finishNode = grid.NodeFromPos(finishPos);
             List<Node> nextNodes = null;
 
-            List<Node> openSet = new List<Node>();
-            HashSet<Node> closedSet = new HashSet<Node>();
-            
-            openSet.Add(startNode);
-            bool temp = true;
-            while (openSet.Count > 0 && temp)
+            if (startNode != finishNode)
             {
-                Node currentNode = openSet[0];
-                for (int i = 1; i < openSet.Count; i++)
-                {
-                    if (openSet[i].fCost < currentNode.fCost || (openSet[i].fCost == currentNode.fCost))
-                    {
-                        if (openSet[i].hCost < currentNode.hCost)
-                            currentNode = openSet[i];
-                    }
-                }
-                openSet.Remove(currentNode);
-                closedSet.Add(currentNode);
-                
-                if (currentNode == finishNode)
-                {
-                    nextNodes = RetracePath(startNode, finishNode);
-                    temp = false;
-                }
+                List<Node> openSet = new List<Node>();
+                HashSet<Node> closedSet = new HashSet<Node>();
 
-                foreach (Node neighbor in grid.GetNeighbors(currentNode))
+                openSet.Add(startNode);
+                bool temp = true;
+                while (openSet.Count > 0 && temp)
                 {
-                    if (neighbor.walkable && !closedSet.Contains(neighbor))
+                    Node currentNode = openSet[0];
+                    for (int i = 1; i < openSet.Count; i++)
                     {
-                        int newMoveCostToNeighbor = currentNode.gCost + GetDistance(currentNode, neighbor);
-
-                        if (newMoveCostToNeighbor < neighbor.gCost || !openSet.Contains(neighbor))
+                        if (openSet[i].fCost < currentNode.fCost || (openSet[i].fCost == currentNode.fCost))
                         {
-                            neighbor.gCost = newMoveCostToNeighbor;
-                            neighbor.hCost = GetDistance(neighbor, finishNode);
+                            if (openSet[i].hCost < currentNode.hCost)
+                                currentNode = openSet[i];
+                        }
+                    }
 
-                            neighbor.parent = currentNode;
+                    openSet.Remove(currentNode);
+                    closedSet.Add(currentNode);
 
-                            if (!openSet.Contains(neighbor))
+                    if (currentNode == finishNode)
+                    {
+                        nextNodes = RetracePath(startNode, finishNode);
+                        temp = false;
+                    }
+
+                    foreach (Node neighbor in grid.GetNeighbors(currentNode))
+                    {
+                        if (neighbor.walkable && !closedSet.Contains(neighbor))
+                        {
+                            int newMoveCostToNeighbor = currentNode.gCost + GetDistance(currentNode, neighbor);
+
+                            if (newMoveCostToNeighbor < neighbor.gCost || !openSet.Contains(neighbor))
                             {
-                                openSet.Add(neighbor);
+                                neighbor.gCost = newMoveCostToNeighbor;
+                                neighbor.hCost = GetDistance(neighbor, finishNode);
+
+                                neighbor.parent = currentNode;
+
+                                if (!openSet.Contains(neighbor))
+                                {
+                                    openSet.Add(neighbor);
+                                }
                             }
                         }
                     }
                 }
+
+                return nextNodes[0];
             }
-            
-            return nextNodes[0];
+
+            return null;
         }
-        
-        
+
         private int GetDistance(Node node1, Node node2)
         {
             int distanceX = Math.Abs(node1.gridX - node2.gridX);
