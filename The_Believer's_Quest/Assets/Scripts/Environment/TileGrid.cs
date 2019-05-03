@@ -14,10 +14,11 @@ public class TileGrid : MonoBehaviour
 
     private Vector2 startScan;
     private Vector2 finishScan;
-
+    private Vector2 position;
+    
     void Start()
     {
-        Vector2 position = this.transform.position;
+        position = this.transform.position;
         startScan = new Vector2(position.x - 7, position.y - 5);
         finishScan = new Vector2(position.x + 7, position.y + 5);
         CreateGrid();

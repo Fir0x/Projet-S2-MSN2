@@ -45,14 +45,15 @@ public class RoomManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        print("coucou");
-        if (firstEntry && col.name == "Player")
+        if (firstEntry && col.CompareTag("Player"))
         {
+            print("recoucou");
             firstEntry = false;
             
             foreach (GameObject enemy in enemies)
             {
-                //Instantiate(enemy, this.transform, true) as GameObject;
+                
+                GameObject enemyOnScene = Instantiate(enemy, gameObject.transform, false) as GameObject;
             }
         }
 

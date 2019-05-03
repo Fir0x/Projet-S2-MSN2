@@ -26,6 +26,8 @@ public class Enemy : MovingObject
 
     void Start()
     {
+        HP = enemyAsset.Hp;
+        
         realPathfinding = GetComponentInParent<RealPathfinding>();
         aerialPathfinding = GetComponentInParent<AerialPathfinding>();
 
@@ -68,5 +70,10 @@ public class Enemy : MovingObject
     public int GetWeight()
     {
         return EnemyAsset.Weight;
+    }
+
+    public void OnDestroy()
+    {
+        
     }
 }
