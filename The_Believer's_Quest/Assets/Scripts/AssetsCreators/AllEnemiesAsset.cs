@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+
 //Nicolas N
 [CreateAssetMenu(fileName = "AllEnemies", menuName = "Entity/AllEnemies")]
-public class AllEnemyAsset : ScriptableObject
+public class AllEnemiesAsset : ScriptableObject
 {
     [SerializeField] private List<GameObject> allEnemies;
 

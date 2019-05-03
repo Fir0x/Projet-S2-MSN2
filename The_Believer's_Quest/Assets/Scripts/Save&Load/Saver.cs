@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 //Nicolas I
 public class Saver : MonoBehaviour
@@ -10,12 +11,25 @@ public class Saver : MonoBehaviour
     public PlayerAsset PlayerData { get => playerData; set => playerData = value; }
 
     [Serializable]
+    public class PlayerSettings
+    {
+        public int BGMvolume; //Background music volume
+        public int BGSvolume; //Background sounds volume
+
+        public PlayerSettings(int BGMvolume, int BGSvolume)
+        {
+            this.BGMvolume = BGMvolume;
+            this.BGSvolume = BGSvolume;
+        }
+    }
+
+    [Serializable]
     public class PlayerSave
     {
-        string diamond;
-        List<string> unlockedWeapons = new List<string>();
+        public int diamond;
+        public List<int> unlockedWeapons = new List<int>();
 
-        public PlayerSave(string diamond, List<string> unlockedWeapons)
+        public PlayerSave(int diamond, List<int> unlockedWeapons)
         {
             this.diamond = diamond;
             this.unlockedWeapons = unlockedWeapons;
@@ -24,34 +38,31 @@ public class Saver : MonoBehaviour
 
     private void Saving(PlayerSave save, string filename)
     {
-        if (!filename.Contains(".json"))
-            filename += ".json";
 
         string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), filename);
-        print("File path: " + path); //DEBUG
-        File.WriteAllText(path, JsonUtility.ToJson(save));
+        //print("File path: " + path); //DEBUG
+        Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
+        new BinaryFormatter().Serialize(stream, save); //Saving of the GameSave object in the binary file
+        stream.Close();
+    }
+
+    private void Saving(PlayerSettings save, string filename)
+    {
+
+        string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), filename);
+        //print("File path: " + path); //DEBUG
+        Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
+        new BinaryFormatter().Serialize(stream, save); //Saving of the GameSave object in the binary file
+        stream.Close();
     }
 
     public void SavePlayerData()
     {
-        Saving(new PlayerSave(Cipher(PlayerData.Diamond), new List<string>()), "playerData");
+        Saving(new PlayerSave(PlayerData.Diamond, new List<int>()), "playerData");
     }
 
-    private string Cipher(int value)
+    public void SavePlayerSettings()
     {
-        List<int> digits = new List<int>();
-
-        while (value > 10)
-        {
-            digits.Add(value % 10);
-            value /= 10;
-        }
-        digits.Add(value);
-
-        string result = "";
-        for (int i = 0; i < digits.Count; i++)
-            result += (char) ((digits[i] * 10 + 10 - digits[i]) * 2 + 17);
-
-        return result;
+        Saving(new PlayerSettings(0, 0), "playerSettings");
     }
 }

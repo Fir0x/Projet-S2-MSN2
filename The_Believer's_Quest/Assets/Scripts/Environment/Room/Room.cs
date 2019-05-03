@@ -8,12 +8,13 @@ using UnityEngine.Events;
 [Serializable]
 public class Room : MonoBehaviour
 {
-    [SerializeField] private AllEnemyAsset allEnemies;
+    [SerializeField] private AllEnemiesAsset allEnemies;
     [SerializeField] private PatternAsset patterns;
     [SerializeField] private TileAsset doorTiles;
     [SerializeField] private GameObject player;
     [SerializeField] public PlayerAsset playerAsset;
 
+    public AllEnemiesAsset AllEnemies { get => allEnemies; set => allEnemies = value; }
     public PatternAsset Patterns { get => patterns; set => patterns = value; }
     public GameObject Player { get => player; set => player = value; }
     public TileAsset DoorTiles { get => doorTiles; set => doorTiles = value; }
