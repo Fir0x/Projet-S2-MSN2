@@ -13,21 +13,21 @@ public class Attack : MonoBehaviour
     }
 
 
-    public static void Launcher(Trajectory trajectory, Sprite sprite, Vector3 origin, Vector3 direction, float speed,
+    public static void Launcher(Trajectory trajectory /*Sprite sprite,*/, Vector3 origin, Vector3 direction, float speed,
         int damage)
     {
-        if (trajectory == Trajectory.Line)
+        /*if (trajectory == Trajectory.Line)
             LineShot(sprite, origin, direction, speed, damage);
         if (trajectory == Trajectory.Arc)
-            ArcShot(/*default*/ 6,sprite, origin, direction, speed, damage);
+            ArcShot(/*default 6,sprite, origin, direction, speed, damage);
         if (trajectory == Trajectory.Circle)
-            CircleShot(/*default*/ 10,sprite, origin, direction, speed, damage);
+            CircleShot(/*default 10,sprite, origin, direction, speed, damage);*/
         if (trajectory == Trajectory.Cqc)
-            Cqc(sprite, origin, direction, speed, damage);
+            Cqc(origin, direction, speed, damage);
     }
-    public static void Cqc(Sprite sprite, Vector3 origin, Vector3 direction, float speed, int damage){
+    public static void Cqc( Vector3 origin, Vector3 direction, float speed, int damage){
         GameObject projectile = Instantiate(Resources.Load("Projectile") as GameObject, origin, new Quaternion());
-        projectile.GetComponent<Projectile>().Init(sprite, speed, damage, direction);
+        projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, direction);
     }
 
     private static void LineShot(Sprite sprite, Vector3 origin, Vector3 direction, float speed, int damage)

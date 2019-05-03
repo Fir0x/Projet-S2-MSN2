@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   floor: 1
-  hp: 0
+  hp: 100
   maxHP: 5
   effectValue: 0
   maxEffectValue: 0

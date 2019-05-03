@@ -45,9 +45,9 @@ public class Player : MovingObject
     
     public void Attack()
     {
-        //print("Weapon GO: " + weapon);
-        //print(weapon.GetAsset());
-        //weapon.Shot();
+        playerAsset.Hp--;
+        playerAsset.Gold++;
+        weapon.Shot();
     }
 
     public void Dash()

@@ -88,7 +88,7 @@ public class KeyBoardManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0))
         {
             print("Attack");
-            //shot.Invoke();
+            shot.Invoke();
         }
     }
 
