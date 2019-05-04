@@ -10,7 +10,7 @@ public class TileGrid : MonoBehaviour
     private Node[,] grid;
 
     private int gridSizeX = 15;
-    private int gridSixeY = 11;
+    private int gridSixeY = 13;
 
     private Vector2 startScan;
     private Vector2 finishScan;
@@ -19,8 +19,8 @@ public class TileGrid : MonoBehaviour
     void Start()
     {
         position = this.transform.position;
-        startScan = new Vector2(position.x - 7, position.y - 5);
-        finishScan = new Vector2(position.x + 7, position.y + 5);
+        startScan = new Vector2(position.x - 7, position.y - 6);
+        finishScan = new Vector2(position.x + 7, position.y + 6);
         CreateGrid();
     }
 
@@ -31,7 +31,7 @@ public class TileGrid : MonoBehaviour
         isObstacle.CompressBounds();
         TileBase[] tileArray = isObstacle.GetTilesBlock(isObstacle.cellBounds); //tableau à une dimension
 
-        TileBase[,] twoTileArray = new TileBase[15, 11];
+        TileBase[,] twoTileArray = new TileBase[15, 13];
         for (int i = 0; i < tileArray.Length; i++)
         {
             int x = i % 15;
