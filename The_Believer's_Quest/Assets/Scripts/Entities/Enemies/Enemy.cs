@@ -65,7 +65,6 @@ public class Enemy : MovingObject
         }
         else if (transform.position.magnitude - transformPlayer.position.magnitude < 0.5)
         {
-            print("bonsoir");
             transform.position = Vector2.MoveTowards(transform.position, transformPlayer.position, enemyAsset.Speed * Time.deltaTime);
         }
     }
@@ -82,6 +81,6 @@ public class Enemy : MovingObject
 
     public void OnDestroy()
     {
-        
+        GetComponentInParent<RoomManager>().DestroyEnemy(gameObject);
     }
 }
