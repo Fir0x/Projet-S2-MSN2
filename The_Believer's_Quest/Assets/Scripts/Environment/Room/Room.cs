@@ -61,7 +61,15 @@ public class Room : MonoBehaviour
         roomPattern.AddComponent<RoomManager>(); //Component set
 
         RoomManager manager = roomPattern.GetComponent<RoomManager>();
-        manager.Init(doorsPosition, playerAsset.Floor, doorTiles, allEnemies.AllEnemies);
+        
+        if (roomNumber == 1 || type != Board.Type.Normal)
+        {
+            manager.Init(doorsPosition, playerAsset.Floor, doorTiles, new List<GameObject>());
+        }
+        else
+        {
+            manager.Init(doorsPosition, playerAsset.Floor, doorTiles, allEnemies.AllEnemies);
+        }
 
         closeDoors.AddListener(manager.CloseDoors); //Add this pattern's component method to close his doors
         openDoors.AddListener(manager.OpenDoors); //Add this pattern's component method to close his doors)

@@ -13,14 +13,26 @@ public class RoomManager : MonoBehaviour
     private List<Board.DoorPos> doors;
     private TileAsset doorTiles;
     private int totalWeight = 7; //uniquement pour étage 1
+    private int enemiesRemaining;
 
-    public void Init(List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> allEnemiesList)
+    private Vector3 roomPosition;
+    private TileGrid grid;
+
+    public void Init(List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList)
     {
         this.floor = floor;
         this.doors = doors;
         this.doorTiles = doorTiles;
-        this.allEnemiesList = allEnemiesList;
-        CreateEnemies();
+        this.allEnemiesList = enemiesList;
+        grid = gameObject.GetComponent<TileGrid>();
+        roomPosition = this.transform.position;
+        
+        if (enemiesList.Count > 0)
+        {
+            CreateEnemies();
+        }
+        
+        OpenDoors();
     }
 
    private void CreateEnemies()
@@ -29,39 +41,60 @@ public class RoomManager : MonoBehaviour
         {
             GameObject enemy = allEnemiesList[Random.Range(0, allEnemiesList.Count)];
 
-            enemies.Add(enemy);
-
-            if (totalWeight - enemy.GetComponent<Enemy>().GetWeight() < 0)
-            {
-                totalWeight = 0;
-            }
-            else
+            if (totalWeight - enemy.GetComponent<Enemy>().GetWeight() >= 0)
             {
                 enemies.Add(enemy);
                 totalWeight -= enemy.GetComponent<Enemy>().GetWeight();
             }
         }
-    }
+
+        enemiesRemaining = enemies.Count;
+   }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (firstEntry && col.CompareTag("Player"))
         {
-            print("recoucou");
             firstEntry = false;
+
+            bool posOk;
+            int x = 0;
+            int y = 0;
             
-            foreach (GameObject enemy in enemies)
+            foreach (GameObject enemy in enemies)        //apparition ennemis
             {
+                posOk = false;
+                while (!posOk)
+                {
+                    x = Random.Range(-7, 7);
+                    y = Random.Range(-5, 5);
+
+                    if (grid.NodeFromPos(roomPosition + new Vector3(x, y, 0)).walkable)
+                    {
+                        posOk = true;
+                    }
+                }
                 
-                GameObject enemyOnScene = Instantiate(enemy, gameObject.transform, false) as GameObject;
+                GameObject enemyOnScene = Instantiate(enemy, roomPosition + new Vector3(x, y, 0), Quaternion.identity) as GameObject;
+                enemyOnScene.transform.parent = this.transform;
+            }
+
+            if (enemiesRemaining > 0)
+            {
+                CloseDoors();
             }
         }
 
     }
 
-    private void DestroyEnemy(Enemy enemy)
+    public void DestroyEnemy(GameObject enemy)
     {
-        
+        enemiesRemaining -= 1;
+        print(enemiesRemaining + "");
+        if (enemiesRemaining == 0)
+        {
+            OpenDoors();
+        }
     }
 
     public void CloseDoors()
