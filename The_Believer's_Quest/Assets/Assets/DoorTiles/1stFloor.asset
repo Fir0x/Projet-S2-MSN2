@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a973be43bac814ead0410aa21261a0, type: 3}
+  m_Name: 1stFloor
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 11400000, guid: fd6bdd1f6e3d674498c92c641137e5ed, type: 2}
+  - {fileID: 11400000, guid: 0860374d2a214e4478559bc0bb4eea46, type: 2}
+  - {fileID: 11400000, guid: 4bbd9b403c7b50941a21c8f5bdba269e, type: 2}
+  - {fileID: 11400000, guid: c57e61b7e40b8e24ebfc6f7cd015af74, type: 2}
+  - {fileID: 11400000, guid: a223d6159b72de5499c508e15b858bba, type: 2}

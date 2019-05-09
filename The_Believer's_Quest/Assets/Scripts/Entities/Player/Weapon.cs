@@ -51,15 +51,15 @@ public class Weapon : MonoBehaviour
     
     IEnumerator ReloadTimer()
     {
+        print("Reload starts"); //DEBUG
         yield return new WaitForSeconds(weapon.ReloadingTime);
+        print("Reload ends"); //DEBUG
     }
 
     public void Reload()
     {
         weapon.Loader = (weapon.Loader + weapon.Ammunitions) % weapon.LoaderCappacity;
-        print("Reload starts"); //DEBUG
         StartCoroutine(ReloadTimer());
-        print("Reload ends"); //DEBUG
     }
 
     private void FixedUpdate() //tourne l'arme dans le bon sens

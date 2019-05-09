@@ -17,17 +17,17 @@ public class ObjectEffects : MonoBehaviour
 
         if (item.Duration != 0)
         {
-            StartCoroutine(Duration(item.Duration));
-            playerAsset.Hp -= item.HP;
-            playerAsset.MaxHP -= item.MaxHP;
-            playerAsset.EffectValue -= item.EffectValue;
-            playerAsset.MaxEffectValue -= item.MaxEffectValue;
-            playerAsset.Speed -= item.Speed;
+            StartCoroutine(Duration(item, item.Duration));
         }
     }
 
-    IEnumerator Duration(uint duration)
+    IEnumerator Duration(ObjectsAsset item, uint duration)
     {
         yield return new WaitForSeconds(duration);
+        playerAsset.Hp -= item.HP;
+        playerAsset.MaxHP -= item.MaxHP;
+        playerAsset.EffectValue -= item.EffectValue;
+        playerAsset.MaxEffectValue -= item.MaxEffectValue;
+        playerAsset.Speed -= item.Speed;
     }
 }

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 //Nicolas I
-public class Chest : ItemChooser
+public class Chest : ItemChooser, IInteractableObject
 {
-    [SerializeField] private AllItemsAsset allItems;
-    private List<GameObject> itemList;
-
-    public AllItemsAsset AllItems { get => allItems; set => allItems = value; }
+    private AllItemsAsset allItems;
+    
+    public void SetChest(AllItemsAsset allItems)
+    {
+        this.allItems = allItems;
+    }
 
     public void Interaction()
     {

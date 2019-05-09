@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 //Nicolas I
-[CreateAssetMenu (fileName = "AllItem", menuName = "Items/AllItem")]
+[CreateAssetMenu (fileName = "AllItems", menuName = "Items/AllItem")]
 public class AllItemsAsset : ScriptableObject
 {
     [SerializeField] private List<GameObject> allItems;
