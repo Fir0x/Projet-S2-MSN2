@@ -45,8 +45,6 @@ public class Player : MovingObject
     
     public void Attack()
     {
-        playerAsset.Hp--;
-        playerAsset.Gold++;
         weapon.Shot();
     }
 

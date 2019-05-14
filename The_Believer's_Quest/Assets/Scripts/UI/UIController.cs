@@ -17,17 +17,19 @@ public class UIController : MonoBehaviour
     [SerializeField] public Slider effect;
     [SerializeField] public Slider maxEffect;
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         hp.value = player.Hp;
         maxHp.value = player.MaxHP;
         effect.value = player.EffectValue;
         maxEffect.value = player.MaxEffectValue;
-        Weapon w = gameObject.GetComponentInChildren<Weapon>();
-        //weaponSprite.sprite = w.GetAsset().Sprite;
+        weaponSprite.sprite = player.WeaponsList[0].Sprite;
         gold.text = player.Gold +"";
         diamond.text = player.Diamond +"";
-        Ammo.text = player.WeaponsList[0].Loader + " / " + player.WeaponsList[0].Ammunitions;
+        if (player.WeaponsList[0].Cqc)
+            Ammo.text = "";
+        else
+            Ammo.text = player.WeaponsList[0].Loader + " / " + player.WeaponsList[0].Ammunitions;
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     //classe réalisé en majorité par Sarah avec l'aide de Nicolas I
+    public GameObject projectile;
     public enum Trajectory
     {
         Line,
@@ -26,7 +27,7 @@ public class Attack : MonoBehaviour
             Cqc(origin, direction, speed, damage);
     }
     public static void Cqc( Vector3 origin, Vector3 direction, float speed, int damage){
-        GameObject projectile = Instantiate(Resources.Load("Projectile") as GameObject, origin, new Quaternion());
+        GameObject projectile = Instantiate(Resources.Load("Projectile") as GameObject, origin,new Quaternion(0f,0f, 0f, 0f));
         projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, direction);
     }
 

@@ -68,9 +68,6 @@ public class Weapon : MonoBehaviour
         float rotz = Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg;
         if (weapon.Cqc)
         {
-            if (rotz > 90 && rotz < 270)
-                transform.rotation = Quaternion.Euler(0, 0f, 0f);
-            else 
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
         else
@@ -83,12 +80,10 @@ public class Weapon : MonoBehaviour
 
     public void Shot () //réalisé par Sarah
     {
-        print(weapon);
-        weapon.Ammunitions--;
-        //GameObject projectile = Instantiate(Resources.Load("Projectile") as GameObject, playerAsset.Position, new Quaternion());
+        if (!weapon.Cqc)
+            weapon.Ammunitions--;
         if (weapon.Cqc) //essai attaque corps à corps
         {
-            
             Attack.Launcher(Attack.Trajectory.Cqc, playerAsset.Position, Input.mousePosition,(float) weapon.Speed, weapon.Damage);
         }
         /*if (weapon.Railgun) //attaque en ligne avec RailGun

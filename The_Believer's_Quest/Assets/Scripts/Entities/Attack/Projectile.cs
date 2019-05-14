@@ -24,13 +24,13 @@ public class Projectile : MovingObject
         this.damage = damage;
         this.direction = direction;
         this.range = range;
+        this.position = playerAsset.Position;
     }
     private void FixedUpdate()
     {
         position = gameObject.transform.position;
         if (Collision(new Vector2(position.x, position.y), direction.x, direction.y))
             Destroy(gameObject);
-        gameObject.transform.Translate(position + direction * speed * Time.deltaTime);
-        //gameObject.transform.position = new Vector3(position.x + direction.x * speed * Time.deltaTime,position.y + direction.y * speed * Time.deltaTime,position.y);
+        gameObject.transform.position = new Vector3(position.x + direction.x * speed * Time.deltaTime,position.y + direction.y * speed * Time.deltaTime,position.y);
     }
 }
