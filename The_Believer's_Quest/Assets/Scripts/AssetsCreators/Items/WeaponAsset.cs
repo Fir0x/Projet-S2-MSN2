@@ -17,6 +17,7 @@ public class WeaponAsset : ScriptableObject
     [SerializeField] private bool railgun;
     [SerializeField] private bool cqc;
     [SerializeField] private bool circleshot;
+    [SerializeField] private int nbbulletsbyshot;
 
     public Sprite Sprite { get => sprite; set => sprite = value; }
     public int Price { get => price; set => price = value; }
@@ -32,4 +33,5 @@ public class WeaponAsset : ScriptableObject
     public bool Railgun { get => railgun; set => railgun = value; }
     public bool Cqc { get => cqc; set => cqc = value; }
     public bool Circleshot { get => circleshot; set => circleshot = value;}
+    public int Nbbulletsbyshot { get => nbbulletsbyshot; set => nbbulletsbyshot = value;}
 }

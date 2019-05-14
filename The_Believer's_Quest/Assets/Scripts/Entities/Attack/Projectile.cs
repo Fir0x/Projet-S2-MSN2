@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Security.Cryptography;
+using UnityEngine;
 //Nicolas I
 public class Projectile : MovingObject
 {
@@ -8,7 +9,7 @@ public class Projectile : MovingObject
     private Vector3 direction;
     private Vector3 position;
     private int range;
-
+    
     public void Init(Sprite sprite, float speed, int damage, Vector3 direction)
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
@@ -24,13 +25,13 @@ public class Projectile : MovingObject
         this.damage = damage;
         this.direction = direction;
         this.range = range;
-        this.position = playerAsset.Position;
     }
     private void FixedUpdate()
     {
-        position = gameObject.transform.position;
-        if (Collision(new Vector2(position.x, position.y), direction.x, direction.y))
+        if (position.x >100 |position.y > 100)
             Destroy(gameObject);
-        gameObject.transform.position = new Vector3(position.x + direction.x * speed * Time.deltaTime,position.y + direction.y * speed * Time.deltaTime,position.y);
+        gameObject.transform.Translate(new Vector3(position.x + direction.x * speed * Time.deltaTime,position.y + direction.y * speed * Time.deltaTime,position.z));
+        position.x = position.x + direction.x * speed * Time.deltaTime;
+        position.y = position.y + direction.y * speed * Time.deltaTime;
     }
 }

@@ -8,7 +8,9 @@ public class Weapon : MonoBehaviour
 {
     private WeaponAsset weapon;
     private PlayerAsset playerAsset;
-    
+    public bool shot;
+
+    public GameObject projectile;
     public WeaponAsset GetAsset()
     {
         return weapon;
@@ -74,8 +76,12 @@ public class Weapon : MonoBehaviour
         {
            transform.rotation = Quaternion.Euler(0f,0f,rotz -90);
         }
-        
-    
+
+        if (shot)
+        {
+            Shot();
+            shot = false;
+        }
     }
 
     public void Shot () //réalisé par Sarah
@@ -84,16 +90,59 @@ public class Weapon : MonoBehaviour
             weapon.Ammunitions--;
         if (weapon.Cqc) //essai attaque corps à corps
         {
-            Attack.Launcher(Attack.Trajectory.Cqc, playerAsset.Position, Input.mousePosition,(float) weapon.Speed, weapon.Damage);
+            projectile = Instantiate(projectile, transform.position, transform.rotation);
+            projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, 10, 3, transform.right);
         }
-        /*if (weapon.Railgun) //attaque en ligne avec RailGun
-            Attack.Launcher(Attack.Trajectory.Line,projectile.GetComponent<SpriteRenderer>().sprite, playerAsset.Position, Camera.main.ScreenToWorldPoint(Input.mousePosition), weapon.Speed,weapon.Damage); 
+        if (weapon.Railgun) //attaque en ligne avec RailGun
+            LineShot(playerAsset.Position,Camera.main.ScreenToWorldPoint(Input.mousePosition), weapon.Speed,weapon.Damage);
         if (weapon.Shotgun) //attaque en Arc avec Shotgun
-            Attack.Launcher(Attack.Trajectory.Arc, projectile.GetComponent<SpriteRenderer>().sprite, playerAsset.Position,Camera.main.ScreenToWorldPoint(Input.mousePosition), weapon.Speed,weapon.Damage); 
+            ArcShot( weapon.Nbbulletsbyshot ,playerAsset.Position,Camera.main.ScreenToWorldPoint(Input.mousePosition), weapon.Speed,weapon.Damage);
         //attaque en cercle avec Circleshot
         if (weapon.Circleshot)
-            Attack.Launcher(Attack.Trajectory.Circle, projectile.GetComponent<SpriteRenderer>().sprite, playerAsset.Position, Camera.main.ScreenToWorldPoint(Input.mousePosition), weapon.Speed,weapon.Damage); 
+            CircleShot(weapon.Nbbulletsbyshot,playerAsset.Position,Camera.main.ScreenToWorldPoint(Input.mousePosition), weapon.Speed,weapon.Damage);
    
-   */
     }
+    private void LineShot( Vector3 origin, Vector3 direction, float speed, int damage)
+    {
+        projectile = Instantiate(projectile, transform.position, transform.rotation);
+        projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
+    }
+
+    private void CircleShot(int nbprojectile, Vector3 origin, Vector3 direction, float speed, int damage)
+    {
+        
+        double angle = 360 / nbprojectile;
+        for (int i = 0; i < nbprojectile; i++)
+        {
+            projectile = Instantiate(projectile, transform.position, transform.rotation);
+            projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
+            direction = new Vector3(direction.x, (int) (direction.y * Math.Sin(angle)), direction.z);
+        } 
+    }
+    private  void ArcShot(int nbprojectile, Vector3 origin, Vector3 direction, float speed, int damage)
+    {
+        projectile = Instantiate(projectile, transform.position, transform.rotation);
+        projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
+
+        double angle = 120 / nbprojectile;
+        
+        for (int i = 1; i < nbprojectile/2; i++)
+        {
+            direction = new Vector3(direction.x, (int) (direction.y * Math.Sin(angle)), direction.z);
+            projectile = Instantiate(projectile, transform.position, transform.rotation);
+            projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
+
+        } 
+        
+        for (int i = 1; i < nbprojectile/2; i++)
+        {
+            
+            direction = new Vector3(direction.x, (int) (direction.y * Math.Sin(-angle)), direction.z);
+            projectile = Instantiate(projectile, transform.position, transform.rotation);
+            projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
+        } 
+    }
+
+
+
 }

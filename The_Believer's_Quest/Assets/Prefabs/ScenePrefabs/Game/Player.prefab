@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8283414275979511270}
   - component: {fileID: 6295750534380910213}
+  - component: {fileID: 5394087556743831930}
   - component: {fileID: 4659674338766441832}
   - component: {fileID: 1024341247632904857}
   - component: {fileID: 8245448492886440594}
@@ -50,6 +51,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 8643787426481538859, guid: fddef213d0325fa4b9ebd046b3e9ea98, type: 3}
   playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
+--- !u!114 &5394087556743831930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7281622167015739582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61ec21b623d93141a61c24b9bb513a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 0}
 --- !u!212 &4659674338766441832
 SpriteRenderer:
   m_ObjectHideFlags: 0

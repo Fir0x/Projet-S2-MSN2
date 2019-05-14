@@ -45,7 +45,7 @@ public class Player : MovingObject
     
     public void Attack()
     {
-        weapon.Shot();
+        weapon.shot = true;
     }
 
     public void Dash()
