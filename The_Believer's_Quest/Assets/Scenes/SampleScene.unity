@@ -286,6 +286,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9eb1b3ff1e6e04a86a718ff3375ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &608695381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3965654078627227375, guid: a345e41e75ad0b94aa845a60b71e5d4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1219426361542153915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &634153692 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8888533328027193468, guid: d1cde67dc7783d04990639b029ea2312,
@@ -813,6 +819,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703200435640186547, guid: a345e41e75ad0b94aa845a60b71e5d4f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703200435640186547, guid: a345e41e75ad0b94aa845a60b71e5d4f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703200435640186547, guid: a345e41e75ad0b94aa845a60b71e5d4f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813274547023473114, guid: a345e41e75ad0b94aa845a60b71e5d4f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300010, guid: 1e37c2890659a8d4cb47c1729cb75d0d,
+        type: 3}
+    - target: {fileID: 4813274547023473114, guid: a345e41e75ad0b94aa845a60b71e5d4f,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a345e41e75ad0b94aa845a60b71e5d4f, type: 3}
@@ -1560,5 +1592,16 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 854977504751522105, guid: 321cef1288d49514fa043b3adc2c08b7,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 608695381}
+    - target: {fileID: 5394087556743831930, guid: 321cef1288d49514fa043b3adc2c08b7,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 608695381}
+    m_RemovedComponents:
+    - {fileID: 5394087556743831930, guid: 321cef1288d49514fa043b3adc2c08b7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 321cef1288d49514fa043b3adc2c08b7, type: 3}

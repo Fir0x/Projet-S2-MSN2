@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
-//Nicolas I
+//Nicolas I et Sarah
 [Serializable]
 public class Weapon : MonoBehaviour
 {
@@ -83,8 +83,9 @@ public class Weapon : MonoBehaviour
             shot = false;
         }
     }
-
-    public void Shot () //réalisé par Sarah
+    //réalisé par Sarah à partir d'ici
+    
+    public void Shot () 
     {
         if (!weapon.Cqc)
             weapon.Ammunitions--;
@@ -102,13 +103,13 @@ public class Weapon : MonoBehaviour
             CircleShot(weapon.Nbbulletsbyshot,playerAsset.Position,Camera.main.ScreenToWorldPoint(Input.mousePosition), weapon.Speed,weapon.Damage);
    
     }
-    private void LineShot( Vector3 origin, Vector3 direction, float speed, int damage)
+    private void LineShot( Vector3 origin, Vector3 direction, float speed, int damage)//tir linéaire
     {
         projectile = Instantiate(projectile, transform.position, transform.rotation);
         projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
     }
 
-    private void CircleShot(int nbprojectile, Vector3 origin, Vector3 direction, float speed, int damage)
+    private void CircleShot(int nbprojectile, Vector3 origin, Vector3 direction, float speed, int damage)//tir en cercle
     {
         
         double angle = 360 / nbprojectile;
@@ -119,7 +120,7 @@ public class Weapon : MonoBehaviour
             direction = new Vector3(direction.x, (int) (direction.y * Math.Sin(angle)), direction.z);
         } 
     }
-    private  void ArcShot(int nbprojectile, Vector3 origin, Vector3 direction, float speed, int damage)
+    private  void ArcShot(int nbprojectile, Vector3 origin, Vector3 direction, float speed, int damage) //tir type shotgun
     {
         projectile = Instantiate(projectile, transform.position, transform.rotation);
         projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
