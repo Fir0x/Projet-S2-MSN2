@@ -4137,7 +4137,6 @@ GameObject:
   - component: {fileID: 128640059544989965}
   - component: {fileID: 483273049754181912}
   - component: {fileID: 5133834480283760938}
-  
   m_Layer: 0
   m_Name: Pattern3
   m_TagString: Untagged
@@ -4202,7 +4201,6 @@ BoxCollider2D:
   m_Size: {x: 14.6, y: 10.6}
   m_EdgeRadius: 0
 --- !u!114 &6829553512568039666
-
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4216,7 +4214,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 2556463295711967679}
 --- !u!114 &8232489258446797397
-
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4266,7 +4263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0368ddfd19364f08b85df9e8e57721ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
 --- !u!1 &8498275161593480413
 GameObject:
   m_ObjectHideFlags: 0
