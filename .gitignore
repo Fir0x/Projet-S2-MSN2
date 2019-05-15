@@ -67,3 +67,7 @@ media
 
 #Rider
 *.idea
+
+#The Believer's Quest
+playerData
+playerSettings

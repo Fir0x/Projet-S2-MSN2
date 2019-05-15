@@ -1242,6 +1242,7 @@ GameObject:
   - component: {fileID: 7188216009532017811}
   - component: {fileID: 7188216009532017809}
   - component: {fileID: 7188216009532017808}
+  - component: {fileID: 5385344217528174983}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -1309,6 +1310,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
+--- !u!114 &5385344217528174983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188216009532017810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29f3582be531b84caa5adb206879687, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  continueButton: {fileID: 0}
 --- !u!1 &7188216009607105497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,6 +1446,7 @@ GameObject:
   - component: {fileID: 7188216009795778600}
   - component: {fileID: 7188216009795778603}
   - component: {fileID: 7188216009795778607}
+  - component: {fileID: 7299230952994487298}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1532,6 +1547,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c69dd28418e554e8de45aa1f0dbf49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7299230952994487298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188216009795778602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9cc01b55c036404da6ab3ddc8345ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 24a48236da5c06c4184622636867952c, type: 2}
 --- !u!1 &7188216010054348016
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,6 +2129,7 @@ GameObject:
   - component: {fileID: 5527113019044598711}
   - component: {fileID: 148064848338775393}
   - component: {fileID: 2174833135971810799}
+  - component: {fileID: 8517848612728615734}
   m_Layer: 5
   m_Name: New Game
   m_TagString: Untagged
@@ -2216,8 +2245,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11500000, guid: fe16bcd4ed40d0249b177b6161f16474, type: 3}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &8517848612728615734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7457017208056078400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe16bcd4ed40d0249b177b6161f16474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 0}
 --- !u!1 &8908280631768337677
 GameObject:
   m_ObjectHideFlags: 0

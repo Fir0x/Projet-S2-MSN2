@@ -4,12 +4,8 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 //Nicolas I
-public class Saver : MonoBehaviour
+public static class Saver
 {
-    [SerializeField] private PlayerAsset playerData;
-
-    public PlayerAsset PlayerData { get => playerData; set => playerData = value; }
-
     [Serializable]
     public class PlayerSettings
     {
@@ -36,33 +32,32 @@ public class Saver : MonoBehaviour
         }
     }
 
-    private void Saving(PlayerSave save, string filename)
+    private static void Saving(PlayerSave save)
     {
-
-        string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), filename);
-        //print("File path: " + path); //DEBUG
+        string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerData.bin");
+        Console.WriteLine("File path: " + path); //DEBUG
         Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
         new BinaryFormatter().Serialize(stream, save); //Saving of the GameSave object in the binary file
         stream.Close();
     }
 
-    private void Saving(PlayerSettings save, string filename)
+    private static void Saving(PlayerSettings save)
     {
 
-        string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), filename);
-        //print("File path: " + path); //DEBUG
+        string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerSettings.bin");
+        //Console.WriteLine("File path: " + path); //DEBUG
         Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
         new BinaryFormatter().Serialize(stream, save); //Saving of the GameSave object in the binary file
         stream.Close();
     }
 
-    public void SavePlayerData()
+    public static void SavePlayerData(PlayerAsset playerData)
     {
-        Saving(new PlayerSave(PlayerData.Diamond, new List<int>()), "playerData");
+        Saving(new PlayerSave(playerData.Diamond, new List<int>()));
     }
 
-    public void SavePlayerSettings()
+    public static void SavePlayerSettings(int BGMvolume, int BGSvolume)
     {
-        Saving(new PlayerSettings(0, 0), "playerSettings");
+        Saving(new PlayerSettings(BGMvolume, BGSvolume));
     }
 }

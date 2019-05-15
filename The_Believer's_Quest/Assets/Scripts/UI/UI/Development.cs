@@ -3,50 +3,55 @@ using UnityEngine.UI;
 //Nicolas I
 public class Development : MonoBehaviour
 {
-    [SerializeField] protected PlayerAsset player;
+    [SerializeField] protected PlayerAsset playerData;
 
     public void ChangeHp(Slider slider)
     {
-        player.Hp = (int)slider.value;
+        playerData.Hp = (int)slider.value;
     }
 
     public void ChangeMaxHp(Slider slider)
     {
-        player.MaxHP = (int)slider.value;
+        playerData.MaxHP = (int)slider.value;
     }
 
     public void AdaptHpGauge(Slider slider)
     {
-        slider.maxValue = player.MaxHP;
+        slider.maxValue = playerData.MaxHP;
     }
 
     public void ChangeEffectVal(Slider slider)
     {
-        player.EffectValue = (int)slider.value;
+        playerData.EffectValue = (int)slider.value;
     }
 
     public void ChangeMaxEffect(Slider slider)
     {
-        player.MaxEffectValue = (int)slider.value;
+        playerData.MaxEffectValue = (int)slider.value;
     }
 
     public void AdaptEffectGauge(Slider slider)
     {
-        slider.maxValue = player.MaxEffectValue;
+        slider.maxValue = playerData.MaxEffectValue;
     }
 
     public void ChangeGold(Slider slider)
     {
-        player.Gold = (int)slider.value;
+        playerData.Gold = (int)slider.value;
     }
 
     public void ChangeDiamond(Slider slider)
     {
-        player.Diamond = (int)slider.value;
+        playerData.Diamond = (int)slider.value;
     }
 
     public void ChangeAmmo(Slider slider)
     {
-        player.WeaponsList[0].Ammunitions = (int)slider.value;
+        playerData.WeaponsList[0].Ammunitions = (int)slider.value;
+    }
+
+    public void Save()
+    {
+        Saver.SavePlayerData(playerData);
     }
 }

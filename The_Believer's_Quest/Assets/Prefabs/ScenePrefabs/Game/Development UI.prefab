@@ -486,7 +486,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8748843424231792025}
   m_HandleRect: {fileID: 3320182713237652179}
   m_Direction: 2
-  m_Value: 0.24039426
+  m_Value: 0
   m_Size: 0.3312317
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1035,8 +1035,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6161974391879433215}
-        m_MethodName: SavePlayerData
+      - m_Target: {fileID: 5112463665579083893}
+        m_MethodName: Save
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1790,7 +1790,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 225.60287}
+  m_AnchoredPosition: {x: 0, y: 297}
   m_SizeDelta: {x: 0, y: 444.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &4632114743522477236
@@ -1976,7 +1976,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4672948581959346676}
   - component: {fileID: 5112463665579083893}
-  - component: {fileID: 6161974391879433215}
   m_Layer: 0
   m_Name: Development UI
   m_TagString: Untagged
@@ -2009,19 +2008,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e536353e55262a47b1eb9f1deb9403b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
---- !u!114 &6161974391879433215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4672948581959346678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76d445fe91c9aaf468c4e862180613e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 0}
