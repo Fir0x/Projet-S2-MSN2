@@ -4,11 +4,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 //Nicolas I
-public class Loader : MonoBehaviour
+public static class Loader
 {
-    [SerializeField] private PlayerAsset playerData;
-
-    public PlayerAsset PlayerData { get => playerData; set => playerData = value; }
 
     private enum ISaveType
     {
@@ -16,27 +13,25 @@ public class Loader : MonoBehaviour
         Settings
     };
 
-    private void Loading(string filename, ISaveType saveType)
+    public static void LoadingPlayerData(PlayerAsset playerData)
     {
-        if (!filename.Contains(".json"))
-            throw new Exception("Abnormal save file");
-
-        string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), filename);
-        //print("File path: " + path); //DEBUG
+        string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerData.bin");
+        //Debug.Log("File path: " + path); //DEBUG
         //Binary save file opening
         Stream streamRestauration = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+        //Loading the GameSave object from the binary file
+        Saver.PlayerSave save = (Saver.PlayerSave) new BinaryFormatter().Deserialize(streamRestauration);
+        playerData.Diamond = save.diamond;
+        //FIX ME: En attente du système de débloquage d'arme
+    }
 
-        if (saveType == ISaveType.Data)
-        {
-            //Loading the GameSave object from the binary file
-            Saver.PlayerSave save = (Saver.PlayerSave) new BinaryFormatter().Deserialize(streamRestauration);
-            playerData.Diamond = save.diamond;
-            //FIX ME: En attente du système de débloquage d'arme
-        }
-        else
-        {
-            Saver.PlayerSettings save = (Saver.PlayerSettings) new BinaryFormatter().Deserialize(streamRestauration);
-            //FIX ME: En attente de la gestion du niveau sonore
-        }
+    public static void LoadingPlayerSettings()
+    {
+        string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerSettings.bin");
+        //Debug.Log("File path: " + path); //DEBUG
+        //Binary save file opening
+        Stream streamRestauration = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+        Saver.PlayerSettings save = (Saver.PlayerSettings)new BinaryFormatter().Deserialize(streamRestauration);
+        //FIX ME: En attente de la gestion du niveau sonore
     }
 }

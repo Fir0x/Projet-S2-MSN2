@@ -10,7 +10,7 @@ public class ContinueController : MonoBehaviour
 
     private void Awake()
     {
-        if (!File.Exists("playerData"))
+        if (!File.Exists("playerData.bin"))
         {
             continueButton.interactable = false;
             continueButton.gameObject.GetComponentInChildren<Text>().color = Color.gray;

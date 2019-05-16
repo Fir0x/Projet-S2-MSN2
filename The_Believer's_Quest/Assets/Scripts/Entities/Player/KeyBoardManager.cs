@@ -25,32 +25,32 @@ public class KeyBoardManager : MonoBehaviour
     void Awake()
     {
         player = gameObject.GetComponent<Player>();
+        
+            if (moveUp == null)
+            {
+                moveUp = new UnityEvent();
+            }
+            moveUp.AddListener(player.MoveUp);
 
-        if (moveUp == null)
-        {
-            moveUp = new UnityEvent();
-        }
-        moveUp.AddListener(player.MoveUp);
+            if (moveRight == null)
+            {
+                moveRight = new UnityEvent();
+            }
+            moveRight.AddListener(player.MoveRight);
 
-        if (moveRight == null)
-        {
-            moveRight = new UnityEvent();
-        }
-        moveRight.AddListener(player.MoveRight);
+            if (moveDown == null)
+            {
+                moveDown = new UnityEvent();
+            }
+            moveDown.AddListener(player.MoveDown);
 
-        if (moveDown == null)
-        {
-            moveDown = new UnityEvent();
-        }
-        moveDown.AddListener(player.MoveDown);
+            if (moveLeft == null)
+            {
+                moveLeft = new UnityEvent();
+            }
+            moveLeft.AddListener(player.MoveLeft);
 
-        if (moveLeft == null)
-        {
-            moveLeft = new UnityEvent();
-        }
-        moveLeft.AddListener(player.MoveLeft);
-
-        if (useLeft == null)
+            if (useLeft == null)
         {
             useLeft = new UnityEvent();
         }
@@ -73,19 +73,19 @@ public class KeyBoardManager : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Backspace) && Input.GetKeyDown(KeyCode.M))
             developmentTool.SetActive(!developmentTool.activeInHierarchy); //Make development toll appear/disappear
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetButton("Up"))
             moveUp.Invoke();
         
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetButton("Left"))
             moveLeft.Invoke();
         
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetButton("Down"))
             moveDown.Invoke();
         
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetButton("Right"))
             moveRight.Invoke();
         
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetButton("Attack"))
         {
             shot.Invoke();
         }

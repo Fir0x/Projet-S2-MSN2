@@ -35,7 +35,7 @@ public static class Saver
     private static void Saving(PlayerSave save)
     {
         string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerData.bin");
-        Console.WriteLine("File path: " + path); //DEBUG
+        Debug.Log("Save file path: " + path); //DEBUG
         Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
         new BinaryFormatter().Serialize(stream, save); //Saving of the GameSave object in the binary file
         stream.Close();
@@ -45,7 +45,7 @@ public static class Saver
     {
 
         string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerSettings.bin");
-        //Console.WriteLine("File path: " + path); //DEBUG
+        Debug.Log("Save file path: " + path); //DEBUG
         Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
         new BinaryFormatter().Serialize(stream, save); //Saving of the GameSave object in the binary file
         stream.Close();

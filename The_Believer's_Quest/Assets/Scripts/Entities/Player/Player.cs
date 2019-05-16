@@ -107,10 +107,10 @@ public class Player : MovingObject
     }
 
     private void FixedUpdate()
-    {  
+    {
         moveX = playerAsset.Speed * Time.deltaTime;
         moveY = playerAsset.Speed * Time.deltaTime;
-        
+
         //déplacement et collision
         if (Input.anyKey)
         {
