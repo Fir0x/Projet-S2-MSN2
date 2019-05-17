@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 275647289109319040}
   - component: {fileID: 5396344658721706096}
   - component: {fileID: 2397394942925314983}
+  - component: {fileID: 4154963747282114332}
   m_Layer: 10
   m_Name: EarthSentinel
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,3 +134,29 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
   - {fileID: 7400000, guid: 0f9c3f52c01a30b4e863a70401dd464e, type: 2}
   - {fileID: 7400000, guid: 08c36bd21fecc014fa926009988d9603, type: 2}
+--- !u!61 &4154963747282114332
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193622213193343670}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

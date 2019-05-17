@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+
 //Sarah et Nicolas I
 public class KeyBoardManager : MonoBehaviour
 {
@@ -85,7 +88,7 @@ public class KeyBoardManager : MonoBehaviour
         if (Input.GetButton("Right"))
             moveRight.Invoke();
         
-        if (Input.GetButton("Attack"))
+        if (Input.GetButton("Attack") && SceneManager.GetActiveScene()!= SceneManager.GetSceneByName("MainMenu"))
         {
             shot.Invoke();
         }

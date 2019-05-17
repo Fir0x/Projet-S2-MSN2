@@ -68,14 +68,12 @@ public class Weapon : MonoBehaviour
     {
         Vector3 angle = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float rotz = Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg;
-        if (weapon.Cqc)
+        /*if (weapon.Cqc)
         {
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
-        else
-        {
-           transform.rotation = Quaternion.Euler(0f,0f,rotz -90);
-        }
+        else*/
+           transform.rotation = Quaternion.Euler(0f,0f,rotz);
 
         if (shot)
         {
@@ -89,10 +87,12 @@ public class Weapon : MonoBehaviour
     {
         if (!weapon.Cqc)
             weapon.Ammunitions--;
+        
         if (weapon.Cqc) //essai attaque corps à corps
         {
-            projectile = Instantiate(projectile, transform.position, transform.rotation);
-            projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, 10, 3, transform.right);
+            print("before");
+            Instantiate(projectile, transform.position, transform.rotation).GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, 10, 5, transform.right);
+            print("after");
         }
         if (weapon.Railgun) //attaque en ligne avec RailGun
             LineShot(playerAsset.Position,Camera.main.ScreenToWorldPoint(Input.mousePosition), weapon.Speed,weapon.Damage);
@@ -105,8 +105,8 @@ public class Weapon : MonoBehaviour
     }
     private void LineShot( Vector3 origin, Vector3 direction, float speed, int damage)//tir linéaire
     {
-        projectile = Instantiate(projectile, transform.position, transform.rotation);
-        projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
+        GameObject newproj = Instantiate(projectile, transform.position, transform.rotation);
+        newproj.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
     }
 
     private void CircleShot(int nbprojectile, Vector3 origin, Vector3 direction, float speed, int damage)//tir en cercle
@@ -115,23 +115,23 @@ public class Weapon : MonoBehaviour
         double angle = 360 / nbprojectile;
         for (int i = 0; i < nbprojectile; i++)
         {
-            projectile = Instantiate(projectile, transform.position, transform.rotation);
-            projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
+            GameObject newproj = Instantiate(projectile, transform.position, transform.rotation);
+            newproj.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
             direction = new Vector3(direction.x, (int) (direction.y * Math.Sin(angle)), direction.z);
         } 
     }
     private  void ArcShot(int nbprojectile, Vector3 origin, Vector3 direction, float speed, int damage) //tir type shotgun
     {
-        projectile = Instantiate(projectile, transform.position, transform.rotation);
-        projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
+        GameObject newproj = Instantiate(projectile, transform.position, transform.rotation);
+        newproj.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
 
         double angle = 120 / nbprojectile;
         
         for (int i = 1; i < nbprojectile/2; i++)
         {
             direction = new Vector3(direction.x, (int) (direction.y * Math.Sin(angle)), direction.z);
-            projectile = Instantiate(projectile, transform.position, transform.rotation);
-            projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
+            newproj = Instantiate(projectile, transform.position, transform.rotation);
+            newproj.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
 
         } 
         
@@ -139,8 +139,8 @@ public class Weapon : MonoBehaviour
         {
             
             direction = new Vector3(direction.x, (int) (direction.y * Math.Sin(-angle)), direction.z);
-            projectile = Instantiate(projectile, transform.position, transform.rotation);
-            projectile.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
+            newproj = Instantiate(projectile, transform.position, transform.rotation);
+            newproj.GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.right);
         } 
     }
 
