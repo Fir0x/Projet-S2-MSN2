@@ -332,6 +332,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7188216009795778602, guid: ff7e3a92cfca634499e9d72702af17e4,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188216009039004855, guid: ff7e3a92cfca634499e9d72702af17e4,
+        type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8517848612728615734, guid: ff7e3a92cfca634499e9d72702af17e4,
         type: 3}
       propertyPath: playerData
@@ -343,11 +353,6 @@ PrefabInstance:
       propertyPath: continueButton
       value: 
       objectReference: {fileID: 424887857}
-    - target: {fileID: 7188216009795778602, guid: ff7e3a92cfca634499e9d72702af17e4,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
     - target: {fileID: 7188216009795778606, guid: ff7e3a92cfca634499e9d72702af17e4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -612,11 +617,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7188216009039004855, guid: ff7e3a92cfca634499e9d72702af17e4,
-        type: 3}
-      propertyPath: m_Colors.m_DisabledColor.a
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2174833135971810799, guid: ff7e3a92cfca634499e9d72702af17e4,
         type: 3}
