@@ -9,6 +9,7 @@ public class Projectile : MovingObject
     private Vector3 direction;
     private Vector3 position;
     private int range;
+   
     
     public void Init(Sprite sprite, float speed, int damage, Vector3 direction)
     {
@@ -28,10 +29,21 @@ public class Projectile : MovingObject
     }
     private void FixedUpdate()
     {
-        if (position.x >100 |position.y > 100)
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, 20, LayerMask.GetMask("Aerial", "Ground"));
+        if (hitInfo.collider != null )
+        {
+            if (hitInfo.collider.CompareTag("Enemy"))
+            {
+                hitInfo.collider.GetComponent<Enemy>().SetHP(damage);
+                Destroy(gameObject);
+            }
+        }
+        if (position.x >20 || position.y >20)
             Destroy(gameObject);
-        gameObject.transform.Translate(new Vector3(position.x + direction.x * speed * Time.deltaTime,position.y + direction.y * speed * Time.deltaTime,position.z));
-        position.x = position.x + direction.x * speed * Time.deltaTime;
-        position.y = position.y + direction.y * speed * Time.deltaTime;
+
+            gameObject.transform.Translate(new Vector3(position.x + direction.x * speed * Time.deltaTime,
+                position.y + direction.y * speed * Time.deltaTime, position.z));
+            position.x = position.x + direction.x * speed * Time.deltaTime;
+            position.y = position.y + direction.y * speed * Time.deltaTime;
     }
 }

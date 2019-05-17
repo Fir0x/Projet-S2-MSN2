@@ -83,4 +83,11 @@ public class Enemy : MovingObject
     {
         GetComponentInParent<RoomManager>().DestroyEnemy(gameObject);
     }
+
+    public void SetHP(int damage)
+    {
+        HP -= damage;
+        if (HP<0 )
+            Destroy(gameObject);
+    }
 }
