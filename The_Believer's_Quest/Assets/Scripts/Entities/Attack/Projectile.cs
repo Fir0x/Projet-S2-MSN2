@@ -19,7 +19,8 @@ public class Projectile : MovingObject
         this.direction = direction;
         range = -1;
     }
-    public void Init(Sprite sprite, float speed, int damage, Vector3 direction, int range) //Sarah
+    //Sarah
+    public void Init(Sprite sprite, float speed, int damage, Vector3 direction, int range) 
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         this.speed = speed;

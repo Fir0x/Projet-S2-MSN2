@@ -26,3 +26,4 @@ MonoBehaviour:
   railgun: 0
   cqc: 1
   circleshot: 0
+  nbbulletsbyshot: 0
