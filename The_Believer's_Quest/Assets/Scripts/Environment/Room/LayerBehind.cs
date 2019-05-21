@@ -11,7 +11,7 @@ public class LayerBehind : MonoBehaviour
     public void SetTiles(List<Board.DoorPos> doors, TileAsset tiles, int floor)
     {
         if (doors.Contains(Board.DoorPos.Up))
-            tilemap.SetTile(new Vector3Int(0, 7, 0), tiles.Tiles[1 + (floor - 1) * 5]);
+            tilemap.SetTile(new Vector3Int(0, 7, 0), tiles.Tiles[(floor - 1) * 5]);
 
         if (doors.Contains(Board.DoorPos.Right))
             tilemap.SetTile(new Vector3Int(8, 0, 0), tiles.Tiles[2 + (floor - 1) * 5]);

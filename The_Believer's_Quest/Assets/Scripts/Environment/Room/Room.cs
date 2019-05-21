@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Entities;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,6 +12,7 @@ public class Room : MonoBehaviour
     [SerializeField] private TileAsset doorTiles;
     [SerializeField] private GameObject player;
     [SerializeField] public PlayerAsset playerAsset;
+    private int id;
 
     public AllEnemiesAsset AllEnemies { get => allEnemies; set => allEnemies = value; }
     public PatternAsset Patterns { get => patterns; set => patterns = value; }
@@ -33,9 +33,10 @@ public class Room : MonoBehaviour
             openDoors = new UnityEvent();
     }
 
-    public GameObject RoomCreator(Transform parent, float[] anchor, int roomNumber, List<Board.DoorPos> doorsPosition, Board.Type type)
+    public GameObject RoomCreator(Transform parent, int[] mapPos, float[] anchor, int roomNumber, List<Board.DoorPos> doorsPosition, Board.Type type)
     {
         GameObject room;
+        id = roomNumber;
         if (roomNumber == 1 || type != Board.Type.Normal)
         {
             room = Patterns.Pattern[0];
@@ -44,7 +45,7 @@ public class Room : MonoBehaviour
         {
             room = Patterns.Pattern[UnityEngine.Random.Range(0, Patterns.Pattern.Length)];
         }
-
+        
         //Creation and configuration of the GameObject
         GameObject roomPattern = Instantiate(room, new Vector3(anchor[0], anchor[1], 0), Quaternion.identity) as GameObject; //Instantiation
 
@@ -64,11 +65,11 @@ public class Room : MonoBehaviour
         
         if (roomNumber == 1 || type != Board.Type.Normal)
         {
-            manager.Init(doorsPosition, playerAsset.Floor, doorTiles, new List<GameObject>());
+            manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, new List<GameObject>());
         }
         else
         {
-            manager.Init(doorsPosition, playerAsset.Floor, doorTiles, allEnemies.AllEnemies);
+            manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, allEnemies.AllEnemies);
         }
 
         closeDoors.AddListener(manager.CloseDoors); //Add this pattern's component method to close his doors
@@ -95,10 +96,5 @@ public class Room : MonoBehaviour
     public void Close()
     {
         closeDoors.Invoke();
-    }
-
-    public void RoomSetup()
-    {
-        throw new System.NotImplementedException();
     }
 }

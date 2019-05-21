@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 //Nicolas I et Sarah
 [Serializable]

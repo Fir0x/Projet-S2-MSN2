@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,8 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
     private List<GameObject> allEnemiesList;
-    
+
+    private int[] mapPos;
     private int floor;
     private bool firstEntry = true;
     private List<GameObject> enemies = new List<GameObject>();
@@ -18,12 +19,13 @@ public class RoomManager : MonoBehaviour
     private Vector3 roomPosition;
     private TileGrid grid;
 
-    public void Init(List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList)
+    public void Init(int[] mapPos, List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList)
     {
+        this.mapPos = mapPos;
         this.floor = floor;
         this.doors = doors;
         this.doorTiles = doorTiles;
-        this.allEnemiesList = enemiesList;
+        allEnemiesList = enemiesList;
         grid = gameObject.GetComponent<TileGrid>();
         roomPosition = this.transform.position;
         
@@ -51,7 +53,7 @@ public class RoomManager : MonoBehaviour
         enemiesRemaining = enemies.Count;
    }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col) //Nicolas L
     {
         if (firstEntry && col.CompareTag("Player"))
         {
@@ -87,7 +89,7 @@ public class RoomManager : MonoBehaviour
 
     }
 
-    public void DestroyEnemy(GameObject enemy)
+    public void DestroyEnemy(GameObject enemy) //Nicolas L
     {
         enemiesRemaining -= 1;
         print(enemiesRemaining + "");
@@ -99,8 +101,14 @@ public class RoomManager : MonoBehaviour
 
     public void CloseDoors()
     {
+        StartCoroutine(Closing());
+    }
+
+    IEnumerator Closing()
+    {
+        yield return new WaitForSeconds(0.05f);
         if (doors.Contains(Board.DoorPos.Up))
-            gameObject.GetComponentInChildren<LayerFront>().SetTile(doorTiles.Tiles[(floor - 1) * 5]);
+            gameObject.GetComponentInChildren<LayerFront>().SetTile(doorTiles.Tiles[1 + (floor - 1) * 5]);
 
         foreach (LayerBehind script in gameObject.GetComponentsInChildren<LayerBehind>())
         {

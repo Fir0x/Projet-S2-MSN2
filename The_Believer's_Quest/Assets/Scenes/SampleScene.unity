@@ -272,6 +272,11 @@ PrefabInstance:
       propertyPath: height
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8981345498103605062, guid: 6d25af751e6b66f41af00f81e941231e,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1501051464}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d25af751e6b66f41af00f81e941231e, type: 3}
 --- !u!114 &437738790 stripped
@@ -418,6 +423,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1588084678}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1501051464 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6305822660052598111, guid: d1cde67dc7783d04990639b029ea2312,
+    type: 3}
+  m_PrefabInstance: {fileID: 7587365739480505805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c335adf359d4f74da4c629fcfdbce60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1588084678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -786,6 +803,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6161974391879433215, guid: 11b0b391ac9e63348bfabb422d4d177b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 11b0b391ac9e63348bfabb422d4d177b, type: 3}
+--- !u!1839735485 &1777121294 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 69099982865221203, guid: d1cde67dc7783d04990639b029ea2312,
+    type: 3}
+  m_PrefabInstance: {fileID: 7587365739480505805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1219426361542153915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1407,8 +1430,24 @@ PrefabInstance:
       propertyPath: canvaspause
       value: 
       objectReference: {fileID: 634153692}
+    - target: {fileID: 6305822660052598111, guid: d1cde67dc7783d04990639b029ea2312,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1777121294}
+    - target: {fileID: 6305822660052598111, guid: d1cde67dc7783d04990639b029ea2312,
+        type: 3}
+      propertyPath: cursorMask
+      value: 
+      objectReference: {fileID: 7587365739480505806}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1cde67dc7783d04990639b029ea2312, type: 3}
+--- !u!1839735485 &7587365739480505806 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 8189745259717456868, guid: d1cde67dc7783d04990639b029ea2312,
+    type: 3}
+  m_PrefabInstance: {fileID: 7587365739480505805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8643787426048655191
 PrefabInstance:
   m_ObjectHideFlags: 0
