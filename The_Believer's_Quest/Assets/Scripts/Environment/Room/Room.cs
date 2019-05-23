@@ -65,11 +65,11 @@ public class Room : MonoBehaviour
         
         if (roomNumber == 1 || type != Board.Type.Normal)
         {
-            manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, new List<GameObject>());
+            manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, new List<GameObject>(), this);
         }
         else
         {
-            manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, allEnemies.AllEnemies);
+            manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, allEnemies.AllEnemies, this);
         }
 
         closeDoors.AddListener(manager.CloseDoors); //Add this pattern's component method to close his doors

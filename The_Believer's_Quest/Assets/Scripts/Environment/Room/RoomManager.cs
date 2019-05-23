@@ -19,12 +19,15 @@ public class RoomManager : MonoBehaviour
     private Vector3 roomPosition;
     private TileGrid grid;
 
-    public void Init(int[] mapPos, List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList)
+    private Room roomCreator;
+
+    public void Init(int[] mapPos, List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList, Room roomCreator)
     {
         this.mapPos = mapPos;
         this.floor = floor;
         this.doors = doors;
         this.doorTiles = doorTiles;
+        this.roomCreator = roomCreator;
         allEnemiesList = enemiesList;
         grid = gameObject.GetComponent<TileGrid>();
         roomPosition = this.transform.position;
@@ -33,8 +36,8 @@ public class RoomManager : MonoBehaviour
         {
             CreateEnemies();
         }
-        
-        OpenDoors();
+
+        roomCreator.Open();
     }
 
    private void CreateEnemies()
@@ -83,7 +86,7 @@ public class RoomManager : MonoBehaviour
 
             if (enemiesRemaining > 0)
             {
-                CloseDoors();
+                roomCreator.Close();
             }
         }
 
@@ -95,7 +98,7 @@ public class RoomManager : MonoBehaviour
         print(enemiesRemaining + "");
         if (enemiesRemaining == 0)
         {
-            OpenDoors();
+            roomCreator.Open();
         }
     }
 
@@ -107,23 +110,33 @@ public class RoomManager : MonoBehaviour
     IEnumerator Closing()
     {
         yield return new WaitForSeconds(0.05f);
-        if (doors.Contains(Board.DoorPos.Up))
-            gameObject.GetComponentInChildren<LayerFront>().SetTile(doorTiles.Tiles[1 + (floor - 1) * 5]);
+        /*foreach (LayerFront script in gameObject.GetComponentsInChildren<LayerFront>())
+        {
+            script.SetTiles(doors, doorTiles, floor);
+        }
 
         foreach (LayerBehind script in gameObject.GetComponentsInChildren<LayerBehind>())
         {
             script.SetTiles(doors, doorTiles, floor);
-        }
+        }*/
+
+        gameObject.GetComponentInChildren<LayerFront>().SetTiles(doors, doorTiles, floor);
+        gameObject.GetComponentInChildren<LayerBehind>().SetTiles(doors, doorTiles, floor);
     }
 
     public void OpenDoors()
     {
-        if (doors.Contains(Board.DoorPos.Up))
-            gameObject.GetComponentInChildren<LayerFront>().ClearTile();
+        /*foreach (LayerFront script in gameObject.GetComponentsInChildren<LayerFront>())
+        {
+            script.ClearTiles(doors, doorTiles, floor);
+        }
 
         foreach (LayerBehind script in gameObject.GetComponentsInChildren<LayerBehind>())
         {
-            script.ClearTiles(doors);
-        }
+            script.ClearTiles(doors, doorTiles, floor);
+        }*/
+
+        gameObject.GetComponentInChildren<LayerFront>().ClearTiles(doors, doorTiles, floor);
+        gameObject.GetComponentInChildren<LayerBehind>().ClearTiles(doors, doorTiles, floor);
     }
 }
