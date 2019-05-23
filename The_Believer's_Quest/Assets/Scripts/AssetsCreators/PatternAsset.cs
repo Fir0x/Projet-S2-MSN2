@@ -1,5 +1,7 @@
-﻿using UnityEngine;
-//Nicolas I
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 [CreateAssetMenu(fileName = "NewPatternAsset", menuName = "FloorPattern")]
 public class PatternAsset : ScriptableObject
 {
