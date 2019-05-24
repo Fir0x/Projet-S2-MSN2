@@ -9,8 +9,20 @@ public class Weapon : MonoBehaviour
     private PlayerAsset playerAsset;
     public bool shot;
     private float timeBTWshots;
-    
-    public GameObject projectile;
+
+    private UIController UIController;
+
+    [SerializeField] private GameObject projectile;
+
+    public GameObject Projectile { get => projectile; set => projectile = value; }
+
+    public void Init(UIController UIController, WeaponAsset weapon, PlayerAsset playerAsset)
+    {
+        this.UIController = UIController;
+        this.weapon = weapon;
+        this.playerAsset = playerAsset;
+    }
+
     public WeaponAsset GetAsset()
     {
         return weapon;
@@ -19,11 +31,7 @@ public class Weapon : MonoBehaviour
     public void SetWeapon(WeaponAsset weapon)
     {
         this.weapon = weapon;
-    }
-
-    public void SetPlayer(PlayerAsset playerAsset)
-    {
-        this.playerAsset = playerAsset;
+        UIController.changeWeapon.Invoke();
     }
 
     public int GetDamage()
@@ -39,11 +47,13 @@ public class Weapon : MonoBehaviour
     public void SetAmmunitions(int ammunitions)
     {
         weapon.Ammunitions = ammunitions;
+        UIController.changeAmmo.Invoke();
     }
 
     public void AddAmmunitions(int ammo)
     {
         weapon.Ammunitions = (weapon.Ammunitions + ammo) % weapon.MaxAmmunitions;
+        UIController.changeAmmo.Invoke();
     }
 
     public int GetLoaderAmmo()
@@ -62,6 +72,7 @@ public class Weapon : MonoBehaviour
     {
         weapon.Loader = (weapon.Loader + weapon.Ammunitions) % weapon.LoaderCappacity;
         StartCoroutine(ReloadTimer());
+        UIController.changeAmmo.Invoke();
     }
 
     private void FixedUpdate() //tourne l'arme dans le bon sens
@@ -90,9 +101,12 @@ public class Weapon : MonoBehaviour
         if (weapon.Loader <= 0 )
             Reload();
         if (!weapon.Cqc)
-            weapon.Loader-= weapon.Nbbulletsbyshot;
+        {
+            weapon.Loader -= weapon.Nbbulletsbyshot;
+            UIController.changeAmmo.Invoke();
+        }
         if (weapon.Cqc) //essai attaque corps à corps
-            Instantiate(projectile, transform.position, transform.rotation).GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, 10, 5, transform.right);
+            Instantiate(Projectile, transform.position, transform.rotation).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, 10, 5, transform.right);
 
         if (weapon.Railgun) //attaque en ligne avec RailGun
             LineShot(playerAsset.Position,Camera.main.ScreenToWorldPoint(Input.mousePosition), weapon.Speed,weapon.Damage, transform.rotation);
@@ -105,7 +119,7 @@ public class Weapon : MonoBehaviour
     }
     private void LineShot( Vector3 origin, Vector3 direction, float speed, int damage, Quaternion rotation)//tir linéaire
     {
-        Instantiate(projectile, transform.position,rotation).GetComponent<Projectile>().Init(projectile.GetComponent<SpriteRenderer>().sprite, 10, 5, transform.right);
+        Instantiate(Projectile, transform.position,rotation).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, 10, 5, transform.right);
     }
     
     private void CircleShot(int nbprojectile, Vector3 origin, Vector3 direction, float speed, int damage)//tir en cercle

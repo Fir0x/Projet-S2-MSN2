@@ -11,7 +11,9 @@ public class Player : MovingObject
 
     private Rigidbody2D rigid;  //utile pour déplacement glace
 
-    [SerializeField] protected PlayerAsset playerAsset;
+    [SerializeField] private PlayerAsset playerAsset;
+    [SerializeField] private GameObject ui;
+    private UIController uiController;
 
     private Weapon weapon;
     
@@ -27,10 +29,12 @@ public class Player : MovingObject
     private Vector2 firstPos;
 
     public GameObject Camera { get => camera; set => camera = value; }
+    public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
+    public GameObject UI { get => ui; set => ui = value; }
 
     public Vector2 GetPos()
     {
-        return this.transform.position;
+        return transform.position;
     }
 
     public Vector2 GetFirstPos()
@@ -41,6 +45,13 @@ public class Player : MovingObject
     public void SetLife(int value)
     {
         playerAsset.Hp = value;
+        uiController.changeHp.Invoke();
+    }
+
+    public void SetEffect(int value)
+    {
+        playerAsset.EffectValue = value;
+        uiController.changeEffect.Invoke();
     }
     
     public void Attack()
@@ -53,17 +64,15 @@ public class Player : MovingObject
         throw new NotImplementedException();
     }
 
-    private void Start()
+    private void Awake()
     {
         firstPos = this.transform.position;
 
         animator = GetComponent<Animator>();
-        moveX = playerAsset.Speed * Time.deltaTime;
-        moveY = playerAsset.Speed * Time.deltaTime;
+        uiController = ui.GetComponent<UIController>();
 
         weapon = GetComponentInChildren<Weapon>();
-        weapon.SetWeapon(playerAsset.WeaponsList[0]);
-        weapon.SetPlayer(playerAsset);
+        weapon.Init(uiController, PlayerAsset.WeaponsList[0], playerAsset);
     }
 
     public void MoveUp()
@@ -108,8 +117,8 @@ public class Player : MovingObject
 
     private void FixedUpdate()
     {
-        moveX = playerAsset.Speed * Time.deltaTime;
-        moveY = playerAsset.Speed * Time.deltaTime;
+        moveX = PlayerAsset.Speed * Time.deltaTime;
+        moveY = PlayerAsset.Speed * Time.deltaTime;
 
         //déplacement et collision
         if (Input.anyKey)
@@ -118,7 +127,7 @@ public class Player : MovingObject
             {
                 animator.SetTrigger(animDeathID);
             }
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetButton("Dash"))
             {
                 animator.SetTrigger(animDashID);
             }

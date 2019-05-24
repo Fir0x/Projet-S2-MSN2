@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-//Sarah
+using UnityEngine.Events;
+
+//Sarah (ancienne version) / Nicolas I (version actuelle)
 public class UIController : MonoBehaviour
 {
     public Text gold;
     public Text diamond;
-    public Text Ammo;
+    public Text ammo;
     public Image weaponSprite;
     
     [SerializeField] public PlayerAsset player;
@@ -17,19 +19,63 @@ public class UIController : MonoBehaviour
     [SerializeField] public Slider effect;
     [SerializeField] public Slider maxEffect;
 
+    public UnityEvent changeHp;
+    public UnityEvent changeMaxHp;
+    public UnityEvent changeEffect;
+    public UnityEvent changeMaxEffect;
+    public UnityEvent changeGold;
+    public UnityEvent changeDiamond;
+    public UnityEvent changeWeapon;
+    public UnityEvent changeAmmo;
 
-    void FixedUpdate()
+    private void Awake()
     {
-        hp.value = player.Hp;
-        maxHp.value = player.MaxHP;
-        effect.value = player.EffectValue;
-        maxEffect.value = player.MaxEffectValue;
-        weaponSprite.sprite = player.WeaponsList[0].Sprite;
-        gold.text = player.Gold +"";
-        diamond.text = player.Diamond +"";
-        if (player.WeaponsList[0].Cqc)
-            Ammo.text = "";
-        else
-            Ammo.text = player.WeaponsList[0].Loader + " / " + player.WeaponsList[0].Ammunitions;
+        if (changeHp == null)
+        {
+            changeHp = new UnityEvent();
+            changeHp.AddListener(() => hp.value = player.Hp);
+        }
+
+        if (changeMaxHp == null)
+        {
+            changeMaxHp = new UnityEvent();
+            changeMaxHp.AddListener(() => hp.maxValue = player.MaxHP);
+        }
+
+        if (changeEffect == null)
+        {
+            changeEffect = new UnityEvent();
+            changeEffect.AddListener(() => effect.value = player.EffectValue);
+        }
+
+        if (changeMaxEffect == null)
+        {
+            changeMaxEffect = new UnityEvent();
+            changeMaxEffect.AddListener(() => effect.maxValue = player.MaxEffectValue);
+        }
+
+        if (changeGold == null)
+        {
+            changeGold = new UnityEvent();
+            changeGold.AddListener(() => gold.text = player.Gold + "");
+        }
+
+        if (changeDiamond == null)
+        {
+            changeDiamond = new UnityEvent();
+            changeDiamond.AddListener(() => diamond.text = player.Diamond + "");
+        }
+
+        if (changeWeapon == null)
+        {
+            changeWeapon = new UnityEvent();
+            changeWeapon.AddListener(() => weaponSprite.sprite = player.WeaponsList[0].Sprite);
+        }
+
+        if (changeAmmo == null)
+        {
+            changeAmmo = new UnityEvent();
+            changeAmmo.AddListener(() => ammo.text = player.WeaponsList[0].Loader + "/" + player.WeaponsList[0].Ammunitions);
+        }
     }
 }
