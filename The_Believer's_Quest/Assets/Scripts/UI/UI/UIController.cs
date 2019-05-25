@@ -75,7 +75,7 @@ public class UIController : MonoBehaviour
         if (changeAmmo == null)
         {
             changeAmmo = new UnityEvent();
-            changeAmmo.AddListener(() => ammo.text = player.WeaponsList[0].Loader + "/" + player.WeaponsList[0].Ammunitions);
+            changeAmmo.AddListener(() => ammo.text = player.WeaponsList[0].Cqc? "" :player.WeaponsList[0].Loader + "/" + player.WeaponsList[0].Ammunitions);
         }
     }
 }

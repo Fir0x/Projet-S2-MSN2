@@ -11,22 +11,24 @@ public class Projectile : MovingObject
     private int range;
    
     
-    public void Init(Sprite sprite, float speed, int damage, Vector3 direction)
-    {
-        gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
-        this.speed = speed;
-        this.damage = damage;
-        this.direction = direction;
-        range = -1;
-    }
-    //Sarah
-    public void Init(Sprite sprite, float speed, int damage, Vector3 direction, int range) 
+    public void Init(Sprite sprite, float speed, int damage, Vector3 direction, int range)
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         this.speed = speed;
         this.damage = damage;
         this.direction = direction;
         this.range = range;
+    }
+    //Sarah
+    public void Init(Sprite sprite, float speed, int damage, Vector3 direction, float angle) 
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
+        this.speed = speed;
+        this.damage = damage;
+        this.direction = direction;
+        if (angle != 0)
+             transform.RotateAround(position, Vector3.up, angle);
+
     }
     private void FixedUpdate()
     {
@@ -41,10 +43,10 @@ public class Projectile : MovingObject
         }
         if (position.x >20 || position.y >20)
             Destroy(gameObject);
-
-            gameObject.transform.Translate(new Vector3(position.x + direction.x * speed * Time.deltaTime,
-                position.y + direction.y * speed * Time.deltaTime, position.z));
-            position.x = position.x + direction.x * speed * Time.deltaTime;
-            position.y = position.y + direction.y * speed * Time.deltaTime;
+        
+        gameObject.transform.Translate(new Vector3(position.x + direction.x * speed * Time.deltaTime,
+            position.y + direction.y * speed * Time.deltaTime, position.z));
+        position.x = position.x + direction.x * speed * Time.deltaTime;
+        position.y = position.y + direction.y * speed * Time.deltaTime;
     }
 }
