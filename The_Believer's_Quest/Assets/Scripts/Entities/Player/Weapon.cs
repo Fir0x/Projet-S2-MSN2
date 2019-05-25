@@ -70,9 +70,12 @@ public class Weapon : MonoBehaviour
 
     public void Reload()
     {
-        weapon.Loader = (weapon.Loader + weapon.Ammunitions) % weapon.LoaderCappacity;
-        StartCoroutine(ReloadTimer());
-        UIController.changeAmmo.Invoke();
+        if (weapon.LoaderCappacity != 0)
+        {
+            weapon.Loader = (weapon.Loader + weapon.Ammunitions) % weapon.LoaderCappacity;
+            StartCoroutine(ReloadTimer());
+            UIController.changeAmmo.Invoke();
+        }
     }
 
     private void FixedUpdate() //tourne l'arme dans le bon sens

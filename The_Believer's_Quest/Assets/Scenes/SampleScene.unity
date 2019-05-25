@@ -297,6 +297,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9eb1b3ff1e6e04a86a718ff3375ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &586478252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9191210180019234503, guid: d1cde67dc7783d04990639b029ea2312,
+    type: 3}
+  m_PrefabInstance: {fileID: 7587365739480505805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &608695381 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3965654078627227375, guid: a345e41e75ad0b94aa845a60b71e5d4f,
@@ -1029,6 +1035,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: weaponSprite
+      value: 
+      objectReference: {fileID: 3000740917392928271}
+    - target: {fileID: 0}
+      propertyPath: playerGO
+      value: 
+      objectReference: {fileID: 7281622167015739582}
     - target: {fileID: 9191210180019234503, guid: d1cde67dc7783d04990639b029ea2312,
         type: 3}
       propertyPath: m_Name
@@ -1250,14 +1264,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 5.150009
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: weaponSprite
-      value: 
-      objectReference: {fileID: 3000740917392928271}
-    - target: {fileID: 0}
-      propertyPath: playerGO
-      value: 
-      objectReference: {fileID: 7281622167015739582}
     - target: {fileID: 8039293107225931703, guid: d1cde67dc7783d04990639b029ea2312,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1696,6 +1702,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c,
         type: 2}
+    - target: {fileID: 6295750534380910213, guid: 321cef1288d49514fa043b3adc2c08b7,
+        type: 3}
+      propertyPath: ui
+      value: 
+      objectReference: {fileID: 586478252}
     - target: {fileID: 5394087556743831930, guid: 321cef1288d49514fa043b3adc2c08b7,
         type: 3}
       propertyPath: projectile
