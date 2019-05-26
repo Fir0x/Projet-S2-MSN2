@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography;
-using UnityEngine;
+﻿using UnityEngine;
 //Nicolas I
 public class Projectile : MovingObject
 {
@@ -7,7 +6,6 @@ public class Projectile : MovingObject
     private float speed;
     private int damage;
     private Vector3 direction;
-    private Vector3 position;
     private int range;
    
     
@@ -20,14 +18,14 @@ public class Projectile : MovingObject
         this.range = range;
     }
     //Sarah
-    public void Init(Sprite sprite, float speed, int damage, Vector3 direction, float angle) 
+    public void Init(Sprite sprite, float speed, int damage, Vector3 origin, float angle) 
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         this.speed = speed;
         this.damage = damage;
-        this.direction = direction;
+        direction = transform.position - origin;
         if (angle != 0)
-             transform.RotateAround(position, Vector3.up, angle);
+             transform.RotateAround(origin, Vector3.forward, angle);
 
     }
     private void FixedUpdate()
@@ -41,12 +39,13 @@ public class Projectile : MovingObject
                 Destroy(gameObject);
             }
         }
+
+        Vector3 position = transform.position;
+
         if (position.x >20 || position.y >20)
             Destroy(gameObject);
         
         gameObject.transform.Translate(new Vector3(position.x + direction.x * speed * Time.deltaTime,
             position.y + direction.y * speed * Time.deltaTime, position.z));
-        position.x = position.x + direction.x * speed * Time.deltaTime;
-        position.y = position.y + direction.y * speed * Time.deltaTime;
     }
 }

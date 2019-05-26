@@ -3,6 +3,14 @@
 [CreateAssetMenu (fileName = "NewWeapon", menuName = "Items/Weapon")]
 public class WeaponAsset : ScriptableObject
 {
+    public enum WeaponType
+    {
+        CQC,
+        Railgun,
+        Line,
+        Shotgun,
+        Circle
+    }
     [SerializeField] private Sprite sprite;
     [SerializeField] private int price;
     [SerializeField] private int damage;
@@ -13,10 +21,7 @@ public class WeaponAsset : ScriptableObject
     [SerializeField] private int maxAmmunitions;
     [SerializeField] private int ammunitions;
     [SerializeField] private int speed;
-    [SerializeField] private bool shotgun;
-    [SerializeField] private bool railgun;
-    [SerializeField] private bool cqc;
-    [SerializeField] private bool circleshot;
+    [SerializeField] private WeaponType type;
     [SerializeField] private int nbbulletsbyshot;
 
     public Sprite Sprite { get => sprite; set => sprite = value; }
@@ -29,9 +34,6 @@ public class WeaponAsset : ScriptableObject
     public int MaxAmmunitions { get => maxAmmunitions; set => maxAmmunitions = value; }
     public int Ammunitions { get => ammunitions; set => ammunitions = value; }
     public int Speed { get => speed; set => speed = value; }
-    public bool Shotgun { get => shotgun; set => shotgun = value; }
-    public bool Railgun { get => railgun; set => railgun = value; }
-    public bool Cqc { get => cqc; set => cqc = value; }
-    public bool Circleshot { get => circleshot; set => circleshot = value;}
+    public WeaponType Type { get => type; set => type = value; }
     public int Nbbulletsbyshot { get => nbbulletsbyshot; set => nbbulletsbyshot = value;}
 }

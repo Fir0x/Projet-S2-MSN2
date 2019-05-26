@@ -17,13 +17,10 @@ MonoBehaviour:
   damage: 5
   cooldown: 0.2
   reloadingTime: 0
-  loader: 0
+  loader: -560
   loaderCappacity: 0
   maxAmmunitions: 0
   ammunitions: 0
   speed: 0
-  shotgun: 0
-  railgun: 0
-  cqc: 1
-  circleshot: 0
-  nbbulletsbyshot: 0
+  type: 3
+  nbbulletsbyshot: 5

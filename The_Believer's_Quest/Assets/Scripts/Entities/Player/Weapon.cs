@@ -15,6 +15,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject projectile;
 
     public GameObject Projectile { get => projectile; set => projectile = value; }
+    public WeaponAsset.WeaponType Type { get => weapon.Type; }
 
     public void Init(UIController UIController, WeaponAsset weapon, PlayerAsset playerAsset)
     {
@@ -82,7 +83,7 @@ public class Weapon : MonoBehaviour
     {
         Vector3 angle = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float rotz = Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg;
-        if (!weapon.Cqc)
+        if (!(weapon.Type == WeaponAsset.WeaponType.CQC))
         {
             transform.rotation = Quaternion.Euler(0f,0f,rotz);
         }
@@ -101,52 +102,53 @@ public class Weapon : MonoBehaviour
     
     public void Shot () 
     {
-        if (!weapon.Cqc)
+        print(Camera.main.ScreenToWorldPoint(Input.mousePosition)); //DEBUG
+        if (!(weapon.Type == WeaponAsset.WeaponType.CQC))
         {
             weapon.Loader -= weapon.Nbbulletsbyshot;
             UIController.changeAmmo.Invoke();
         }
-        if (weapon.Cqc) //attaque corps à corps
+        if ((weapon.Type == WeaponAsset.WeaponType.CQC)) //attaque corps à corps
             Instantiate(Projectile, transform.position, transform.rotation).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, 10, 5, transform.right, 0f);
 
-        if (weapon.Railgun) //attaque en ligne avec RailGun
-            LineShot(playerAsset.Position,Camera.main.ScreenToWorldPoint(Input.mousePosition), weapon.Speed,weapon.Damage, 0);
-        if (weapon.Shotgun) //attaque en Arc avec Shotgun
-            ArcShot( weapon.Nbbulletsbyshot ,playerAsset.Position,Camera.main.ScreenToWorldPoint(Input.mousePosition), weapon.Speed,weapon.Damage);
+        if ((weapon.Type == WeaponAsset.WeaponType.Railgun)) //attaque en ligne avec RailGun
+            LineShot(Camera.main.ScreenToWorldPoint(Input.mousePosition), weapon.Speed,weapon.Damage, 0);
+        if ((weapon.Type == WeaponAsset.WeaponType.Shotgun)) //attaque en Arc avec Shotgun
+            ArcShot(weapon.Nbbulletsbyshot, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position, weapon.Speed, weapon.Damage);
         //attaque en cercle avec Circleshot
-        if (weapon.Circleshot)
-            CircleShot(weapon.Nbbulletsbyshot,playerAsset.Position,Camera.main.ScreenToWorldPoint(Input.mousePosition), weapon.Speed,weapon.Damage);
+        if ((weapon.Type == WeaponAsset.WeaponType.Circle))
+            CircleShot(weapon.Nbbulletsbyshot, weapon.Speed, weapon.Damage);
    
     }
-    private void LineShot( Vector3 origin, Vector3 direction, float speed, int damage, float angle)//tir linéaire
+    private void LineShot(Vector3 direction, float speed, int damage, float angle)//tir linéaire
     {
-        Instantiate(Projectile, transform.position, Quaternion.identity).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, weapon.Speed, weapon.Damage, direction, angle); 
+        Instantiate(projectile, transform.position + new Vector3(1, 0, transform.position.z), Quaternion.identity).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.position, angle); 
     }
     
-    private void CircleShot(int nbprojectile, Vector3 origin, Vector3 direction, float speed, int damage)//tir en cercle
+    private void CircleShot(int nbprojectile, float speed, int damage)//tir en cercle
     {
         
-        float angle = (float) (2*Math.PI / nbprojectile);
+        float angle = 360 / nbprojectile;
         
         for (int i = 0; i < nbprojectile; i++)
         {
-            LineShot(origin,direction,weapon.Speed,weapon.Damage, angle *i);
+            LineShot(new Vector3(1, 0, transform.position.z), weapon.Speed,weapon.Damage, angle *i);
         } 
     }
-    private  void ArcShot(int nbprojectile, Vector3 origin, Vector3 direction, float speed, int damage) //tir type shotgun
+    private  void ArcShot(int nbprojectile, Vector3 direction, float speed, int damage) //tir type shotgun
     {
-        double angle;
+        print("shotgun");
         Quaternion rotation = transform.rotation;
 
         if (nbprojectile % 2 != 0)
         {
-            LineShot(origin,direction,weapon.Speed,weapon.Damage, 0);
+            LineShot(direction, weapon.Speed, weapon.Damage, 0);
         }
 
-        for (int i = 1; i <= nbprojectile; i++)
+        for (int i = 1; i <= nbprojectile / 2; i++)
         {
-            LineShot(origin,direction,weapon.Speed,weapon.Damage, 20*i);
-            LineShot(origin,direction,weapon.Speed,weapon.Damage, -20 *i);
+            LineShot(direction,weapon.Speed, weapon.Damage, 20 * i);
+            LineShot(direction,weapon.Speed, weapon.Damage, -20 * i);
         } 
         
     }
