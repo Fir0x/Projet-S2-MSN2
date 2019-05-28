@@ -9,43 +9,38 @@ public class Projectile : MovingObject
     private int range;
    
     
-    public void Init(Sprite sprite, float speed, int damage, Vector3 direction, int range)
-    {
-        gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
-        this.speed = speed;
-        this.damage = damage;
-        this.direction = direction;
-        this.range = range;
-    }
     //Sarah
-    public void Init(Sprite sprite, float speed, int damage, Vector3 origin, float angle) 
+    public void Init(Sprite sprite, float speed, int damage, Vector3 origin, float angle, Vector3 _direction) 
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         this.speed = speed;
         this.damage = damage;
-        direction = transform.position - origin;
+        this.range = 0;
+        direction = _direction;
         if (angle != 0)
              transform.RotateAround(origin, Vector3.forward, angle);
 
     }
     private void FixedUpdate()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, 20, LayerMask.GetMask("Aerial", "Ground"));
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, 20, LayerMask.GetMask("Aerial", "Ground", "Obstacle"));
         if (hitInfo.collider != null )
         {
             if (hitInfo.collider.CompareTag("Enemy"))
             {
-                hitInfo.collider.GetComponent<Enemy>().SetHP(damage);
+                hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
                 Destroy(gameObject);
             }
+            if (hitInfo.collider.CompareTag("Patterns"))
+            {
+               Destroy(gameObject);
+            }
         }
-
-        Vector3 position = transform.position;
-
-        if (position.x >20 || position.y >20)
+        if (transform.position.x > 30 || transform.position.y > 30)
             Destroy(gameObject);
         
-        gameObject.transform.Translate(new Vector3(position.x + direction.x * speed * Time.deltaTime,
-            position.y + direction.y * speed * Time.deltaTime, position.z));
+        gameObject.transform.Translate(new Vector3(direction.x * speed * Time.deltaTime,
+            direction.y * speed * Time.deltaTime, 0));
+        
     }
 }
