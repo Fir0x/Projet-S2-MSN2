@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    public static GameObject projectile;
+    public GameObject projectile;
     public PlayerAsset player;
     public EnemyAsset enemy;
+
+    
     public enum Trajectory
     {
         Line,
@@ -17,7 +19,7 @@ public class Attack : MonoBehaviour
     }
 
 
-    public  void Launcher()
+    public void Launcher()
     {
         if (enemy._Trajectory == Trajectory.Line)
             LineShot(player.Position, enemy.Speed, enemy.Damage, 0f);
@@ -36,7 +38,8 @@ public class Attack : MonoBehaviour
             Physics2D.OverlapCircleAll(transform.position, 1, LayerMask.GetMask("Default"));
         for(int i = 0; i < playerTouched.Length; i++)
         {
-            playerTouched[i].GetComponent<Player>().SetLife(player.Hp - damage);
+            if (playerTouched[i].CompareTag("Player"))
+                playerTouched[i].GetComponent<Player>().SetLife(player.Hp - damage);
         }
     }
     private void LineShot(Vector3 direction, float speed, int damage, float angle)//tir linéaire
@@ -72,7 +75,7 @@ public class Attack : MonoBehaviour
 
     private void Railgun(int damage)
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, player.Position, 20, LayerMask.GetMask("Default", "Obstacle"));
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, player.Position, 20, LayerMask.GetMask("Default"));
    
         if (hitInfo.collider != null )
         {
@@ -81,7 +84,7 @@ public class Attack : MonoBehaviour
                 hitInfo.collider.GetComponent<Player>().SetLife(player.Hp - damage);
                 Destroy(gameObject);
             }
-            if (hitInfo.collider.CompareTag("Patterns"))
+            if (hitInfo.collider.CompareTag("Pattern"))
             {
                 Destroy(gameObject);
             }
