@@ -79,7 +79,7 @@ public class Player : MovingObject
     {
         animator.SetInteger(animDirectionHashID, 0);
         animator.SetTrigger(animMoveHashID);
-        if (this.Collision(transform.position, 0, 1))
+        if (this.Collision(transform.position, 0, 1, playerAsset.Speed))
         {
             this.transform.Translate(0, moveY, 0);
         }
@@ -89,7 +89,7 @@ public class Player : MovingObject
     {
         animator.SetInteger(animDirectionHashID, 1);
         animator.SetTrigger(animMoveHashID);
-        if (this.Collision(transform.position, 1, 0))
+        if (this.Collision(transform.position, 1, 0, playerAsset.Speed))
         {
             this.transform.Translate(moveX, 0, 0);
         }
@@ -99,7 +99,7 @@ public class Player : MovingObject
     {
         animator.SetInteger(animDirectionHashID, 2);
         animator.SetTrigger(animMoveHashID);
-        if (this.Collision(transform.position, 0, -1))
+        if (this.Collision(transform.position, 0, -1, playerAsset.Speed))
         {
             this.transform.Translate(0, -moveY, 0);
         }
@@ -109,7 +109,7 @@ public class Player : MovingObject
     {
         animator.SetInteger(animDirectionHashID, 3);
         animator.SetBool(animMoveHashID, true);
-        if (this.Collision(transform.position, -1, 0))
+        if (this.Collision(transform.position, -1, 0, playerAsset.Speed))
         {
             this.transform.Translate(-moveX, 0, 0);
         }
