@@ -20,7 +20,8 @@ namespace Entities
                 enemy.transform.position =
                     Vector2.MoveTowards(enemy.transform.position, target.position, speedE + Time.deltaTime);
             }
-            enemy.gameObject.GetComponent<Attack>().Launcher();
+            else if (Vector2.Distance(enemy.transform.position, target.position) == stoppingDistance)
+                enemy.shot = true;
         }
     }
 }

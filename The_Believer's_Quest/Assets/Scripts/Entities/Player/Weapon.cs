@@ -90,7 +90,7 @@ public class Weapon : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0f,0f,rotz);
         }
-        if (shot )
+        if (shot)
         {
             Shot();
             shot = false;

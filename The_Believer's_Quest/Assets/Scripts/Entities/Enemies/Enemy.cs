@@ -24,6 +24,7 @@ public class Enemy : MovingObject
     private AerialPathfinding aerialPathfinding;
     
     private Attack attack;
+    public bool shot;
 
     public EnemyAsset EnemyAsset { get => enemyAsset; set => enemyAsset = value; }
 
@@ -53,6 +54,12 @@ public class Enemy : MovingObject
     private void FixedUpdate()
     {
         Pathfinding();
+        if (transform.position.magnitude - transformPlayer.position.magnitude < 0.5 || shot)
+        {
+            attack.Launcher();
+            shot = false;
+            StartCoroutine(CoolDown());
+        }
     }
     IEnumerator CoolDown()
     {
@@ -72,8 +79,6 @@ public class Enemy : MovingObject
         }
         else
         {
-            attack.Launcher();
-            StartCoroutine(CoolDown());
             if (transform.position.magnitude - transformPlayer.position.magnitude < 0.5)
             {
                 transform.position = Vector2.MoveTowards(transform.position, transformPlayer.position,

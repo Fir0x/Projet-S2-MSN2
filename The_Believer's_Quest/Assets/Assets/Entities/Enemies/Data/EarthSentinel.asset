@@ -18,6 +18,7 @@ MonoBehaviour:
   minLoot: 2
   maxLoot: 10
   weight: 3
+  cooldown: 2
   sprite: {fileID: 21300012, guid: 1e37c2890659a8d4cb47c1729cb75d0d, type: 3}
-  nbofprojectiles: 0
+  nbofprojectiles: 1
   trajectory: 0
