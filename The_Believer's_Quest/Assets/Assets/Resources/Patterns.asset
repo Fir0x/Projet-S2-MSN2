@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Patterns
   m_EditorClassIdentifier: 
   pattern:
+  - {fileID: 7204994046632921062, guid: be4dd1bc11de3e1439f406c1cd29e39b, type: 3}
   - {fileID: 5201831336272942791, guid: 8259f9d29a38e6f458c81e4cb8030685, type: 3}
   - {fileID: 9028877698942125388, guid: cb92fb22ed6f3994f836d13581a015f5, type: 3}
   - {fileID: 7352495123385758307, guid: bc8c4686e63a91e40abfe49be395a56a, type: 3}
+  - {fileID: 6543202900314693847, guid: 2f75d69a1319ffc4994d5590cf45ab3c, type: 3}
+  - {fileID: 2142002872278907502, guid: e132df585ca75f344b8ac3ba6813f4f1, type: 3}
+  - {fileID: 8637842607596349911, guid: 47c5ae7aa691f4e4685cb94386cd4204, type: 3}
+  - {fileID: 937735007265896301, guid: abf72daa2278a0140bbf365a041326dd, type: 3}

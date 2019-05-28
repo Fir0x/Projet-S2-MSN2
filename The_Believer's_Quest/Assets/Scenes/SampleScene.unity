@@ -283,6 +283,18 @@ PrefabInstance:
       propertyPath: map
       value: 
       objectReference: {fileID: 1501051464}
+    - target: {fileID: 8981345498103605062, guid: 6d25af751e6b66f41af00f81e941231e,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c,
+        type: 2}
+    - target: {fileID: 8981345498103605062, guid: 6d25af751e6b66f41af00f81e941231e,
+        type: 3}
+      propertyPath: playerAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d25af751e6b66f41af00f81e941231e, type: 3}
 --- !u!114 &437738790 stripped

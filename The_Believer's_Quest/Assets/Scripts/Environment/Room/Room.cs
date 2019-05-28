@@ -33,17 +33,25 @@ public class Room : MonoBehaviour
             openDoors = new UnityEvent();
     }
 
+    public GameObject HubCreator()
+    {
+        GameObject room = patterns.Pattern[0];
+        Player.transform.position = room.transform.position + new Vector3(0.5f, 0.5f, 0f);
+
+        return room;
+    }
+
     public GameObject RoomCreator(Transform parent, int[] mapPos, float[] anchor, int roomNumber, List<Board.DoorPos> doorsPosition, Board.Type type)
     {
         GameObject room;
         id = roomNumber;
         if (roomNumber == 1 || type != Board.Type.Normal)
         {
-            room = Patterns.Pattern[0];
+            room = patterns.Pattern[1];
         }
         else
         {
-            room = Patterns.Pattern[UnityEngine.Random.Range(0, Patterns.Pattern.Length)];
+            room = patterns.Pattern[UnityEngine.Random.Range(1, patterns.Pattern.Length)];
         }
         
         //Creation and configuration of the GameObject

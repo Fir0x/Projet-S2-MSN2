@@ -4,6 +4,7 @@ using UnityEngine;
 //Nicolas I
 public class Board : MonoBehaviour
 {
+    [SerializeField] private PlayerAsset playerAsset;
     [SerializeField] private int width = 10;
     [SerializeField] private int height = 5;
     private int roomWidth = 17;
@@ -56,121 +57,140 @@ public class Board : MonoBehaviour
         }
     }
 
+
     public void BoardCreation()
     {
-        //Utility.ExecutionTime.Set(); //DEBUG
-        if (RoomNumber > Width * Height)
-            throw new System.Exception("Too much rooms.");
-
-        board = new GameObject("Board").transform;
-        List<RoomBase> roomBaseList = new List<RoomBase>();
-        int[] startPoint = new int[] { Random.Range(0, Width - 1), Random.Range(0, Height - 1) };
-        RoomBase parent = new RoomBase(startPoint, 1, Type.Normal);
-        roomBaseList.Add(parent);
-        //print(Utility.VisualArray<int>(startPoint));
-
-        RoomBase actual;
-        int lastX;
-        int lastY;
-        int newX;
-        int newY;
-        int nbFree;
-        int k = 1;
-        
-        int[,] boardMap = new int[height, width];
-        boardMap[startPoint[1], startPoint[0]] = 1;
-
-        while (k < RoomNumber)
+        if (playerAsset.Floor == 0)
         {
-            k++;
-            lastX = parent.position[0];
-            lastY = parent.position[1];
-            nbFree = 0;
-            //print("LastX = " + lastX + "\nLastY = " + lastY); //DEBUG
+            board = new GameObject("Board").transform;
 
-            //Count how many spaces around the actual room are free
-            nbFree += lastX - 1 > 0 && !roomBaseList.Exists(roomBase => roomBase.position[0] == lastX - 1 && roomBase.position[1] == lastY) ? 1 : 0;
-            nbFree += lastX + 1 < Width && !roomBaseList.Exists(roomBase => 
-                                                                roomBase.position[0] == lastX + 1 && roomBase.position[1] == lastY) ? 1 : 0;
-            nbFree += lastY - 1 > 0 && !roomBaseList.Exists(roomBase => roomBase.position[0] == lastX && roomBase.position[1] == lastY - 1) ? 1 : 0;
-            nbFree += lastY + 1 < Height && !roomBaseList.Exists(roombase => roombase.position[0] == lastX && roombase.position[1] == lastY + 1) ? 1 : 0;
-
-            if (nbFree != 0)
-            {
-
-                do //Choose randomly one place in the free
-                {
-                    newX = Random.Range(lastX - 1, lastX + 2);
-                    newY = lastY;
-                    if (newX == lastX)
-                        newY = Random.Range(lastY - 1, lastY + 2);
-
-                } while (newX < 0 || newX >= Width ||
-                        newY < 0 || newY >= Height ||
-                        roomBaseList.Exists(roomBase => roomBase.position[0] == newX && roomBase.position[1] == newY));
-
-                //print("newX = " + newPosition[0] + "\nnewY = " + newPosition[1]); //DEBUG
-                if (k == (int)(0.3333f * RoomNumber) || k == (int)(0.6666f * RoomNumber))
-                {
-                    actual = new RoomBase(new int[] { newX, newY }, k, Type.Chest);
-                }
-                else if (k == (int)(0.5f * RoomNumber))
-                    actual = new RoomBase(new int[] { newX, newY }, k, Type.Shop);
-                else if (k == RoomNumber)
-                    actual = new RoomBase(new int[] { newX, newY }, k, Type.Boss);
-                else
-                    actual = new RoomBase(new int[] { newX, newY }, k, Type.Normal);
-                //print(newX + ":" + newY); //DEBUG
-                roomBaseList.Add(actual);
-                //Add doors between the parent and his child
-                if (newX > lastX)
-                {
-                    parent.AddDoors(DoorPos.Right);
-                    actual.AddDoors(DoorPos.Left);
-                }
-                else if (newX < lastX)
-                {
-                    parent.AddDoors(DoorPos.Left);
-                    actual.AddDoors(DoorPos.Right);
-                }
-                else if (newY > lastY)
-                {
-                    parent.AddDoors(DoorPos.Up);
-                    actual.AddDoors(DoorPos.Down);
-                }
-                else
-                {
-                    parent.AddDoors(DoorPos.Down);
-                    actual.AddDoors(DoorPos.Up);
-                }
-
-                parent = roomBaseList[Random.Range(0, roomBaseList.Count)];
-
-                boardMap[newY, newX] = k; //Add id of room for mapping
-            }
-            else
-            {
-                parent = roomBaseList[Random.Range(0, roomBaseList.Count)];
-                k--;
-            }
+            GameObject room = GetComponent<Room>().HubCreator();
+            GameObject hub = Instantiate(room);
+            hub.transform.parent = board;
         }
-        
-        Room room = GetComponent<Room>();
-        foreach (RoomBase roomBase in roomBaseList)
+        else
         {
-            room.RoomCreator(board, roomBase.position, new float[] { roomBase.position[0] * roomWidth + 8,
+            //Utility.ExecutionTime.Set(); //DEBUG
+            if (RoomNumber > Width * Height)
+                throw new System.Exception("Too much rooms.");
+
+            board = new GameObject("Board").transform;
+            List<RoomBase> roomBaseList = new List<RoomBase>();
+            int[] startPoint = new int[] { Random.Range(0, Width - 1), Random.Range(0, Height - 1) };
+            RoomBase parent = new RoomBase(startPoint, 1, Type.Normal);
+            roomBaseList.Add(parent);
+            //print(Utility.VisualArray<int>(startPoint));
+
+            RoomBase actual;
+            int lastX;
+            int lastY;
+            int newX;
+            int newY;
+            int nbFree;
+            int k = 1;
+
+            int[,] boardMap = new int[height, width];
+            boardMap[startPoint[1], startPoint[0]] = 1;
+
+            while (k < RoomNumber)
+            {
+                k++;
+                lastX = parent.position[0];
+                lastY = parent.position[1];
+                nbFree = 0;
+                //print("LastX = " + lastX + "\nLastY = " + lastY); //DEBUG
+
+                //Count how many spaces around the actual room are free
+                nbFree += lastX - 1 > 0 && !roomBaseList.Exists(roomBase => roomBase.position[0] == lastX - 1 && roomBase.position[1] == lastY) ? 1 : 0;
+                nbFree += lastX + 1 < Width && !roomBaseList.Exists(roomBase =>
+                                                                    roomBase.position[0] == lastX + 1 && roomBase.position[1] == lastY) ? 1 : 0;
+                nbFree += lastY - 1 > 0 && !roomBaseList.Exists(roomBase => roomBase.position[0] == lastX && roomBase.position[1] == lastY - 1) ? 1 : 0;
+                nbFree += lastY + 1 < Height && !roomBaseList.Exists(roombase => roombase.position[0] == lastX && roombase.position[1] == lastY + 1) ? 1 : 0;
+
+                if (nbFree != 0)
+                {
+
+                    do //Choose randomly one place in the free
+                    {
+                        newX = Random.Range(lastX - 1, lastX + 2);
+                        newY = lastY;
+                        if (newX == lastX)
+                            newY = Random.Range(lastY - 1, lastY + 2);
+
+                    } while (newX < 0 || newX >= Width ||
+                            newY < 0 || newY >= Height ||
+                            roomBaseList.Exists(roomBase => roomBase.position[0] == newX && roomBase.position[1] == newY));
+
+                    //print("newX = " + newPosition[0] + "\nnewY = " + newPosition[1]); //DEBUG
+                    if (k == (int)(0.3333f * RoomNumber) || k == (int)(0.6666f * RoomNumber))
+                    {
+                        actual = new RoomBase(new int[] { newX, newY }, k, Type.Chest);
+                    }
+                    else if (k == (int)(0.5f * RoomNumber))
+                        actual = new RoomBase(new int[] { newX, newY }, k, Type.Shop);
+                    else if (k == RoomNumber)
+                        actual = new RoomBase(new int[] { newX, newY }, k, Type.Boss);
+                    else
+                        actual = new RoomBase(new int[] { newX, newY }, k, Type.Normal);
+                    //print(newX + ":" + newY); //DEBUG
+                    roomBaseList.Add(actual);
+                    //Add doors between the parent and his child
+                    if (newX > lastX)
+                    {
+                        parent.AddDoors(DoorPos.Right);
+                        actual.AddDoors(DoorPos.Left);
+                    }
+                    else if (newX < lastX)
+                    {
+                        parent.AddDoors(DoorPos.Left);
+                        actual.AddDoors(DoorPos.Right);
+                    }
+                    else if (newY > lastY)
+                    {
+                        parent.AddDoors(DoorPos.Up);
+                        actual.AddDoors(DoorPos.Down);
+                    }
+                    else
+                    {
+                        parent.AddDoors(DoorPos.Down);
+                        actual.AddDoors(DoorPos.Up);
+                    }
+
+                    parent = roomBaseList[Random.Range(0, roomBaseList.Count)];
+
+                    boardMap[newY, newX] = k; //Add id of room for mapping
+                }
+                else
+                {
+                    parent = roomBaseList[Random.Range(0, roomBaseList.Count)];
+                    k--;
+                }
+            }
+
+            Room room = GetComponent<Room>();
+            foreach (RoomBase roomBase in roomBaseList)
+            {
+                room.RoomCreator(board, roomBase.position, new float[] { roomBase.position[0] * roomWidth + 8,
                 roomBase.position[1] * roomHeight + 6 }, roomBase.roomNumber, roomBase.doorsPosition, roomBase.type);
+            }
+
+            map.InitMap(boardMap, width, height);
+
+            //Utility.ExecutionTime.PrintExecutionTime(); //DEBUG
         }
-
-        map.InitMap(boardMap, width, height);
-
-        //Utility.ExecutionTime.PrintExecutionTime(); //DEBUG
     }
 
     public void Start()
     {
+        playerAsset.Floor = 0;
         BoardCreation();
     }
-    
-    
+
+    public void Init()
+    {
+        playerAsset.Floor += 1;
+        BoardCreation();
+    }
+
+
 }
