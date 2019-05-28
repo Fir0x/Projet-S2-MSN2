@@ -71,6 +71,7 @@ public class RoomManager : MonoBehaviour
                 posOk = false;
                 while (!posOk)
                 {
+                    print("test");
                     x = Random.Range(-7, 7);
                     y = Random.Range(-5, 5);
 
