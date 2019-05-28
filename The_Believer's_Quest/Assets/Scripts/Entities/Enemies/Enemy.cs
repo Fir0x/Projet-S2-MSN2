@@ -87,7 +87,7 @@ public class Enemy : MovingObject
     public void SetHP(int damage)
     {
         HP -= damage;
-        if (HP<0 )
+        if (HP < 0 )
             Destroy(gameObject);
     }
 }
