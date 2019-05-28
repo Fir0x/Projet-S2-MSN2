@@ -9,16 +9,25 @@ public class Menupause : MonoBehaviour
     public static bool show = false;
     public GameObject canvaspause;
 
-    void Update()
+    private void Awake()
     {
-        if (!show)
-            canvaspause.SetActive(false);
+        canvaspause.SetActive(false);
+    }
+
+    void FixedUpdate()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (show)
+            {
                 Resume();
+                canvaspause.SetActive(false);
+            }
             else
+            {
+                canvaspause.SetActive(true);
                 Pause();
+            }
         }
     }
 
@@ -45,9 +54,5 @@ public class Menupause : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-    }
-    public void SaveGame()
-    {
-        //FIX ME
     }
 }
