@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 416202075394253419}
   m_Layer: 0
   m_Name: BoardManager
-  m_TagString: Untagged
+  m_TagString: BoardManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,9 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd4b31984c4d0240b97f58b1ca4de3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   width: 10
   height: 5
   roomNumber: 20
+  map: {fileID: 0}
 --- !u!114 &416202075394253419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,8 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9eb1b3ff1e6e04a86a718ff3375ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patterns: {fileID: 0}
-  player: {fileID: 7985191293914268312, guid: 321cef1288d49514fa043b3adc2c08b7, type: 3}
-  spriteAsset: {fileID: 0}
-  wall: {fileID: 0}
-  floor: {fileID: 0}
+  allEnemies: {fileID: 11400000, guid: 73ac7689ed5938e4bb86311ae5218ccc, type: 2}
+  patterns: {fileID: 11400000, guid: 2c9e625ef1a37fe4c875c568a512708a, type: 2}
+  doorTiles: {fileID: 11400000, guid: e5bed395bf0fd124dbbf51832c9a8c14, type: 2}
+  player: {fileID: 7281622167015739582, guid: 2af5291f0b77a8544a2600e0305d7d12, type: 3}
+  playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}

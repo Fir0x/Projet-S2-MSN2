@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 416202075394253419}
   m_Layer: 0
   m_Name: BoardManager
-  m_TagString: Untagged
+  m_TagString: BoardManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,9 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd4b31984c4d0240b97f58b1ca4de3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAsset: {fileID: 0}
   width: 10
   height: 5
   roomNumber: 20
+  map: {fileID: 0}
 --- !u!114 &416202075394253419
 MonoBehaviour:
   m_ObjectHideFlags: 0
