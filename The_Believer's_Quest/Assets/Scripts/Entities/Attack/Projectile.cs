@@ -6,16 +6,16 @@ public class Projectile : MovingObject
     private float speed;
     private int damage;
     private Vector3 direction;
-    private int range;
+    private bool player;
    
     
     //Sarah
-    public void Init(Sprite sprite, float speed, int damage, Vector3 origin, float angle, Vector3 _direction) 
+    public void Init(Sprite sprite, float speed, int damage, Vector3 origin, float angle, Vector3 _direction, bool player) 
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         this.speed = speed;
         this.damage = damage;
-        this.range = 0;
+        this.player = player;
         direction = _direction;
         if (angle != 0)
              transform.RotateAround(origin, Vector3.forward, angle);
@@ -24,13 +24,17 @@ public class Projectile : MovingObject
     private void FixedUpdate()
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, 20, LayerMask.GetMask("Aerial", "Ground", "Obstacle"));
-        Vector3 transf = transform.position;
-        Vector3 trGp = gameObject.transform.position;
+   
         if (hitInfo.collider != null )
         {
-            if (hitInfo.collider.CompareTag("Enemy"))
+            if (hitInfo.collider.CompareTag("Enemy") && player)
             {
                 hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
+                Destroy(gameObject);
+            }
+            if (hitInfo.collider.CompareTag("Player") && !player)
+            {
+                hitInfo.collider.GetComponent<Player>().SetLife(playerAsset.Hp - damage);
                 Destroy(gameObject);
             }
             if (hitInfo.collider.CompareTag("Patterns"))
