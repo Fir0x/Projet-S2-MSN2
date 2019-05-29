@@ -76,7 +76,7 @@ public class UIController : MonoBehaviour
         {
             changeAmmo = new UnityEvent();
             changeAmmo.AddListener(() => ammo.text = player.WeaponsList[0].Type == WeaponAsset.WeaponType.CQC ? 
-                                         "" : player.WeaponsList[0].Loader + "/" + player.WeaponsList[0].Ammunitions);
+                                         "" : player.WeaponsList[0].Loader + " / " + player.WeaponsList[0].Ammunitions);
         }
     }
 }

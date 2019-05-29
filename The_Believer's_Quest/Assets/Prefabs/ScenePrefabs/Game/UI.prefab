@@ -2481,7 +2481,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 20
+  m_Text: 0
 --- !u!1 &3809506202898867395
 GameObject:
   m_ObjectHideFlags: 0
@@ -3328,7 +3328,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 20
+  m_Text: 0
 --- !u!1 &5035673233417473538
 GameObject:
   m_ObjectHideFlags: 0
@@ -4009,7 +4009,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '- / -'
+  m_Text: ' '
 --- !u!1 &6730607511034099359
 GameObject:
   m_ObjectHideFlags: 0
@@ -5289,7 +5289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: {fileID: 5851891316324261165}
   diamond: {fileID: 6130853533328398434}
-  ammo: {fileID: 0}
+  ammo: {fileID: 6877807828298434177}
   weaponSprite: {fileID: 3000740917392928271}
   player: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   hp: {fileID: 3132685768832970252}

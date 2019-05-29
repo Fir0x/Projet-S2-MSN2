@@ -53,6 +53,8 @@ public class Player : MovingObject
     {
         playerAsset.Hp = value;
         uiController.changeHp.Invoke();
+        if (playerAsset.Hp <=0)
+            print("Game Over");
     }
 
     public void SetEffect(int value)
@@ -180,7 +182,7 @@ public class Player : MovingObject
 
         animator = GetComponent<Animator>();
         uiController = ui.GetComponent<UIController>();
-
+        
         weapon = GetComponentInChildren<Weapon>();
         weapon.Init(uiController, PlayerAsset.WeaponsList[0], playerAsset);
     }
