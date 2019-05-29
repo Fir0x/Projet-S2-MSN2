@@ -61,36 +61,39 @@ public class RoomManager : MonoBehaviour
         if (firstEntry && col.CompareTag("Player"))
         {
             firstEntry = false;
-
-            bool posOk;
-            int x = 0;
-            int y = 0;
-            
-            foreach (GameObject enemy in enemies)        //apparition ennemis
-            {
-                posOk = false;
-                while (!posOk)
-                {
-                    print("test");
-                    x = Random.Range(-7, 7);
-                    y = Random.Range(-5, 5);
-
-                    if (grid.NodeFromPos(roomPosition + new Vector3(x, y, 0)).walkable)
-                    {
-                        posOk = true;
-                    }
-                }
-                
-                GameObject enemyOnScene = Instantiate(enemy, roomPosition + new Vector3(x, y, 0), Quaternion.identity) as GameObject;
-                enemyOnScene.transform.parent = this.transform;
-            }
+            SpawnEnemies();
 
             if (enemiesRemaining > 0)
             {
                 roomCreator.Close();
             }
         }
+    }
 
+    public void SpawnEnemies()
+    {
+        bool posOk;
+        int x = 0;
+        int y = 0;
+
+        foreach (GameObject enemy in enemies)        //apparition ennemis
+        {
+            posOk = false;
+            while (!posOk)
+            {
+                print("test");
+                x = Random.Range(-7, 7);
+                y = Random.Range(-5, 5);
+
+                if (grid.NodeFromPos(roomPosition + new Vector3(x, y, 0)).walkable)
+                {
+                    posOk = true;
+                }
+            }
+
+            GameObject enemyOnScene = Instantiate(enemy, roomPosition + new Vector3(x, y, 0), Quaternion.identity) as GameObject;
+            enemyOnScene.transform.parent = this.transform;
+        }
     }
 
     public void DestroyEnemy(GameObject enemy) //Nicolas L

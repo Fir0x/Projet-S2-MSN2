@@ -273,8 +273,9 @@ public class Player : MovingObject
 
     public void ForcedMovement(Vector3 direction)                   //makes player move without his consent
     {
-        print("dir : " + direction.normalized);
-        this.transform.position = Vector3.Lerp(firstPos, GetPos() + direction, Time.deltaTime);
+        print("dir : " + direction);
+        Vector3 firstPos = this.transform.position;
+        this.transform.position = Vector3.Lerp(firstPos, firstPos + direction * 4, 3f * Time.deltaTime);
     }
 
     private void FixedUpdate()
