@@ -13,6 +13,7 @@ public class EnemyAsset : ScriptableObject
     [SerializeField] private Sprite sprite;
     [SerializeField] private int nbofprojectiles;
     [SerializeField] private Attack.Trajectory trajectory;
+    [SerializeField] private float shotSpeed;
     
     
     public int Hp { get => hp; set => hp = value; }
@@ -25,5 +26,6 @@ public class EnemyAsset : ScriptableObject
     public Sprite Sprite{get => sprite;set => sprite = value;}
     public int NbOfProjectiles{get => nbofprojectiles;set => nbofprojectiles = value;}
     public Attack.Trajectory _Trajectory{get => trajectory;set => trajectory = value;}
+    public float ShotSpeed { get => shotSpeed; set => shotSpeed = value; }
 }
 

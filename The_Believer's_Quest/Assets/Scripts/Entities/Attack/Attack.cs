@@ -23,10 +23,10 @@ public class Attack : MonoBehaviour
     {
         if (enemy._Trajectory == Trajectory.Line)
             LineShot(player.Position, enemy.Speed, enemy.Damage, 0f);
-        if (enemy._Trajectory== Trajectory.Arc)
-            ArcShot(enemy.NbOfProjectiles, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position, enemy.Speed, enemy.Damage);
-        if (enemy._Trajectory== Trajectory.Circle)
-            CircleShot(enemy.NbOfProjectiles, enemy.Speed, enemy.Damage);
+        if (enemy._Trajectory == Trajectory.Arc)
+            ArcShot(enemy.NbOfProjectiles, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position, enemy.ShotSpeed, enemy.Damage);
+        if (enemy._Trajectory == Trajectory.Circle)
+            CircleShot(enemy.NbOfProjectiles, enemy.ShotSpeed, enemy.Damage);
         if (enemy._Trajectory == Trajectory.Cqc)
             Cqc(enemy.Damage);
         if (enemy._Trajectory == Trajectory.Railgun)
@@ -34,12 +34,22 @@ public class Attack : MonoBehaviour
     }
     private void Cqc(int damage)
     {
-        Collider2D[] playerTouched =
-            Physics2D.OverlapCircleAll(transform.position, 0.5f, LayerMask.GetMask("Default"));
-        for(int i = 0; i < playerTouched.Length; i++)
+        Collider2D[] playerTouched = Physics2D.OverlapCircleAll(transform.position, 0.5f, LayerMask.GetMask("Default"));
+
+        if(!player.Invicibility)
         {
-            if (playerTouched[i].CompareTag("Player"))
-                playerTouched[i].GetComponent<Player>().SetLife(player.Hp - damage);
+            for (int i = 0; i < playerTouched.Length; i++)
+            {
+                if (playerTouched[i].CompareTag("Player"))
+                {
+                    playerTouched[i].GetComponent<Player>().SetLife(player.Hp - damage);
+                    print("touché!");
+                    
+                    Vector3 forcedMov = -(gameObject.transform.position - playerTouched[i].transform.position).normalized;              //to make player move in the opposite way when touched
+                    playerTouched[i].GetComponent<Player>().ForcedMovement(forcedMov);
+
+                }
+            }
         }
     }
     private void LineShot(Vector3 direction, float speed, int damage, float angle)//tir linéaire
