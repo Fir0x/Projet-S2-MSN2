@@ -23,7 +23,7 @@ public class Projectile : MovingObject
     }
     private void FixedUpdate()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, 20, LayerMask.GetMask("Aerial", "Ground", "Default"));
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, 20, LayerMask.GetMask("Aerial", "Ground", "Default"));
    
         if (hitInfo.collider != null )
         {
@@ -42,7 +42,6 @@ public class Projectile : MovingObject
                Destroy(gameObject);
             }
         }
-        
         gameObject.transform.Translate(new Vector3(direction.x * speed * Time.deltaTime,
             direction.y * speed * Time.deltaTime, 0));
         

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,10 +22,11 @@ public class Attack : MonoBehaviour
 
     public void Launcher()
     {
+        Transform playerT = GameObject.FindGameObjectWithTag("Player").transform;
         if (enemy._Trajectory == Trajectory.Line)
-            LineShot(player.Position, enemy.Speed, enemy.Damage, 0f);
+            LineShot(playerT.position, enemy.Speed, enemy.Damage, 0f);
         if (enemy._Trajectory == Trajectory.Arc)
-            ArcShot(enemy.NbOfProjectiles, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position, enemy.ShotSpeed, enemy.Damage);
+            ArcShot(enemy.NbOfProjectiles, playerT.position, enemy.ShotSpeed, enemy.Damage);
         if (enemy._Trajectory == Trajectory.Circle)
             CircleShot(enemy.NbOfProjectiles, enemy.ShotSpeed, enemy.Damage);
         if (enemy._Trajectory == Trajectory.Cqc)
@@ -54,8 +56,8 @@ public class Attack : MonoBehaviour
     }
     private void LineShot(Vector3 direction, float speed, int damage, float angle)//tir linéaire
     {
-        Instantiate(projectile, transform.position,
-            Quaternion.identity).GetComponent<Projectile>().Init(enemy.Sprite, speed, damage, transform.position, angle, direction,false); 
+       Instantiate(projectile, transform.position,
+            transform.rotation).GetComponent<Projectile>().Init(enemy.Sprite, speed, damage, transform.position, angle, direction-transform.position,false); 
     }
     
     private void CircleShot(int nbprojectile, float speed, int damage)//tir en cercle
