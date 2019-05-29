@@ -20,18 +20,8 @@ public static class Loader
         //Binary save file opening
         Stream streamRestauration = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
         //Loading the GameSave object from the binary file
-        Saver.PlayerSave save = (Saver.PlayerSave) new BinaryFormatter().Deserialize(streamRestauration);
-        playerData.Floor = save.floor;
-        playerData.Hp = save.hp;
-        playerData.MaxHP = save.maxHP;
-        playerData.EffectValue = save.effectValue;
-        playerData.MaxEffectValue = save.maxEffectValue;
-        playerData.Speed = save.speed;
-        playerData.Gold = save.gold;
-        playerData.Diamond = save.diamond;
-        string[] serializedWeapons = save.weaponsList.Split(',');
-        playerData.WeaponsList[0] = Resources.Load<WeaponAsset>("Weapons/" + serializedWeapons[0]);
-        playerData.WeaponsList[1] = Resources.Load<WeaponAsset>("Weapons/" + serializedWeapons[1]);
+        Saver.PlayerSave save = JsonUtility.FromJson<Saver.PlayerSave>((string)new BinaryFormatter().Deserialize(streamRestauration));
+        playerData = save.playerData;
         foreach (GameObject item in save.unlockedItems)
         {
             if (unlockedItems.Locked.Contains(item))
