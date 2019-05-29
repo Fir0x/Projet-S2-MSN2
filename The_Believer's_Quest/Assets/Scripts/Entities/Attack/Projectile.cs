@@ -16,28 +16,28 @@ public class Projectile : MovingObject
         this.speed = speed;
         this.damage = damage;
         this.player = player;
-        direction = _direction.normalized;
+        direction = _direction;
         if (angle != 0)
              transform.RotateAround(origin, Vector3.forward, angle);
 
     }
     private void FixedUpdate()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, 2, LayerMask.GetMask("Aerial", "Ground", "Default"));
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, 20, LayerMask.GetMask("Aerial", "Ground", "Default"));
    
         if (hitInfo.collider != null )
         {
-            if (hitInfo.collider.gameObject.CompareTag("Enemy") && player)
+            if (hitInfo.collider.CompareTag("Enemy") && player)
             {
-                hitInfo.collider.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
                 Destroy(gameObject);
             }
-            if (hitInfo.collider.gameObject.CompareTag("Player") && !player)
+            else if (hitInfo.collider.CompareTag("Player"))
             {
-                hitInfo.collider.gameObject.GetComponent<Player>().SetLife(playerAsset.Hp - damage);
+                hitInfo.collider.GetComponent<Player>().SetLife(playerAsset.Hp - damage);
                 Destroy(gameObject);
             }
-            if (hitInfo.collider.gameObject.CompareTag("Pattern"))
+            if (hitInfo.collider.CompareTag("Pattern"))
             {
                Destroy(gameObject);
             }

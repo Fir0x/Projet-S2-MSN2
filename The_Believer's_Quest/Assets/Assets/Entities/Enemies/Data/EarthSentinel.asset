@@ -22,3 +22,4 @@ MonoBehaviour:
   sprite: {fileID: 21300012, guid: 1e37c2890659a8d4cb47c1729cb75d0d, type: 3}
   nbofprojectiles: 1
   trajectory: 0
+  shotSpeed: 1
