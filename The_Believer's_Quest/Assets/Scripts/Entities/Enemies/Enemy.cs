@@ -61,7 +61,7 @@ public class Enemy : MovingObject
 
         if (nextNode != null)
         {
-            transform.position = Vector3.MoveTowards(startPos, nextNode.worldPos + new Vector3(0.5f, 0.5f, 0), EnemyAsset.Speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(startPos, nextNode.worldPos + new Vector3(0.5f, 0.5f, 0), EnemyAsset.Speed * Time.deltaTime);
         }
         else if (transform.position.magnitude - transformPlayer.position.magnitude < 0.5)
         {
