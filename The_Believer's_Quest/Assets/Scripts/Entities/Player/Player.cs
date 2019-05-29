@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
@@ -8,6 +9,12 @@ using Vector3 = UnityEngine.Vector3;
 public class Player : MovingObject
 {
     [SerializeField] private GameObject camera;
+
+    private bool goLeft;
+    private bool goUp;
+    private bool goRight;
+    private bool goDown;
+    private bool testForDash;
 
     private Rigidbody2D rigid;  //utile pour déplacement glace
 
@@ -46,6 +53,8 @@ public class Player : MovingObject
     {
         playerAsset.Hp = value;
         uiController.changeHp.Invoke();
+        if (playerAsset.Hp <=0)
+            print("Game Over");
     }
 
     public void SetEffect(int value)
@@ -59,60 +68,191 @@ public class Player : MovingObject
         weapon.shot = true;
     }
 
-    public void Dash()
+    public void doDash()
     {
-        throw new NotImplementedException();
+        if(goUp || goRight || goDown || goLeft)
+            StartCoroutine(Dash());
+    }
+
+    IEnumerator Dash()
+    {
+        if (testForDash == true)
+        {
+            if (goUp && goRight)
+            {
+                Vector3 firstPos = this.transform.position;
+                Vector3 lastPos = firstPos + new Vector3(0.8f, 0.8f, 0);
+                Vector3 newPos = new Vector3(0, 0, 0);
+                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 1) && Collision(transform.position, playerAsset.Speed, 2))
+                {                 
+                    this.transform.Translate(0.1f, 0.1f, 0);
+                    newPos = transform.position - firstPos;
+                }
+            }
+            else if (goDown && goRight)
+            {
+                Vector3 firstPos = this.transform.position;
+                Vector3 lastPos = firstPos + new Vector3(0.8f, -0.8f, 0);
+                Vector3 newPos = new Vector3(0, 0, 0);
+                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 2) && Collision(transform.position, playerAsset.Speed, 3))
+                {
+                    this.transform.Translate(0.1f, -0.1f, 0);
+                    newPos = transform.position - firstPos;
+                }
+            }
+            else if (goUp && goLeft)
+            {
+                Vector3 firstPos = this.transform.position;
+                Vector3 lastPos = firstPos + new Vector3(-0.8f, 0.8f, 0);
+                Vector3 newPos = new Vector3(0, 0, 0);
+                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 0) && Collision(transform.position, playerAsset.Speed, 1))
+                {
+                    this.transform.Translate(-0.1f, 0.1f, 0);
+                    newPos = transform.position - firstPos;
+                }
+            }
+            else if (goDown && goLeft)
+            {
+                Vector3 firstPos = this.transform.position;
+                Vector3 lastPos = firstPos + new Vector3(-0.8f, -0.8f, 0);
+                Vector3 newPos = new Vector3(0, 0, 0);
+                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 1) && Collision(transform.position, playerAsset.Speed, 2))
+                {
+                    this.transform.Translate(-0.1f, -0.1f, 0);
+                    newPos = transform.position - firstPos;
+                }
+            }
+            else if (goUp)
+            {
+                Vector3 firstPos = this.transform.position;
+                Vector3 lastPos = firstPos + new Vector3(0, 1.3f, 0);
+                Vector3 newPos = new Vector3(0, 0, 0);
+                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 1))
+                {
+                    this.transform.Translate(0, 0.1f, 0);
+                    newPos = transform.position - firstPos;
+                }
+            }
+            else if (goRight)
+            {
+                Vector3 firstPos = this.transform.position;
+                Vector3 lastPos = firstPos + new Vector3(1.3f, 0, 0);
+                Vector3 newPos = new Vector3(0, 0, 0);
+                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 2))
+                {
+                    this.transform.Translate(0.1f, 0, 0);
+                    newPos = transform.position - firstPos;
+                }
+            }
+            else if (goDown)
+            {
+                Vector3 firstPos = this.transform.position;
+                Vector3 lastPos = firstPos + new Vector3(0, -1.3f, 0);
+                Vector3 newPos = new Vector3(0, 0, 0);
+                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 3))
+                {
+                    this.transform.Translate(0, -0.1f, 0);
+                    newPos = transform.position - firstPos;
+                }
+            }
+            else if (goLeft)
+            {
+                Vector3 firstPos = this.transform.position;
+                Vector3 lastPos = firstPos + new Vector3(-1.3f, 0, 0);
+                Vector3 newPos = new Vector3(0, 0, 0);
+                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 1))
+                {
+                    this.transform.Translate(-0.1f, 0, 0);
+                    newPos = transform.position - firstPos;
+                }
+            }
+
+            testForDash = false;
+                
+            yield return new WaitForSeconds(1.5f);
+            testForDash = true;;
+        }
     }
 
     private void Awake()
     {
+        testForDash = true;
+
         firstPos = this.transform.position;
 
         animator = GetComponent<Animator>();
         uiController = ui.GetComponent<UIController>();
-
+        
         weapon = GetComponentInChildren<Weapon>();
         weapon.Init(uiController, PlayerAsset.WeaponsList[0], playerAsset);
     }
 
     public void MoveUp()
     {
+        goUp = true;
+
         animator.SetInteger(animDirectionHashID, 0);
         animator.SetTrigger(animMoveHashID);
-        if (this.Collision(transform.position, 0, 1, playerAsset.Speed))
+        if (this.Collision(transform.position, playerAsset.Speed, 1))
         {
             this.transform.Translate(0, moveY, 0);
         }
     }
 
+    public void StopMoveUp()
+    {
+        goUp = false;
+    }
+
     public void MoveRight()
     {
+        goRight = true;
+
         animator.SetInteger(animDirectionHashID, 1);
         animator.SetTrigger(animMoveHashID);
-        if (this.Collision(transform.position, 1, 0, playerAsset.Speed))
+        if (this.Collision(transform.position, playerAsset.Speed, 2))
         {
             this.transform.Translate(moveX, 0, 0);
         }
     }
 
+    public void StopMoveRight()
+    {
+        goRight = false;
+    }
+
     public void MoveDown()
     {
+        goDown = true;
+
         animator.SetInteger(animDirectionHashID, 2);
         animator.SetTrigger(animMoveHashID);
-        if (this.Collision(transform.position, 0, -1, playerAsset.Speed))
+        if (this.Collision(transform.position, playerAsset.Speed, 3))
         {
             this.transform.Translate(0, -moveY, 0);
         }
     }
 
+    public void StopMoveDown()
+    {
+        goDown = false;
+    }
+
     public void MoveLeft()
     {
+        goLeft = true;
+
         animator.SetInteger(animDirectionHashID, 3);
         animator.SetBool(animMoveHashID, true);
-        if (this.Collision(transform.position, -1, 0, playerAsset.Speed))
+        if (this.Collision(transform.position, playerAsset.Speed, 0))
         {
             this.transform.Translate(-moveX, 0, 0);
         }
+    }
+
+    public void StopMoveLeft()
+    {
+        goLeft = false;
     }
 
     private void FixedUpdate()
@@ -127,13 +267,11 @@ public class Player : MovingObject
             {
                 animator.SetTrigger(animDeathID);
             }
-            if (Input.GetButton("Dash"))
-            {
-                animator.SetTrigger(animDashID);
-            }
         }
         else
+        {
             animator.SetBool(animMoveHashID, false);
+        }
         
         Camera.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.transform.position.z);
 
@@ -158,10 +296,6 @@ public class Player : MovingObject
             this.rigid.AddForce(new Vector2 (0, -1) * moveSpeed * Time.deltaTime);
         }*/
 
-        
-        
-        
-        //faire spawner les ennemis
         
     }
 }

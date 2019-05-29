@@ -19,6 +19,7 @@ public class KeyBoardManager : MonoBehaviour
     UnityEvent useLeft;
     UnityEvent useRight;
     UnityEvent shot;
+    UnityEvent dash;
 
     [SerializeField] private GameObject developmentTool;
 
@@ -28,32 +29,38 @@ public class KeyBoardManager : MonoBehaviour
     void Awake()
     {
         player = gameObject.GetComponent<Player>();
-        
-            if (moveUp == null)
-            {
-                moveUp = new UnityEvent();
-            }
-            moveUp.AddListener(player.MoveUp);
 
-            if (moveRight == null)
-            {
-                moveRight = new UnityEvent();
-            }
-            moveRight.AddListener(player.MoveRight);
+        if (moveUp == null)
+        {
+            moveUp = new UnityEvent();
+        }
+        moveUp.AddListener(player.MoveUp);
 
-            if (moveDown == null)
-            {
-                moveDown = new UnityEvent();
-            }
-            moveDown.AddListener(player.MoveDown);
+        if (moveRight == null)
+        {
+            moveRight = new UnityEvent();
+        }
+        moveRight.AddListener(player.MoveRight);
 
-            if (moveLeft == null)
-            {
-                moveLeft = new UnityEvent();
-            }
-            moveLeft.AddListener(player.MoveLeft);
+        if (moveDown == null)
+        {
+            moveDown = new UnityEvent();
+        }
+        moveDown.AddListener(player.MoveDown);
 
-            if (useLeft == null)
+        if (moveLeft == null)
+        {
+            moveLeft = new UnityEvent();
+        }
+        moveLeft.AddListener(player.MoveLeft);
+
+        if (dash == null)
+        {
+            dash = new UnityEvent();
+        }
+        dash.AddListener(player.doDash);
+
+        if (useLeft == null)
         {
             useLeft = new UnityEvent();
         }
@@ -78,20 +85,35 @@ public class KeyBoardManager : MonoBehaviour
 
         if (Input.GetButton("Up"))
             moveUp.Invoke();
+
+        if (Input.GetButtonUp("Up"))
+            player.StopMoveUp();
         
         if (Input.GetButton("Left"))
             moveLeft.Invoke();
-        
+
+        if (Input.GetButtonUp("Left"))
+            player.StopMoveLeft();
+
         if (Input.GetButton("Down"))
             moveDown.Invoke();
-        
+
+        if (Input.GetButtonUp("Down"))
+            player.StopMoveDown();
+
         if (Input.GetButton("Right"))
             moveRight.Invoke();
-        
+
+        if (Input.GetButtonUp("Right"))
+            player.StopMoveRight();
+
         if (Input.GetButton("Attack") && SceneManager.GetActiveScene()!= SceneManager.GetSceneByName("MainMenu"))
         {
             shot.Invoke();
         }
+
+        if (Input.GetButton("Dash"))
+            dash.Invoke();
     }
 
     public void AddToInteract(UnityAction call)

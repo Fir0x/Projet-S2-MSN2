@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5396344658721706096}
   - component: {fileID: 2397394942925314983}
   - component: {fileID: 4154963747282114332}
+  - component: {fileID: 9158875689252233430}
   m_Layer: 10
   m_Name: EarthSentinel
   m_TagString: Enemy
@@ -160,3 +161,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &9158875689252233430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193622213193343670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070a2885a37d4eb43a66426a070c7a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 608695381, guid: c16d52dc33afba04e8f91b5d01a232ac, type: 3}
+  player: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
+  enemy: {fileID: 11400000, guid: d111dc0555081e143a9824f7b950a222, type: 2}

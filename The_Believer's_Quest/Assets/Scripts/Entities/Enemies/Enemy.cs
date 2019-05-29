@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Entities;
 using UnityEditor;
@@ -21,6 +22,10 @@ public class Enemy : MovingObject
     private ChoosePathfinding Pathfinding;
     private RealPathfinding realPathfinding;
     private AerialPathfinding aerialPathfinding;
+    
+    private Attack attack;
+    public bool shot;
+    private float timeBtwshots;
 
     public EnemyAsset EnemyAsset { get => enemyAsset; set => enemyAsset = value; }
 
@@ -30,7 +35,8 @@ public class Enemy : MovingObject
         
         realPathfinding = GetComponentInParent<RealPathfinding>();
         aerialPathfinding = GetComponentInParent<AerialPathfinding>();
-
+        attack = GetComponent<Attack>();
+        
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         transformPlayer = playerGO.GetComponent<Transform>();
         mask = gameObject.layer;
@@ -49,8 +55,21 @@ public class Enemy : MovingObject
     private void FixedUpdate()
     {
         Pathfinding();
+        if ( shot && timeBtwshots <=0)
+        {
+            attack.Launcher();
+            shot = false;
+            timeBtwshots = enemyAsset.Cooldown;
+        }
+        else
+        {
+            timeBtwshots -= Time.deltaTime;
+        }
     }
-
+    IEnumerator CoolDown()
+    {
+        yield return new WaitForSeconds(enemyAsset.Cooldown);
+    }
     delegate void ChoosePathfinding();
 
     private void AStarPathfindingMoving()
@@ -61,11 +80,16 @@ public class Enemy : MovingObject
 
         if (nextNode != null)
         {
-            transform.position = Vector3.MoveTowards(startPos, nextNode.worldPos + new Vector3(0.5f, 0.5f, 0), EnemyAsset.Speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(startPos, nextNode.worldPos + new Vector3(0.5f, 0.5f, 0), EnemyAsset.Speed * Time.deltaTime);
         }
-        else if (transform.position.magnitude - transformPlayer.position.magnitude < 0.5)
+        else
         {
-            transform.position = Vector2.MoveTowards(transform.position, transformPlayer.position, enemyAsset.Speed * Time.deltaTime);
+            if (transform.position.magnitude - transformPlayer.position.magnitude < 0.5)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, transformPlayer.position,
+                    enemyAsset.Speed * Time.deltaTime);
+            }
+            shot = true;
         }
     }
 

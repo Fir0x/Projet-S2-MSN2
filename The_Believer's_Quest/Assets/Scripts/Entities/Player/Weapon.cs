@@ -90,7 +90,7 @@ public class Weapon : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0f,0f,rotz);
         }
-        if (shot )
+        if (shot)
         {
             Shot();
             shot = false;
@@ -140,7 +140,7 @@ public class Weapon : MonoBehaviour
     private void LineShot(Vector3 direction, float speed, int damage, float angle)//tir linéaire
     {
         Instantiate(projectile, transform.position,
-            Quaternion.Euler(0f,0f,0f)).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.position, angle, direction); 
+            Quaternion.Euler(0f,0f,0f)).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.position, angle, direction, true); 
     }
     
     private void CircleShot(int nbprojectile, float speed, int damage)//tir en cercle
