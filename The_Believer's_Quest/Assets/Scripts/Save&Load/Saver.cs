@@ -22,14 +22,53 @@ public static class Saver
     [Serializable]
     public class PlayerSave
     {
+        public int floor;
+        public int hp;
+        public int maxHP;
+        public int effectValue;
+        public int maxEffectValue;
+        public float speed;
+        public int gold;
         public int diamond;
-        public List<int> unlockedWeapons = new List<int>();
+        public string weaponsList;
+        public List<GameObject> unlockedItems;
+        public UnityEngine.Random.State seed;
 
-        public PlayerSave(int diamond, List<int> unlockedWeapons)
+        public PlayerSave(PlayerAsset data, List<GameObject> unlockedItems, UnityEngine.Random.State seed)
         {
-            this.diamond = diamond;
-            this.unlockedWeapons = unlockedWeapons;
+            floor = data.Floor;
+            hp = data.Hp;
+            maxHP = data.MaxHP;
+            effectValue = data.EffectValue;
+            maxEffectValue = data.MaxEffectValue;
+            speed = data.Speed;
+            gold = data.Gold;
+            diamond = data.Diamond;
+            weaponsList = data.SerializeWeapons();
+            this.unlockedItems = unlockedItems;
+            this.seed = seed;
         }
+    }
+
+    private static string SerializeItems(List<GameObject> unlockedItems)
+    {
+        string serilized = "";
+        int nbUnlocked = unlockedItems.Count;
+        Object obj;
+        for (int i = 0; i < nbUnlocked - 1; i++)
+        {
+            if ((obj = unlockedItems[i].GetComponent<Object>()) != null)
+                serilized += "Object/" + obj.name + ",";
+            else
+                serilized += "Weapon/" + unlockedItems[i].GetComponent<Weapon>().name + ",";
+        }
+
+        if ((obj = unlockedItems[nbUnlocked - 1].GetComponent<Object>()) != null)
+            serilized += "Object/" + obj.name;
+        else
+            serilized += "Weapon/" + unlockedItems[nbUnlocked - 1].GetComponent<Weapon>().name;
+
+        return serilized;
     }
 
     private static void Saving(PlayerSave save)
@@ -51,9 +90,9 @@ public static class Saver
         stream.Close();
     }
 
-    public static void SavePlayerData(PlayerAsset playerData)
+    public static void SavePlayerData(PlayerAsset playerData, List<GameObject> unlockedItems, UnityEngine.Random.State seed)
     {
-        Saving(new PlayerSave(playerData.Diamond, new List<int>()));
+        Saving(new PlayerSave(playerData, new List<GameObject>(), seed));
     }
 
     public static void SavePlayerSettings(int BGMvolume, int BGSvolume)
