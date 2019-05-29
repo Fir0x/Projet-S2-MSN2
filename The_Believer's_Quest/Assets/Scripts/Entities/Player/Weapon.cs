@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
 {
     private WeaponAsset weapon;
     private PlayerAsset playerAsset;
-    public bool shot;
+    private bool shot;
 
     private UIController UIController;
 
@@ -18,6 +18,7 @@ public class Weapon : MonoBehaviour
 
     public void Init(UIController UIController, WeaponAsset weapon, PlayerAsset playerAsset)
     {
+        shot = true;
         this.UIController = UIController;
         this.weapon = weapon;
         this.playerAsset = playerAsset;
@@ -83,26 +84,28 @@ public class Weapon : MonoBehaviour
         Shot();
         shot = false;
         yield return new WaitForSeconds(weapon.Cooldown);
+        shot = true;
     }
-    private void FixedUpdate() //tourne l'arme dans le bon sens
+
+    public void Attack() //tourne l'arme dans le bon sens
     {
-       Vector3 angle = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        float rotz = Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg;
-        if (!(weapon.Type == WeaponAsset.WeaponType.CQC))
-        {
-            transform.rotation = Quaternion.Euler(0f,0f,rotz-90);
-            
-        }
         if (shot)
         {
+            Vector3 angle = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            float rotz = Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg;
+            if (!(weapon.Type == WeaponAsset.WeaponType.CQC))
+            {
+                transform.rotation = Quaternion.Euler(0f, 0f, rotz - 90);
+
+            }
             StartCoroutine(CoolDown());
         }
     }
     //réalisé par Sarah à partir d'ici
     
-    public void Shot () 
+    public void Shot() 
     {
-        Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition)- transform.position;
+        Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         if (!(weapon.Type == WeaponAsset.WeaponType.CQC))
         {
             weapon.Loader -= weapon.Nbbulletsbyshot;

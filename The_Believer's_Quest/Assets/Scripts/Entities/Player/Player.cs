@@ -81,7 +81,7 @@ public class Player : MovingObject
     
     public void Attack()
     {
-        weapon.shot = true;
+        weapon.Attack();
     }
 
     public void doDash()
