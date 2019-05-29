@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 8643787426481538859, guid: fddef213d0325fa4b9ebd046b3e9ea98, type: 3}
   playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
-  ui: {fileID: 0}
+  ui: {fileID: 9191210180019234503, guid: d1cde67dc7783d04990639b029ea2312, type: 3}
 --- !u!212 &4659674338766441832
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -272,4 +272,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shot: 0
-  projectile: {fileID: 608695381, guid: c16d52dc33afba04e8f91b5d01a232ac, type: 3}
+  projectile: {fileID: 3965654078627227375, guid: a345e41e75ad0b94aa845a60b71e5d4f,
+    type: 3}

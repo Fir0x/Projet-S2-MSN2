@@ -27,7 +27,7 @@ public class Enemy : MovingObject
 
     public EnemyAsset EnemyAsset { get => enemyAsset; set => enemyAsset = value; }
 
-    void Awake()
+    void Start()
     {
         testForCoolDown = true;
         HP = enemyAsset.Hp;
