@@ -20,7 +20,7 @@ namespace Entities
                 enemy.transform.position =
                     Vector2.MoveTowards(enemy.transform.position, target.position, speedE + Time.deltaTime);
             }
-            else if (Vector2.Distance(enemy.transform.position, target.position) == stoppingDistance)
+            else if (Vector2.Distance(enemy.transform.position, target.position) == stoppingDistance && !enemy.shot)
                 enemy.shot = true;
         }
     }

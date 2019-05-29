@@ -24,7 +24,7 @@ public class Attack : MonoBehaviour
         if (enemy._Trajectory == Trajectory.Line)
             LineShot(player.Position, enemy.Speed, enemy.Damage, 0f);
         if (enemy._Trajectory== Trajectory.Arc)
-            ArcShot(enemy.NbOfProjectiles, player.Position, enemy.Speed, enemy.Damage);
+            ArcShot(enemy.NbOfProjectiles, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position, enemy.Speed, enemy.Damage);
         if (enemy._Trajectory== Trajectory.Circle)
             CircleShot(enemy.NbOfProjectiles, enemy.Speed, enemy.Damage);
         if (enemy._Trajectory == Trajectory.Cqc)
@@ -35,7 +35,7 @@ public class Attack : MonoBehaviour
     private void Cqc(int damage)
     {
         Collider2D[] playerTouched =
-            Physics2D.OverlapCircleAll(transform.position, 1, LayerMask.GetMask("Default"));
+            Physics2D.OverlapCircleAll(transform.position, 0.5f, LayerMask.GetMask("Default"));
         for(int i = 0; i < playerTouched.Length; i++)
         {
             if (playerTouched[i].CompareTag("Player"))
@@ -44,8 +44,8 @@ public class Attack : MonoBehaviour
     }
     private void LineShot(Vector3 direction, float speed, int damage, float angle)//tir linéaire
     {
-        Instantiate(projectile, gameObject.transform.position,
-            Quaternion.Euler(0f,0f,0f)).GetComponent<Projectile>().Init(enemy.Sprite, speed, damage, gameObject.transform.position, angle, direction,false); 
+        Instantiate(projectile, transform.position,
+            Quaternion.identity).GetComponent<Projectile>().Init(enemy.Sprite, speed, damage, transform.position, angle, direction,false); 
     }
     
     private void CircleShot(int nbprojectile, float speed, int damage)//tir en cercle
@@ -75,7 +75,7 @@ public class Attack : MonoBehaviour
 
     private void Railgun(int damage)
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(gameObject.transform.position, player.Position, 20, LayerMask.GetMask("Default"));
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position, 20, LayerMask.GetMask("Default"));
    
         if (hitInfo.collider != null )
         {

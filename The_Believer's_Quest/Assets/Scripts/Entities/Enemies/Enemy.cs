@@ -25,6 +25,7 @@ public class Enemy : MovingObject
     
     private Attack attack;
     public bool shot;
+    private float timeBtwshots;
 
     public EnemyAsset EnemyAsset { get => enemyAsset; set => enemyAsset = value; }
 
@@ -54,11 +55,15 @@ public class Enemy : MovingObject
     private void FixedUpdate()
     {
         Pathfinding();
-        if (transform.position.magnitude - transformPlayer.position.magnitude < 0.5 || shot)
+        if ( shot && timeBtwshots <=0)
         {
             attack.Launcher();
             shot = false;
-            StartCoroutine(CoolDown());
+            timeBtwshots = enemyAsset.Cooldown;
+        }
+        else
+        {
+            timeBtwshots -= Time.deltaTime;
         }
     }
     IEnumerator CoolDown()
@@ -84,6 +89,7 @@ public class Enemy : MovingObject
                 transform.position = Vector2.MoveTowards(transform.position, transformPlayer.position,
                     enemyAsset.Speed * Time.deltaTime);
             }
+            shot = true;
         }
     }
 
