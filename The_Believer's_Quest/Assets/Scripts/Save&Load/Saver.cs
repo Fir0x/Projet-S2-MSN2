@@ -22,53 +22,16 @@ public static class Saver
     [Serializable]
     public class PlayerSave
     {
-        public int floor;
-        public int hp;
-        public int maxHP;
-        public int effectValue;
-        public int maxEffectValue;
-        public float speed;
-        public int gold;
-        public int diamond;
-        public string weaponsList;
+        public PlayerAsset playerData;
         public List<GameObject> unlockedItems;
         public UnityEngine.Random.State seed;
 
-        public PlayerSave(PlayerAsset data, List<GameObject> unlockedItems, UnityEngine.Random.State seed)
+        public PlayerSave(PlayerAsset playerData, List<GameObject> unlockedItems, UnityEngine.Random.State seed)
         {
-            floor = data.Floor;
-            hp = data.Hp;
-            maxHP = data.MaxHP;
-            effectValue = data.EffectValue;
-            maxEffectValue = data.MaxEffectValue;
-            speed = data.Speed;
-            gold = data.Gold;
-            diamond = data.Diamond;
-            weaponsList = data.SerializeWeapons();
+            this.playerData = playerData;
             this.unlockedItems = unlockedItems;
             this.seed = seed;
         }
-    }
-
-    private static string SerializeItems(List<GameObject> unlockedItems)
-    {
-        string serilized = "";
-        int nbUnlocked = unlockedItems.Count;
-        Object obj;
-        for (int i = 0; i < nbUnlocked - 1; i++)
-        {
-            if ((obj = unlockedItems[i].GetComponent<Object>()) != null)
-                serilized += "Object/" + obj.name + ",";
-            else
-                serilized += "Weapon/" + unlockedItems[i].GetComponent<Weapon>().name + ",";
-        }
-
-        if ((obj = unlockedItems[nbUnlocked - 1].GetComponent<Object>()) != null)
-            serilized += "Object/" + obj.name;
-        else
-            serilized += "Weapon/" + unlockedItems[nbUnlocked - 1].GetComponent<Weapon>().name;
-
-        return serilized;
     }
 
     private static void Saving(PlayerSave save)
@@ -76,7 +39,7 @@ public static class Saver
         string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerData.bin");
         Debug.Log("Save file path: " + path); //DEBUG
         Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-        new BinaryFormatter().Serialize(stream, save); //Saving of the GameSave object in the binary file
+        new BinaryFormatter().Serialize(stream, JsonUtility.ToJson(save)); //Saving of the GameSave object in the binary file
         stream.Close();
     }
 
