@@ -16,7 +16,7 @@ public class Projectile : MovingObject
         this.speed = speed;
         this.damage = damage;
         this.player = player;
-        direction = _direction;
+        direction = _direction.normalized;
         if (angle != 0)
              transform.RotateAround(origin, Vector3.forward, angle);
 
@@ -27,22 +27,21 @@ public class Projectile : MovingObject
    
         if (hitInfo.collider != null )
         {
-            if (hitInfo.collider.CompareTag("Enemy") && player)
+            if (hitInfo.collider.gameObject.CompareTag("Enemy") && player)
             {
-                hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
+                hitInfo.collider.gameObject.GetComponent<Enemy>().TakeDamage(damage);
                 Destroy(gameObject);
             }
-            if (hitInfo.collider.CompareTag("Player") && !player)
+            if (hitInfo.collider.gameObject.CompareTag("Player") && !player)
             {
-                hitInfo.collider.GetComponent<Player>().SetLife(playerAsset.Hp - damage);
+                hitInfo.collider.gameObject.GetComponent<Player>().SetLife(playerAsset.Hp - damage);
                 Destroy(gameObject);
             }
-            if (hitInfo.collider.CompareTag("Pattern"))
+            if (hitInfo.collider.gameObject.CompareTag("Pattern"))
             {
                Destroy(gameObject);
             }
         }
-        
         gameObject.transform.Translate(new Vector3(direction.x * speed * Time.deltaTime,
             direction.y * speed * Time.deltaTime, 0));
         

@@ -80,20 +80,21 @@ public class Weapon : MonoBehaviour
 
     IEnumerator CoolDown()
     {
+        Shot();
+        shot = false;
         yield return new WaitForSeconds(weapon.Cooldown);
     }
     private void FixedUpdate() //tourne l'arme dans le bon sens
     {
-        Vector3 angle = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+       Vector3 angle = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float rotz = Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg;
         if (!(weapon.Type == WeaponAsset.WeaponType.CQC))
         {
-            transform.rotation = Quaternion.Euler(0f,0f,rotz);
+            transform.rotation = Quaternion.Euler(0f,0f,rotz-90);
+            
         }
         if (shot)
         {
-            Shot();
-            shot = false;
             StartCoroutine(CoolDown());
         }
     }
@@ -101,7 +102,7 @@ public class Weapon : MonoBehaviour
     
     public void Shot () 
     {
-        print(Camera.main.ScreenToWorldPoint(Input.mousePosition)); //DEBUG
+        Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition)- transform.position;
         if (!(weapon.Type == WeaponAsset.WeaponType.CQC))
         {
             weapon.Loader -= weapon.Nbbulletsbyshot;
@@ -116,10 +117,10 @@ public class Weapon : MonoBehaviour
 
         if ((weapon.Type == WeaponAsset.WeaponType.Line))
             //attaque en ligne avec RailGun
-            LineShot(Camera.main.ScreenToWorldPoint(Input.mousePosition) -transform.position, weapon.Speed,weapon.Damage, 0);
+            LineShot(transform.up, weapon.Speed,weapon.Damage, 0);
         if ((weapon.Type == WeaponAsset.WeaponType.Shotgun)) 
             //attaque en Arc avec Shotgun
-            ArcShot(weapon.Nbbulletsbyshot, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position, weapon.Speed, weapon.Damage);
+            ArcShot(weapon.Nbbulletsbyshot, transform.up, weapon.Speed, weapon.Damage);
         //attaque en cercle avec Circleshot
         if ((weapon.Type == WeaponAsset.WeaponType.Circle))
             CircleShot(weapon.Nbbulletsbyshot, weapon.Speed, weapon.Damage);
@@ -130,17 +131,17 @@ public class Weapon : MonoBehaviour
     private void Cqc()
     {
         Collider2D[] enemiesTouched =
-            Physics2D.OverlapCircleAll(transform.position, 1, LayerMask.GetMask("Aerial", "Ground"));
+            Physics2D.OverlapCircleAll(transform.position, 0.5f, LayerMask.GetMask("Aerial", "Ground"));
         for(int i = 0; i < enemiesTouched.Length; i++)
         {
-            enemiesTouched[i].GetComponent<Enemy>().TakeDamage(weapon.Damage);
+            enemiesTouched[i].gameObject.GetComponent<Enemy>().TakeDamage(weapon.Damage);
         }
 
     }
     private void LineShot(Vector3 direction, float speed, int damage, float angle)//tir linéaire
     {
         Instantiate(projectile, transform.position,
-            Quaternion.Euler(0f,0f,0f)).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.position, angle, direction, true); 
+            transform.rotation).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.position, angle, direction, true); 
     }
     
     private void CircleShot(int nbprojectile, float speed, int damage)//tir en cercle
