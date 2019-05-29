@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Entities;
-using UnityEditor;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 //Nicolas L
 public class Enemy : MovingObject
 {
+    private bool testForCoolDown;
+
     [SerializeField] private EnemyAsset enemyAsset;
 
     private Vector3 startPos;
@@ -25,12 +24,12 @@ public class Enemy : MovingObject
     
     private Attack attack;
     public bool shot;
-    private float timeBtwshots;
 
     public EnemyAsset EnemyAsset { get => enemyAsset; set => enemyAsset = value; }
 
     void Start()
     {
+        testForCoolDown = true;
         HP = enemyAsset.Hp;
         
         realPathfinding = GetComponentInParent<RealPathfinding>();
@@ -55,21 +54,27 @@ public class Enemy : MovingObject
     private void FixedUpdate()
     {
         Pathfinding();
-        if ( shot && timeBtwshots <=0)
+        
+        if(shot)
         {
+            StartCoroutine(AttackWithCoolDown());
+        }
+    }
+
+    IEnumerator AttackWithCoolDown()
+    {
+        if (testForCoolDown)
+        {
+            print("attack");
+            testForCoolDown = false;
             attack.Launcher();
             shot = false;
-            timeBtwshots = enemyAsset.Cooldown;
-        }
-        else
-        {
-            timeBtwshots -= Time.deltaTime;
+
+            yield return new WaitForSeconds(enemyAsset.Cooldown);
+            testForCoolDown = true;
         }
     }
-    IEnumerator CoolDown()
-    {
-        yield return new WaitForSeconds(enemyAsset.Cooldown);
-    }
+
     delegate void ChoosePathfinding();
 
     private void AStarPathfindingMoving()

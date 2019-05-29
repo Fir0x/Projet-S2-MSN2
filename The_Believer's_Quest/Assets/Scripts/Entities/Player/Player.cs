@@ -14,7 +14,9 @@ public class Player : MovingObject
     private bool goUp;
     private bool goRight;
     private bool goDown;
+
     private bool testForDash;
+    private bool testForInvincibility;
 
     private Rigidbody2D rigid;  //utile pour déplacement glace
 
@@ -39,23 +41,37 @@ public class Player : MovingObject
     public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
     public GameObject UI { get => ui; set => ui = value; }
 
-    public Vector2 GetPos()
+    public Vector3 GetPos()
     {
         return transform.position;
     }
 
-    public Vector2 GetFirstPos()
+    public Vector3 GetFirstPos()
     {
         return firstPos;
     }
 
     public void SetLife(int value)
     {
+        playerAsset.Invicibility = true;
+        print("invincible!");
+        StartCoroutine(InvicibilityCoolDown());
+
         playerAsset.Hp = value;
         uiController.changeHp.Invoke();
-        if (playerAsset.Hp <=0)
+        if (playerAsset.Hp <= 0)
+        {
             print("Game Over");
+        }
     }
+
+    IEnumerator InvicibilityCoolDown()
+    {
+        yield return new WaitForSeconds(1);
+        playerAsset.Invicibility = false;
+        print("plus invincible.");
+    }
+
 
     public void SetEffect(int value)
     {
@@ -253,6 +269,12 @@ public class Player : MovingObject
     public void StopMoveLeft()
     {
         goLeft = false;
+    }
+
+    public void ForcedMovement(Vector3 direction)                   //makes player move without his consent
+    {
+        print("dir : " + direction.normalized);
+        this.transform.position = Vector3.Lerp(firstPos, GetPos() + direction, Time.deltaTime);
     }
 
     private void FixedUpdate()
