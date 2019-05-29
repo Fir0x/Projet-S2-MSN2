@@ -121,6 +121,47 @@ public class RoomManager : MonoBehaviour
             script.SetTiles(doors, doorTiles, floor);
         }*/
 
+        foreach (Board.DoorPos d in doors)                      //creation of door colliders
+        {
+            if(d == Board.DoorPos.Up)
+            {
+                GameObject colliderUp = new GameObject("ColliderUp");
+                colliderUp.transform.parent = this.transform;
+                colliderUp.transform.position = this.transform.position + new Vector3(0.5f, 6.5f, 0);
+                colliderUp.AddComponent<BoxCollider2D>();
+                colliderUp.GetComponent<BoxCollider2D>().isTrigger = true;
+                colliderUp.tag = "Pattern";
+            }
+            else if(d == Board.DoorPos.Right)
+            {
+                GameObject colliderRight = new GameObject("ColliderRight");
+                colliderRight.transform.parent = this.transform;
+                colliderRight.transform.position = this.transform.position + new Vector3(9f, 1f, 0);
+                colliderRight.AddComponent<BoxCollider2D>();
+                colliderRight.GetComponent<BoxCollider2D>().isTrigger = true;
+                colliderRight.tag = "Pattern";
+            }
+
+            else if (d == Board.DoorPos.Down)
+            {
+                GameObject colliderDown = new GameObject("ColliderDown");
+                colliderDown.transform.parent = this.transform;
+                colliderDown.transform.position = this.transform.position + new Vector3(0.5f, -5.75f, 0);
+                colliderDown.AddComponent<BoxCollider2D>();
+                colliderDown.GetComponent<BoxCollider2D>().isTrigger = true;
+                colliderDown.tag = "Pattern";
+            }
+            else
+            {
+                GameObject colliderLeft = new GameObject("ColliderLeft");
+                colliderLeft.transform.parent = this.transform;
+                colliderLeft.transform.position = this.transform.position + new Vector3(-8f, 1f, 0);
+                colliderLeft.AddComponent<BoxCollider2D>();
+                colliderLeft.GetComponent<BoxCollider2D>().isTrigger = true;
+                colliderLeft.tag = "Pattern";
+            }
+        }
+
         gameObject.GetComponentInChildren<LayerFront>().SetTiles(doors, doorTiles, floor);
         gameObject.GetComponentInChildren<LayerBehind>().SetTiles(doors, doorTiles, floor);
     }
@@ -136,6 +177,11 @@ public class RoomManager : MonoBehaviour
         {
             script.ClearTiles(doors, doorTiles, floor);
         }*/
+
+        for(int i = 4; i < transform.childCount; i++)           //destruction of door colliders
+        {
+            Destroy(GetComponent<Transform>().GetChild(i).gameObject);
+        }
 
         gameObject.GetComponentInChildren<LayerFront>().ClearTiles(doors, doorTiles, floor);
         gameObject.GetComponentInChildren<LayerBehind>().ClearTiles(doors, doorTiles, floor);
