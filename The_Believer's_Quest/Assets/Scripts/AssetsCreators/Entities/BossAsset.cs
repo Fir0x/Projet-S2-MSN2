@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+//Nicolas I
 [CreateAssetMenu(fileName = "NewBoss", menuName = "Entity/Boss")]
 public class BossAsset : ScriptableObject
 {
@@ -11,6 +11,7 @@ public class BossAsset : ScriptableObject
     [SerializeField] [Range(3, 15)] private int maxLoot;
     [SerializeField] private Sprite sprite;
     [SerializeField] private float range;
+    [SerializeField] private float cooldown;
 
 
     public int Hp { get => hp; set => hp = value; }
@@ -21,6 +22,7 @@ public class BossAsset : ScriptableObject
     public int MaxLoot { get => maxLoot; set => maxLoot = value; }
     public Sprite Sprite { get => sprite; set => sprite = value; }
     public float Range { get => range; set => range = value; }
+    public float Cooldown { get => cooldown; set => cooldown = value; }
 
     private void Awake()
     {

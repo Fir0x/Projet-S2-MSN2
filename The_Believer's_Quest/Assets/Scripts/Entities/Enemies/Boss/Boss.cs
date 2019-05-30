@@ -1,16 +1,17 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Entities;
-
+//Nicolas I
 public abstract class Boss : MonoBehaviour
 {
     protected bool isAttacking;
 
     protected delegate void BossAttack();
     protected delegate void ChoosePathfinding();
-    protected List<Attack> attackList;
+    protected List<BossAttack> attackList;
+    protected int nbAttacks;
 
     [SerializeField] protected BossAsset bossData;
     [SerializeField] protected PlayerAsset playerAsset;
@@ -31,7 +32,8 @@ public abstract class Boss : MonoBehaviour
 
     protected void Start()
     {
-        attackList = new List<Attack>();
+        isAttacking = false;
+        attackList = new List<BossAttack>();
         animator = GetComponent<Animator>();
         hpPhase = bossData.Hp / 2;
 
@@ -49,10 +51,11 @@ public abstract class Boss : MonoBehaviour
     protected void FixedUpdate()
     {
         print("It works !");
-        Pathfinding();
+        if(!isAttacking)
+            Pathfinding();
         if (shot)
         {
-            attack.Launcher();
+            attackList[Random.Range(0, nbAttacks)]();
             shot = false;
         }
     }
@@ -73,10 +76,10 @@ public abstract class Boss : MonoBehaviour
         }
     }
 
-    /*IEnumerator CoolDown()
+    IEnumerator CoolDown()
     {
-        yield return new WaitForSeconds(enemyAsset.Cooldown);
-    }*/
+        yield return new WaitForSeconds(bossData.Cooldown);
+    }
 
     protected void AStarPathfindingMoving()
     {

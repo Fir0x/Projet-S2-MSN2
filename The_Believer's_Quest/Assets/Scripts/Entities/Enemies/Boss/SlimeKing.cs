@@ -1,11 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicolas L
 public class SlimeKing : Boss
 {
     public GameObject blueSlime;
     private RoomManager roomManager;
+
+    void Start()
+    {
+        base.Start();
+        attackList.Add(DashAttack);
+        nbAttacks = 1;
+    }
 
     protected override void ChangePhase()
     {
@@ -21,6 +29,12 @@ public class SlimeKing : Boss
 
     private void DashAttack()
     {
-        
+        isAttacking = true;
+        Vector3 finalPos = playerAsset.Position;
+        while (transform.position != finalPos)
+        {
+            transform.Translate((finalPos - transform.position).normalized);
+        }
+        isAttacking = false;
     }
 }
