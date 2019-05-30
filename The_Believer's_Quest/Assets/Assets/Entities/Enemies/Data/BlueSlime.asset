@@ -22,3 +22,5 @@ MonoBehaviour:
   sprite: {fileID: 0}
   nbofprojectiles: 0
   trajectory: 4
+  shotSpeed: 0
+  range: 0.5

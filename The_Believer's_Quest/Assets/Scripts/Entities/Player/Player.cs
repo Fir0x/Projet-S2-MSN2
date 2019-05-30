@@ -54,7 +54,6 @@ public class Player : MovingObject
     public void SetLife(int value)
     {
         playerAsset.Invicibility = true;
-        print("invincible!");
         StartCoroutine(InvicibilityCoolDown());
 
         playerAsset.Hp = value;
@@ -69,7 +68,6 @@ public class Player : MovingObject
     {
         yield return new WaitForSeconds(1);
         playerAsset.Invicibility = false;
-        print("plus invincible.");
     }
 
 
@@ -182,6 +180,7 @@ public class Player : MovingObject
                     newPos = transform.position - firstPos;
                 }
             }
+            playerAsset.Position = transform.position;
 
             testForDash = false;
                 
@@ -192,6 +191,7 @@ public class Player : MovingObject
 
     private void Awake()
     {
+        playerAsset.Position = transform.position;
         testForDash = true;
 
         firstPos = this.transform.position;
@@ -213,6 +213,8 @@ public class Player : MovingObject
         {
             this.transform.Translate(0, moveY, 0);
         }
+
+        playerAsset.Position = transform.position;
     }
 
     public void StopMoveUp()
@@ -230,6 +232,8 @@ public class Player : MovingObject
         {
             this.transform.Translate(moveX, 0, 0);
         }
+
+        playerAsset.Position = transform.position;
     }
 
     public void StopMoveRight()
@@ -247,6 +251,8 @@ public class Player : MovingObject
         {
             this.transform.Translate(0, -moveY, 0);
         }
+
+        playerAsset.Position = transform.position;
     }
 
     public void StopMoveDown()
@@ -264,6 +270,8 @@ public class Player : MovingObject
         {
             this.transform.Translate(-moveX, 0, 0);
         }
+
+        playerAsset.Position = transform.position;
     }
 
     public void StopMoveLeft()
@@ -273,9 +281,10 @@ public class Player : MovingObject
 
     public void ForcedMovement(Vector3 direction)                   //makes player move without his consent
     {
-        print("dir : " + direction);
         Vector3 firstPos = this.transform.position;
         this.transform.position = Vector3.Lerp(firstPos, firstPos + direction * 4, 3f * Time.deltaTime);
+
+        playerAsset.Position = transform.position;
     }
 
     private void FixedUpdate()

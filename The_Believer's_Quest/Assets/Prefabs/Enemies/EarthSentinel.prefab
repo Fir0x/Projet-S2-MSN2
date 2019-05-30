@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAsset: {fileID: 11400000, guid: d111dc0555081e143a9824f7b950a222, type: 2}
+  playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   shot: 0
 --- !u!114 &2397394942925314983
 MonoBehaviour:

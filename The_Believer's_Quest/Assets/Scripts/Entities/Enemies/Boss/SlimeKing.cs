@@ -4,8 +4,23 @@ using UnityEngine;
 
 public class SlimeKing : Boss
 {
+    public GameObject blueSlime;
+    private RoomManager roomManager;
+
     protected override void ChangePhase()
     {
-        gameObject.GetComponentInParent<RoomManager>();
+        roomManager = gameObject.GetComponentInParent<RoomManager>();
+        InvokeRepeating("SpawnSlimes", 0.1f, 30f);
+    }
+
+    private void SpawnSlimes()
+    {
+        GameObject[] slimes = new GameObject[] { blueSlime, blueSlime, blueSlime, blueSlime};
+        roomManager.AddEnemies(slimes);
+    }
+
+    private void DashAttack()
+    {
+        
     }
 }
