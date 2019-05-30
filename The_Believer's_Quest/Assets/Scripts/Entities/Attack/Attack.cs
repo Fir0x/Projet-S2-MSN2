@@ -8,6 +8,7 @@ public class Attack : MonoBehaviour
     public GameObject projectile;
     public PlayerAsset player;
     public EnemyAsset enemy;
+    public BossAsset boss;
 
     
     public enum Trajectory
@@ -19,8 +20,22 @@ public class Attack : MonoBehaviour
         Cqc,
     }
 
+    public void BossLauncher(Trajectory traj)                               //for boss, traj changes with attack pattern
+    {
+        Transform playerT = GameObject.FindGameObjectWithTag("Player").transform;
+        if (traj == Trajectory.Line)
+            LineShot(playerT.position, enemy.Speed, boss.Damage, 0f);
+        if (traj == Trajectory.Arc)
+            ArcShot(enemy.NbOfProjectiles, playerT.position, enemy.ShotSpeed, boss.Damage);
+        if (traj == Trajectory.Circle)
+            CircleShot(enemy.NbOfProjectiles, enemy.ShotSpeed, boss.Damage);
+        if (traj == Trajectory.Cqc)
+            Cqc(boss.Damage);
+        if (traj == Trajectory.Railgun)
+            Railgun(boss.Damage);
+    }
 
-    public void Launcher()
+    public void Launcher()                          //for regular enemies
     {
         Transform playerT = GameObject.FindGameObjectWithTag("Player").transform;
         if (enemy._Trajectory == Trajectory.Line)
