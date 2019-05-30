@@ -201,6 +201,14 @@ public class Player : MovingObject
         
         weapon = GetComponentInChildren<Weapon>();
         weapon.Init(uiController, PlayerAsset.WeaponsList[0], playerAsset);
+        uiController.changeWeapon.Invoke();
+        uiController.changeDiamond.Invoke();
+        uiController.changeGold.Invoke();
+        uiController.changeHp.Invoke();
+        uiController.changeMaxHp.Invoke();
+        uiController.changeEffect.Invoke();
+        uiController.changeMaxEffect.Invoke();
+        uiController.changeAmmo.Invoke();
     }
 
     public void MoveUp()
