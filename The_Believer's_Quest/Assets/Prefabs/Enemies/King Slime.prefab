@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6452787754361227778}
   - component: {fileID: 6225617713631837348}
   - component: {fileID: 8933164833386594153}
+  - component: {fileID: 7236448259413741707}
   m_Layer: 0
   m_Name: King Slime
   m_TagString: Untagged
@@ -117,3 +118,19 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   blueSlime: {fileID: 917192810353389789, guid: 20ce829acefb8324c8df9f6352811168,
     type: 3}
+--- !u!114 &7236448259413741707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334360431834512438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070a2885a37d4eb43a66426a070c7a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 0}
+  player: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
+  enemy: {fileID: 0}
+  boss: {fileID: 11400000, guid: cf4a1e74b455a9c42b85ec852173a22f, type: 2}

@@ -34,6 +34,7 @@ public class SlimeKing : Boss
         while (transform.position != finalPos)
         {
             transform.Translate((finalPos - transform.position).normalized);
+            attack.Launcher();
         }
         isAttacking = false;
     }

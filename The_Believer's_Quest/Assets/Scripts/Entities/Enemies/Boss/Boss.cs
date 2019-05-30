@@ -12,7 +12,7 @@ public abstract class Boss : MonoBehaviour
     protected delegate void ChoosePathfinding();
     protected List<BossAttack> attackList;
     protected int nbAttacks;
-
+    
     [SerializeField] protected BossAsset bossData;
     [SerializeField] protected PlayerAsset playerAsset;
     protected int hpPhase;
@@ -26,12 +26,14 @@ public abstract class Boss : MonoBehaviour
     protected RealPathfinding realPathfinding;
     protected Attack attack;
     protected bool shot;
+    protected bool testForCoolDown;
 
     public BossAsset BossData { get => bossData; set => bossData = value; }
-    public Slider HealthBar { get => healthBar; set => healthBar = value; }
+    public Slider HealthBar { get => healthBar; set => healthBar = value; } 
 
     protected void Start()
     {
+        testForCoolDown = true;
         isAttacking = false;
         attackList = new List<BossAttack>();
         animator = GetComponent<Animator>();
@@ -55,8 +57,21 @@ public abstract class Boss : MonoBehaviour
             Pathfinding();
         if (shot)
         {
+            StartCoroutine(AttackWithCoolDown());
+            shot = false;
+        }
+    }
+
+    IEnumerator AttackWithCoolDown()
+    {
+        if (testForCoolDown)
+        {
+            testForCoolDown = false;
             attackList[Random.Range(0, nbAttacks)]();
             shot = false;
+
+            yield return new WaitForSeconds(bossData.Cooldown);
+            testForCoolDown = true;
         }
     }
 
@@ -98,8 +113,18 @@ public abstract class Boss : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, transformPlayer.position,
                     bossData.Speed * Time.deltaTime);
             }
+        }
+
+        if (CanAttack())
+        {
+            print("can attack");
             shot = true;
         }
+    }
+
+    private bool CanAttack()
+    {
+        return (gameObject.transform.position - playerAsset.Position).magnitude < bossData.Range;
     }
 
     protected abstract void ChangePhase();
