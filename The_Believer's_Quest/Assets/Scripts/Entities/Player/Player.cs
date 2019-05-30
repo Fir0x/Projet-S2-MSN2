@@ -22,6 +22,7 @@ public class Player : MovingObject
 
     [SerializeField] private PlayerAsset playerAsset;
     [SerializeField] private GameObject ui;
+    [SerializeField] private GameObject gameover;
     private UIController uiController;
 
     private Weapon weapon;
@@ -61,6 +62,9 @@ public class Player : MovingObject
         uiController.changeHp.Invoke();
         if (playerAsset.Hp <= 0)
         {
+            animator.SetTrigger(animDeathID);
+            Time.timeScale = 1f;
+            gameover.SetActive(false);
             print("Game Over");
         }
     }
