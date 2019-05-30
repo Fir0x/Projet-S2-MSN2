@@ -53,6 +53,7 @@ public class Player : MovingObject
 
     public void SetLife(int value)
     {
+        print("aie!");
         playerAsset.Invicibility = true;
         StartCoroutine(InvicibilityCoolDown());
 

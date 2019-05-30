@@ -13,6 +13,7 @@ public class SlimeKing : Boss
         base.Start();
         attackList.Add(DashAttack);
         nbAttacks = 1;
+
     }
 
     protected override void ChangePhase()
@@ -23,18 +24,21 @@ public class SlimeKing : Boss
 
     private void SpawnSlimes()
     {
-        GameObject[] slimes = new GameObject[] { blueSlime, blueSlime, blueSlime, blueSlime};
+        GameObject[] slimes = new GameObject[] {blueSlime, blueSlime, blueSlime, blueSlime};
         roomManager.AddEnemies(slimes);
     }
 
     private void DashAttack()
     {
+        print("DashAttack");
         isAttacking = true;
         Vector3 finalPos = playerAsset.Position;
-        while (transform.position != finalPos)
+
+        float step = bossData.Speed * Time.deltaTime;
+        while ((transform.position.x > finalPos.x + 0.5f || transform.position.x < finalPos.x - 0.5f) && (transform.position.y > finalPos.y + 0.5f || transform.position.y < finalPos.y - 0.5f))
         {
-            transform.Translate((finalPos - transform.position).normalized);
-            attack.Launcher();
+            transform.position = Vector3.MoveTowards(transform.position, finalPos, step * 0.01f); 
+            attack.BossLauncher(Attack.Trajectory.Cqc);
         }
         isAttacking = false;
     }
