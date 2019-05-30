@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -13,7 +13,7 @@ public static class Loader
         Settings
     };
 
-    public static Random.State LoadingPlayerData(ref PlayerAsset playerData, ref UnlockedItemsAsset unlockedItems)
+    public static UnityEngine.Random.State LoadingPlayerData(ref PlayerAsset playerData, ref UnlockedItemsAsset unlockedItems)
     {
         string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerData.bin");
         //Debug.Log("File path: " + path); //DEBUG
@@ -48,13 +48,13 @@ public static class Loader
         return result;
     }
 
-    public static void LoadingPlayerSettings()
+    public static Tuple<float, float> LoadingPlayerSettings()
     {
         string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerSettings.bin");
         //Debug.Log("File path: " + path); //DEBUG
         //Binary save file opening
         Stream streamRestauration = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
         Saver.PlayerSettings save = (Saver.PlayerSettings)new BinaryFormatter().Deserialize(streamRestauration);
-        //FIX ME: En attente de la gestion du niveau sonore
+        return new Tuple<float, float>(save.BGSvolume, save.BGMvolume);
     }
 }

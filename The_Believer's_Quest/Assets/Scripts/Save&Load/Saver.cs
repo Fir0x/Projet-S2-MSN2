@@ -9,10 +9,10 @@ public static class Saver
     [Serializable]
     public class PlayerSettings
     {
-        public int BGMvolume; //Background music volume
-        public int BGSvolume; //Background sounds volume
+        public float BGMvolume; //Background music volume
+        public float BGSvolume; //Background sounds volume
 
-        public PlayerSettings(int BGMvolume, int BGSvolume)
+        public PlayerSettings(float BGMvolume, float BGSvolume)
         {
             this.BGMvolume = BGMvolume;
             this.BGSvolume = BGSvolume;
@@ -58,7 +58,7 @@ public static class Saver
         Saving(new PlayerSave(playerData, new List<GameObject>(), seed));
     }
 
-    public static void SavePlayerSettings(int BGMvolume, int BGSvolume)
+    public static void SavePlayerSettings(float BGMvolume, float BGSvolume)
     {
         Saving(new PlayerSettings(BGMvolume, BGSvolume));
     }
