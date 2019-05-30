@@ -30,6 +30,7 @@ public static class Loader
                 unlockedItems.Locked.Remove(item);
             }
         }
+        //GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(.GetComponent<Player>().PlayerAsset.Floor + 2);
 
         return save.seed;
     }

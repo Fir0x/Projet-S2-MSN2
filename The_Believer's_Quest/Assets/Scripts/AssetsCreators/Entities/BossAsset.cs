@@ -10,6 +10,7 @@ public class BossAsset : ScriptableObject
     [SerializeField] [Range(2, 14)] private int minLoot;
     [SerializeField] [Range(3, 15)] private int maxLoot;
     [SerializeField] private Sprite sprite;
+    [SerializeField] private float range;
 
 
     public int Hp { get => hp; set => hp = value; }
@@ -19,6 +20,7 @@ public class BossAsset : ScriptableObject
     public int MinLoot { get => minLoot; set => minLoot = value; }
     public int MaxLoot { get => maxLoot; set => maxLoot = value; }
     public Sprite Sprite { get => sprite; set => sprite = value; }
+    public float Range { get => range; set => range = value; }
 
     private void Awake()
     {

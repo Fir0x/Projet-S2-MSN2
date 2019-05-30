@@ -6,6 +6,7 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
     private List<GameObject> allEnemiesList;
+    [SerializeField] private AllEnemiesAsset allBoss;
 
     private int[] mapPos;
     private int floor;
@@ -15,6 +16,7 @@ public class RoomManager : MonoBehaviour
     private TileAsset doorTiles;
     private int totalWeight = 7; //uniquement pour étage 1
     private int enemiesRemaining;
+    private bool testForBoss;
 
     private Vector3 roomPosition;
     private TileGrid grid;
@@ -32,7 +34,12 @@ public class RoomManager : MonoBehaviour
         grid = gameObject.GetComponent<TileGrid>();
         roomPosition = this.transform.position;
         
-        if (enemiesList.Count > 0)
+        if(enemiesList.Count == 1)
+        {
+            testForBoss = true;
+            enemies.Add(enemiesList[0]);
+        }
+        else if (enemiesList.Count > 0)
         {
             CreateEnemies();
         }
@@ -56,17 +63,27 @@ public class RoomManager : MonoBehaviour
         enemiesRemaining = enemies.Count;
    }
 
+    public void AddEnemies(GameObject[] newEnemies)
+    {
+        foreach(GameObject enemy in newEnemies)
+        {
+            enemies.Add(enemy);
+        }
+
+        SpawnEnemies();
+    }
+
     private void OnTriggerEnter2D(Collider2D col) //Nicolas L
     {
         if (firstEntry && col.CompareTag("Player"))
         {
-            firstEntry = false;
             SpawnEnemies();
 
             if (enemiesRemaining > 0)
             {
                 roomCreator.Close();
             }
+            firstEntry = false;
         }
     }
 
@@ -75,31 +92,39 @@ public class RoomManager : MonoBehaviour
         bool posOk;
         int x = 0;
         int y = 0;
-
-        foreach (GameObject enemy in enemies)        //apparition ennemis
+        
+        if(gameObject.CompareTag("Finish") && testForBoss)         //apparition boss
         {
-            posOk = false;
-            while (!posOk)
-            {
-                print("test");
-                x = Random.Range(-7, 7);
-                y = Random.Range(-5, 5);
-
-                if (grid.NodeFromPos(roomPosition + new Vector3(x, y, 0)).walkable)
-                {
-                    posOk = true;
-                }
-            }
-
-            GameObject enemyOnScene = Instantiate(enemy, roomPosition + new Vector3(x, y, 0), Quaternion.identity) as GameObject;
-            enemyOnScene.transform.parent = this.transform;
+            testForBoss = false;
+            GameObject bossOnScene = Instantiate(enemies[0], roomPosition, Quaternion.identity) as GameObject;
+            bossOnScene.transform.parent = this.transform;
         }
+        else
+        {
+            foreach (GameObject enemy in enemies)        //apparition ennemis
+            {
+                posOk = false;
+                while (!posOk)
+                {
+                    x = Random.Range(-7, 7);
+                    y = Random.Range(-5, 5);
+
+                    if (grid.NodeFromPos(roomPosition + new Vector3(x, y, 0)).walkable)
+                    {
+                        posOk = true;
+                    }
+                }
+
+                GameObject enemyOnScene = Instantiate(enemy, roomPosition + new Vector3(x, y, 0), Quaternion.identity) as GameObject;
+                enemyOnScene.transform.parent = this.transform;
+            }
+        }
+        
     }
 
     public void DestroyEnemy(GameObject enemy) //Nicolas L
     {
         enemiesRemaining -= 1;
-        print(enemiesRemaining + "");
         if (enemiesRemaining == 0)
         {
             roomCreator.Open();

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Pattern
   - Enemy
+  - BoardManager
+  - SoundManager
   layers:
   - Default
   - TransparentFX

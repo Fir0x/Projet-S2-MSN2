@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class Room : MonoBehaviour
 {
     [SerializeField] private AllEnemiesAsset allEnemies;
+    [SerializeField] private AllEnemiesAsset allBoss;
     [SerializeField] private PatternAsset patterns;
     [SerializeField] private TileAsset doorTiles;
     [SerializeField] private GameObject player;
@@ -65,13 +66,22 @@ public class Room : MonoBehaviour
         else if (type == Board.Type.Shop)
             roomPattern.name = "Shop";
         else
+        {
             roomPattern.name = "Boss";
+            roomPattern.tag = "Finish";
+        }
 
         roomPattern.AddComponent<RoomManager>(); //Component set
 
         RoomManager manager = roomPattern.GetComponent<RoomManager>();
         
-        if (roomNumber == 1 || type != Board.Type.Normal)
+        if (type == Board.Type.Boss)
+        {
+            List<GameObject> boss = new List<GameObject>();
+            boss.Add(allBoss.AllEnemies[playerAsset.Floor - 1]);
+            manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, boss, this);
+        }
+        else if (roomNumber == 1 || type != Board.Type.Normal)
         {
             manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, new List<GameObject>(), this);
         }

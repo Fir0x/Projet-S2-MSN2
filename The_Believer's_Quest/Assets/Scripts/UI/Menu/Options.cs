@@ -11,9 +11,12 @@ public class Options : MonoBehaviour
     public void VolumeMusic(float volume)
     {
         audioMixer.SetFloat("Music", volume);
+        GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeVolume(volume);
     }
     public void VolumeEffect(float volume)
     {
         audioMixer.SetFloat("Sound", volume);
     }
+
+
 }

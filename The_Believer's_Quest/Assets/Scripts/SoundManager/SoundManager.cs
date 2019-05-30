@@ -3,48 +3,43 @@ using UnityEngine;
 //Maxence
 public class SoundManager : MonoBehaviour
 {
-        private AudioSource BO;
-    
-        public AudioSource efxSource;                   
-        public AudioSource musicmenu; 
-        public AudioSource fstlvl;
-        public AudioSource fstlvlBoss;
+    public AudioSource currentMusic;
 
-        private AudioSource[] musics;
-        public static SoundManager instance = null;      
-        
-        
-        void Awake ()
-        {
-            musics = new[] {musicmenu, fstlvl, fstlvlBoss};
-            
-            if (instance == null)
-                instance = this;
-            else if (instance != this)
-                Destroy (gameObject);
-            
-            DontDestroyOnLoad(gameObject);
-        }
-        
-        public void PlaySingle(AudioClip clip)
-        {
-            efxSource.clip = clip;
-            efxSource.Play ();
-        }
-        
-        public void RandomizeSfx (params AudioClip[] clips)
-        {
-            int randomIndex = Random.Range(0, clips.Length);
-            efxSource.clip = clips[randomIndex];
-            efxSource.Play();
-        }
-        
-        public void ChangeBO(int x)
-        {
-            musicmenu.Stop();
-            Thread.Sleep(300);
-            musicmenu.clip = musics[x].clip;
-            musicmenu.Play();
-        }
+    [SerializeField] MusicAsset Musics;
+    AudioClip[] musics;
+    public static SoundManager instance = null;
+
+
+    void Start ()
+    {
+        musics = Musics.Musics;
+        PlaySingle(currentMusic.clip);
+    }
+
+    public void PlaySingle(AudioClip clip)
+    {
+        currentMusic.clip = clip;
+        currentMusic.Play ();
+    }
+
+    public void ChangeVolume(float volume)
+    {
+        currentMusic.volume = (80f + volume) / 80f;
+    }
+
+    public void RandomizeSfx (params AudioClip[] clips)
+    {
+        int randomIndex = Random.Range(0, clips.Length);
+        currentMusic.clip = clips[randomIndex];
+        currentMusic.Play();
+    }
+
+    public void ChangeBO(int x)
+    {
+        currentMusic.Stop();
+        Thread.Sleep(300);
+        currentMusic.clip = musics[x];
+        currentMusic.Play();
+    }
 }
     

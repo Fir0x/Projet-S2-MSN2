@@ -9,18 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7fa40ba4b50ecf4780829f9b1e17631, type: 3}
-  m_Name: BlueSlime
+  m_Script: {fileID: 11500000, guid: 05daa7f2a2d083d4082ebe38a94e5d94, type: 3}
+  m_Name: KingSlime
   m_EditorClassIdentifier: 
-  hp: 2
-  speed: 2
-  damage: 1
+  hp: 200
+  maxHp: 200
+  speed: 1
+  damage: 10
   minLoot: 0
-  maxLoot: 8
-  weight: 1
-  cooldown: 2
+  maxLoot: 0
   sprite: {fileID: 0}
-  nbofprojectiles: 0
-  trajectory: 4
-  shotSpeed: 0
-  range: 0.5
+  Range: 0.5

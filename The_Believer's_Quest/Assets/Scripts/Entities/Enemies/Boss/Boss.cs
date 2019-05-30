@@ -6,11 +6,14 @@ using Entities;
 
 public abstract class Boss : MonoBehaviour
 {
+    protected bool isAttacking;
+
     protected delegate void BossAttack();
     protected delegate void ChoosePathfinding();
     protected List<Attack> attackList;
 
     [SerializeField] protected BossAsset bossData;
+    [SerializeField] protected PlayerAsset playerAsset;
     protected int hpPhase;
     protected Animator animator;
     [SerializeField] protected Slider healthBar;
@@ -26,7 +29,7 @@ public abstract class Boss : MonoBehaviour
     public BossAsset BossData { get => bossData; set => bossData = value; }
     public Slider HealthBar { get => healthBar; set => healthBar = value; }
 
-    protected void Awake()
+    protected void Start()
     {
         attackList = new List<Attack>();
         animator = GetComponent<Animator>();
