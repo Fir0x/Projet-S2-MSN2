@@ -65,7 +65,10 @@ public class Room : MonoBehaviour
         else if (type == Board.Type.Shop)
             roomPattern.name = "Shop";
         else
+        {
             roomPattern.name = "Boss";
+            roomPattern.tag = "Finish";
+        }
 
         roomPattern.AddComponent<RoomManager>(); //Component set
 

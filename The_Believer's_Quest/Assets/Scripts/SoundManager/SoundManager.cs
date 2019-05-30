@@ -22,6 +22,11 @@ public class SoundManager : MonoBehaviour
         currentMusic.Play ();
     }
 
+    public void ChangeVolume(float volume)
+    {
+        currentMusic.volume = (80f + volume) / 80f;
+    }
+
     public void RandomizeSfx (params AudioClip[] clips)
     {
         int randomIndex = Random.Range(0, clips.Length);

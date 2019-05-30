@@ -61,13 +61,25 @@ public class RoomManager : MonoBehaviour
         if (firstEntry && col.CompareTag("Player"))
         {
             firstEntry = false;
-            SpawnEnemies();
-
-            if (enemiesRemaining > 0)
+            if (gameObject.CompareTag("Finish"))
             {
-                roomCreator.Close();
+                SpawnBoss();
+            }
+            else
+            {
+                SpawnEnemies();
+
+                if (enemiesRemaining > 0)
+                {
+                    roomCreator.Close();
+                }
             }
         }
+    }
+
+    public void SpawnBoss()
+    {
+
     }
 
     public void SpawnEnemies()
