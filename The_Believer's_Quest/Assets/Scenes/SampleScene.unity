@@ -137,16 +137,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5202475380373786966, guid: 6d25af751e6b66f41af00f81e941231e,
-        type: 3}
-      propertyPath: m_Name
-      value: BoardManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5202475380373786966, guid: 6d25af751e6b66f41af00f81e941231e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 416202075394253419, guid: 6d25af751e6b66f41af00f81e941231e,
         type: 3}
       propertyPath: closeDoors.m_PersistentCalls.m_Calls.Array.size
@@ -203,6 +193,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 73ac7689ed5938e4bb86311ae5218ccc,
         type: 2}
+    - target: {fileID: 5202475380373786966, guid: 6d25af751e6b66f41af00f81e941231e,
+        type: 3}
+      propertyPath: m_Name
+      value: BoardManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202475380373786966, guid: 6d25af751e6b66f41af00f81e941231e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3688633446872613183, guid: 6d25af751e6b66f41af00f81e941231e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -261,7 +261,7 @@ PrefabInstance:
     - target: {fileID: 8981345498103605062, guid: 6d25af751e6b66f41af00f81e941231e,
         type: 3}
       propertyPath: roomNumber
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8981345498103605062, guid: 6d25af751e6b66f41af00f81e941231e,
         type: 3}
@@ -1955,11 +1955,6 @@ PrefabInstance:
       propertyPath: gameover
       value: 
       objectReference: {fileID: 1279300734}
-    - target: {fileID: 5394087556743831930, guid: 321cef1288d49514fa043b3adc2c08b7,
-        type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1024341247632904857, guid: 321cef1288d49514fa043b3adc2c08b7,
         type: 3}
       propertyPath: m_Controller
@@ -1970,6 +1965,11 @@ PrefabInstance:
       propertyPath: developmentTool
       value: 
       objectReference: {fileID: 1216451338}
+    - target: {fileID: 6878027935278444835, guid: 321cef1288d49514fa043b3adc2c08b7,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5710170098172399849, guid: 321cef1288d49514fa043b3adc2c08b7,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2025,11 +2025,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -40
       objectReference: {fileID: 0}
-    - target: {fileID: 6878027935278444835, guid: 321cef1288d49514fa043b3adc2c08b7,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7892602917040036623, guid: 321cef1288d49514fa043b3adc2c08b7,
         type: 3}
       propertyPath: m_Layer
@@ -2039,6 +2034,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteSortPoint
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394087556743831930, guid: 321cef1288d49514fa043b3adc2c08b7,
+        type: 3}
+      propertyPath: projectile
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5394087556743831930, guid: 321cef1288d49514fa043b3adc2c08b7, type: 3}
