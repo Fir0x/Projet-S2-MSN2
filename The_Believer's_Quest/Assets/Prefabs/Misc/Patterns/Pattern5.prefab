@@ -1436,7 +1436,7 @@ GameObject:
   - component: {fileID: 4788684689824826484}
   - component: {fileID: 4822028173634106716}
   - component: {fileID: 497670064517123844}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBehind
   m_TagString: Pattern
   m_Icon: {fileID: 0}
@@ -2601,7 +2601,7 @@ TilemapCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4005,7 +4005,7 @@ GameObject:
   - component: {fileID: 7989358696117477535}
   - component: {fileID: 6201189384570309932}
   - component: {fileID: 4992710862902114941}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallFront
   m_TagString: Pattern
   m_Icon: {fileID: 0}
@@ -4543,7 +4543,7 @@ TilemapCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

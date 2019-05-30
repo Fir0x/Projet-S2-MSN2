@@ -3811,7 +3811,7 @@ GameObject:
   - component: {fileID: 4112663250288754326}
   - component: {fileID: 7611458347100462129}
   - component: {fileID: 4054156694230138008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallFront
   m_TagString: Pattern
   m_Icon: {fileID: 0}
@@ -4143,7 +4143,7 @@ GameObject:
   - component: {fileID: 3051803517339965662}
   - component: {fileID: 157741971665956024}
   - component: {fileID: 3497522112935415795}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallBehind
   m_TagString: Pattern
   m_Icon: {fileID: 0}

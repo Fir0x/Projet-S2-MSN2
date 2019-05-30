@@ -32,14 +32,21 @@ public class SlimeKing : Boss
     {
         print("DashAttack");
         isAttacking = true;
+        StartCoroutine(DoingDashAttack());
+    }
+
+    private IEnumerator DoingDashAttack()
+    {
         Vector3 finalPos = playerAsset.Position;
 
-        float step = bossData.Speed * Time.deltaTime;
+        float step = 4* bossData.Speed * Time.deltaTime;
         while ((transform.position.x > finalPos.x + 0.5f || transform.position.x < finalPos.x - 0.5f) && (transform.position.y > finalPos.y + 0.5f || transform.position.y < finalPos.y - 0.5f))
         {
-            transform.position = Vector3.MoveTowards(transform.position, finalPos, step * 0.01f); 
+            transform.position = Vector3.MoveTowards(transform.position, finalPos, step);
             attack.BossLauncher(Attack.Trajectory.Cqc);
+            yield return null;
         }
+
         isAttacking = false;
     }
 }

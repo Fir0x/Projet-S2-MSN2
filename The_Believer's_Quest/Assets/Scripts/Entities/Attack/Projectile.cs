@@ -23,7 +23,7 @@ public class Projectile : MovingObject
     }
     private void FixedUpdate()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, 20, LayerMask.GetMask("Aerial", "Ground", "Default"));
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, 20, LayerMask.GetMask("Aerial", "Ground", "Obstacle"));
    
         if (hitInfo.collider != null )
         {
