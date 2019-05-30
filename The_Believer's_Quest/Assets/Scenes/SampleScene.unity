@@ -261,7 +261,7 @@ PrefabInstance:
     - target: {fileID: 8981345498103605062, guid: 6d25af751e6b66f41af00f81e941231e,
         type: 3}
       propertyPath: roomNumber
-      value: 60
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8981345498103605062, guid: 6d25af751e6b66f41af00f81e941231e,
         type: 3}
@@ -904,6 +904,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 24a48236da5c06c4184622636867952c, type: 2}
+  soundSlider: {fileID: 0}
+  musicSlider: {fileID: 0}
 --- !u!114 &3000740917392928271 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3000740917392928271, guid: d1cde67dc7783d04990639b029ea2312,
@@ -1035,6 +1037,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1822274600683581772, guid: d1cde67dc7783d04990639b029ea2312,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6305822660052598111, guid: d1cde67dc7783d04990639b029ea2312,
         type: 3}
@@ -1845,11 +1852,6 @@ PrefabInstance:
     - target: {fileID: 4812100078543949055, guid: d1cde67dc7783d04990639b029ea2312,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1822274600683581772, guid: d1cde67dc7783d04990639b029ea2312,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
