@@ -9,6 +9,7 @@ public class Enemy : MovingObject
     private bool testForCoolDown;
 
     [SerializeField] private EnemyAsset enemyAsset;
+    [SerializeField] private PlayerAsset playerAsset;
 
     private Vector3 startPos;
     private int HP;
@@ -20,8 +21,7 @@ public class Enemy : MovingObject
 
     private ChoosePathfinding Pathfinding;
     private RealPathfinding realPathfinding;
-    private AerialPathfinding aerialPathfinding;
-    
+
     private Attack attack;
     public bool shot;
 
@@ -33,21 +33,13 @@ public class Enemy : MovingObject
         HP = enemyAsset.Hp;
         
         realPathfinding = GetComponentInParent<RealPathfinding>();
-        aerialPathfinding = GetComponentInParent<AerialPathfinding>();
         attack = GetComponent<Attack>();
         
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         transformPlayer = playerGO.GetComponent<Transform>();
         mask = gameObject.layer;
 
-        if (mask == 9)
-        {
-            Pathfinding = AStarPathfindingMoving;
-        }
-        else
-        {
-            Pathfinding = SimplePathfinding;
-        }
+        Pathfinding = AStarPathfindingMoving;
 
     }
 
@@ -65,7 +57,6 @@ public class Enemy : MovingObject
     {
         if (testForCoolDown)
         {
-            print("attack");
             testForCoolDown = false;
             attack.Launcher();
             shot = false;
@@ -80,7 +71,7 @@ public class Enemy : MovingObject
     private void AStarPathfindingMoving()
     {
         startPos = this.transform.position;
-        
+
         nextNode = realPathfinding.FindPath(startPos, transformPlayer.position);
 
         if (nextNode != null)
@@ -94,13 +85,18 @@ public class Enemy : MovingObject
                 transform.position = Vector2.MoveTowards(transform.position, transformPlayer.position,
                     enemyAsset.Speed * Time.deltaTime);
             }
+        }
+
+        if (CanAttack())
+        {
+            print("can attack");
             shot = true;
         }
     }
 
-    private void SimplePathfinding()
+    private bool CanAttack()
     {
-        aerialPathfinding.Move(this);
+        return (gameObject.transform.position - playerAsset.Position).magnitude < enemyAsset.Range;
     }
 
     public int GetWeight()

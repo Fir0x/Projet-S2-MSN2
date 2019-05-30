@@ -19,3 +19,4 @@ MonoBehaviour:
   minLoot: 0
   maxLoot: 0
   sprite: {fileID: 0}
+  Range: 0.5

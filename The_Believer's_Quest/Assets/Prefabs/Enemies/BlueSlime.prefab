@@ -135,6 +135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAsset: {fileID: 11400000, guid: 732ee87fe84556744af620d652bb6d96, type: 2}
+  playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
+  shot: 0
 --- !u!61 &1043683735844938433
 BoxCollider2D:
   m_ObjectHideFlags: 0
