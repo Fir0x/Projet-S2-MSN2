@@ -17,7 +17,7 @@ MonoBehaviour:
   damage: 5
   cooldown: 0.2
   reloadingTime: 0
-  loader: -8985
+  loader: -9475
   loaderCappacity: 0
   maxAmmunitions: 0
   ammunitions: 0

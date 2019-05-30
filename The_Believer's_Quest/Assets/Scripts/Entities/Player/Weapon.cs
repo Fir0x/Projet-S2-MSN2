@@ -95,7 +95,7 @@ public class Weapon : MonoBehaviour
             float rotz = Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg;
             if (!(weapon.Type == WeaponAsset.WeaponType.CQC))
             {
-                transform.rotation = Quaternion.Euler(0f, 0f, rotz - 90);
+                transform.rotation = Quaternion.Euler(0f, 0f, rotz-90);
 
             }
             StartCoroutine(CoolDown());

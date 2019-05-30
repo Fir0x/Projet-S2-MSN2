@@ -33,6 +33,7 @@ public abstract class Boss : MonoBehaviour
 
     protected void Start()
     {
+        shot = true;
         testForCoolDown = true;
         isAttacking = false;
         attackList = new List<BossAttack>();
@@ -43,6 +44,9 @@ public abstract class Boss : MonoBehaviour
         attack = GetComponent<Attack>();
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         transformPlayer = playerGO.GetComponent<Transform>();
+
+        Pathfinding = AStarPathfindingMoving;
+
     }
 
     protected void OnDestroy()
@@ -52,27 +56,22 @@ public abstract class Boss : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        print("It works !");
         if(!isAttacking)
             Pathfinding();
-        if (shot)
+
+        if(testForCoolDown)
         {
             StartCoroutine(AttackWithCoolDown());
-            shot = false;
         }
     }
 
     IEnumerator AttackWithCoolDown()
     {
-        if (testForCoolDown)
-        {
-            testForCoolDown = false;
-            attackList[Random.Range(0, nbAttacks)]();
-            shot = false;
+        testForCoolDown = false;
+        attackList[Random.Range(0, nbAttacks)]();
 
-            yield return new WaitForSeconds(bossData.Cooldown);
-            testForCoolDown = true;
-        }
+        yield return new WaitForSeconds(bossData.Cooldown);
+        testForCoolDown = true;
     }
 
     public void ChangeLife(int hp)
