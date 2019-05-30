@@ -663,6 +663,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7188216009532017810, guid: ff7e3a92cfca634499e9d72702af17e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7e3a92cfca634499e9d72702af17e4, type: 3}
 --- !u!114 &3542071218230274433 stripped
@@ -693,6 +698,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241710226174738885, guid: 06705fef10342644c87cfd71544c31d3,
+        type: 3}
+      propertyPath: m_TagString
+      value: SoundManager
       objectReference: {fileID: 0}
     - target: {fileID: 4241710226174738881, guid: 06705fef10342644c87cfd71544c31d3,
         type: 3}
@@ -754,6 +764,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7584383160408248086, guid: 06705fef10342644c87cfd71544c31d3,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ced08d982c4fbe8459c64fd023d66a3c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06705fef10342644c87cfd71544c31d3, type: 3}
 --- !u!1001 &9123344047766331273
