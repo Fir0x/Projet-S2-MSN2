@@ -25,4 +25,13 @@ public class ObjectsAsset : ScriptableObject
     public int Ammo { get => ammo; set => ammo = value; }
     public bool Invicibility { get => invicibility; set => invicibility = value; }
     public uint Duration { get => duration; set => duration = value; }
+
+    public virtual void Use()
+    {
+    }
+
+    public void RemoveFromInventory()
+    {
+        Inventory.instance.Remove(this);
+    }
 }

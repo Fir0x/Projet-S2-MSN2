@@ -32,7 +32,7 @@ public class Projectile : MovingObject
                 hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
                 Destroy(gameObject);
             }
-            else if (hitInfo.collider.CompareTag("Player"))
+            if (hitInfo.collider.CompareTag("Player") && !player)
             {
                 hitInfo.collider.GetComponent<Player>().SetLife(playerAsset.Hp - damage);
                 Destroy(gameObject);

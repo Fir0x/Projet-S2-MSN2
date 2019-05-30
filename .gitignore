@@ -69,5 +69,5 @@ media
 *.idea
 
 #The Believer's Quest
-playerData
-playerSettings
+playerData.bin
+playerSettings.bin
