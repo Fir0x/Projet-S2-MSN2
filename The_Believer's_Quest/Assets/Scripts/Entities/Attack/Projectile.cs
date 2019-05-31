@@ -24,7 +24,6 @@ public class Projectile : MovingObject
     }
     public void Init(Sprite sprite, float speed, float damage, Vector3 origin, float angle, bool player) 
     {
-        //projectiles joueur
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         this.speed = speed;
         this.damage = damage;
@@ -59,12 +58,9 @@ public class Projectile : MovingObject
                Destroy(gameObject);
             }
         }
-<<<<<<< HEAD
 
         if (player)
             direction = transform.up;
-=======
->>>>>>> ac7d23afaedeb90a90439d0c2f374d53a8b6e35d
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
         
     }
