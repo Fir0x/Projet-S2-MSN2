@@ -34,7 +34,7 @@ public class RoomManager : MonoBehaviour
         this.roomCreator = roomCreator;
         allEnemiesList = enemiesList;
         grid = gameObject.GetComponent<TileGrid>();
-        roomPosition = this.transform.position;
+        roomPosition = transform.position;
         
         if(enemiesList.Count == 1)
         {
@@ -115,6 +115,8 @@ public class RoomManager : MonoBehaviour
             }
             firstEntry = false;
         }
+
+        MapController.mapScript.EnterRoom(mapPos, gameObject.name, doors);
     }
 
     public void SpawnEnemies()
@@ -129,7 +131,7 @@ public class RoomManager : MonoBehaviour
             {
                 testForBoss = false;
                 GameObject bossOnScene = Instantiate(enemies[0], roomPosition, Quaternion.identity) as GameObject;
-                bossOnScene.transform.parent = this.transform;
+                bossOnScene.transform.parent = transform;
             }
             else
             {
@@ -151,7 +153,7 @@ public class RoomManager : MonoBehaviour
                         }
 
                         GameObject enemyOnScene = Instantiate(enemy, roomPosition + new Vector3(x, y, 0), Quaternion.identity) as GameObject;
-                        enemyOnScene.transform.parent = this.transform;
+                        enemyOnScene.transform.parent = transform;
                     }
                     else
                     {
@@ -178,7 +180,7 @@ public class RoomManager : MonoBehaviour
                 }
 
                 GameObject enemyOnScene = Instantiate(enemy, roomPosition + new Vector3(x, y, 0), Quaternion.identity) as GameObject;
-                enemyOnScene.transform.parent = this.transform;
+                enemyOnScene.transform.parent = transform;
             }
         }
 
@@ -218,8 +220,8 @@ public class RoomManager : MonoBehaviour
             if(d == Board.DoorPos.Up)
             {
                 GameObject colliderUp = new GameObject("ColliderUp");
-                colliderUp.transform.parent = this.transform;
-                colliderUp.transform.position = this.transform.position + new Vector3(0.5f, 6.5f, 0);
+                colliderUp.transform.parent = transform;
+                colliderUp.transform.position = transform.position + new Vector3(0.5f, 6.5f, 0);
                 colliderUp.AddComponent<BoxCollider2D>();
                 colliderUp.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderUp.tag = "Pattern";
@@ -228,8 +230,8 @@ public class RoomManager : MonoBehaviour
             else if(d == Board.DoorPos.Right)
             {
                 GameObject colliderRight = new GameObject("ColliderRight");
-                colliderRight.transform.parent = this.transform;
-                colliderRight.transform.position = this.transform.position + new Vector3(9f, 1f, 0);
+                colliderRight.transform.parent = transform;
+                colliderRight.transform.position = transform.position + new Vector3(9f, 1f, 0);
                 colliderRight.AddComponent<BoxCollider2D>();
                 colliderRight.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderRight.tag = "Pattern";
@@ -239,8 +241,8 @@ public class RoomManager : MonoBehaviour
             else if (d == Board.DoorPos.Down)
             {
                 GameObject colliderDown = new GameObject("ColliderDown");
-                colliderDown.transform.parent = this.transform;
-                colliderDown.transform.position = this.transform.position + new Vector3(0.5f, -5.75f, 0);
+                colliderDown.transform.parent = transform;
+                colliderDown.transform.position = transform.position + new Vector3(0.5f, -5.75f, 0);
                 colliderDown.AddComponent<BoxCollider2D>();
                 colliderDown.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderDown.tag = "Pattern";
@@ -249,8 +251,8 @@ public class RoomManager : MonoBehaviour
             else
             {
                 GameObject colliderLeft = new GameObject("ColliderLeft");
-                colliderLeft.transform.parent = this.transform;
-                colliderLeft.transform.position = this.transform.position + new Vector3(-8f, 1f, 0);
+                colliderLeft.transform.parent = transform;
+                colliderLeft.transform.position = transform.position + new Vector3(-8f, 1f, 0);
                 colliderLeft.AddComponent<BoxCollider2D>();
                 colliderLeft.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderLeft.tag = "Pattern";

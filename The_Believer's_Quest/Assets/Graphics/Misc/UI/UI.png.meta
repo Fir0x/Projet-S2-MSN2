@@ -12,6 +12,10 @@ TextureImporter:
     21300014: InventoryPlayer
     21300016: PlayerIcon
     21300018: RoomIcon
+    21300020: WallIcon
+    21300022: ChestIcon
+    21300024: ShopIcon
+    21300026: BossIcon
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -269,6 +273,86 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 67b83f593b525c0438272ca5583134a9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallIcon
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 346
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa508a72e5066754ca40dd67e01c45b7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChestIcon
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 346
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 693c3052eb74aad4b96859815e2f2abd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShopIcon
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 346
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 724b3f35bb105e047aba09041869de9e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossIcon
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 346
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46988cb123feef44e9ff1fab91974fcb
       vertices: []
       indices: 
       edges: []
