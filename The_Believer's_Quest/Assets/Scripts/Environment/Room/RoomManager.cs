@@ -46,7 +46,29 @@ public class RoomManager : MonoBehaviour
             testForBoss = true;
             enemies.Add(enemiesList[0]);
 
-            StartCoroutine(ManageDoorsForBoss());
+            LayerBehind layerB = GetComponent<LayerBehind>();                               //to make the boss room be opened
+            LayerFront layerF = GetComponent<LayerFront>();
+
+            if (bossDoor == 0)
+            {
+                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
+                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
+            }
+            else if (bossDoor == 1)
+            {
+                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
+                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
+            }
+            else if (bossDoor == 2)
+            {
+                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
+                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
+            }
+            else if (bossDoor == 3)
+            {
+                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
+                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
+            }
         }
         else if (enemiesList.Count > 0)
         {
@@ -227,7 +249,7 @@ public class RoomManager : MonoBehaviour
             {
                 GameObject colliderDown = new GameObject("ColliderDown");
                 colliderDown.transform.parent = transform;
-                colliderDown.transform.position = transform.position + new Vector3(0.5f, -5.75f, 0);
+                colliderDown.transform.position = transform.position + new Vector3(0.5f, -5.79f, 0);
                 colliderDown.AddComponent<BoxCollider2D>();
                 colliderDown.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderDown.tag = "Pattern";
@@ -261,40 +283,12 @@ public class RoomManager : MonoBehaviour
             script.ClearTiles(doors, doorTiles, floor);
         }*/
 
-        for(int i = 4; i < transform.childCount; i++)           //destruction of door colliders
+        for (int i = 4; i < transform.childCount; i++)           //destruction of door colliders
         {
             Destroy(GetComponent<Transform>().GetChild(i).gameObject);
         }
 
         gameObject.GetComponentInChildren<LayerFront>().ClearTiles(doors, doorTiles, floor);
         gameObject.GetComponentInChildren<LayerBehind>().ClearTiles(doors, doorTiles, floor);
-    }
-
-    IEnumerator ManageDoorsForBoss()               //to avoid bug with last room's doors not opening
-    {
-        yield return new WaitForSeconds(0.5f);
-        LayerBehind layerB = GetComponent<LayerBehind>();                               //to make the boss room be opened
-        LayerFront layerF = GetComponent<LayerFront>();
-
-        if (bossDoor == 0)
-        {
-            layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
-            layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
-        }
-        else if (bossDoor == 1)
-        {
-            layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
-            layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
-        }
-        else if (bossDoor == 2)
-        {
-            layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
-            layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
-        }
-        else if (bossDoor == 3)
-        {
-            layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
-            layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
-        }
     }
 }
