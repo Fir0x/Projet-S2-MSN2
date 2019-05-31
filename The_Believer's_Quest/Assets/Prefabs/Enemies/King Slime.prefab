@@ -117,6 +117,8 @@ MonoBehaviour:
   bossData: {fileID: 11400000, guid: cf4a1e74b455a9c42b85ec852173a22f, type: 2}
   playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   healthBar: {fileID: 0}
+  nextLevel: {fileID: 6396777126365564326, guid: 7884a5e71ff080d4cbd0662b972469bb,
+    type: 3}
   blueSlime: {fileID: 917192810353389789, guid: 20ce829acefb8324c8df9f6352811168,
     type: 3}
 --- !u!114 &7236448259413741707

@@ -104,10 +104,7 @@ public class Weapon : MonoBehaviour
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
-        print("camera :" + mousePos);
-        print("player :" + playerAsset.Position);
         Vector3 directionVector = (mousePos - transform.position).normalized;
-        print("weapon: " + directionVector);
         if (!(weapon.Type == WeaponAsset.WeaponType.CQC))
         {
             weapon.Loader -= weapon.Nbbulletsbyshot;
