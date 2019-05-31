@@ -7,22 +7,22 @@ public class MovingObject : MonoBehaviour
     public bool Collision(Vector2 pos, float speed, int direction)     //0 : left, 1 : up, 2 : right, 3 : down
     {
         bool noCollision = true;
-
         switch (direction)
         {
             case 0:
-                RaycastHit2D hitLeft = Physics2D.Raycast(pos + new Vector2(-0.2f, -0.35f), new Vector2(-1, 0), speed * Time.deltaTime);
+                RaycastHit2D hitLeft = Physics2D.Raycast(pos + new Vector2(-0.2f, -0.35f), new Vector2(-1, 0), speed * Time.deltaTime, LayerMask.GetMask("Obstacle"));
                 Debug.DrawRay(pos + new Vector2(-0.2f, -0.35f), new Vector2(-1, 0) * speed * Time.deltaTime, Color.red);
-
-                if(hitLeft.collider != null && hitLeft.collider.gameObject.CompareTag("Pattern"))
+                
+                if (hitLeft.collider != null && hitLeft.collider.gameObject.CompareTag("Pattern"))
                 {
+                    print("mais");
                     noCollision = false;
                 }
                 break;
 
             case 1:
-                RaycastHit2D hitUp1 = Physics2D.Raycast(pos + new Vector2(-0.15f, -0.3f), new Vector2(0, 1), speed * Time.deltaTime);
-                RaycastHit2D hitUp2 = Physics2D.Raycast(pos + new Vector2(0.15f, -0.3f), new Vector2(0, 1), speed * Time.deltaTime);
+                RaycastHit2D hitUp1 = Physics2D.Raycast(pos + new Vector2(-0.15f, -0.3f), new Vector2(0, 1), speed * Time.deltaTime, LayerMask.GetMask("Obstacle"));
+                RaycastHit2D hitUp2 = Physics2D.Raycast(pos + new Vector2(0.15f, -0.3f), new Vector2(0, 1), speed * Time.deltaTime, LayerMask.GetMask("Obstacle"));
 
                 Debug.DrawRay(pos + new Vector2(-0.15f, -0.3f), new Vector2(0, 1) * speed * Time.deltaTime, Color.red);
                 Debug.DrawRay(pos + new Vector2(0.15f, -0.3f), new Vector2(0, 1) * speed * Time.deltaTime, Color.red);
@@ -51,7 +51,7 @@ public class MovingObject : MonoBehaviour
                 break;
 
             case 2:
-                RaycastHit2D hitRight = Physics2D.Raycast(pos + new Vector2(0.2f, -0.35f), new Vector2(1, 0), speed * Time.deltaTime);
+                RaycastHit2D hitRight = Physics2D.Raycast(pos + new Vector2(0.2f, -0.35f), new Vector2(1, 0), speed * Time.deltaTime, LayerMask.GetMask("Obstacle"));
                 Debug.DrawRay(pos + new Vector2(0.2f, -0.35f), new Vector2(1, 0) * speed * Time.deltaTime, Color.red);
 
                 if (hitRight.collider != null && hitRight.collider.gameObject.CompareTag("Pattern"))
@@ -61,8 +61,8 @@ public class MovingObject : MonoBehaviour
                 break;
 
             default:
-                RaycastHit2D hitDown1 = Physics2D.Raycast(pos + new Vector2(-0.15f, -0.4f), new Vector2(0, -1), speed * Time.deltaTime);
-                RaycastHit2D hitDown2 = Physics2D.Raycast(pos + new Vector2(0.15f, -0.4f), new Vector2(0, -1), speed * Time.deltaTime);
+                RaycastHit2D hitDown1 = Physics2D.Raycast(pos + new Vector2(-0.15f, -0.4f), new Vector2(0, -1), speed * Time.deltaTime, LayerMask.GetMask("Obstacle"));
+                RaycastHit2D hitDown2 = Physics2D.Raycast(pos + new Vector2(0.15f, -0.4f), new Vector2(0, -1), speed * Time.deltaTime, LayerMask.GetMask("Obstacle"));
 
                 Debug.DrawRay(pos + new Vector2(-0.15f, -0.4f), new Vector2(0, -1) * speed * Time.deltaTime, Color.red);
                 Debug.DrawRay(pos + new Vector2(0.15f, -0.4f), new Vector2(0, -1) * speed * Time.deltaTime, Color.red);

@@ -17,14 +17,16 @@ public class RoomManager : MonoBehaviour
     private int totalWeight = 7; //uniquement pour étage 1
     private int enemiesRemaining;
     private bool testForBoss;
+    private int bossDoor;
 
     private Vector3 roomPosition;
     private TileGrid grid;
 
     private Room roomCreator;
 
-    public void Init(int[] mapPos, List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList, Room roomCreator)
+    public void Init(int[] mapPos, List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList, Room roomCreator, int bossDoor)
     {
+        this.bossDoor = bossDoor;
         this.mapPos = mapPos;
         this.floor = floor;
         this.doors = doors;
@@ -189,9 +191,9 @@ public class RoomManager : MonoBehaviour
                 colliderLeft.tag = "Pattern";
             }
         }
-
-        gameObject.GetComponentInChildren<LayerFront>().SetTiles(doors, doorTiles, floor);
-        gameObject.GetComponentInChildren<LayerBehind>().SetTiles(doors, doorTiles, floor);
+        
+        gameObject.GetComponentInChildren<LayerFront>().SetTiles(doors, doorTiles, floor, testForBoss, bossDoor);
+        gameObject.GetComponentInChildren<LayerBehind>().SetTiles(doors, doorTiles, floor, testForBoss, bossDoor);
     }
 
     public void OpenDoors()

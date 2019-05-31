@@ -90,11 +90,6 @@ public abstract class Boss : MonoBehaviour
         }
     }
 
-    IEnumerator CoolDown()
-    {
-        yield return new WaitForSeconds(bossData.Cooldown);
-    }
-
     protected void AStarPathfindingMoving()
     {
         startPos = transform.position;

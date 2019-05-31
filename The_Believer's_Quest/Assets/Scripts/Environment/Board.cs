@@ -42,6 +42,7 @@ public class Board : MonoBehaviour
         public int roomNumber;
         public List<DoorPos> doorsPosition;
         public Type type;
+        public int bossDoor;                //if -1, no access to boss room. 0 is left, 1 is up, 2 is right, 3 is down
 
         public RoomBase(int[] arrayPosition, int roomNumber, Type type)
         {
@@ -49,11 +50,29 @@ public class Board : MonoBehaviour
             this.roomNumber = roomNumber;
             doorsPosition = new List<DoorPos>();
             this.type = type;
+            bossDoor = -1;
         }
 
-        public void AddDoors(DoorPos doorPosition)
+        public void AddDoors(DoorPos doorPosition, bool isBossDoor)
         {
+            if (isBossDoor)
+            {
+                if (doorPosition == DoorPos.Left)
+                    bossDoor = 0;
+                else if (doorPosition == DoorPos.Up)
+                    bossDoor = 1;
+                else if (doorPosition == DoorPos.Right)
+                    bossDoor = 2;
+                else
+                    bossDoor = 3;
+            }
+
             doorsPosition.Add(doorPosition);
+        }
+
+        public int GetBossDoor()
+        {
+            return bossDoor;
         }
     }
 
@@ -88,6 +107,8 @@ public class Board : MonoBehaviour
             int newY;
             int nbFree;
             int k = 1;
+
+            bool isBoss = false;
 
             int[,] boardMap = new int[height, width];
             boardMap[startPoint[1], startPoint[0]] = 1;
@@ -129,36 +150,41 @@ public class Board : MonoBehaviour
                     else if (k == (int)(0.5f * RoomNumber))
                         actual = new RoomBase(new int[] { newX, newY }, k, Type.Shop);
                     else if (k == RoomNumber)
+                    {
                         actual = new RoomBase(new int[] { newX, newY }, k, Type.Boss);
+                        isBoss = true;
+                    }
                     else
                         actual = new RoomBase(new int[] { newX, newY }, k, Type.Normal);
                     //print(newX + ":" + newY); //DEBUG
                     roomBaseList.Add(actual);
                     //Add doors between the parent and his child
-                    if (newX > lastX)
-                    {
-                        parent.AddDoors(DoorPos.Right);
-                        actual.AddDoors(DoorPos.Left);
+
+                    if(newX > lastX)
+                        {
+                        parent.AddDoors(DoorPos.Right, isBoss);
+                        actual.AddDoors(DoorPos.Left, isBoss);
                     }
                     else if (newX < lastX)
                     {
-                        parent.AddDoors(DoorPos.Left);
-                        actual.AddDoors(DoorPos.Right);
+                        parent.AddDoors(DoorPos.Left, isBoss);
+                        actual.AddDoors(DoorPos.Right, isBoss);
                     }
                     else if (newY > lastY)
                     {
-                        parent.AddDoors(DoorPos.Up);
-                        actual.AddDoors(DoorPos.Down);
+                        parent.AddDoors(DoorPos.Up, isBoss);
+                        actual.AddDoors(DoorPos.Down, isBoss);
                     }
                     else
                     {
-                        parent.AddDoors(DoorPos.Down);
-                        actual.AddDoors(DoorPos.Up);
+                        parent.AddDoors(DoorPos.Down, isBoss);
+                        actual.AddDoors(DoorPos.Up, isBoss);
                     }
 
                     parent = roomBaseList[Random.Range(0, roomBaseList.Count)];
 
                     boardMap[newY, newX] = k; //Add id of room for mapping
+                    
                 }
                 else
                 {
@@ -171,7 +197,7 @@ public class Board : MonoBehaviour
             foreach (RoomBase roomBase in roomBaseList)
             {
                 room.RoomCreator(board, roomBase.position, new float[] { roomBase.position[0] * roomWidth + 8,
-                roomBase.position[1] * roomHeight + 6 }, roomBase.roomNumber, roomBase.doorsPosition, roomBase.type);
+                roomBase.position[1] * roomHeight + 6 }, roomBase.roomNumber, roomBase.doorsPosition, roomBase.type, roomBase.GetBossDoor());
             }
 
             map.InitMap(boardMap, width, height);
