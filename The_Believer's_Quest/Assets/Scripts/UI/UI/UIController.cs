@@ -28,7 +28,7 @@ public class UIController : MonoBehaviour
     public UnityEvent changeWeapon;
     public UnityEvent changeAmmo;
 
-    private void Awake()
+    private void Start()
     {
         if (changeHp == null)
         {
