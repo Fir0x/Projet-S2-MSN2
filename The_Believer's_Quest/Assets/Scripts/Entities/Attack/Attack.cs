@@ -49,7 +49,7 @@ public class Attack : MonoBehaviour
         if (enemy._Trajectory == Trajectory.Railgun)
             Railgun(enemy.Damage);
     }
-    private void Cqc(int damage)
+    private void Cqc(float damage)
     {
         Collider2D[] playerTouched = Physics2D.OverlapCircleAll(transform.position, 0.5f, LayerMask.GetMask("Default"));
 
@@ -69,13 +69,13 @@ public class Attack : MonoBehaviour
             }
         }
     }
-    private void LineShot(Vector3 direction, float speed, int damage, float angle)//tir linéaire
+    private void LineShot(Vector3 direction, float speed, float damage, float angle)//tir linéaire
     {
        Instantiate(projectile, transform.position,
             transform.rotation).GetComponent<Projectile>().Init(enemy.Sprite, speed, damage, transform.position, angle, direction-transform.position,false); 
     }
     
-    private void CircleShot(int nbprojectile, float speed, int damage)//tir en cercle
+    private void CircleShot(int nbprojectile, float speed, float damage)//tir en cercle
     {
         
         float angle = 360 / nbprojectile;
@@ -86,7 +86,7 @@ public class Attack : MonoBehaviour
         } 
     }
 
-    private void ArcShot(int nbprojectile, Vector3 direction, float speed, int damage) //tir type shotgun
+    private void ArcShot(int nbprojectile, Vector3 direction, float speed, float damage) //tir type shotgun
     {
         if (nbprojectile % 2 != 0)
         {
@@ -100,7 +100,7 @@ public class Attack : MonoBehaviour
         }
     }
 
-    private void Railgun(int damage)
+    private void Railgun(float damage)
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position, 20, LayerMask.GetMask("Default"));
    

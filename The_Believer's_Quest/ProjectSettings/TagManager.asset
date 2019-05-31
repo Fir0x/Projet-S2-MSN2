@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - BoardManager
   - SoundManager
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Obstacle
   - Ground
   - Aerial
-  - Bonsoir
+  - 
   - 
   - 
   - 

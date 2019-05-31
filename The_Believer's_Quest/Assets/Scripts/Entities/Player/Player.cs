@@ -51,7 +51,7 @@ public class Player : MovingObject
         return firstPos;
     }
 
-    public void SetLife(int value)
+    public void SetLife(float value)
     {
         print("aie!"); // DEBUG
         playerAsset.Invicibility = true;

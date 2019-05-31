@@ -8,7 +8,7 @@ public class NextLevel : MonoBehaviour
         if(col.CompareTag("Player"))
         {
             GameObject.FindGameObjectWithTag("BoardManager").GetComponent<Board>().Init();
-            Destroy(this.transform.parent.gameObject);
+            Destroy(transform.parent.gameObject);
             GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(col.GetComponent<Player>().PlayerAsset.Floor + 2);
         }
     }

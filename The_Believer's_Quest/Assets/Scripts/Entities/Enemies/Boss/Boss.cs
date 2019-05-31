@@ -7,6 +7,7 @@ using Entities;
 public abstract class Boss : MonoBehaviour
 {
     protected bool isAttacking;
+    protected RoomManager roomManager;
 
     protected delegate void BossAttack();
     protected delegate void ChoosePathfinding();
@@ -15,7 +16,7 @@ public abstract class Boss : MonoBehaviour
     
     [SerializeField] protected BossAsset bossData;
     [SerializeField] protected PlayerAsset playerAsset;
-    protected int hpPhase;
+    protected float hpPhase;
     protected Animator animator;
     [SerializeField] protected Slider healthBar;
 
@@ -27,12 +28,15 @@ public abstract class Boss : MonoBehaviour
     protected Attack attack;
     protected bool shot;
     protected bool testForCoolDown;
+    protected bool isFirstPhase;
 
     public BossAsset BossData { get => bossData; set => bossData = value; }
     public Slider HealthBar { get => healthBar; set => healthBar = value; } 
 
     protected void Start()
     {
+        roomManager = GetComponentInParent<RoomManager>();
+        isFirstPhase = true;
         shot = true;
         testForCoolDown = true;
         isAttacking = false;
@@ -63,6 +67,10 @@ public abstract class Boss : MonoBehaviour
         {
             StartCoroutine(AttackWithCoolDown());
         }
+        if (shot)
+        {
+            attack.BossLauncher(Attack.Trajectory.Cqc);
+        }
     }
 
     IEnumerator AttackWithCoolDown()
@@ -74,19 +82,22 @@ public abstract class Boss : MonoBehaviour
         testForCoolDown = true;
     }
 
-    public void ChangeLife(int hp)
+    public void ChangeLife(float hp)
     {
         if (bossData.Hp + hp > bossData.MaxHp)
             hp = 0;
 
         bossData.Hp += hp;
-        if (bossData.Hp < 0)
-            bossData.Hp = 0;
+        if (bossData.Hp <= 0)
+        {
+            roomManager.DestroyEnemy(gameObject);
+        }
 
-        healthBar.value = bossData.Hp;
-        if (bossData.Hp <= hpPhase)
+        //healthBar.value = bossData.Hp;
+        if (bossData.Hp <= hpPhase && isFirstPhase)
         {
             ChangePhase();
+            isFirstPhase = false;
         }
     }
 
@@ -111,7 +122,6 @@ public abstract class Boss : MonoBehaviour
 
         if (CanAttack())
         {
-            print("can attack");
             shot = true;
         }
     }

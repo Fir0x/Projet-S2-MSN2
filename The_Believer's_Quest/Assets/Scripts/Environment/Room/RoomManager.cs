@@ -123,11 +123,43 @@ public class RoomManager : MonoBehaviour
         int x = 0;
         int y = 0;
         
-        if(gameObject.CompareTag("Finish") && testForBoss)         //apparition boss
+        if (gameObject.CompareTag("Finish"))         //apparition boss
         {
-            testForBoss = false;
-            GameObject bossOnScene = Instantiate(enemies[0], roomPosition, Quaternion.identity) as GameObject;
-            bossOnScene.transform.parent = this.transform;
+            if (testForBoss)
+            {
+                testForBoss = false;
+                GameObject bossOnScene = Instantiate(enemies[0], roomPosition, Quaternion.identity) as GameObject;
+                bossOnScene.transform.parent = this.transform;
+            }
+            else
+            {
+                bool noBoss = false;
+                foreach (GameObject enemy in enemies)        //apparition ennemis sauf boss(pour phases de boss)
+                {
+                    if(noBoss)
+                    {
+                        posOk = false;
+                        while (!posOk)
+                        {
+                            x = Random.Range(-7, 7);
+                            y = Random.Range(-5, 5);
+
+                            if (grid.NodeFromPos(roomPosition + new Vector3(x, y, 0)).walkable)
+                            {
+                                posOk = true;
+                            }
+                        }
+
+                        GameObject enemyOnScene = Instantiate(enemy, roomPosition + new Vector3(x, y, 0), Quaternion.identity) as GameObject;
+                        enemyOnScene.transform.parent = this.transform;
+                    }
+                    else
+                    {
+                        print("" + enemy.name);
+                        noBoss = true;
+                    }
+                }
+            }
         }
         else
         {
@@ -149,6 +181,8 @@ public class RoomManager : MonoBehaviour
                 enemyOnScene.transform.parent = this.transform;
             }
         }
+
+        enemiesRemaining = enemies.Count;
         
     }
 

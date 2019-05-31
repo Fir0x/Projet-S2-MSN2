@@ -4,13 +4,13 @@ public class Projectile : MovingObject
 {
     [SerializeField] protected PlayerAsset playerAsset;
     private float speed;
-    private int damage;
+    private float damage;
     private Vector3 direction;
     private bool player;
    
     
     //Sarah
-    public void Init(Sprite sprite, float speed, int damage, Vector3 origin, float angle, Vector3 _direction, bool player) 
+    public void Init(Sprite sprite, float speed, float damage, Vector3 origin, float angle, Vector3 _direction, bool player) 
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         this.speed = speed;
@@ -32,12 +32,17 @@ public class Projectile : MovingObject
                 hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
                 Destroy(gameObject);
             }
-            if (hitInfo.collider.CompareTag("Player") && !player)
+            else if (hitInfo.collider.CompareTag("Boss") && player)
+            {
+                hitInfo.collider.GetComponent<Boss>().ChangeLife(-damage);
+                Destroy(gameObject);
+            }
+            else if (hitInfo.collider.CompareTag("Player") && !player)
             {
                 hitInfo.collider.GetComponent<Player>().SetLife(playerAsset.Hp - damage);
                 Destroy(gameObject);
             }
-            if (hitInfo.collider.CompareTag("Pattern"))
+            else if (hitInfo.collider.CompareTag("Pattern"))
             {
                Destroy(gameObject);
             }
