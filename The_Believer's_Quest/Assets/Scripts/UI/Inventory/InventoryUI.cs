@@ -4,7 +4,8 @@ public class InventoryUI : MonoBehaviour
 {
 
     public Transform itemsParent;   
-    public GameObject inventoryUI;  
+    public GameObject inventoryUI;
+    public GameObject chest;
 
     Inventory inventory;    
 

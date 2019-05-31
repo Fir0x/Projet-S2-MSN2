@@ -2,14 +2,19 @@
 
 public class Interactable : MonoBehaviour
 {
-    public float radius = 3f;               
-    public Transform interactionTransform;  
+    private float radius = 3f;               
+    private Transform interactionTransform;
+    private bool isChest;
 
     bool isFocus = false;   
     Transform player; 
 
-    bool isOpen = false; 
+    bool isOpen = false;
 
+    private void Start()
+    {
+        isChest = false;
+    }
     public virtual void Interact() {}
 
     void Update()
@@ -48,4 +53,24 @@ public class Interactable : MonoBehaviour
         Gizmos.DrawWireSphere(interactionTransform.position, radius);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player" && gameObject.tag == "Chest")
+        {
+            isChest = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player" && gameObject.tag == "Chest")
+        {
+            isChest = false;
+        }
+    }
+
+    public bool IsTrigger()
+    {
+        return isChest;
+    }
 }
