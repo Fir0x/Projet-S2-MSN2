@@ -23,7 +23,6 @@ public class Player : MovingObject
     [SerializeField] private PlayerAsset playerAsset;
     [SerializeField] private GameObject ui;
     [SerializeField] private GameObject gameover;
-    private UIController uiController;
 
     private Weapon weapon;
     
@@ -54,12 +53,13 @@ public class Player : MovingObject
 
     public void SetLife(int value)
     {
-        print("aie!");
+        print("aie!"); // DEBUG
         playerAsset.Invicibility = true;
         StartCoroutine(InvicibilityCoolDown());
 
         playerAsset.Hp = value;
-        uiController.changeHp.Invoke();
+        UIController.uIController.changeHp.Invoke();
+        print(UIController.uIController.changeHp);
         if (playerAsset.Hp <= 0)
         {
             animator.SetTrigger(animDeathID);
@@ -79,7 +79,7 @@ public class Player : MovingObject
     public void SetEffect(int value)
     {
         playerAsset.EffectValue = value;
-        uiController.changeEffect.Invoke();
+        UIController.uIController.changeEffect.Invoke();
     }
     
     public void Attack()
@@ -194,7 +194,7 @@ public class Player : MovingObject
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         playerAsset.Position = transform.position;
         testForDash = true;
@@ -202,18 +202,15 @@ public class Player : MovingObject
         firstPos = this.transform.position;
 
         animator = GetComponent<Animator>();
-        uiController = ui.GetComponent<UIController>();
         
-        weapon = GetComponentInChildren<Weapon>();
-        weapon.Init(uiController, PlayerAsset.WeaponsList[0], playerAsset);
-        uiController.changeWeapon.Invoke();
-        uiController.changeDiamond.Invoke();
-        uiController.changeGold.Invoke();
-        uiController.changeHp.Invoke();
-        uiController.changeMaxHp.Invoke();
-        uiController.changeEffect.Invoke();
-        uiController.changeMaxEffect.Invoke();
-        uiController.changeAmmo.Invoke();
+        UIController.uIController.changeWeapon.Invoke();
+        UIController.uIController.changeDiamond.Invoke();
+        UIController.uIController.changeGold.Invoke();
+        UIController.uIController.changeHp.Invoke();
+        UIController.uIController.changeMaxHp.Invoke();
+        UIController.uIController.changeEffect.Invoke();
+        UIController.uIController.changeMaxEffect.Invoke();
+        UIController.uIController.changeAmmo.Invoke();
     }
 
     public void MoveUp()

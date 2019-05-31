@@ -70,7 +70,7 @@ public class Enemy : MovingObject
 
     private void AStarPathfindingMoving()
     {
-        startPos = this.transform.position;
+        startPos = transform.position;
 
         nextNode = realPathfinding.FindPath(startPos, transformPlayer.position);
 
