@@ -215,7 +215,14 @@ public class Board : MonoBehaviour
     {
         playerAsset.Floor += 1;
         BoardCreation();
+
+        DestroyEntrance();
     }
 
+    public void DestroyEntrance()           //to destroy nextLevel which stayed while generating the actual board
+    {
+        print("aled");
+        Destroy(GameObject.FindGameObjectWithTag("NextLevel"));
+    }
 
 }

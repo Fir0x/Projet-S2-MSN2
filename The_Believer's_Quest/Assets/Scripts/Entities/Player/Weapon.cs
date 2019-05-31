@@ -102,7 +102,9 @@ public class Weapon : MonoBehaviour
     
     public void Shot() 
     {
-        Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        Vector3 directionVector = (mousePos - transform.position).normalized;
         if (!(weapon.Type == WeaponAsset.WeaponType.CQC))
         {
             weapon.Loader -= weapon.Nbbulletsbyshot;
@@ -117,7 +119,7 @@ public class Weapon : MonoBehaviour
 
         if ((weapon.Type == WeaponAsset.WeaponType.Line))
             //attaque en ligne avec RailGun
-            LineShot(transform.up, weapon.Speed,weapon.Damage, 0);
+            LineShot(directionVector, weapon.Speed, weapon.Damage, 0);
         if ((weapon.Type == WeaponAsset.WeaponType.Shotgun)) 
             //attaque en Arc avec Shotgun
             ArcShot(weapon.Nbbulletsbyshot, transform.up, weapon.Speed, weapon.Damage);
@@ -141,7 +143,7 @@ public class Weapon : MonoBehaviour
     private void LineShot(Vector3 direction, float speed, int damage, float angle)//tir linéaire
     {
         Instantiate(projectile, transform.position,
-            transform.rotation).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.position, angle, direction, true); 
+            transform.rotation).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, playerAsset.Position, angle, direction, true); 
     }
     
     private void CircleShot(int nbprojectile, float speed, int damage)//tir en cercle

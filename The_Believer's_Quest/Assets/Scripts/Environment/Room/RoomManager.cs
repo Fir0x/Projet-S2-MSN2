@@ -16,8 +16,12 @@ public class RoomManager : MonoBehaviour
     private TileAsset doorTiles;
     private int totalWeight = 7; //uniquement pour étage 1
     private int enemiesRemaining;
+
     private bool testForBoss;
     private int bossDoor;
+    private int isBossRoom;
+
+    public GameObject nextLevel;
 
     private Vector3 roomPosition;
     private TileGrid grid;
@@ -38,34 +42,11 @@ public class RoomManager : MonoBehaviour
         
         if(enemiesList.Count == 1)
         {
+            isBossRoom = true;
             testForBoss = true;
             enemies.Add(enemiesList[0]);
 
-            LayerBehind layerB = GetComponent<LayerBehind>();                               //to make the boss room be opened
-            LayerFront layerF = GetComponent<LayerFront>();
-
-            if (bossDoor == 0)
-            {
-                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
-                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
-            }
-            else if (bossDoor == 1)
-            {
-                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
-                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
-            }
-            else if (bossDoor == 2)
-            {
-                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
-                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
-            }
-            else if (bossDoor == 3)
-            {
-                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
-                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
-            }
-
-
+            StartCoroutine(ManageDoorsForBoss());
         }
         else if (enemiesList.Count > 0)
         {
@@ -110,7 +91,6 @@ public class RoomManager : MonoBehaviour
             enemiesRemaining = enemies.Count;
             if (enemiesRemaining > 0)
             {
-                print("allo");
                 roomCreator.Close();
             }
             firstEntry = false;
@@ -194,6 +174,11 @@ public class RoomManager : MonoBehaviour
         if (enemiesRemaining == 0)
         {
             roomCreator.Open();
+            if (isBossRoom)
+            {
+                GameObject outdoor = Instantiate(nextLevel, transform.position + new Vector3(0, 3f, 0), Quaternion.identity) as GameObject;
+                outdoor.GetComponent<NextLevel>().Wait();
+            }
         }
     }
 
@@ -283,5 +268,33 @@ public class RoomManager : MonoBehaviour
 
         gameObject.GetComponentInChildren<LayerFront>().ClearTiles(doors, doorTiles, floor);
         gameObject.GetComponentInChildren<LayerBehind>().ClearTiles(doors, doorTiles, floor);
+    }
+
+    IEnumerator ManageDoorsForBoss()               //to avoid bug with last room's doors not opening
+    {
+        yield return new WaitForSeconds(0.5f);
+        LayerBehind layerB = GetComponent<LayerBehind>();                               //to make the boss room be opened
+        LayerFront layerF = GetComponent<LayerFront>();
+
+        if (bossDoor == 0)
+        {
+            layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
+            layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
+        }
+        else if (bossDoor == 1)
+        {
+            layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
+            layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
+        }
+        else if (bossDoor == 2)
+        {
+            layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
+            layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
+        }
+        else if (bossDoor == 3)
+        {
+            layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
+            layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
+        }
     }
 }

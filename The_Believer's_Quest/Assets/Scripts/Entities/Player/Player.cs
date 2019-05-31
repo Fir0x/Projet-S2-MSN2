@@ -293,6 +293,7 @@ public class Player : MovingObject
 
     private void FixedUpdate()
     {
+        playerAsset.Position = transform.position;
         moveX = PlayerAsset.Speed * Time.deltaTime;
         moveY = PlayerAsset.Speed * Time.deltaTime;
 

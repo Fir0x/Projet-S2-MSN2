@@ -31,7 +31,7 @@ public abstract class Boss : MonoBehaviour
     protected bool isFirstPhase;
 
     public BossAsset BossData { get => bossData; set => bossData = value; }
-    public Slider HealthBar { get => healthBar; set => healthBar = value; } 
+    public Slider HealthBar { get => healthBar; set => healthBar = value; }
 
     protected void Start()
     {
