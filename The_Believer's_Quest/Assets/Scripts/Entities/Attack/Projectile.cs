@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-//Nicolas I
 public class Projectile : MovingObject
 {
     [SerializeField] protected PlayerAsset playerAsset;
@@ -10,15 +9,28 @@ public class Projectile : MovingObject
    
     
     //Sarah
+
     public void Init(Sprite sprite, float speed, float damage, Vector3 origin, float angle, Vector3 _direction, bool player) 
     {
+        //projectiles ennemis
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         this.speed = speed;
         this.damage = damage;
         this.player = player;
         direction = _direction;
         if (angle != 0)
-             transform.RotateAround(origin, Vector3.forward, angle);
+            transform.RotateAround(origin, Vector3.forward, angle);
+
+    }
+    public void Init(Sprite sprite, float speed, float damage, Vector3 origin, float angle, bool player) 
+    {
+        //projectiles joueur
+        gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
+        this.speed = speed;
+        this.damage = damage;
+        this.player = player;
+        if (angle != 0)
+            transform.RotateAround(origin, Vector3.forward, angle);
 
     }
     private void FixedUpdate()
@@ -47,7 +59,9 @@ public class Projectile : MovingObject
                Destroy(gameObject);
             }
         }
-        print("proj : " + direction);
+
+        if (player)
+            direction = transform.up;
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
         
     }
