@@ -40,7 +40,7 @@ public class SlimeKing : Boss
         Vector3 finalPos = playerAsset.Position;
 
         float step = 4* bossData.Speed * Time.deltaTime;
-        while ((transform.position.x > finalPos.x + 0.5f || transform.position.x < finalPos.x - 0.5f) && (transform.position.y > finalPos.y + 0.5f || transform.position.y < finalPos.y - 0.5f))
+        while ((transform.position.x > finalPos.x + 0.1f || transform.position.x < finalPos.x - 0.1f) && (transform.position.y > finalPos.y + 0.1f || transform.position.y < finalPos.y - 0.1f))
         {
             transform.position = Vector3.MoveTowards(transform.position, finalPos, step);
             attack.BossLauncher(Attack.Trajectory.Cqc);
