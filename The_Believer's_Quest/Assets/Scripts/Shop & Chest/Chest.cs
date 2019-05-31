@@ -6,7 +6,7 @@ public class Chest : MonoBehaviour
 {
     public static Chest instance;
 
-    void Awake()
+    void Start()
     {
         if (instance != null)
         {

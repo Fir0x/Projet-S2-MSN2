@@ -31,10 +31,10 @@ public class TileGrid : MonoBehaviour
         isObstacle.CompressBounds();
         TileBase[] tileArray = isObstacle.GetTilesBlock(isObstacle.cellBounds); //tableau à une dimension
 
-        TileBase[,] twoTileArray = new TileBase[15, 13];
+        TileBase[,] twoTileArray = new TileBase[17, 15];
         for (int i = 0; i < tileArray.Length; i++)
         {
-            int x = i % 15;
+            int x = i % 17;
             int y = i / 15;
 
             twoTileArray[x, y] = tileArray[i];
