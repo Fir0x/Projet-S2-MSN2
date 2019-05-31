@@ -47,48 +47,66 @@ public class MapController : MonoBehaviour
     public void EnterRoom(int[] pos, string roomName, List<Board.DoorPos> doors)
     {
         if (!visitedRoom.Contains(pos))
+        {
+            visitedRoom.Add(pos);
             DrawNew(pos, roomName, doors);
+        }
 
         cursorMask.SetTile(playerPos, null); //Remove player cursor in previous room
-        playerPos = new Vector3Int(pos[0] * 5, pos[1] * 3, 0);
+        playerPos = new Vector3Int(pos[0] * 4, pos[1] * 2, 0);
         cursorMask.SetTile(playerPos, tiles.Tiles[0]); //Set player cursor in new room
     }
 
     private void DrawNew(int[] pos, string roomName, List<Board.DoorPos> doors)
     {
-        int midWidth = 5 / 2;
-        int midHeight = 3 / 2;
-        for (int i = pos[0] * 5 - midWidth; i < pos[0] * 5 + 5 - midWidth; i++)
+        int onMapOriginX = pos[0] * 4;
+        int onMapOriginY = pos[1] * 2;
+        for (int i = onMapOriginX - 2; i < onMapOriginX + 3; i++)
         {
-            for (int j = pos[1] * 3 - midHeight; j < pos[1] * 3 + 3 - midHeight; j++)
+            for (int j = onMapOriginY - 1; j < onMapOriginY + 2; j++)
             {
-                if (i == 1 && j == 1)
+                if (i == onMapOriginX - 1 && j == onMapOriginY)
                 {
                     if (roomName == "Chest")
-                        map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[2]);
-                    else if (roomName == "Shop")
                         map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[3]);
-                    else if (roomName == "Boss")
+                    else if (roomName == "Shop")
                         map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[4]);
+                    else if (roomName == "Boss")
+                        map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[5]);
                     else
                         map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[1]);
                 }
+                else if (j == onMapOriginY - 1 || j == onMapOriginY + 1 ||
+                         i == onMapOriginX - 2 ||i == onMapOriginX + 2)
+                    map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[2]);
                 else
                     map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[1]);
             }
         }
 
-        if (pos[0] < minPosX)
-            minPosX = pos[0];
-        else if (pos[0] > maxPosX)
-            maxPosX = pos[0];
+        if (visitedRoom.Count != 1)
+        {
+            if (onMapOriginX - 2 < minPosX)
+                minPosX = onMapOriginX - 2;
+            if (onMapOriginX + 2 > maxPosX)
+                maxPosX = onMapOriginX + 2;
 
-        if (pos[1] < minPosY)
-            minPosY = pos[1];
-        else if (pos[1] > maxPosY)
-            maxPosY = pos[1];
-        
-        Vector3 centerTile = map.GetCellCenterWorld(new Vector3Int((maxPosX - minPosX) / 2 * 5, (maxPosY - minPosY) / 2 * 3, 0));
-        cam.transform.position = centerTile; //Set rhe camera position at the center of the map
+            if (onMapOriginY - 1 < minPosY)
+                minPosY = onMapOriginY - 1;
+            if (onMapOriginY  + 1 > maxPosY)
+                maxPosY = onMapOriginY + 1;
+        }
+        else
+        {
+            minPosX = onMapOriginX - 2;
+            maxPosX = onMapOriginX + 2;
+            minPosY = onMapOriginY - 1;
+            maxPosY = onMapOriginY + 1;
+        }
+
+        print("MinX: " + minPosX + ", MaxX: " + maxPosX + ", MinY: " + minPosY + ", MaxY: " + maxPosY);
+        Vector3 centerTile = map.GetCellCenterWorld(new Vector3Int((maxPosX + minPosX) / 2, (maxPosY + minPosY) / 2, 0));
+        cam.transform.position = centerTile + new Vector3(0, 0, -40); //Set rhe camera position at the center of the map
+        cam.orthographicSize = (maxPosX - minPosX + maxPosY - minPosY) / 2 * 0.26f;
     }
 }
