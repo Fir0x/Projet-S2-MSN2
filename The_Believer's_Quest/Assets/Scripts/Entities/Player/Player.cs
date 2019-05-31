@@ -285,15 +285,26 @@ public class Player : MovingObject
 
     public void ForcedMovement(Vector3 direction)                   //makes player move without his consent
     {
+        print("forced");
         Vector3 firstPos = this.transform.position;
-        this.transform.position = Vector3.Lerp(firstPos, firstPos + direction * 4, 3f * Time.deltaTime);
+        //this.transform.position = Vector3.Lerp(firstPos, firstPos + direction * 4, 3f * Time.deltaTime);
+        StartCoroutine(Movement(firstPos + direction * 4, 3f));
+    }
 
-        playerAsset.Position = transform.position;
+    IEnumerator Movement(Vector3 finalPos, float speed)
+    {
+        print("movement");
+        float step = speed * Time.deltaTime;
+        while ((transform.position.x > finalPos.x + 0.1f || transform.position.x < finalPos.x - 0.1f) && (transform.position.y > finalPos.y + 0.1f || transform.position.y < finalPos.y - 0.1f))
+        {
+            transform.position = Vector3.MoveTowards(transform.position, finalPos, step);
+            playerAsset.Position = transform.position;
+            yield return null;
+        }
     }
 
     private void FixedUpdate()
     {
-        playerAsset.Position = transform.position;
         moveX = PlayerAsset.Speed * Time.deltaTime;
         moveY = PlayerAsset.Speed * Time.deltaTime;
 
