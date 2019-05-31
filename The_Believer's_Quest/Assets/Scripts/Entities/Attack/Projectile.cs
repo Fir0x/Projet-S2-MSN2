@@ -47,8 +47,8 @@ public class Projectile : MovingObject
                Destroy(gameObject);
             }
         }
-        gameObject.transform.Translate(new Vector3(direction.x * speed * Time.deltaTime,
-            direction.y * speed * Time.deltaTime, 0));
+        print("proj : " + direction);
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
         
     }
 }
