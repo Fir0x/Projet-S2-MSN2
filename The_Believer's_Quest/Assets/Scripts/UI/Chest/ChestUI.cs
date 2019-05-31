@@ -7,22 +7,22 @@ public class ChestUI : MonoBehaviour
 
     Chest chest;
 
+    public static ChestUI instance;
+
     ChestSlot[] slots;
 
     void Start()
     {
+        instance = this;
         chest = Chest.instance;
         chest.onItemChangedCallback += UpdateUI;
 
         slots = itemsParent.GetComponentsInChildren<ChestSlot>();
     }
 
-    void Update()
+    public void EnableUI()
     {
-        if (Input.GetButtonDown("Interact"))
-        {
-            chestUI.SetActive(!chestUI.activeSelf);
-        }
+        chestUI.SetActive(!chestUI.activeSelf);
     }
 
     void UpdateUI()

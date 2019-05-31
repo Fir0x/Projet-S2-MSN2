@@ -58,5 +58,10 @@ public class KeyBoardManager : MonoBehaviour
 
         if (Input.GetButtonDown("Map"))
             UIController.uIController.ShowMap();
+
+        if (Input.GetButtonDown("Interact") && Player.instance.GetNearChest())
+        {
+            player.ActiveChestUI();
+        }
     }
 }

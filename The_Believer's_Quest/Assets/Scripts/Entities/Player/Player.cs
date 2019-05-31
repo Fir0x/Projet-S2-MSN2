@@ -8,6 +8,7 @@ using Vector3 = UnityEngine.Vector3;
 [Serializable]
 public class Player : MovingObject
 {
+    public static Player instance;
     [SerializeField] private GameObject camera;
 
     private bool goLeft;
@@ -18,6 +19,8 @@ public class Player : MovingObject
     private bool noForcedMove;
     private bool testForDash;
     private bool testForInvincibility;
+
+    private bool nearChest;
 
     private Rigidbody2D rigid;  //utile pour déplacement glace
 
@@ -96,7 +99,6 @@ public class Player : MovingObject
 
     IEnumerator Dash()
     {
-        print("Dash");
         if (testForDash == true)
         {
             if (goUp && goRight)
@@ -167,6 +169,7 @@ public class Player : MovingObject
 
     private void Start()
     {
+        instance = this;
         noForcedMove = true;
         weapon = GetComponentInChildren<Weapon>();
         weapon.Init(playerAsset.WeaponsList[0], playerAsset);
@@ -178,6 +181,7 @@ public class Player : MovingObject
 
         animator = GetComponent<Animator>();
 
+        nearChest = false;
     }
 
     public void MoveUp()
@@ -303,8 +307,6 @@ public class Player : MovingObject
             up = true;
         }
 
-        RaycastHit2D detectWall1;                               //2 raycasts bcz for example up and down need 2
-        RaycastHit2D detectWall2;
         bool noWall = true;
 
         while (noWall && (transform.position.x > finalPos.x + 0.1f || transform.position.x < finalPos.x - 0.1f) || (transform.position.y > finalPos.y + 0.1f || transform.position.y < finalPos.y - 0.1f))
@@ -372,8 +374,22 @@ public class Player : MovingObject
         {
             this.rigid.AddForce(new Vector2 (0, -1) * moveSpeed * Time.deltaTime);
         }*/
+    }
 
-        
+    public void IsNearChest()
+    {
+        nearChest = !nearChest;
+    }
+
+    public bool GetNearChest()
+    {
+        return nearChest;
+    }
+
+    public void ActiveChestUI()
+    {
+        InventoryUI.instance.EnableUI();
+        ChestUI.instance.EnableUI();
     }
 }
 
