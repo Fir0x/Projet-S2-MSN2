@@ -19,7 +19,7 @@ public class RoomManager : MonoBehaviour
 
     private bool testForBoss;
     private int bossDoor;
-    private int isBossRoom;
+    private bool isBossRoom;
 
     public GameObject nextLevel;
 
