@@ -42,8 +42,8 @@ public class Room : MonoBehaviour
         return room;
     }
 
-    public GameObject RoomCreator(Transform parent, int[] mapPos, float[] anchor, int roomNumber, List<Board.DoorPos> doorsPosition, Board.Type type)
-    {
+    public GameObject RoomCreator(Transform parent, int[] mapPos, float[] anchor, int roomNumber, List<Board.DoorPos> doorsPosition, Board.Type type, int bossDoor)
+    { 
         GameObject room;
         id = roomNumber;
         if (roomNumber == 1 || type != Board.Type.Normal)
@@ -79,15 +79,15 @@ public class Room : MonoBehaviour
         {
             List<GameObject> boss = new List<GameObject>();
             boss.Add(allBoss.AllEnemies[playerAsset.Floor - 1]);
-            manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, boss, this);
+            manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, boss, this, bossDoor);
         }
         else if (roomNumber == 1 || type != Board.Type.Normal)
         {
-            manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, new List<GameObject>(), this);
+            manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, new List<GameObject>(), this, bossDoor);
         }
         else
         {
-            manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, allEnemies.AllEnemies, this);
+            manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, allEnemies.AllEnemies, this, bossDoor);
         }
 
         closeDoors.AddListener(manager.CloseDoors); //Add this pattern's component method to close his doors
