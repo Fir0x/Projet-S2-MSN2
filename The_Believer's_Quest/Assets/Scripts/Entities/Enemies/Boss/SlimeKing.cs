@@ -6,7 +6,6 @@ using UnityEngine;
 public class SlimeKing : Boss
 {
     public GameObject blueSlime;
-    private RoomManager roomManager;
 
     void Start()
     {
@@ -18,7 +17,9 @@ public class SlimeKing : Boss
 
     protected override void ChangePhase()
     {
-        roomManager = gameObject.GetComponentInParent<RoomManager>();
+        bossData.Speed *= 1.5f;
+        bossData.Damage *= 1.5f;
+
         InvokeRepeating("SpawnSlimes", 0.1f, 30f);
     }
 
@@ -30,7 +31,6 @@ public class SlimeKing : Boss
 
     private void DashAttack()
     {
-        print("DashAttack");
         isAttacking = true;
         StartCoroutine(DoingDashAttack());
     }

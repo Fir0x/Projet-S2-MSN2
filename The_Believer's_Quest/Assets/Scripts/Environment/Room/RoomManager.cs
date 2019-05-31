@@ -17,14 +17,16 @@ public class RoomManager : MonoBehaviour
     private int totalWeight = 7; //uniquement pour étage 1
     private int enemiesRemaining;
     private bool testForBoss;
+    private int bossDoor;
 
     private Vector3 roomPosition;
     private TileGrid grid;
 
     private Room roomCreator;
 
-    public void Init(int[] mapPos, List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList, Room roomCreator)
+    public void Init(int[] mapPos, List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList, Room roomCreator, int bossDoor)
     {
+        this.bossDoor = bossDoor;
         this.mapPos = mapPos;
         this.floor = floor;
         this.doors = doors;
@@ -38,6 +40,32 @@ public class RoomManager : MonoBehaviour
         {
             testForBoss = true;
             enemies.Add(enemiesList[0]);
+
+            LayerBehind layerB = GetComponent<LayerBehind>();                               //to make the boss room be opened
+            LayerFront layerF = GetComponent<LayerFront>();
+
+            if (bossDoor == 0)
+            {
+                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
+                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
+            }
+            else if (bossDoor == 1)
+            {
+                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
+                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
+            }
+            else if (bossDoor == 2)
+            {
+                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
+                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
+            }
+            else if (bossDoor == 3)
+            {
+                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
+                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
+            }
+
+
         }
         else if (enemiesList.Count > 0)
         {
@@ -79,8 +107,10 @@ public class RoomManager : MonoBehaviour
         {
             SpawnEnemies();
 
+            enemiesRemaining = enemies.Count;
             if (enemiesRemaining > 0)
             {
+                print("allo");
                 roomCreator.Close();
             }
             firstEntry = false;
@@ -93,11 +123,43 @@ public class RoomManager : MonoBehaviour
         int x = 0;
         int y = 0;
         
-        if(gameObject.CompareTag("Finish") && testForBoss)         //apparition boss
+        if (gameObject.CompareTag("Finish"))         //apparition boss
         {
-            testForBoss = false;
-            GameObject bossOnScene = Instantiate(enemies[0], roomPosition, Quaternion.identity) as GameObject;
-            bossOnScene.transform.parent = this.transform;
+            if (testForBoss)
+            {
+                testForBoss = false;
+                GameObject bossOnScene = Instantiate(enemies[0], roomPosition, Quaternion.identity) as GameObject;
+                bossOnScene.transform.parent = this.transform;
+            }
+            else
+            {
+                bool noBoss = false;
+                foreach (GameObject enemy in enemies)        //apparition ennemis sauf boss(pour phases de boss)
+                {
+                    if(noBoss)
+                    {
+                        posOk = false;
+                        while (!posOk)
+                        {
+                            x = Random.Range(-7, 7);
+                            y = Random.Range(-5, 5);
+
+                            if (grid.NodeFromPos(roomPosition + new Vector3(x, y, 0)).walkable)
+                            {
+                                posOk = true;
+                            }
+                        }
+
+                        GameObject enemyOnScene = Instantiate(enemy, roomPosition + new Vector3(x, y, 0), Quaternion.identity) as GameObject;
+                        enemyOnScene.transform.parent = this.transform;
+                    }
+                    else
+                    {
+                        print("" + enemy.name);
+                        noBoss = true;
+                    }
+                }
+            }
         }
         else
         {
@@ -119,6 +181,8 @@ public class RoomManager : MonoBehaviour
                 enemyOnScene.transform.parent = this.transform;
             }
         }
+
+        enemiesRemaining = enemies.Count;
         
     }
 
@@ -159,6 +223,7 @@ public class RoomManager : MonoBehaviour
                 colliderUp.AddComponent<BoxCollider2D>();
                 colliderUp.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderUp.tag = "Pattern";
+                colliderUp.layer = LayerMask.NameToLayer("Obstacle");
             }
             else if(d == Board.DoorPos.Right)
             {
@@ -168,6 +233,7 @@ public class RoomManager : MonoBehaviour
                 colliderRight.AddComponent<BoxCollider2D>();
                 colliderRight.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderRight.tag = "Pattern";
+                colliderRight.layer = LayerMask.NameToLayer("Obstacle");
             }
 
             else if (d == Board.DoorPos.Down)
@@ -178,6 +244,7 @@ public class RoomManager : MonoBehaviour
                 colliderDown.AddComponent<BoxCollider2D>();
                 colliderDown.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderDown.tag = "Pattern";
+                colliderDown.layer = LayerMask.NameToLayer("Obstacle");
             }
             else
             {
@@ -187,11 +254,12 @@ public class RoomManager : MonoBehaviour
                 colliderLeft.AddComponent<BoxCollider2D>();
                 colliderLeft.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderLeft.tag = "Pattern";
+                colliderLeft.layer = LayerMask.NameToLayer("Obstacle");
             }
         }
-
-        gameObject.GetComponentInChildren<LayerFront>().SetTiles(doors, doorTiles, floor);
-        gameObject.GetComponentInChildren<LayerBehind>().SetTiles(doors, doorTiles, floor);
+        
+        gameObject.GetComponentInChildren<LayerFront>().SetTiles(doors, doorTiles, floor, testForBoss, bossDoor);
+        gameObject.GetComponentInChildren<LayerBehind>().SetTiles(doors, doorTiles, floor, testForBoss, bossDoor);
     }
 
     public void OpenDoors()

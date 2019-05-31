@@ -23,7 +23,6 @@ public class Player : MovingObject
     [SerializeField] private PlayerAsset playerAsset;
     [SerializeField] private GameObject ui;
     [SerializeField] private GameObject gameover;
-    private UIController uiController;
 
     private Weapon weapon;
     
@@ -52,14 +51,15 @@ public class Player : MovingObject
         return firstPos;
     }
 
-    public void SetLife(int value)
+    public void SetLife(float value)
     {
-        print("aie!");
+        print("aie!"); // DEBUG
         playerAsset.Invicibility = true;
         StartCoroutine(InvicibilityCoolDown());
 
         playerAsset.Hp = value;
-        uiController.changeHp.Invoke();
+        UIController.uIController.changeHp.Invoke();
+        print(UIController.uIController.changeHp);
         if (playerAsset.Hp <= 0)
         {
             animator.SetTrigger(animDeathID);
@@ -79,7 +79,7 @@ public class Player : MovingObject
     public void SetEffect(int value)
     {
         playerAsset.EffectValue = value;
-        uiController.changeEffect.Invoke();
+        UIController.uIController.changeEffect.Invoke();
     }
     
     public void Attack()
@@ -194,26 +194,17 @@ public class Player : MovingObject
         }
     }
 
-    private void Awake()
+    private void Start()
     {
+        weapon = GetComponentInChildren<Weapon>();
+        weapon.Init(playerAsset.WeaponsList[0], playerAsset);
         playerAsset.Position = transform.position;
         testForDash = true;
 
-        firstPos = this.transform.position;
+        firstPos = transform.position;
 
         animator = GetComponent<Animator>();
-        uiController = ui.GetComponent<UIController>();
-        
-        weapon = GetComponentInChildren<Weapon>();
-        weapon.Init(uiController, PlayerAsset.WeaponsList[0], playerAsset);
-        uiController.changeWeapon.Invoke();
-        uiController.changeDiamond.Invoke();
-        uiController.changeGold.Invoke();
-        uiController.changeHp.Invoke();
-        uiController.changeMaxHp.Invoke();
-        uiController.changeEffect.Invoke();
-        uiController.changeMaxEffect.Invoke();
-        uiController.changeAmmo.Invoke();
+
     }
 
     public void MoveUp()
@@ -302,6 +293,7 @@ public class Player : MovingObject
 
     private void FixedUpdate()
     {
+        playerAsset.Position = transform.position;
         moveX = PlayerAsset.Speed * Time.deltaTime;
         moveY = PlayerAsset.Speed * Time.deltaTime;
 

@@ -12,7 +12,7 @@ public class Enemy : MovingObject
     [SerializeField] private PlayerAsset playerAsset;
 
     private Vector3 startPos;
-    private int HP;
+    private float HP;
 
     private LayerMask mask;
     
@@ -70,7 +70,7 @@ public class Enemy : MovingObject
 
     private void AStarPathfindingMoving()
     {
-        startPos = this.transform.position;
+        startPos = transform.position;
 
         nextNode = realPathfinding.FindPath(startPos, transformPlayer.position);
 
@@ -114,10 +114,10 @@ public class Enemy : MovingObject
         HP = hp;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         HP -= damage;
-        if (HP < 0 )
+        if (HP <= 0 )
             Destroy(gameObject);
     }
 }

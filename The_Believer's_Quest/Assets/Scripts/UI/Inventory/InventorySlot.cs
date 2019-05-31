@@ -7,7 +7,6 @@ public class InventorySlot : MonoBehaviour
 {
 
     public Image icon;          // Reference to the Icon image
-    public Button removeButton; // Reference to the remove button
 
     ObjectsAsset item;  // Current item in the slot
 
@@ -18,7 +17,6 @@ public class InventorySlot : MonoBehaviour
 
         icon.sprite = item.Sprite;
         icon.enabled = true;
-        removeButton.interactable = true;
     }
 
     // Clear the slot
@@ -28,13 +26,6 @@ public class InventorySlot : MonoBehaviour
 
         icon.sprite = null;
         icon.enabled = false;
-        removeButton.interactable = false;
-    }
-
-    // Called when the remove button is pressed
-    public void OnRemoveButton()
-    {
-        Inventory.instance.Remove(item);
     }
 
     // Called when the item is pressed
@@ -42,7 +33,11 @@ public class InventorySlot : MonoBehaviour
     {
         if (item != null)
         {
-            item.Use();
+            if (!Chest.instance.Add(item))
+            {
+                Inventory.instance.Remove(item);
+                ClearSlot();
+            }
         }
     }
 

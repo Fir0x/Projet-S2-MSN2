@@ -31,6 +31,10 @@ public class Inventory : MonoBehaviour
     // return true. Else we return false.
     public bool Add(ObjectsAsset item)
     {
+        foreach(ObjectsAsset O in items) //Check if the item is already in items or not
+        {
+            if (O == item) return false;
+        }
 
         // Check if out of space
         if (items.Count < space)

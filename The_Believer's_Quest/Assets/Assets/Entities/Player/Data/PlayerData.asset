@@ -24,4 +24,4 @@ MonoBehaviour:
   weaponsList:
   - {fileID: 11400000, guid: a270b238d7b638c4184ad35280778eba, type: 2}
   - {fileID: 0}
-  position: {x: 0, y: 0}
+  position: {x: 8.019997, y: 20.860083, z: 0}

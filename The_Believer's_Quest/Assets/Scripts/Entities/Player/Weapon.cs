@@ -9,17 +9,14 @@ public class Weapon : MonoBehaviour
     private PlayerAsset playerAsset;
     private bool shot;
 
-    private UIController UIController;
-
     [SerializeField] private GameObject projectile;
 
     public GameObject Projectile { get => projectile; set => projectile = value; }
     public WeaponAsset.WeaponType Type { get => weapon.Type; }
 
-    public void Init(UIController UIController, WeaponAsset weapon, PlayerAsset playerAsset)
+    public void Init(WeaponAsset weapon, PlayerAsset playerAsset)
     {
         shot = true;
-        this.UIController = UIController;
         this.weapon = weapon;
         this.playerAsset = playerAsset;
     }
@@ -32,7 +29,7 @@ public class Weapon : MonoBehaviour
     public void SetWeapon(WeaponAsset weapon)
     {
         this.weapon = weapon;
-        UIController.changeWeapon.Invoke();
+        UIController.uIController.changeWeapon.Invoke();
     }
 
     public int GetDamage()
@@ -48,13 +45,13 @@ public class Weapon : MonoBehaviour
     public void SetAmmunitions(int ammunitions)
     {
         weapon.Ammunitions = ammunitions;
-        UIController.changeAmmo.Invoke();
+        UIController.uIController.changeAmmo.Invoke();
     }
 
     public void AddAmmunitions(int ammo)
     {
         weapon.Ammunitions = (weapon.Ammunitions + ammo) % weapon.MaxAmmunitions;
-        UIController.changeAmmo.Invoke();
+        UIController.uIController.changeAmmo.Invoke();
     }
 
     public int GetLoaderAmmo()
@@ -75,7 +72,7 @@ public class Weapon : MonoBehaviour
         {
             weapon.Loader = (weapon.Loader + weapon.Ammunitions) % weapon.LoaderCappacity;
             StartCoroutine(ReloadTimer());
-            UIController.changeAmmo.Invoke();
+            UIController.uIController.changeAmmo.Invoke();
         }
     }
 
@@ -105,11 +102,16 @@ public class Weapon : MonoBehaviour
     
     public void Shot() 
     {
-        Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        print("camera :" + mousePos);
+        print("player :" + playerAsset.Position);
+        Vector3 directionVector = (mousePos - transform.position).normalized;
+        print("weapon: " + directionVector);
         if (!(weapon.Type == WeaponAsset.WeaponType.CQC))
         {
             weapon.Loader -= weapon.Nbbulletsbyshot;
-            UIController.changeAmmo.Invoke();
+            UIController.uIController.changeAmmo.Invoke();
         }
 
         if ((weapon.Type == WeaponAsset.WeaponType.CQC)) 
@@ -120,7 +122,7 @@ public class Weapon : MonoBehaviour
 
         if ((weapon.Type == WeaponAsset.WeaponType.Line))
             //attaque en ligne avec RailGun
-            LineShot(transform.up, weapon.Speed,weapon.Damage, 0);
+            LineShot(directionVector, weapon.Speed, weapon.Damage, 0);
         if ((weapon.Type == WeaponAsset.WeaponType.Shotgun)) 
             //attaque en Arc avec Shotgun
             ArcShot(weapon.Nbbulletsbyshot, transform.up, weapon.Speed, weapon.Damage);
@@ -144,7 +146,7 @@ public class Weapon : MonoBehaviour
     private void LineShot(Vector3 direction, float speed, int damage, float angle)//tir linéaire
     {
         Instantiate(projectile, transform.position,
-            transform.rotation).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.position, angle, direction, true); 
+            transform.rotation).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, playerAsset.Position, angle, direction, true); 
     }
     
     private void CircleShot(int nbprojectile, float speed, int damage)//tir en cercle

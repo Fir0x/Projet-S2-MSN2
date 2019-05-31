@@ -5,8 +5,8 @@
 public class PlayerAsset : ScriptableObject
 {
     [SerializeField] private int floor;
-    [SerializeField] private int hp = 50;
-    [SerializeField] private int maxHP = 50;
+    [SerializeField] private float hp = 50;
+    [SerializeField] private float maxHP = 50;
     [SerializeField] private int effectValue;
     [SerializeField] private int maxEffectValue = 30;
     [SerializeField] private float speed = 0.5f;
@@ -17,8 +17,8 @@ public class PlayerAsset : ScriptableObject
     [SerializeField] private Vector3 position;
    
     public int Floor { get => floor; set => floor = value; }
-    public int Hp { get => hp; set => hp = value; }
-    public int MaxHP { get => maxHP; set => maxHP = value; }
+    public float Hp { get => hp; set => hp = value; }
+    public float MaxHP { get => maxHP; set => maxHP = value; }
     public int EffectValue { get => effectValue; set => effectValue = value; }
     public int MaxEffectValue { get => maxEffectValue; set => maxEffectValue = value; }
     public float Speed { get => speed; set => speed = value; }
