@@ -33,7 +33,7 @@ public class NextLevel : MonoBehaviour
             {
                 Destroy(GameObject.Find("Board"));
                 GameObject.FindGameObjectWithTag("BoardManager").GetComponent<Board>().Init();
-                //GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(col.GetComponent<Player>().PlayerAsset.Floor + 2);
+                GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO((col.GetComponent<Player>().PlayerAsset.Floor - 1) + 2);
             }
             firstTrigger = false;
         }

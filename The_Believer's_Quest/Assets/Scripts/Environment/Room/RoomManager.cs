@@ -116,6 +116,11 @@ public class RoomManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col) //Nicolas L
     {
+        if (testForBoss)
+        {
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().ChangeBO(3 + (floor - 1));
+        }
+
         if (firstEntry && col.CompareTag("Player"))
         {
             SpawnEnemies();
@@ -127,6 +132,7 @@ public class RoomManager : MonoBehaviour
             }
             firstEntry = false;
         }
+
 
         MapController.mapScript.EnterRoom(mapPos, gameObject.name, doors);
     }

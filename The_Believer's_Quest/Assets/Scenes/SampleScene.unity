@@ -2364,7 +2364,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 34607ce0265d078459a818f589902b23, type: 3}
+      objectReference: {fileID: 8300000, guid: fbe49a19fdbea6046b837ed17ae867c5, type: 3}
+    - target: {fileID: 7584383160408248086, guid: 06705fef10342644c87cfd71544c31d3,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06705fef10342644c87cfd71544c31d3, type: 3}
 --- !u!1001 &1498980233
@@ -5993,7 +5998,6 @@ PrefabInstance:
       propertyPath: m_CellSwizzle
       value: 0
       objectReference: {fileID: 0}
-
     - target: {fileID: 7229080686288567627, guid: d1cde67dc7783d04990639b029ea2312,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -6153,7 +6157,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1cde67dc7783d04990639b029ea2312, type: 3}
