@@ -60,7 +60,7 @@ public class Attack : MonoBehaviour
                 if (playerTouched[i].CompareTag("Player"))
                 {
                     playerTouched[i].GetComponent<Player>().SetLife(player.Hp - damage);
-                    //print("touché!");
+                    print("touché!");
                     
                     Vector3 forcedMov = -(gameObject.transform.position - playerTouched[i].transform.position).normalized;              //to make player move in the opposite way when touched
                     playerTouched[i].GetComponent<Player>().ForcedMovement(forcedMov);

@@ -2589,6 +2589,15 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: -8, y: 0, z: 0}
+    second:
+      m_TileIndex: 5
+      m_TileSpriteIndex: 6
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: -7, y: 0, z: 0}
     second:
       m_TileIndex: 5
@@ -2716,6 +2725,15 @@ Tilemap:
       m_TileFlags: 1
       m_ColliderType: 1
   - first: {x: 7, y: 0, z: 0}
+    second:
+      m_TileIndex: 5
+      m_TileSpriteIndex: 6
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 8, y: 0, z: 0}
     second:
       m_TileIndex: 5
       m_TileSpriteIndex: 6
@@ -3546,7 +3564,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 195
+  - m_RefCount: 197
     m_Data: {fileID: 11400000, guid: 58dfd23051b606b42b0f352242d76336, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -3563,10 +3581,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 195
+  - m_RefCount: 197
     m_Data: {fileID: 21300714, guid: 630658238eea98745b5fd0c068d01329, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 195
+  - m_RefCount: 197
     m_Data:
       e00: 1
       e01: 0
@@ -3585,7 +3603,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 195
+  - m_RefCount: 197
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: 2.269e-41, g: 2.269e-41, b: 2.269e-41, a: 2.269e-41}
@@ -3671,7 +3689,6 @@ GameObject:
   - component: {fileID: 125421187761739182}
   - component: {fileID: 2886134315398066976}
   - component: {fileID: 4477217950294397326}
-  - component: {fileID: 7015321319954925162}
   - component: {fileID: 8150690147208167053}
   m_Layer: 0
   m_Name: Pattern1
@@ -3775,18 +3792,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObstacle: {fileID: 6008051274499151057}
---- !u!114 &7015321319954925162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5201831336272942791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7f18183e032451eb71560d4db4a0520, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8150690147208167053
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private Slider hp;
     [SerializeField] private Slider effect;
-    [SerializeField] private GameObject map;
+    [SerializeField] private GameObject mapPannel;
 
     public UnityEvent changeHp;
     public UnityEvent changeMaxHp;
@@ -37,7 +37,7 @@ public class UIController : MonoBehaviour
     public Image WeaponSprite { get => weaponSprite; set => weaponSprite = value; }
     public Slider Hp { get => hp; set => hp = value; }
     public Slider Effect { get => effect; set => effect = value; }
-    public GameObject Map { get => map; set => map = value; }
+    public GameObject Map { get => mapPannel; set => mapPannel = value; }
 
     private void Start()
     {
@@ -101,11 +101,33 @@ public class UIController : MonoBehaviour
 
     public void ShowMap()
     {
-        RawImage visu = map.GetComponent<RawImage>();
-        visu.enabled = !visu.enabled;
+        mapPannel.SetActive(!mapPannel.activeSelf);
+
+        if (mapPannel.activeSelf)
+        {
+            foreach (Scrollbar scrollbar in mapPannel.GetComponentsInChildren<Scrollbar>())
+            {
+                if (scrollbar.gameObject.name == "Horizontal")
+                    scrollbar.size = MapController.mapScript.GetHorizontal();
+                else
+                    scrollbar.size = MapController.mapScript.GetVertical();
+            }
+        }
+
         /*if (visu.enabled) //A revoir
             Time.timeScale = 0;
         else
             Time.timeScale = originalTimeScale;*/
+    }
+
+    public void AdaptScrollbar(bool horizontal, float value)
+    {
+        foreach (Scrollbar scrollbar in mapPannel.GetComponentsInChildren<Scrollbar>())
+        {
+            if (scrollbar.gameObject.name == "Horizontal" && horizontal)
+                scrollbar.size = value;
+            else
+                scrollbar.size = value;
+        }
     }
 }

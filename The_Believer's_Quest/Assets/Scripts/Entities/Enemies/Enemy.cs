@@ -89,7 +89,6 @@ public class Enemy : MovingObject
 
         if (CanAttack())
         {
-            print("can attack");
             shot = true;
         }
     }

@@ -15,6 +15,7 @@ public class Player : MovingObject
     private bool goRight;
     private bool goDown;
 
+    private bool noForcedMove;
     private bool testForDash;
     private bool testForInvincibility;
 
@@ -89,116 +90,88 @@ public class Player : MovingObject
 
     public void doDash()
     {
-        if(goUp || goRight || goDown || goLeft)
+        if((goUp || goRight || goDown || goLeft) && testForDash)
             StartCoroutine(Dash());
     }
 
     IEnumerator Dash()
     {
+        print("Dash");
         if (testForDash == true)
         {
             if (goUp && goRight)
-            {
+            {;
                 Vector3 firstPos = this.transform.position;
                 Vector3 lastPos = firstPos + new Vector3(0.8f, 0.8f, 0);
-                Vector3 newPos = new Vector3(0, 0, 0);
-                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 1) && Collision(transform.position, playerAsset.Speed, 2))
-                {                 
-                    this.transform.Translate(0.1f, 0.1f, 0);
-                    newPos = transform.position - firstPos;
-                }
+
+                StartCoroutine(Movement(lastPos, 8f));
             }
             else if (goDown && goRight)
             {
                 Vector3 firstPos = this.transform.position;
                 Vector3 lastPos = firstPos + new Vector3(0.8f, -0.8f, 0);
-                Vector3 newPos = new Vector3(0, 0, 0);
-                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 2) && Collision(transform.position, playerAsset.Speed, 3))
-                {
-                    this.transform.Translate(0.1f, -0.1f, 0);
-                    newPos = transform.position - firstPos;
-                }
+
+                StartCoroutine(Movement(lastPos, 8f));
             }
             else if (goUp && goLeft)
             {
                 Vector3 firstPos = this.transform.position;
                 Vector3 lastPos = firstPos + new Vector3(-0.8f, 0.8f, 0);
-                Vector3 newPos = new Vector3(0, 0, 0);
-                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 0) && Collision(transform.position, playerAsset.Speed, 1))
-                {
-                    this.transform.Translate(-0.1f, 0.1f, 0);
-                    newPos = transform.position - firstPos;
-                }
+
+                StartCoroutine(Movement(lastPos, 8f));
             }
             else if (goDown && goLeft)
             {
                 Vector3 firstPos = this.transform.position;
                 Vector3 lastPos = firstPos + new Vector3(-0.8f, -0.8f, 0);
-                Vector3 newPos = new Vector3(0, 0, 0);
-                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 1) && Collision(transform.position, playerAsset.Speed, 2))
-                {
-                    this.transform.Translate(-0.1f, -0.1f, 0);
-                    newPos = transform.position - firstPos;
-                }
+
+                StartCoroutine(Movement(lastPos, 8f));
             }
             else if (goUp)
             {
                 Vector3 firstPos = this.transform.position;
                 Vector3 lastPos = firstPos + new Vector3(0, 1.3f, 0);
-                Vector3 newPos = new Vector3(0, 0, 0);
-                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 1))
-                {
-                    this.transform.Translate(0, 0.1f, 0);
-                    newPos = transform.position - firstPos;
-                }
+
+                StartCoroutine(Movement(lastPos, 8f));
             }
             else if (goRight)
             {
                 Vector3 firstPos = this.transform.position;
                 Vector3 lastPos = firstPos + new Vector3(1.3f, 0, 0);
-                Vector3 newPos = new Vector3(0, 0, 0);
-                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 2))
-                {
-                    this.transform.Translate(0.1f, 0, 0);
-                    newPos = transform.position - firstPos;
-                }
+
+                StartCoroutine(Movement(lastPos, 8f));
             }
             else if (goDown)
             {
                 Vector3 firstPos = this.transform.position;
                 Vector3 lastPos = firstPos + new Vector3(0, -1.3f, 0);
-                Vector3 newPos = new Vector3(0, 0, 0);
-                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 3))
-                {
-                    this.transform.Translate(0, -0.1f, 0);
-                    newPos = transform.position - firstPos;
-                }
+
+                StartCoroutine(Movement(lastPos, 8f));
             }
             else if (goLeft)
             {
                 Vector3 firstPos = this.transform.position;
                 Vector3 lastPos = firstPos + new Vector3(-1.3f, 0, 0);
-                Vector3 newPos = new Vector3(0, 0, 0);
-                while (newPos.magnitude < (lastPos - firstPos).magnitude && Collision(transform.position, playerAsset.Speed, 1))
-                {
-                    this.transform.Translate(-0.1f, 0, 0);
-                    newPos = transform.position - firstPos;
-                }
+
+                StartCoroutine(Movement(lastPos, 8f));
             }
             playerAsset.Position = transform.position;
 
             testForDash = false;
                 
-            yield return new WaitForSeconds(1.5f);
-            testForDash = true;;
+            yield return new WaitForSeconds(2f);
+
+            testForDash = true;
         }
     }
 
     private void Start()
     {
+        noForcedMove = true;
         weapon = GetComponentInChildren<Weapon>();
         weapon.Init(playerAsset.WeaponsList[0], playerAsset);
         playerAsset.Position = transform.position;
+        playerAsset.Invicibility = false;
         testForDash = true;
 
         firstPos = transform.position;
@@ -209,16 +182,19 @@ public class Player : MovingObject
 
     public void MoveUp()
     {
-        goUp = true;
-
-        animator.SetInteger(animDirectionHashID, 0);
-        animator.SetTrigger(animMoveHashID);
-        if (this.Collision(transform.position, playerAsset.Speed, 1))
+        if(noForcedMove)
         {
-            this.transform.Translate(0, moveY, 0);
-        }
+            goUp = true;
 
-        playerAsset.Position = transform.position;
+            animator.SetInteger(animDirectionHashID, 0);
+            animator.SetTrigger(animMoveHashID);
+            if (this.Collision(transform.position, playerAsset.Speed, 1))
+            {
+                this.transform.Translate(0, moveY, 0);
+            }
+
+            playerAsset.Position = transform.position;
+        }
     }
 
     public void StopMoveUp()
@@ -228,16 +204,19 @@ public class Player : MovingObject
 
     public void MoveRight()
     {
-        goRight = true;
-
-        animator.SetInteger(animDirectionHashID, 1);
-        animator.SetTrigger(animMoveHashID);
-        if (this.Collision(transform.position, playerAsset.Speed, 2))
+        if (noForcedMove)
         {
-            this.transform.Translate(moveX, 0, 0);
-        }
+            goRight = true;
 
-        playerAsset.Position = transform.position;
+            animator.SetInteger(animDirectionHashID, 1);
+            animator.SetTrigger(animMoveHashID);
+            if (this.Collision(transform.position, playerAsset.Speed, 2))
+            {
+                this.transform.Translate(moveX, 0, 0);
+            }
+
+            playerAsset.Position = transform.position;
+        }
     }
 
     public void StopMoveRight()
@@ -247,16 +226,19 @@ public class Player : MovingObject
 
     public void MoveDown()
     {
-        goDown = true;
-
-        animator.SetInteger(animDirectionHashID, 2);
-        animator.SetTrigger(animMoveHashID);
-        if (this.Collision(transform.position, playerAsset.Speed, 3))
+        if (noForcedMove)
         {
-            this.transform.Translate(0, -moveY, 0);
-        }
+            goDown = true;
 
-        playerAsset.Position = transform.position;
+            animator.SetInteger(animDirectionHashID, 2);
+            animator.SetTrigger(animMoveHashID);
+            if (this.Collision(transform.position, playerAsset.Speed, 3))
+            {
+                this.transform.Translate(0, -moveY, 0);
+            }
+
+            playerAsset.Position = transform.position;
+        }
     }
 
     public void StopMoveDown()
@@ -266,16 +248,19 @@ public class Player : MovingObject
 
     public void MoveLeft()
     {
-        goLeft = true;
-
-        animator.SetInteger(animDirectionHashID, 3);
-        animator.SetBool(animMoveHashID, true);
-        if (this.Collision(transform.position, playerAsset.Speed, 0))
+        if (noForcedMove)
         {
-            this.transform.Translate(-moveX, 0, 0);
-        }
+            goLeft = true;
 
-        playerAsset.Position = transform.position;
+            animator.SetInteger(animDirectionHashID, 3);
+            animator.SetBool(animMoveHashID, true);
+            if (this.Collision(transform.position, playerAsset.Speed, 0))
+            {
+                this.transform.Translate(-moveX, 0, 0);
+            }
+
+            playerAsset.Position = transform.position;
+        }
     }
 
     public void StopMoveLeft()
@@ -285,22 +270,66 @@ public class Player : MovingObject
 
     public void ForcedMovement(Vector3 direction)                   //makes player move without his consent
     {
-        print("forced");
-        Vector3 firstPos = this.transform.position;
-        //this.transform.position = Vector3.Lerp(firstPos, firstPos + direction * 4, 3f * Time.deltaTime);
-        StartCoroutine(Movement(firstPos + direction * 4, 3f));
+        StartCoroutine(Movement(transform.position + direction * 0.5f, 3f));
     }
 
     IEnumerator Movement(Vector3 finalPos, float speed)
     {
-        print("movement");
+        noForcedMove = false;
+
+        bool left = false;
+        bool up = false;
+        bool right = false;
+        bool down = false;
+        Vector2 pos = transform.position;
+
         float step = speed * Time.deltaTime;
-        while ((transform.position.x > finalPos.x + 0.1f || transform.position.x < finalPos.x - 0.1f) && (transform.position.y > finalPos.y + 0.1f || transform.position.y < finalPos.y - 0.1f))
+        Vector2 direction = (Vector2)finalPos - pos;
+
+        if(direction.x <= 0)
         {
+            left = true;
+        }
+        else
+        {
+            right = true;
+        }
+        if (direction.y <= 0)
+        {
+            down = true;
+        }
+        else
+        {
+            up = true;
+        }
+
+        RaycastHit2D detectWall1;                               //2 raycasts bcz for example up and down need 2
+        RaycastHit2D detectWall2;
+        bool noWall = true;
+
+        while (noWall && (transform.position.x > finalPos.x + 0.1f || transform.position.x < finalPos.x - 0.1f) || (transform.position.y > finalPos.y + 0.1f || transform.position.y < finalPos.y - 0.1f))
+        {
+            if (!this.Collision(transform.position, playerAsset.Speed, 1))
+            {
+                break;
+            }
+            if (!this.Collision(transform.position, playerAsset.Speed, 2))
+            {
+                break;
+            }
+            if (!this.Collision(transform.position, playerAsset.Speed, 3))
+            {
+                break;
+            }
+            if (!this.Collision(transform.position, playerAsset.Speed, 0))
+            {
+                break;
+            }
             transform.position = Vector3.MoveTowards(transform.position, finalPos, step);
             playerAsset.Position = transform.position;
             yield return null;
         }
+        noForcedMove = true;
     }
 
     private void FixedUpdate()
