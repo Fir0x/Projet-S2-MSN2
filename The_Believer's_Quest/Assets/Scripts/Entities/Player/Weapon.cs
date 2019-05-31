@@ -157,7 +157,7 @@ public class Weapon : MonoBehaviour
     private void LineShot( float speed, int damage, float angle)//tir linéaire
     {
         Instantiate(projectile, transform.position,
-            transform.rotation).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, playerAsset.Position, angle, true); 
+            transform.rotation).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.position, angle, true); 
     }
     
     private void CircleShot(int nbprojectile, float speed, int damage)//tir en cercle
