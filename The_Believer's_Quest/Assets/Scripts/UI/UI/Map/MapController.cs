@@ -86,27 +86,69 @@ public class MapController : MonoBehaviour
 
         if (visitedRoom.Count != 1)
         {
+            bool horizontal = false;
             if (onMapOriginX - 2 < minPosX)
+            {
                 minPosX = onMapOriginX - 2;
-            if (onMapOriginX + 2 > maxPosX)
+                horizontal = true;
+            }
+            if (onMapOriginX + 3 > maxPosX)
+            {
                 maxPosX = onMapOriginX + 2;
+                horizontal = true;
+            }
 
             if (onMapOriginY - 1 < minPosY)
                 minPosY = onMapOriginY - 1;
-            if (onMapOriginY  + 1 > maxPosY)
+            if (onMapOriginY  + 2 > maxPosY)
                 maxPosY = onMapOriginY + 1;
+
+            if (horizontal)
+                UIController.uIController.AdaptScrollbar(horizontal, GetHorizontal());
+            else
+                UIController.uIController.AdaptScrollbar(horizontal, GetVertical());
         }
         else
         {
             minPosX = onMapOriginX - 2;
-            maxPosX = onMapOriginX + 2;
+            maxPosX = onMapOriginX + 3;
             minPosY = onMapOriginY - 1;
-            maxPosY = onMapOriginY + 1;
+            maxPosY = onMapOriginY + 2;
         }
 
-        print("MinX: " + minPosX + ", MaxX: " + maxPosX + ", MinY: " + minPosY + ", MaxY: " + maxPosY);
+        print("MinX: " + minPosX + ", MaxX: " + maxPosX + ", MinY: " + minPosY + ", MaxY: " + maxPosY); //DEBUG
         Vector3 centerTile = map.GetCellCenterWorld(new Vector3Int((maxPosX + minPosX) / 2, (maxPosY + minPosY) / 2, 0));
         cam.transform.position = centerTile + new Vector3(0, 0, -40); //Set rhe camera position at the center of the map
-        cam.orthographicSize = (maxPosX - minPosX + maxPosY - minPosY) / 2 * 0.26f;
+        //cam.orthographicSize = (maxPosX - minPosX + maxPosY - minPosY) / 2 * 0.26f;
+    }
+
+    public float GetHorizontal()
+    {
+        return 8.0f / System.Math.Abs(maxPosX - minPosX);
+    }
+
+    public float GetVertical()
+    {
+        return 3.0f / System.Math.Abs(maxPosY - minPosY);
+    }
+
+    public void MoveHorizontal(float value)
+    {
+        Vector3 maxRight = map.GetCellCenterWorld(new Vector3Int(maxPosX, 0, 0));
+        Vector3 maxLeft = map.GetCellCenterWorld(new Vector3Int(minPosX, 0, 0));
+        float dist = maxRight.x - maxLeft.x;
+        float centerX = dist / 2;
+        float factor = 2 * maxLeft.x;
+        cam.transform.position = new Vector3(centerX - maxLeft.x + value * factor, cam.transform.position.y, 0);
+    }
+
+    public void MoveVertical(float value)
+    {
+        Vector3 maxUp = map.GetCellCenterWorld(new Vector3Int(maxPosX, 0, 0));
+        Vector3 maxDown = map.GetCellCenterWorld(new Vector3Int(minPosX, 0, 0));
+        float dist = maxUp.x - maxDown.x;
+        float centerX = dist / 2;
+        float factor = 2 * maxDown.x;
+        cam.transform.position = new Vector3(centerX - maxDown.x + value * factor, cam.transform.position.y, 0);
     }
 }
