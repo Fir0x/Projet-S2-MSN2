@@ -14,7 +14,6 @@ public class InventorySlot : MonoBehaviour
     public void AddItem(ObjectsAsset newItem)
     {
         item = newItem;
-
         icon.sprite = item.Sprite;
         icon.enabled = true;
     }
@@ -23,7 +22,6 @@ public class InventorySlot : MonoBehaviour
     public void ClearSlot()
     {
         item = null;
-
         icon.sprite = null;
         icon.enabled = false;
     }
