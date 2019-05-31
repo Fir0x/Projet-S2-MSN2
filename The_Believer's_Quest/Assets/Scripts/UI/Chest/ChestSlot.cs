@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 /* Sits on all InventorySlots. */
 
-public class InventorySlot : MonoBehaviour
+public class ChestSlot : MonoBehaviour
 {
 
     public Image icon;          // Reference to the Icon image
@@ -33,9 +33,9 @@ public class InventorySlot : MonoBehaviour
     {
         if (item != null)
         {
-            if (!Chest.instance.Add(item))
+            if (!Inventory.instance.Add(item))
             {
-                Inventory.instance.Remove(item);
+                Chest.instance.Remove(item);
                 ClearSlot();
             }
         }

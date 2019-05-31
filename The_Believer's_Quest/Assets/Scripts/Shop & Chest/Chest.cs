@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Chest : MonoBehaviour
 {
-    public static Inventory instance;
+    public static Chest instance;
 
     void Awake()
     {
         if (instance != null)
         {
-            print("should not do that" ); //DEBUG
+            print("should not do that"); //DEBUG
             return;
         }
 
@@ -22,16 +22,16 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
 
-    public int space = 4;  // Amount of slots in inventory
+    public int space = 12;  // Amount of slots in chest
 
-    // Current list of items in inventory
+    // Current list of items in chest
     public List<ObjectsAsset> items = new List<ObjectsAsset>();
 
     // Add a new item. If there is enough room we
     // return true. Else we return false.
     public bool Add(ObjectsAsset item)
     {
-        foreach(ObjectsAsset O in items) //Check if the item is already in items or not
+        foreach (ObjectsAsset O in items) //Check if the item is already in items or not
         {
             if (O == item) return false;
         }

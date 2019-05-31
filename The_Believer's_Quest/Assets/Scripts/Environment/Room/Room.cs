@@ -81,7 +81,7 @@ public class Room : MonoBehaviour
             boss.Add(allBoss.AllEnemies[playerAsset.Floor - 1]);
             manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, boss, this, bossDoor);
         }
-        else if (roomNumber == 1 || type != Board.Type.Normal)
+        else if (roomNumber == 1 || (type != Board.Type.Normal && type != Board.Type.Boss))
         {
             manager.Init(mapPos, doorsPosition, playerAsset.Floor, doorTiles, new List<GameObject>(), this, bossDoor);
         }
