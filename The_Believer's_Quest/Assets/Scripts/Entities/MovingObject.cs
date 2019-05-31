@@ -15,7 +15,6 @@ public class MovingObject : MonoBehaviour
                 
                 if (hitLeft.collider != null && hitLeft.collider.gameObject.CompareTag("Pattern"))
                 {
-                    print("mais");
                     noCollision = false;
                 }
                 break;

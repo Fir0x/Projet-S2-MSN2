@@ -26,6 +26,8 @@ public class RoomManager : MonoBehaviour
 
     public void Init(int[] mapPos, List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList, Room roomCreator, int bossDoor)
     {
+        if(enemiesList.Count == 1)
+            print("" + bossDoor);
         this.bossDoor = bossDoor;
         this.mapPos = mapPos;
         this.floor = floor;
@@ -40,6 +42,7 @@ public class RoomManager : MonoBehaviour
         {
             testForBoss = true;
             enemies.Add(enemiesList[0]);
+            roomCreator.Open();
         }
         else if (enemiesList.Count > 0)
         {
@@ -161,6 +164,7 @@ public class RoomManager : MonoBehaviour
                 colliderUp.AddComponent<BoxCollider2D>();
                 colliderUp.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderUp.tag = "Pattern";
+                colliderUp.layer = LayerMask.NameToLayer("Obstacle");
             }
             else if(d == Board.DoorPos.Right)
             {
@@ -170,6 +174,7 @@ public class RoomManager : MonoBehaviour
                 colliderRight.AddComponent<BoxCollider2D>();
                 colliderRight.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderRight.tag = "Pattern";
+                colliderRight.layer = LayerMask.NameToLayer("Obstacle");
             }
 
             else if (d == Board.DoorPos.Down)
@@ -180,6 +185,7 @@ public class RoomManager : MonoBehaviour
                 colliderDown.AddComponent<BoxCollider2D>();
                 colliderDown.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderDown.tag = "Pattern";
+                colliderDown.layer = LayerMask.NameToLayer("Obstacle");
             }
             else
             {
@@ -189,6 +195,7 @@ public class RoomManager : MonoBehaviour
                 colliderLeft.AddComponent<BoxCollider2D>();
                 colliderLeft.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderLeft.tag = "Pattern";
+                colliderLeft.layer = LayerMask.NameToLayer("Obstacle");
             }
         }
         
@@ -213,6 +220,10 @@ public class RoomManager : MonoBehaviour
             Destroy(GetComponent<Transform>().GetChild(i).gameObject);
         }
 
+        if(allEnemiesList.Count == 1)
+        {
+            print("" + doors.Count);
+        }
         gameObject.GetComponentInChildren<LayerFront>().ClearTiles(doors, doorTiles, floor);
         gameObject.GetComponentInChildren<LayerBehind>().ClearTiles(doors, doorTiles, floor);
     }

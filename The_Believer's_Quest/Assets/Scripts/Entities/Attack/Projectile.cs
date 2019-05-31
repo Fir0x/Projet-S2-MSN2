@@ -39,7 +39,6 @@ public class Projectile : MovingObject
             }
             if (hitInfo.collider.CompareTag("Pattern"))
             {
-                print("" + hitInfo.collider.gameObject.name);
                Destroy(gameObject);
             }
         }

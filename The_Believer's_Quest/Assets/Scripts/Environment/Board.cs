@@ -161,7 +161,7 @@ public class Board : MonoBehaviour
                     //Add doors between the parent and his child
 
                     if(newX > lastX)
-                        {
+                    {
                         parent.AddDoors(DoorPos.Right, isBoss);
                         actual.AddDoors(DoorPos.Left, isBoss);
                     }
@@ -181,6 +181,8 @@ public class Board : MonoBehaviour
                         actual.AddDoors(DoorPos.Up, isBoss);
                     }
 
+                    
+
                     parent = roomBaseList[Random.Range(0, roomBaseList.Count)];
 
                     boardMap[newY, newX] = k; //Add id of room for mapping
@@ -198,6 +200,7 @@ public class Board : MonoBehaviour
             {
                 room.RoomCreator(board, roomBase.position, new float[] { roomBase.position[0] * roomWidth + 8,
                 roomBase.position[1] * roomHeight + 6 }, roomBase.roomNumber, roomBase.doorsPosition, roomBase.type, roomBase.GetBossDoor());
+                print("" + roomBase.type);
             }
 
             map.InitMap(boardMap, width, height);
