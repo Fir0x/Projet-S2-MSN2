@@ -196,21 +196,15 @@ public class Player : MovingObject
 
     private void Start()
     {
+        weapon = GetComponentInChildren<Weapon>();
+        weapon.Init(playerAsset.WeaponsList[0], playerAsset);
         playerAsset.Position = transform.position;
         testForDash = true;
 
-        firstPos = this.transform.position;
+        firstPos = transform.position;
 
         animator = GetComponent<Animator>();
-        
-        UIController.uIController.changeWeapon.Invoke();
-        UIController.uIController.changeDiamond.Invoke();
-        UIController.uIController.changeGold.Invoke();
-        UIController.uIController.changeHp.Invoke();
-        UIController.uIController.changeMaxHp.Invoke();
-        UIController.uIController.changeEffect.Invoke();
-        UIController.uIController.changeMaxEffect.Invoke();
-        UIController.uIController.changeAmmo.Invoke();
+
     }
 
     public void MoveUp()

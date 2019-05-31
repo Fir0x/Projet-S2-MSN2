@@ -107,6 +107,7 @@ public class RoomManager : MonoBehaviour
         {
             SpawnEnemies();
 
+            enemiesRemaining = enemies.Count;
             if (enemiesRemaining > 0)
             {
                 print("allo");
