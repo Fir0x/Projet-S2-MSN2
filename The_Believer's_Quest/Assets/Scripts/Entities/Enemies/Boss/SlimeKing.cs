@@ -30,7 +30,6 @@ public class SlimeKing : Boss
 
     private void DashAttack()
     {
-        print("DashAttack");
         isAttacking = true;
         StartCoroutine(DoingDashAttack());
     }

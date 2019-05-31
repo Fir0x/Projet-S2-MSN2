@@ -200,7 +200,6 @@ public class Board : MonoBehaviour
             {
                 room.RoomCreator(board, roomBase.position, new float[] { roomBase.position[0] * roomWidth + 8,
                 roomBase.position[1] * roomHeight + 6 }, roomBase.roomNumber, roomBase.doorsPosition, roomBase.type, roomBase.GetBossDoor());
-                print("" + roomBase.type);
             }
 
             map.InitMap(boardMap, width, height);

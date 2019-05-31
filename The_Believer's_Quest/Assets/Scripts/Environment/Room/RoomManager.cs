@@ -26,8 +26,6 @@ public class RoomManager : MonoBehaviour
 
     public void Init(int[] mapPos, List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList, Room roomCreator, int bossDoor)
     {
-        if(enemiesList.Count == 1)
-            print("" + bossDoor);
         this.bossDoor = bossDoor;
         this.mapPos = mapPos;
         this.floor = floor;
@@ -42,7 +40,32 @@ public class RoomManager : MonoBehaviour
         {
             testForBoss = true;
             enemies.Add(enemiesList[0]);
-            roomCreator.Open();
+
+            LayerBehind layerB = GetComponent<LayerBehind>();                               //to make the boss room be opened
+            LayerFront layerF = GetComponent<LayerFront>();
+
+            if (bossDoor == 0)
+            {
+                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
+                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
+            }
+            else if (bossDoor == 1)
+            {
+                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
+                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
+            }
+            else if (bossDoor == 2)
+            {
+                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
+                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
+            }
+            else if (bossDoor == 3)
+            {
+                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
+                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
+            }
+
+
         }
         else if (enemiesList.Count > 0)
         {
@@ -86,6 +109,7 @@ public class RoomManager : MonoBehaviour
 
             if (enemiesRemaining > 0)
             {
+                print("allo");
                 roomCreator.Close();
             }
             firstEntry = false;
@@ -220,10 +244,6 @@ public class RoomManager : MonoBehaviour
             Destroy(GetComponent<Transform>().GetChild(i).gameObject);
         }
 
-        if(allEnemiesList.Count == 1)
-        {
-            print("" + doors.Count);
-        }
         gameObject.GetComponentInChildren<LayerFront>().ClearTiles(doors, doorTiles, floor);
         gameObject.GetComponentInChildren<LayerBehind>().ClearTiles(doors, doorTiles, floor);
     }
