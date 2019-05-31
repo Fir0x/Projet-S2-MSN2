@@ -22,6 +22,10 @@ public class Enemy : MovingObject
     private ChoosePathfinding Pathfinding;
     private RealPathfinding realPathfinding;
 
+    private Vector3 firstPos;               //for direction, for animations
+    private Vector3 nextPos;
+    private Vector3 direction;
+
     private Attack attack;
     public bool shot;
 
@@ -29,6 +33,8 @@ public class Enemy : MovingObject
 
     void Start()
     {
+        firstPos = transform.position;
+
         testForCoolDown = true;
         HP = enemyAsset.Hp;
         
@@ -40,7 +46,6 @@ public class Enemy : MovingObject
         mask = gameObject.layer;
 
         Pathfinding = AStarPathfindingMoving;
-
     }
 
     private void FixedUpdate()
@@ -51,6 +56,8 @@ public class Enemy : MovingObject
         {
             StartCoroutine(AttackWithCoolDown());
         }
+        direction = nextPos - firstPos;
+        firstPos = nextPos;
     }
 
     IEnumerator AttackWithCoolDown()
@@ -87,6 +94,8 @@ public class Enemy : MovingObject
             }
         }
 
+        nextPos = nextNode.worldPos;
+
         if (CanAttack())
         {
             shot = true;
@@ -118,5 +127,26 @@ public class Enemy : MovingObject
         HP -= damage;
         if (HP <= 0 )
             Destroy(gameObject);
+    }
+
+    public int GetDirection()
+    {
+        float x = direction.x;
+        float y = direction.y;
+
+        if (Mathf.Abs(x) > Mathf.Abs(y))
+        {
+            if (x < 0)
+                return 3;
+            else
+                return 1;
+        }
+        else
+        {
+            if (y < 0)
+                return 2;
+            else
+                return 0;
+        }
     }
 }

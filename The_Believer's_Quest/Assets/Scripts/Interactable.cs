@@ -5,6 +5,7 @@ public class Interactable : MonoBehaviour
     private float radius = 3f;               
     private Transform interactionTransform;
     private bool isChest;
+    bool debugTrigger;
 
     bool isFocus = false;   
     Transform player; 
@@ -13,9 +14,11 @@ public class Interactable : MonoBehaviour
 
     private void Start()
     {
+        debugTrigger = true;
         isChest = false;
     }
-    public virtual void Interact() {}
+
+    //public virtual void Interact() {}
 
     void Update()
     {
@@ -24,7 +27,7 @@ public class Interactable : MonoBehaviour
             float distance = Vector3.Distance(player.position, interactionTransform.position);
             if (distance <= radius)
             {
-                Interact();
+                //Interact();
                 isOpen = true;
             }
         }
@@ -55,17 +58,28 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player" && gameObject.tag == "Chest")
+        if(debugTrigger)
         {
-            isChest = true;
+            if (gameObject.CompareTag("Chest") && collision.CompareTag("Player"))
+            {
+                collision.gameObject.GetComponent<Player>().IsNearChest();
+            }
+            debugTrigger = false;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && gameObject.tag == "Chest")
+        if(!debugTrigger)
         {
-            isChest = false;
+            if (collision.tag == "Player" && gameObject.tag == "Chest")
+            {
+                collision.gameObject.GetComponent<Player>().IsNearChest();
+            }
+            debugTrigger = true;
+
+            ChestUI.instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            InventoryUI.instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 
