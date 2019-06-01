@@ -17,6 +17,7 @@ public class Enemy : MovingObject
     private LayerMask mask;
     
     private Node nextNode;
+    private Node precedentNode;
     private Transform transformPlayer;
 
     private ChoosePathfinding Pathfinding;
@@ -33,6 +34,7 @@ public class Enemy : MovingObject
 
     void Start()
     {
+        precedentNode = null;
         firstPos = transform.position;
 
         testForCoolDown = true;
@@ -80,6 +82,10 @@ public class Enemy : MovingObject
         startPos = transform.position;
 
         nextNode = realPathfinding.FindPath(startPos, transformPlayer.position);
+        if(precedentNode != nextNode && nextNode != null)
+        {
+            precedentNode = nextNode;
+        }
 
         if (nextNode != null)
         {
@@ -91,6 +97,10 @@ public class Enemy : MovingObject
             {
                 transform.position = Vector2.MoveTowards(transform.position, transformPlayer.position,
                     enemyAsset.Speed * Time.deltaTime);
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(startPos, precedentNode.worldPos + new Vector3(0.5f, 0.5f, 0), EnemyAsset.Speed * Time.deltaTime);
             }
         }
 
