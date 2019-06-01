@@ -34,7 +34,6 @@ public abstract class Boss : MonoBehaviour
 
     protected void Start()
     {
-        print("start!");
         healthBar = GetComponent<BossLifebar>();
         healthBar.SetMaxValue(bossData.MaxHp);
         roomManager = GetComponentInParent<RoomManager>();

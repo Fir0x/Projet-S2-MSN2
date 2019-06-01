@@ -85,7 +85,9 @@ public class Room : MonoBehaviour
             roomPattern.name = "Chest";
         }
         else if (type == Board.Type.Shop)
+        {
             roomPattern.name = "Shop";
+        }
         else
         {
             roomPattern.name = "Boss";
