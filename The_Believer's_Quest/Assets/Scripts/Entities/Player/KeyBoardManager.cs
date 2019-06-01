@@ -13,6 +13,8 @@ public class KeyBoardManager : MonoBehaviour
 
     [SerializeField] private GameObject developmentTool;
 
+    private bool isMapActive = false;
+
     public GameObject DevelopmentTool { get => developmentTool; set => developmentTool = value; }
 
     // Start is called before the first frame update
@@ -50,14 +52,17 @@ public class KeyBoardManager : MonoBehaviour
         if (Input.GetButtonUp("Right"))
             player.StopMoveRight();
 
-        if (Input.GetButton("Attack") && SceneManager.GetActiveScene()!= SceneManager.GetSceneByName("MainMenu"))
+        if (!isMapActive && Input.GetButton("Attack") && SceneManager.GetActiveScene()!= SceneManager.GetSceneByName("MainMenu"))
             player.Attack();
 
         if (Input.GetButtonDown("Dash"))
             player.doDash();
 
-        if (Input.GetButtonDown("Map"))
+        if (Input.GetButton("Map"))
+        {
+            isMapActive = !isMapActive;
             UIController.uIController.ShowMap();
+        }
 
         if (Input.GetButtonDown("Interact") && Player.instance.GetNearChest())
         {

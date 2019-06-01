@@ -127,11 +127,6 @@ public class MapController : MonoBehaviour
                 minPosY = onMapOriginY - 1;
             if (onMapOriginY  + 2 > maxPosY)
                 maxPosY = onMapOriginY + 1;
-
-            if (horizontal)
-                UIController.uIController.AdaptScrollbar(horizontal, GetHorizontal());
-            else
-                UIController.uIController.AdaptScrollbar(horizontal, GetVertical());
         }
         else
         {
@@ -141,20 +136,10 @@ public class MapController : MonoBehaviour
             maxPosY = onMapOriginY + 2;
         }
 
-        print("MinX: " + minPosX + ", MaxX: " + maxPosX + ", MinY: " + minPosY + ", MaxY: " + maxPosY); //DEBUG
+        //print("MinX: " + minPosX + ", MaxX: " + maxPosX + ", MinY: " + minPosY + ", MaxY: " + maxPosY); //DEBUG
         Vector3 centerTile = map.GetCellCenterWorld(new Vector3Int((maxPosX + minPosX) / 2, (maxPosY + minPosY) / 2, 0));
         cam.transform.position = centerTile + new Vector3(0, 0, -40); //Set rhe camera position at the center of the map
         //cam.orthographicSize = (maxPosX - minPosX + maxPosY - minPosY) / 2 * 0.26f;
-    }
-
-    public float GetHorizontal()
-    {
-        return 8.0f / System.Math.Abs(maxPosX - minPosX);
-    }
-
-    public float GetVertical()
-    {
-        return 3.0f / System.Math.Abs(maxPosY - minPosY);
     }
 
     public void MoveHorizontal(float value)
@@ -162,18 +147,19 @@ public class MapController : MonoBehaviour
         Vector3 maxRight = map.GetCellCenterWorld(new Vector3Int(maxPosX, 0, 0));
         Vector3 maxLeft = map.GetCellCenterWorld(new Vector3Int(minPosX, 0, 0));
         float dist = maxRight.x - maxLeft.x;
-        float centerX = dist / 2;
-        float factor = 2 * maxLeft.x;
-        cam.transform.position = new Vector3(centerX - maxLeft.x + value * factor, cam.transform.position.y, 0);
+        float centerX = maxRight.x + dist / 2;
+        print("maxRight: " + maxRight + ", maxLeft: " + maxLeft + ", Dist: " + dist + ", CenterX: " + centerX + "new CamX: " + (centerX + value - 0.5f));
+        cam.transform.position = new Vector3(centerX + value - 0.5f, cam.transform.position.y, cam.transform.position.z);
+        print("Cam pos: " + cam.transform.position);
     }
 
     public void MoveVertical(float value)
     {
         Vector3 maxUp = map.GetCellCenterWorld(new Vector3Int(maxPosX, 0, 0));
         Vector3 maxDown = map.GetCellCenterWorld(new Vector3Int(minPosX, 0, 0));
-        float dist = maxUp.x - maxDown.x;
-        float centerX = dist / 2;
+        float dist = maxUp.y - maxDown.y;
+        float centerY = maxUp.y + dist / 2;
         float factor = 2 * maxDown.x;
-        cam.transform.position = new Vector3(centerX - maxDown.x + value * factor, cam.transform.position.y, 0);
+        cam.transform.position = new Vector3(cam.transform.position.x, centerY + value - 0.5f, cam.transform.position.z);
     }
 }

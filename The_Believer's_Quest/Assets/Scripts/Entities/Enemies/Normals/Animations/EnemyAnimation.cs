@@ -11,11 +11,11 @@ public class EnemyAnimation : MonoBehaviour
     private Animator animator;
     private AnimatorOverrideController animatorOverrideController;
 
-    private void Start()
+    public void Start()
     {
         animator = gameObject.GetComponent<Animator>();
         animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
-        animatorOverrideController["Move_Up"] = animationClips[0];
+        animatorOverrideController["Move"] = animationClips[0];
         animatorOverrideController["Move_Right"] = animationClips[1];
         animatorOverrideController["Move_Low"] = animationClips[2];
         animatorOverrideController["Move_Left"] = animationClips[3];
