@@ -104,7 +104,10 @@ public class Enemy : MovingObject
             }
         }
 
-        nextPos = nextNode.worldPos;
+        if (nextNode != null)
+            nextPos = nextNode.worldPos;
+        else
+            nextPos = precedentNode.worldPos;
 
         if (CanAttack())
         {
