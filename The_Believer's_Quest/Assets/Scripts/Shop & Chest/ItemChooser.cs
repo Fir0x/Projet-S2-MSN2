@@ -7,11 +7,11 @@ public class ItemChooser : MonoBehaviour
 {
     public List<GameObject> ChooseContent(AllItemsAsset availableItels)
     {
-        int nbItems = Random.Range(1, 5);
-        int nbItems = 1;
+         int nbItems = Random.Range(1, 5);
          List<GameObject> items = new List<GameObject>();
          float minRarity = Random.Range(0.2f, ((10 / 7) - 0.19f) / 2);
          float maxRarity = Random.Range(((10 / 7) - 0.2f) / 2, 10 / 7);
+         print("min: " + minRarity + " max: " + maxRarity + " Price: " + availableItels.AllItems[0].GetComponent<Object>().GetAsset().Price);
          List<GameObject> choosen = (from item in availableItels.AllItems
                                      where (item.GetComponent<Weapon>() != null &&
                                            100 / item.GetComponent<Weapon>().GetAsset().Price >= minRarity &&
