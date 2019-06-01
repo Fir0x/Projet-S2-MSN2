@@ -44,7 +44,7 @@ public class RoomManager : MonoBehaviour
         allEnemiesList = enemiesList;
         grid = gameObject.GetComponent<TileGrid>();
         roomPosition = transform.position;
-
+        
         if (roomCreator.GetRoomType() == Board.Type.Chest)
         {
             GameObject chestOnScene = Instantiate(chest, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity) as GameObject;
@@ -72,21 +72,25 @@ public class RoomManager : MonoBehaviour
         }
         if (bossDoor == 0)
         {
+            print("alo");
             layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
             layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
         }
         else if (bossDoor == 1)
         {
+            print("alo");
             layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
             layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
         }
         else if (bossDoor == 2)
         {
+            print("alo");
             layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
             layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
         }
         else if (bossDoor == 3)
         {
+            print("alo");
             layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
             layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
         }

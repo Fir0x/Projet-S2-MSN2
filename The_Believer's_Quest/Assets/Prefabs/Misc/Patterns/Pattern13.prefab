@@ -2596,6 +2596,15 @@ Tilemap:
   m_GameObject: {fileID: 2202392841669762248}
   m_Enabled: 1
   m_Tiles:
+  - first: {x: 0, y: -6, z: 0}
+    second:
+      m_TileIndex: 15
+      m_TileSpriteIndex: 15
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: -7, y: -5, z: 0}
     second:
       m_TileIndex: 9
@@ -2716,7 +2725,7 @@ Tilemap:
   - first: {x: 6, y: -5, z: 0}
     second:
       m_TileIndex: 12
-      m_TileSpriteIndex: 12
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -3987,7 +3996,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 3b0dec160e89a4e4cb61f41e5251872e, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 129
+  - m_RefCount: 130
     m_Data: {fileID: 11400000, guid: b037824de6883f04e8bac32a365c1362, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -4014,16 +4023,16 @@ Tilemap:
     m_Data: {fileID: 21300150, guid: bbed4862ed35d9f419e239fa6c8d286c, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 21300154, guid: bbed4862ed35d9f419e239fa6c8d286c, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300132, guid: bbed4862ed35d9f419e239fa6c8d286c, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300130, guid: bbed4862ed35d9f419e239fa6c8d286c, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 129
+  - m_RefCount: 1
+    m_Data: {fileID: 21300130, guid: bbed4862ed35d9f419e239fa6c8d286c, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300132, guid: bbed4862ed35d9f419e239fa6c8d286c, type: 3}
+  - m_RefCount: 130
     m_Data: {fileID: 21300126, guid: bbed4862ed35d9f419e239fa6c8d286c, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 151
+  - m_RefCount: 152
     m_Data:
       e00: 1
       e01: 0
@@ -4042,7 +4051,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 151
+  - m_RefCount: 152
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: 4.0397e-41, g: 4.0397e-41, b: 4.0397e-41, a: 4.0397e-41}

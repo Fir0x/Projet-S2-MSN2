@@ -6,7 +6,6 @@ public class WeaponAsset : ScriptableObject
     public enum WeaponType
     {
         CQC,
-        Railgun,
         Line,
         Shotgun,
         Circle

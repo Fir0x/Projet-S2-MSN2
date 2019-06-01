@@ -135,6 +135,13 @@ public class Enemy : MovingObject
     public void OnDestroy()
     {
         GetComponentInParent<RoomManager>().DestroyEnemy(gameObject);
+        ChangeGold();
+    }
+
+    public void ChangeGold()
+    {
+        playerAsset.Gold += Random.Range(2, 15) * enemyAsset.Weight;
+        UIController.uIController.changeGold.Invoke();
     }
 
     public void SetHP(int hp)

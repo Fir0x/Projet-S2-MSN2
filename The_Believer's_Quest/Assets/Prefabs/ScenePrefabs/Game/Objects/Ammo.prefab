@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &608369622075290099
+--- !u!1 &3402582864779100479
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6550995443634378887}
-  - component: {fileID: 3860662786034076465}
+  - component: {fileID: 6332218673787550807}
+  - component: {fileID: 9214217438227086221}
   m_Layer: 0
-  m_Name: RedPotion 1
+  m_Name: Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6550995443634378887
+--- !u!4 &6332218673787550807
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608369622075290099}
+  m_GameObject: {fileID: 3402582864779100479}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 91.75397, y: 100.01076, z: -0.37725148}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,16 +31,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3860662786034076465
+--- !u!114 &9214217438227086221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608369622075290099}
+  m_GameObject: {fileID: 3402582864779100479}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb11570b1a29d9e46b9f529bdd525e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsAsset: {fileID: 11400000, guid: 7f46c49de04398c4ca5fa620b20f3da4, type: 2}
+  objectsAsset: {fileID: 11400000, guid: 863b630acc7a35e4faf3997c31c65811, type: 2}
