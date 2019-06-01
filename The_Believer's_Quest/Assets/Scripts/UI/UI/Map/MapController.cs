@@ -76,9 +76,34 @@ public class MapController : MonoBehaviour
                     else
                         map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[1]);
                 }
-                else if (j == onMapOriginY - 1 || j == onMapOriginY + 1 ||
-                         i == onMapOriginX - 2 ||i == onMapOriginX + 2)
-                    map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[2]);
+                else if (j == onMapOriginY - 1)
+                {
+                    if (i == onMapOriginX && doors.Contains(Board.DoorPos.Down))
+                        map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[1]);
+                    else
+                        map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[2]);
+                }
+                else if (j == onMapOriginY + 1)
+                {
+                    if (i == onMapOriginX && doors.Contains(Board.DoorPos.Up))
+                        map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[1]);
+                    else
+                        map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[2]);
+                }
+                else if (i == onMapOriginX - 2)
+                {
+                    if (j == onMapOriginY && doors.Contains(Board.DoorPos.Left))
+                        map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[1]);
+                    else
+                        map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[2]);
+                }
+                else if (i == onMapOriginX + 2)
+                {
+                    if (j == onMapOriginY && doors.Contains(Board.DoorPos.Right))
+                        map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[1]);
+                    else
+                        map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[2]);
+                }
                 else
                     map.SetTile(new Vector3Int(i, j, 0), tiles.Tiles[1]);
             }

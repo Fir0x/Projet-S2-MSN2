@@ -9,6 +9,8 @@ TagManager:
   - BoardManager
   - SoundManager
   - Boss
+  - NextLevel
+  - Chest
   layers:
   - Default
   - TransparentFX

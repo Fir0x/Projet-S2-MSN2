@@ -6,7 +6,20 @@ public class Chest : MonoBehaviour
 {
     public static Chest instance;
 
-    void Awake()
+    public int space = 12;  // Amount of slots in chest
+
+    [SerializeField] public AllItemsAsset availableItels;
+    
+    // Callback which is triggered when
+    // an item gets added/removed.
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
+
+   
+    // Current list of items in chest
+    public List<GameObject> items = new List<GameObject>();
+
+    void Start()
     {
         if (instance != null)
         {
@@ -15,23 +28,22 @@ public class Chest : MonoBehaviour
         }
 
         instance = this;
-    }
 
-    // Callback which is triggered when
-    // an item gets added/removed.
-    public delegate void OnItemChanged();
-    public OnItemChanged onItemChangedCallback;
+        List<GameObject> l = new List<GameObject>();
+        l= GetComponent<ItemChooser>().ChooseContent(availableItels);
 
-    public int space = 12;  // Amount of slots in chest
+        int i = Random.Range(0, l.Count);
 
-    // Current list of items in chest
-    public List<ObjectsAsset> items = new List<ObjectsAsset>();
+        GameObject g = l[i];
+
+        instance.Add(g);
+    }   
 
     // Add a new item. If there is enough room we
     // return true. Else we return false.
-    public bool Add(ObjectsAsset item)
+    public bool Add(GameObject item)
     {
-        foreach (ObjectsAsset O in items) //Check if the item is already in items or not
+        foreach (GameObject O in items) //Check if the item is already in items or not
         {
             if (O == item) return false;
         }
@@ -51,7 +63,7 @@ public class Chest : MonoBehaviour
     }
 
     // Remove an item
-    public void Remove(ObjectsAsset item)
+    public void Remove(GameObject item)
     {
         items.Remove(item);     // Remove item from list
 

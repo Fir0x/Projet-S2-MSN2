@@ -69,8 +69,8 @@ namespace Entities
                         }
                     }
                 }
-
-                return nextNodes[0];
+                if (nextNodes != null)
+                    return nextNodes[0];
             }
 
             return null;

@@ -21,7 +21,8 @@ public class RoomManager : MonoBehaviour
     private int bossDoor;
     private bool isBossRoom;
 
-    public GameObject nextLevel;
+    private GameObject nextLevel;
+    private GameObject chest;
 
     private Vector3 roomPosition;
     private TileGrid grid;
@@ -30,6 +31,9 @@ public class RoomManager : MonoBehaviour
 
     public void Init(int[] mapPos, List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList, Room roomCreator, int bossDoor)
     {
+        nextLevel = roomCreator.GetNextLevel();
+        chest = roomCreator.Chest;
+
         this.bossDoor = bossDoor;
         this.mapPos = mapPos;
         this.floor = floor;
@@ -39,7 +43,13 @@ public class RoomManager : MonoBehaviour
         allEnemiesList = enemiesList;
         grid = gameObject.GetComponent<TileGrid>();
         roomPosition = transform.position;
+
         
+        if (roomCreator.GetRoomType() == Board.Type.Chest)
+        {
+            GameObject chestOnScene = Instantiate(chest, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity) as GameObject;
+            chestOnScene.transform.parent = gameObject.transform;
+        }
         if(enemiesList.Count == 1)
         {
             isBossRoom = true;
@@ -106,6 +116,11 @@ public class RoomManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col) //Nicolas L
     {
+        if (testForBoss)
+        {
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().ChangeBO(3 + (floor - 1));
+        }
+
         if (firstEntry && col.CompareTag("Player"))
         {
             SpawnEnemies();
@@ -117,6 +132,7 @@ public class RoomManager : MonoBehaviour
             }
             firstEntry = false;
         }
+
 
         MapController.mapScript.EnterRoom(mapPos, gameObject.name, doors);
     }
@@ -285,7 +301,10 @@ public class RoomManager : MonoBehaviour
 
         for (int i = 4; i < transform.childCount; i++)           //destruction of door colliders
         {
-            Destroy(GetComponent<Transform>().GetChild(i).gameObject);
+            if(GetComponent<Transform>().GetChild(i).gameObject.tag != "Chest")
+            {
+                Destroy(GetComponent<Transform>().GetChild(i).gameObject);
+            }
         }
 
         gameObject.GetComponentInChildren<LayerFront>().ClearTiles(doors, doorTiles, floor);
