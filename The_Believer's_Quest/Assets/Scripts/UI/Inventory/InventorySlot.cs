@@ -8,10 +8,10 @@ public class InventorySlot : MonoBehaviour
 
     public Image icon;          // Reference to the Icon image
 
-    ObjectsAsset item;  // Current item in the slot
+    GameObject item;  // Current item in the slot
 
     // Add item to the slot
-    public void AddItem(ObjectsAsset newItem)
+    public void AddItem(GameObject newItem)
     {
         item = newItem;
         icon.sprite = item.Sprite;
