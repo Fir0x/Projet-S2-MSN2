@@ -21,7 +21,7 @@ public class SlotController : MonoBehaviour
     public void AddItem(GameObject item)
     {
         this.item = item;
-        Icon.sprite = item.GetComponent<Object>().GetAsset().Sprite;
+        Icon.sprite = item.GetComponent<Object>().ObjectsAsset.Sprite;
         Icon.enabled = true;
         itemButton.interactable = true;
     }
