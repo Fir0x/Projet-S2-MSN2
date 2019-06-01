@@ -300,31 +300,10 @@ public class Player : MovingObject
     {
         noForcedMove = false;
 
-        bool left = false;
-        bool up = false;
-        bool right = false;
-        bool down = false;
         Vector2 pos = transform.position;
 
         float step = speed * Time.deltaTime;
         Vector2 direction = (Vector2)finalPos - pos;
-
-        if(direction.x <= 0)
-        {
-            left = true;
-        }
-        else
-        {
-            right = true;
-        }
-        if (direction.y <= 0)
-        {
-            down = true;
-        }
-        else
-        {
-            up = true;
-        }
 
         bool noWall = true;
 
@@ -372,27 +351,6 @@ public class Player : MovingObject
         }
         
         Camera.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.transform.position.z);
-
-        //déplacement honnete pour niveau glace
-
-        /*transform.Translate(moveX, moveY, 0f);   
-        
-        if(Input.GetKey( (KeyCode.LeftArrow)))
-        {
-            this.rigid.AddForce(new Vector2(-1, 0) * moveSpeed * Time.deltaTime);
-        }
-        else if(Input.GetKey( (KeyCode.RightArrow)))
-        {
-            this.rigid.AddForce(new Vector2 (1, 0) * moveSpeed * Time.deltaTime);
-        }
-        else if(Input.GetKey( (KeyCode.UpArrow)))
-        {
-            this.rigid.AddForce(new Vector2 (0, 1) * moveSpeed * Time.deltaTime);
-        }
-        else if(Input.GetKey( (KeyCode.DownArrow)))
-        {
-            this.rigid.AddForce(new Vector2 (0, -1) * moveSpeed * Time.deltaTime);
-        }*/
     }
 
     public void IsNearChest()

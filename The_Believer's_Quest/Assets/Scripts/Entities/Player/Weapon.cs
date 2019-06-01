@@ -19,6 +19,7 @@ public class Weapon : MonoBehaviour
         shot = true;
         this.weapon = weapon;
         this.playerAsset = playerAsset;
+        GetComponent<SpriteRenderer>().sprite = weapon.Sprite;
     }
 
     public WeaponAsset GetAsset()
@@ -147,7 +148,10 @@ public class Weapon : MonoBehaviour
             Physics2D.OverlapCircleAll(transform.position, 0.5f, LayerMask.GetMask("Aerial", "Ground"));
         for(int i = 0; i < enemiesTouched.Length; i++)
         {
-            enemiesTouched[i].gameObject.GetComponent<Enemy>().TakeDamage(weapon.Damage);
+            if(enemiesTouched[i].CompareTag("Enemy"))
+                enemiesTouched[i].gameObject.GetComponent<Enemy>().TakeDamage(weapon.Damage);
+            if (enemiesTouched[i].CompareTag("Boss"))
+                enemiesTouched[i].gameObject.GetComponent<Boss>().ChangeLife(-weapon.Damage);
         }
 
     }

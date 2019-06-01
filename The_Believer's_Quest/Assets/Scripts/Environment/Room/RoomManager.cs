@@ -140,7 +140,7 @@ public class RoomManager : MonoBehaviour
         }
 
 
-        MapController.mapScript.EnterRoom(mapPos, gameObject.name, doors);
+        MapController.mapInstance.EnterRoom(mapPos, gameObject.name, doors);
     }
 
     public void SpawnEnemies()

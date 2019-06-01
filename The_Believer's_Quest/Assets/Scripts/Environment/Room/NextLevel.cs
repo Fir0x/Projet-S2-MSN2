@@ -38,6 +38,7 @@ public class NextLevel : MonoBehaviour
                 {
                     GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(playerAsset.Floor + 3);
                     Destroy(GameObject.Find("Board"));
+                    MapController.mapInstance.ResetMap();
                 }
             }
             firstTrigger = false;
