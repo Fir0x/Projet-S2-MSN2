@@ -75,6 +75,7 @@ public class Interactable : MonoBehaviour
             if (collision.tag == "Player" && gameObject.tag == "Chest")
             {
                 collision.gameObject.GetComponent<Player>().IsNearChest();
+
             }
             debugTrigger = true;
 

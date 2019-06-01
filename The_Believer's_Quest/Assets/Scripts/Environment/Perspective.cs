@@ -23,7 +23,6 @@ public class Perspective : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        print(playerBox.bounds.center.y + " =/= " + objectBox.bounds.center.y);
         if (playerBox.bounds.center.y < objectBox.bounds.center.y)
             objectRenderer.sortingOrder = -1;
         else

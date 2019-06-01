@@ -5,16 +5,25 @@ using UnityEngine.UI;
 
 public class ChestSlot : MonoBehaviour
 {
-
+    private Inventory inventory;
+    private Chest chest;
+    private ChestUI chestUI;
     public Image icon;          // Reference to the Icon image
 
     GameObject item;  // Current item in the slot
 
+    private void Start()
+    {
+        inventory = Inventory.instance;
+        chest = Chest.instance;
+        chestUI = ChestUI.instance;
+    }
     // Add item to the slot
     public void AddItem(GameObject newItem)
     {
+        print("AddItem");
         item = newItem;
-        icon.sprite = item.GetComponent<SpriteRenderer>().sprite;
+        icon.sprite = item.GetComponent<Object>().GetAsset().Sprite;
         icon.enabled = true;
     }
 
@@ -32,9 +41,9 @@ public class ChestSlot : MonoBehaviour
     {
         if (item != null)
         {
-            if (!Inventory.instance.Add(item))
+            if(inventory.Add(item))
             {
-                Chest.instance.Remove(item);
+                chest.Remove(item);
                 ClearSlot();
             }
         }
