@@ -16,8 +16,6 @@ public class Interactable : MonoBehaviour
     {
         debugTrigger = true;
         isChest = false;
-
-
     }
 
     //public virtual void Interact() {}

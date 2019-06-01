@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75281717d32708844a64947762fd308c, type: 3}
   m_Name: BlueRing
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300002, guid: 611eb00482ca3ef4ea2c3199b24f82d4, type: 3}
   passive: 1
-  price: 0
+  price: 10
   hP: 0
   maxHP: 0
   effectValue: 0
@@ -23,3 +23,4 @@ MonoBehaviour:
   ammo: 0
   invicibility: 0
   duration: 0
+  Object: {fileID: 0}

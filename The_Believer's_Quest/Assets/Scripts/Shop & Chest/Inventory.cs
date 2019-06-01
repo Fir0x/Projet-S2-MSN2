@@ -4,28 +4,29 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    
     public static Inventory instance;
 
-    void Awake()
-    {
-        if (instance != null)
-        {
-            print("should not do that" ); //DEBUG
-            return;
-        }
-
-        instance = this;
-    }
+    public int space = 12;  // Amount of slots in chest
 
     // Callback which is triggered when
     // an item gets added/removed.
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
-
-    public int space = 4;  // Amount of slots in inventory
-
-    // Current list of items in inventory
+    
+    // Current list of items in chest
     public List<GameObject> items = new List<GameObject>();
+
+    void Start()
+    {
+        if (instance != null)
+        {
+            print("should not do that"); //DEBUG
+            return;
+        }
+        instance = this;
+
+    }
 
     // Add a new item. If there is enough room we
     // return true. Else we return false.
