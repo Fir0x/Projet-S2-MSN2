@@ -57,7 +57,6 @@ public class Player : MovingObject
 
     public void SetLife(float value)
     {
-        print("aie!"); // DEBUG
         playerAsset.Invicibility = true;
         StartCoroutine(InvicibilityCoolDown());
 
@@ -152,7 +151,6 @@ public class Player : MovingObject
             }
             else if (goUp)
             {
-                print("allo");
                 Vector3 firstPos = this.transform.position;
                 Vector3 lastPos = firstPos + new Vector3(0, 1.3f, 0);
 

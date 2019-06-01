@@ -45,7 +45,6 @@ public class RoomManager : MonoBehaviour
         grid = gameObject.GetComponent<TileGrid>();
         roomPosition = transform.position;
 
-        print(floor + " : " + roomCreator.GetRoomType());
         if (roomCreator.GetRoomType() == Board.Type.Chest)
         {
             GameObject chestOnScene = Instantiate(chest, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity) as GameObject;
@@ -157,6 +156,7 @@ public class RoomManager : MonoBehaviour
                 testForBoss = false;
                 GameObject bossOnScene = Instantiate(enemies[0], roomPosition, Quaternion.identity) as GameObject;
                 bossOnScene.transform.parent = transform;
+                bossOnScene.GetComponent<BossLifebar>().SliderAppear();
             }
             else
             {

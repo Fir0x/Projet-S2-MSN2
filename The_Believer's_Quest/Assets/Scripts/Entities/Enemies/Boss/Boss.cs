@@ -10,7 +10,7 @@ public abstract class Boss : MonoBehaviour
     protected RoomManager roomManager;
 
     protected delegate void BossAttack();
-    protected delegate void ChoosePathfinding();
+    //protected delegate void ChoosePathfinding();
     protected List<BossAttack> attackList;
     protected int nbAttacks;
     
@@ -18,12 +18,11 @@ public abstract class Boss : MonoBehaviour
     [SerializeField] protected PlayerAsset playerAsset;
     protected float hpPhase;
     protected Animator animator;
-    [SerializeField] protected Slider healthBar;
 
     protected Vector3 startPos;
     protected Node nextNode;
     protected Transform transformPlayer;
-    protected ChoosePathfinding Pathfinding;
+    //protected ChoosePathfinding Pathfinding;
     protected RealPathfinding realPathfinding;
     protected Attack attack;
     protected bool shot;
@@ -31,10 +30,13 @@ public abstract class Boss : MonoBehaviour
     protected bool isFirstPhase;
 
     public BossAsset BossData { get => bossData; set => bossData = value; }
-    public Slider HealthBar { get => healthBar; set => healthBar = value; }
+    public BossLifebar healthBar;
 
     protected void Start()
     {
+        print("start!");
+        healthBar = GetComponent<BossLifebar>();
+        healthBar.SetMaxValue(bossData.MaxHp);
         roomManager = GetComponentInParent<RoomManager>();
         isFirstPhase = true;
         shot = true;
@@ -43,13 +45,12 @@ public abstract class Boss : MonoBehaviour
         attackList = new List<BossAttack>();
         animator = GetComponent<Animator>();
         hpPhase = bossData.Hp / 2;
-
         realPathfinding = GetComponentInParent<RealPathfinding>();
         attack = GetComponent<Attack>();
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         transformPlayer = playerGO.GetComponent<Transform>();
 
-        Pathfinding = AStarPathfindingMoving;
+        //Pathfinding = AStarPathfindingMoving;
 
     }
 
@@ -61,7 +62,7 @@ public abstract class Boss : MonoBehaviour
     protected void FixedUpdate()
     {
         if(!isAttacking)
-            Pathfinding();
+            AStarPathfindingMoving();
 
         if(testForCoolDown)
         {
@@ -85,12 +86,16 @@ public abstract class Boss : MonoBehaviour
     public void ChangeLife(float hp)
     {
         if (bossData.Hp + hp > bossData.MaxHp)
+        {
             hp = 0;
+        }
 
         bossData.Hp += hp;
+        healthBar.SetValue(bossData.Hp);
         if (bossData.Hp <= 0)
         {
             roomManager.DestroyEnemy(gameObject);
+            healthBar.SliderAppear();
         }
 
         //healthBar.value = bossData.Hp;
