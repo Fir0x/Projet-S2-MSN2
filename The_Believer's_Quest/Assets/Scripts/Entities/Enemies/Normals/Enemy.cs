@@ -30,10 +30,13 @@ public class Enemy : MovingObject
     private Attack attack;
     public bool shot;
 
+    private EnemyAnimation animatorController;
+
     public EnemyAsset EnemyAsset { get => enemyAsset; set => enemyAsset = value; }
 
     void Start()
     {
+        animatorController = GetComponent<EnemyAnimation>();
         precedentNode = null;
         firstPos = transform.position;
 
@@ -56,9 +59,11 @@ public class Enemy : MovingObject
         
         if(shot)
         {
+            //animatorController.ChangeAttack();
             StartCoroutine(AttackWithCoolDown());
         }
         direction = nextPos - firstPos;
+        //ChangeDirection();
         firstPos = nextPos;
     }
 
@@ -140,28 +145,25 @@ public class Enemy : MovingObject
     public void TakeDamage(float damage)
     {
         HP -= damage;
-        if (HP <= 0 )
+        if (HP <= 0)
+        {
+            //animatorController.Death();
             Destroy(gameObject);
+        }
     }
 
-    public int GetDirection()
+    /*public void ChangeDirection()
     {
         float x = direction.x;
         float y = direction.y;
 
-        if (Mathf.Abs(x) > Mathf.Abs(y))
-        {
-            if (x < 0)
-                return 3;
-            else
-                return 1;
-        }
+        if (x < 0)
+            animatorController.Direction(3);
+        else if (x > 0)
+            animatorController.Direction(1);
+        else if (y < 0)
+            animatorController.Direction(2);
         else
-        {
-            if (y < 0)
-                return 2;
-            else
-                return 0;
-        }
-    }
+            animatorController.Direction(0);
+    }*/
 }

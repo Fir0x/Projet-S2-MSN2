@@ -6,6 +6,19 @@ public class Chest : MonoBehaviour
 {
     public static Chest instance;
 
+    public int space = 12;  // Amount of slots in chest
+
+    [SerializeField] public AllItemsAsset availableItels;
+    
+    // Callback which is triggered when
+    // an item gets added/removed.
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
+
+   
+    // Current list of items in chest
+    public List<GameObject> items = new List<GameObject>();
+
     void Start()
     {
         if (instance != null)
@@ -16,17 +29,15 @@ public class Chest : MonoBehaviour
 
         instance = this;
 
-    }
+        List<GameObject> l = new List<GameObject>();
+        l= GetComponent<ItemChooser>().ChooseContent(availableItels);
 
-    // Callback which is triggered when
-    // an item gets added/removed.
-    public delegate void OnItemChanged();
-    public OnItemChanged onItemChangedCallback;
+        int i = Random.Range(0, l.Count);
 
-    public int space = 12;  // Amount of slots in chest
+        GameObject g = l[i];
 
-    // Current list of items in chest
-    public List<GameObject> items = new List<GameObject>();
+        instance.Add(g);
+    }   
 
     // Add a new item. If there is enough room we
     // return true. Else we return false.

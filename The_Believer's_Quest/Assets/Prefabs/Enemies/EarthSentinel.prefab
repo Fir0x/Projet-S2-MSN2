@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2397394942925314983}
   - component: {fileID: 4154963747282114332}
   - component: {fileID: 9158875689252233430}
+  - component: {fileID: 2200826045953448667}
   m_Layer: 10
   m_Name: EarthSentinel
   m_TagString: Enemy
@@ -94,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 1193622213193343670}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d5c6328d92d9e624e88ae5145f5228c9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0f24bcf6404090f44863fdc92cc0f394, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -130,13 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105e42523f717d5408cb50907a17ec4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationClips:
-  - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
-  - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
-  - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
-  - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
-  - {fileID: 7400000, guid: 0f9c3f52c01a30b4e863a70401dd464e, type: 2}
-  - {fileID: 7400000, guid: 08c36bd21fecc014fa926009988d9603, type: 2}
+  move: []
+  attack: []
+  death: {fileID: 0}
 --- !u!61 &4154963747282114332
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -179,3 +176,27 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   enemy: {fileID: 11400000, guid: d111dc0555081e143a9824f7b950a222, type: 2}
+  boss: {fileID: 0}
+--- !u!114 &2200826045953448667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193622213193343670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105e42523f717d5408cb50907a17ec4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move:
+  - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
+  - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
+  - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
+  - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
+  attack:
+  - {fileID: 7400000, guid: 0f9c3f52c01a30b4e863a70401dd464e, type: 2}
+  - {fileID: 7400000, guid: 0f9c3f52c01a30b4e863a70401dd464e, type: 2}
+  - {fileID: 7400000, guid: 0f9c3f52c01a30b4e863a70401dd464e, type: 2}
+  - {fileID: 7400000, guid: 0f9c3f52c01a30b4e863a70401dd464e, type: 2}
+  death: {fileID: 7400000, guid: 08c36bd21fecc014fa926009988d9603, type: 2}

@@ -67,13 +67,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105e42523f717d5408cb50907a17ec4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationClips:
+  move:
   - {fileID: 7400000, guid: 2c724112aa83ef746b6850fbe46cbe61, type: 2}
   - {fileID: 7400000, guid: 2c724112aa83ef746b6850fbe46cbe61, type: 2}
   - {fileID: 7400000, guid: 2c724112aa83ef746b6850fbe46cbe61, type: 2}
   - {fileID: 7400000, guid: 2c724112aa83ef746b6850fbe46cbe61, type: 2}
+  attack:
   - {fileID: 7400000, guid: 10726115ead12b2499a2eb429dd74d23, type: 2}
-  - {fileID: 7400000, guid: f42d4e6046d1c4549a81d37bc9e53bfe, type: 2}
+  - {fileID: 7400000, guid: 10726115ead12b2499a2eb429dd74d23, type: 2}
+  - {fileID: 7400000, guid: 10726115ead12b2499a2eb429dd74d23, type: 2}
+  - {fileID: 7400000, guid: 10726115ead12b2499a2eb429dd74d23, type: 2}
+  death: {fileID: 7400000, guid: f42d4e6046d1c4549a81d37bc9e53bfe, type: 2}
+  animationClips:
+  - {fileID: 7400000, guid: b1faa3c7cecf86240b03da48f914f380, type: 2}
+  - {fileID: 7400000, guid: b1faa3c7cecf86240b03da48f914f380, type: 2}
+  - {fileID: 7400000, guid: 2c724112aa83ef746b6850fbe46cbe61, type: 2}
+  - {fileID: 7400000, guid: 50c2d4fbd6c3cd64f9688dc8bcb09201, type: 2}
+  - {fileID: 7400000, guid: 46d85ebdbde44c14bba3f5adbc72e7ed, type: 2}
 --- !u!212 &2828400066342608304
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -178,3 +188,4 @@ MonoBehaviour:
   projectile: {fileID: 608695381, guid: c16d52dc33afba04e8f91b5d01a232ac, type: 3}
   player: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   enemy: {fileID: 11400000, guid: 732ee87fe84556744af620d652bb6d96, type: 2}
+  boss: {fileID: 0}
