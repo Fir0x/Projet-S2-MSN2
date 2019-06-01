@@ -17,6 +17,7 @@ public class Enemy : MovingObject
     private LayerMask mask;
     
     private Node nextNode;
+    private Node precedentNode;
     private Transform transformPlayer;
 
     private ChoosePathfinding Pathfinding;
@@ -29,10 +30,14 @@ public class Enemy : MovingObject
     private Attack attack;
     public bool shot;
 
+    private EnemyAnimation animatorController;
+
     public EnemyAsset EnemyAsset { get => enemyAsset; set => enemyAsset = value; }
 
     void Start()
     {
+        animatorController = GetComponent<EnemyAnimation>();
+        precedentNode = null;
         firstPos = transform.position;
 
         testForCoolDown = true;
@@ -54,9 +59,11 @@ public class Enemy : MovingObject
         
         if(shot)
         {
+            //animatorController.ChangeAttack();
             StartCoroutine(AttackWithCoolDown());
         }
         direction = nextPos - firstPos;
+        //ChangeDirection();
         firstPos = nextPos;
     }
 
@@ -80,6 +87,10 @@ public class Enemy : MovingObject
         startPos = transform.position;
 
         nextNode = realPathfinding.FindPath(startPos, transformPlayer.position);
+        if(precedentNode != nextNode && nextNode != null)
+        {
+            precedentNode = nextNode;
+        }
 
         if (nextNode != null)
         {
@@ -92,9 +103,16 @@ public class Enemy : MovingObject
                 transform.position = Vector2.MoveTowards(transform.position, transformPlayer.position,
                     enemyAsset.Speed * Time.deltaTime);
             }
+            else
+            {
+                transform.position = Vector2.MoveTowards(startPos, precedentNode.worldPos + new Vector3(0.5f, 0.5f, 0), EnemyAsset.Speed * Time.deltaTime);
+            }
         }
 
-        nextPos = nextNode.worldPos;
+        if (nextNode != null)
+            nextPos = nextNode.worldPos;
+        else
+            nextPos = precedentNode.worldPos;
 
         if (CanAttack())
         {
@@ -125,28 +143,25 @@ public class Enemy : MovingObject
     public void TakeDamage(float damage)
     {
         HP -= damage;
-        if (HP <= 0 )
+        if (HP <= 0)
+        {
+            //animatorController.Death();
             Destroy(gameObject);
+        }
     }
 
-    public int GetDirection()
+    /*public void ChangeDirection()
     {
         float x = direction.x;
         float y = direction.y;
 
-        if (Mathf.Abs(x) > Mathf.Abs(y))
-        {
-            if (x < 0)
-                return 3;
-            else
-                return 1;
-        }
+        if (x < 0)
+            animatorController.Direction(3);
+        else if (x > 0)
+            animatorController.Direction(1);
+        else if (y < 0)
+            animatorController.Direction(2);
         else
-        {
-            if (y < 0)
-                return 2;
-            else
-                return 0;
-        }
-    }
+            animatorController.Direction(0);
+    }*/
 }

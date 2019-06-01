@@ -14,7 +14,6 @@ public class ChestSlot : MonoBehaviour
     public void AddItem(GameObject newItem)
     {
         item = newItem;
-
         icon.sprite = item.GetComponent<SpriteRenderer>().sprite;
         icon.enabled = true;
     }

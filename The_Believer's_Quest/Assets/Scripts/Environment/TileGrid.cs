@@ -9,7 +9,7 @@ public class TileGrid : MonoBehaviour
     public Tilemap isObstacle;
     private Node[,] grid;
 
-    private int gridSizeX = 15;
+    private int gridSizeX = 17;
     private int gridSixeY = 13;
 
     private Vector2 startScan;
@@ -19,8 +19,8 @@ public class TileGrid : MonoBehaviour
     void Start()
     {
         position = this.transform.position;
-        startScan = new Vector2(position.x - 7, position.y - 6);
-        finishScan = new Vector2(position.x + 7, position.y + 6);
+        startScan = new Vector2(position.x - 8, position.y - 6);
+        finishScan = new Vector2(position.x + 8, position.y + 6);
         CreateGrid();
     }
 

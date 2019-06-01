@@ -79,7 +79,6 @@ public class Player : MovingObject
         playerAsset.Invicibility = false;
     }
 
-
     public void SetEffect(int value)
     {
         playerAsset.EffectValue = value;
@@ -94,15 +93,37 @@ public class Player : MovingObject
     public void doDash()
     {
         if((goUp || goRight || goDown || goLeft) && testForDash)
+        {
             StartCoroutine(Dash());
+        }
     }
 
     IEnumerator Dash()
     {
+        if (!Input.GetButton("Up"))
+        {
+            goUp = false;
+        }
+        
+        if (!Input.GetButton("Down"))
+        {
+            goDown = false;
+        }
+        
+        if (!Input.GetButton("Left"))
+        {
+            goLeft = false;
+        }
+
+        if (!Input.GetButton("Right"))
+        {
+            goRight = false;
+        }
+
         if (testForDash == true)
         {
             if (goUp && goRight)
-            {;
+            {
                 Vector3 firstPos = this.transform.position;
                 Vector3 lastPos = firstPos + new Vector3(0.8f, 0.8f, 0);
 
@@ -131,6 +152,7 @@ public class Player : MovingObject
             }
             else if (goUp)
             {
+                print("allo");
                 Vector3 firstPos = this.transform.position;
                 Vector3 lastPos = firstPos + new Vector3(0, 1.3f, 0);
 
@@ -160,8 +182,8 @@ public class Player : MovingObject
             playerAsset.Position = transform.position;
 
             testForDash = false;
-                
-            yield return new WaitForSeconds(2f);
+
+            yield return new WaitForSeconds(1f);
 
             testForDash = true;
         }
