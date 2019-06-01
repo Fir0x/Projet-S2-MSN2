@@ -50,7 +50,7 @@ public class KeyBoardManager : MonoBehaviour
         if (Input.GetButtonUp("Right"))
             player.StopMoveRight();
 
-        if (Input.GetButton("Attack") && SceneManager.GetActiveScene()!= SceneManager.GetSceneByName("MainMenu"))
+        if (Input.GetButtonDown("Attack") && SceneManager.GetActiveScene()!= SceneManager.GetSceneByName("MainMenu"))
             player.Attack();
 
         if (Input.GetButtonDown("Dash"))
