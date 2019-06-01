@@ -10,7 +10,7 @@ public class NewGame : MonoBehaviour
     public PlayerAsset PlayerData { get => playerData; set => playerData = value; }
     public UnlockedItemsAsset UnlockedItems { get => unlockedItems; set => unlockedItems = value; }
 
-    public void StartNewGame()
+    public void StartNewGame()    
     {
         Saver.SavePlayerData(playerData, new List<GameObject>(), Random.state);
     }

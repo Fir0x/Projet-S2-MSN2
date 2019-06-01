@@ -573,6 +573,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2174833135971810799, guid: ff7e3a92cfca634499e9d72702af17e4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3542071218833174520, guid: ff7e3a92cfca634499e9d72702af17e4,
         type: 3}
       propertyPath: m_Color.r
@@ -596,12 +601,32 @@ PrefabInstance:
     - target: {fileID: 7188216009083846773, guid: ff7e3a92cfca634499e9d72702af17e4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 17.100006
+      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 7188216009083846773, guid: ff7e3a92cfca634499e9d72702af17e4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.3650017
+      value: 0.6825409
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188216009083846773, guid: ff7e3a92cfca634499e9d72702af17e4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188216009083846773, guid: ff7e3a92cfca634499e9d72702af17e4,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1.365
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436291054488231404, guid: ff7e3a92cfca634499e9d72702af17e4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436291054488231404, guid: ff7e3a92cfca634499e9d72702af17e4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 460.9
       objectReference: {fileID: 0}
     - target: {fileID: 3542071218833174519, guid: ff7e3a92cfca634499e9d72702af17e4,
         type: 3}
