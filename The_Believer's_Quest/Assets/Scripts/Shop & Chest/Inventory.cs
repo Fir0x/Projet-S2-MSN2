@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    
     public static Inventory instance;
+    private InventoryUI inventoryUI;
 
     public int space = 12;  // Amount of slots in chest
 
@@ -15,9 +15,8 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
+        inventoryUI = InventoryUI.instance;
         instance = this;
-
-        print("Inventory Start()");
     }
 
     // Add a new item. If there is enough room we
@@ -27,8 +26,9 @@ public class Inventory : MonoBehaviour
         // Check if out of space
         if (items.Count < space)
         {
+            print("Inventory Add");
             items.Add(item);    // Add item to list
-            print("inventaire : " + items.Count);
+            InventoryUI.instance.AddItem(item);
             return true;
         }
 

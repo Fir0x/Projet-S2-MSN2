@@ -1,41 +1,47 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-
     public Transform itemsParent;   
     public GameObject inventoryUI;
 
-    private Inventory inventory;
-
     public static InventoryUI instance;
 
-    InventorySlot[] slots; 
+    InventorySlot[] slots;
+
+    List<GameObject> itemsInInventory;
 
     void Start()
     {
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
-
         instance = this;
-        inventory = gameObject.GetComponent<Inventory>();
-        
+
+        itemsInInventory = new List<GameObject>();
+
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
     }
 
+    public void AddItem(GameObject item)
+    {
+        itemsInInventory.Add(item);
+        UpdateUI();
+        print("InventoryUI SetItems");
+    }
 
     public void EnableUI()
     {
         inventoryUI.SetActive(!inventoryUI.activeSelf);
-
+        UpdateUI();
     }
     
     void UpdateUI()
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i < inventory.items.Count)  
+            if (i < itemsInInventory.Count)  
             {
-                slots[i].AddItem(inventory.items[i]);   
+                slots[i].AddItem(itemsInInventory[i]);   
             }
             else
             {
