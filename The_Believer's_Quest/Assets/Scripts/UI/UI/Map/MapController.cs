@@ -24,7 +24,7 @@ public class MapController : MonoBehaviour
     private int maxPosY = 0;
     private Vector3Int playerPos;
 
-    public static MapController mapScript; //Singleton
+    public static MapController mapInstance; //Singleton
 
     public Tilemap Map { get => map; set => map = value; }
     public Tilemap CursorMask { get => cursorMask; set => cursorMask = value; }
@@ -33,7 +33,7 @@ public class MapController : MonoBehaviour
 
     private void Start()
     {
-        mapScript = this; //Init singleton
+        mapInstance = this; //Init singleton
     }
 
     public void InitMap(int[,] board, int width, int height)
@@ -111,17 +111,10 @@ public class MapController : MonoBehaviour
 
         if (visitedRoom.Count != 1)
         {
-            bool horizontal = false;
             if (onMapOriginX - 2 < minPosX)
-            {
                 minPosX = onMapOriginX - 2;
-                horizontal = true;
-            }
             if (onMapOriginX + 3 > maxPosX)
-            {
                 maxPosX = onMapOriginX + 2;
-                horizontal = true;
-            }
 
             if (onMapOriginY - 1 < minPosY)
                 minPosY = onMapOriginY - 1;
@@ -144,23 +137,26 @@ public class MapController : MonoBehaviour
 
     public void MoveHorizontal(float value)
     {
+        print("X Cam origin: " + cam.transform.position);
         Vector3 maxRight = map.GetCellCenterWorld(new Vector3Int(maxPosX, 0, 0));
         Vector3 maxLeft = map.GetCellCenterWorld(new Vector3Int(minPosX, 0, 0));
         float dist = maxRight.x - maxLeft.x;
-        float centerX = maxRight.x + dist / 2;
+        float centerX = (maxRight.x + maxLeft.x) / 2;
         print("maxRight: " + maxRight + ", maxLeft: " + maxLeft + ", Dist: " + dist + ", CenterX: " + centerX + "new CamX: " + (centerX + value - 0.5f));
-        cam.transform.position = new Vector3(centerX + value - 0.5f, cam.transform.position.y, cam.transform.position.z);
+        cam.transform.position = new Vector3(centerX + (value - 0.5f) * dist / 2, cam.transform.position.y, cam.transform.position.z);
         print("Cam pos: " + cam.transform.position);
     }
 
     public void MoveVertical(float value)
     {
-        Vector3 maxUp = map.GetCellCenterWorld(new Vector3Int(maxPosX, 0, 0));
-        Vector3 maxDown = map.GetCellCenterWorld(new Vector3Int(minPosX, 0, 0));
+        print("Y Cam origin: " + cam.transform.position);
+        Vector3 maxUp = map.GetCellCenterWorld(new Vector3Int(0, maxPosY, 0));
+        Vector3 maxDown = map.GetCellCenterWorld(new Vector3Int(0, minPosY, 0));
         float dist = maxUp.y - maxDown.y;
-        float centerY = maxUp.y + dist / 2;
-        float factor = 2 * maxDown.x;
-        cam.transform.position = new Vector3(cam.transform.position.x, centerY + value - 0.5f, cam.transform.position.z);
+        float centerY = (maxUp.y + maxDown.y) / 2;
+        print("maxUp: " + maxUp + ", maxDown: " + maxDown);
+        cam.transform.position = new Vector3(cam.transform.position.x, centerY + (value - 0.5f) * dist / 2, cam.transform.position.z);
+        print("Cam pos: " + cam.transform.position);
     }
 
     public void ResetMap()
