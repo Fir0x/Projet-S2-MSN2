@@ -23,7 +23,7 @@ public class ChestSlot : MonoBehaviour
     {
         print("AddItem");
         item = newItem;
-        icon.sprite = item.GetComponent<Object>().GetAsset().Sprite;
+        icon.sprite = item.GetComponent<Object>().ObjectsAsset.Sprite;
         icon.enabled = true;
     }
 
