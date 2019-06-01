@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75281717d32708844a64947762fd308c, type: 3}
-  m_Name: WhyskyBottle
+  m_Name: MagicBall
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300006, guid: 611eb00482ca3ef4ea2c3199b24f82d4, type: 3}
+  sprite: {fileID: 21300018, guid: 611eb00482ca3ef4ea2c3199b24f82d4, type: 3}
   passive: 0
-  price: 25
-  hP: 30
+  price: 200
+  hP: 0
   maxHP: 0
-  effectValue: -5
+  effectValue: 0
   maxEffectValue: 0
-  speed: 0.5
+  speed: 0
   ammo: 0
-  invicibility: 0
-  duration: 60
+  invicibility: 1
+  duration: 10
   Object: {fileID: 0}

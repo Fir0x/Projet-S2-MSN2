@@ -71,7 +71,7 @@ public class Attack : MonoBehaviour
     private void LineShot(Vector3 direction, float speed, float damage, float angle)//tir linéaire
     {
        Instantiate(projectile, transform.position,
-            transform.rotation).GetComponent<Projectile>().Init(enemy.Sprite, speed, damage, transform.position, angle, direction-transform.position,false); 
+            transform.rotation).GetComponent<Projectile>().Init(enemy.Projectile, speed, damage, transform.position, angle, (direction-transform.position).normalized,false); 
     }
     
     private void CircleShot(int nbprojectile, float speed, float damage)//tir en cercle
@@ -101,7 +101,7 @@ public class Attack : MonoBehaviour
 
     private void Railgun(float damage)
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position, 20, LayerMask.GetMask("Default"));
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position, 0.5f, LayerMask.GetMask("Default"));
    
         if (hitInfo.collider != null )
         {
