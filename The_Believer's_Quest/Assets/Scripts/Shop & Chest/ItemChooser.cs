@@ -9,6 +9,7 @@ public class ItemChooser : MonoBehaviour
 {
     /*public List<GameObject> ChooseContent(AllItemsAsset availableItels)
     {
+        int nbItems = Random.Range(1, 5);
          int nbItems = Random.Range(1, 5);
          List<GameObject> items = new List<GameObject>();
          float minRarity = Random.Range(0.2f, ((10 / 7) - 0.19f) / 2);

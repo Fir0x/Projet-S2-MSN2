@@ -25,7 +25,6 @@ public class Player : MovingObject
     private Rigidbody2D rigid;  //utile pour déplacement glace
 
     [SerializeField] private PlayerAsset playerAsset;
-    [SerializeField] private GameObject ui;
     [SerializeField] private GameObject gameover;
 
     private Weapon weapon;
@@ -43,7 +42,6 @@ public class Player : MovingObject
 
     public GameObject Camera { get => camera; set => camera = value; }
     public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
-    public GameObject UI { get => ui; set => ui = value; }
 
     public Vector3 GetPos()
     {
