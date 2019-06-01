@@ -41,7 +41,7 @@ public class Room : MonoBehaviour
     public GameObject HubCreator()
     {
         GameObject room = patterns.Pattern[0];
-        Player.transform.position = room.transform.position + new Vector3(0.5f, 0.5f, 0f);
+        Player.transform.position = room.transform.position + new Vector3(0.5f, 3.5f, 0f);
 
         return room;
     }
