@@ -5,6 +5,6 @@ public class VerticalSlider : MonoBehaviour
 {
     public void ChangeCamPosition()
     {
-        MapController.mapScript.MoveVertical(gameObject.GetComponent<Slider>().value);
+        MapController.mapInstance.MoveVertical(gameObject.GetComponent<Slider>().value);
     }
 }

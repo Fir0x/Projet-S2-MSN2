@@ -199,7 +199,7 @@ public class Board : MonoBehaviour
                 roomBase.position[1] * roomHeight + 6 }, roomBase.roomNumber, roomBase.doorsPosition, roomBase.type, roomBase.GetBossDoor());
             }
 
-            MapController.mapScript.InitMap(boardMap, width, height);
+            MapController.mapInstance.InitMap(boardMap, width, height);
 
             //Utility.ExecutionTime.PrintExecutionTime(); //DEBUG
         }
