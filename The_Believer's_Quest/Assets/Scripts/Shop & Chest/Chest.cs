@@ -15,6 +15,7 @@ public class Chest : MonoBehaviour
         }
 
         instance = this;
+
     }
 
     // Callback which is triggered when
@@ -25,13 +26,13 @@ public class Chest : MonoBehaviour
     public int space = 12;  // Amount of slots in chest
 
     // Current list of items in chest
-    public List<ObjectsAsset> items = new List<ObjectsAsset>();
+    public List<GameObject> items = new List<GameObject>();
 
     // Add a new item. If there is enough room we
     // return true. Else we return false.
-    public bool Add(ObjectsAsset item)
+    public bool Add(GameObject item)
     {
-        foreach (ObjectsAsset O in items) //Check if the item is already in items or not
+        foreach (GameObject O in items) //Check if the item is already in items or not
         {
             if (O == item) return false;
         }
@@ -51,7 +52,7 @@ public class Chest : MonoBehaviour
     }
 
     // Remove an item
-    public void Remove(ObjectsAsset item)
+    public void Remove(GameObject item)
     {
         items.Remove(item);     // Remove item from list
 

@@ -32,6 +32,6 @@ public class ObjectsAsset : ScriptableObject
 
     public void RemoveFromInventory()
     {
-        Inventory.instance.Remove(this);
+        //Inventory.instance.Remove(this);
     }
 }
