@@ -61,19 +61,28 @@ public class Weapon : MonoBehaviour
     
     IEnumerator ReloadTimer()
     {
-        print("Reload starts"); //DEBUG
+        shot = false;
         yield return new WaitForSeconds(weapon.ReloadingTime);
-        print("Reload ends"); //DEBUG
+        shot = true;
     }
 
     public void Reload()
     {
+        if (weapon.Loader <= 0 && weapon.Ammunitions <= 0)
+            shot = false;
         if (weapon.LoaderCappacity != 0)
         {
-            weapon.Loader = (weapon.Loader + weapon.Ammunitions) % weapon.LoaderCappacity;
-            StartCoroutine(ReloadTimer());
-            UIController.uIController.changeAmmo.Invoke();
+            int bullets = weapon.Loader;
+            weapon.Loader = weapon.LoaderCappacity;
+            weapon.Ammunitions -= weapon.LoaderCappacity + bullets;
         }
+        else
+        {
+            weapon.Loader = weapon.LoaderCappacity;
+            weapon.Ammunitions -= weapon.LoaderCappacity;
+        }
+        StartCoroutine(ReloadTimer());
+
     }
 
     IEnumerator CoolDown()
@@ -102,33 +111,35 @@ public class Weapon : MonoBehaviour
     
     public void Shot() 
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
-        print("camera :" + mousePos);
-        print("player :" + playerAsset.Position);
-        Vector3 directionVector = (mousePos - transform.position).normalized;
-        print("weapon: " + directionVector);
-        if (!(weapon.Type == WeaponAsset.WeaponType.CQC))
+        if (weapon.Type != WeaponAsset.WeaponType.CQC)
         {
-            weapon.Loader -= weapon.Nbbulletsbyshot;
+            weapon.Loader --;
+            if (weapon.Loader <=0)
+                Reload();
             UIController.uIController.changeAmmo.Invoke();
+            if (weapon.Ammunitions <= 0)
+                shot = false;
         }
-
+        
         if ((weapon.Type == WeaponAsset.WeaponType.CQC)) 
             //attaque corps à corps
-        {
             Cqc();
-        }
+        
 
         if ((weapon.Type == WeaponAsset.WeaponType.Line))
             //attaque en ligne avec RailGun
-            LineShot(directionVector, weapon.Speed, weapon.Damage, 0);
+            LineShot( weapon.Speed, weapon.Damage, 0);
         if ((weapon.Type == WeaponAsset.WeaponType.Shotgun)) 
             //attaque en Arc avec Shotgun
             ArcShot(weapon.Nbbulletsbyshot, transform.up, weapon.Speed, weapon.Damage);
-        //attaque en cercle avec Circleshot
+        
+        
         if ((weapon.Type == WeaponAsset.WeaponType.Circle))
+            //attaque en cercle avec Circleshot
             CircleShot(weapon.Nbbulletsbyshot, weapon.Speed, weapon.Damage);
+        
+        //teste si on a encore des balles
+
 
    
     }
@@ -143,10 +154,10 @@ public class Weapon : MonoBehaviour
         }
 
     }
-    private void LineShot(Vector3 direction, float speed, int damage, float angle)//tir linéaire
+    private void LineShot( float speed, int damage, float angle)//tir linéaire
     {
         Instantiate(projectile, transform.position,
-            transform.rotation).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, playerAsset.Position, angle, direction, true); 
+            transform.rotation).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.position, angle, true); 
     }
     
     private void CircleShot(int nbprojectile, float speed, int damage)//tir en cercle
@@ -156,20 +167,21 @@ public class Weapon : MonoBehaviour
         
         for (int i = 0; i < nbprojectile; i++)
         {
-            LineShot(new Vector3(1, 0, transform.position.z), weapon.Speed,weapon.Damage, angle *i);
+
+            LineShot( weapon.Speed,weapon.Damage, angle *i);
         } 
     }
     private  void ArcShot(int nbprojectile, Vector3 direction, float speed, int damage) //tir type shotgun
     {
         if (nbprojectile % 2 != 0)
         {
-            LineShot(direction, weapon.Speed, weapon.Damage, 0);
+            LineShot( weapon.Speed, weapon.Damage, 0);
         }
 
         for (int i = 1; i <= nbprojectile / 2; i++)
         {
-            LineShot(direction,weapon.Speed, weapon.Damage, 20 * i);
-            LineShot(direction,weapon.Speed, weapon.Damage, -20 * i);
+            LineShot(weapon.Speed, weapon.Damage, 10 * i);
+            LineShot(weapon.Speed, weapon.Damage, -10 * i);
         } 
         
     }

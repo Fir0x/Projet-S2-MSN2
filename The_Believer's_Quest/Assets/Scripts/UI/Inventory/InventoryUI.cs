@@ -4,26 +4,25 @@ public class InventoryUI : MonoBehaviour
 {
 
     public Transform itemsParent;   
-    public GameObject inventoryUI;  
+    public GameObject inventoryUI;
 
-    Inventory inventory;    
+    Inventory inventory;
+    public static InventoryUI instance;
 
     InventorySlot[] slots; 
 
     void Start()
     {
+        instance = this;
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;    
         
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
     }
 
-    void Update()
+    public void EnableUI()
     {
-        if (Input.GetButtonDown("Interact"))
-        {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
-        }
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
     }
     
     void UpdateUI()

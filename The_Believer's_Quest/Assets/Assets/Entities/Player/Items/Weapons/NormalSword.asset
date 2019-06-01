@@ -16,11 +16,11 @@ MonoBehaviour:
   price: 0
   damage: 5
   cooldown: 0.2
-  reloadingTime: 0
-  loader: -20130
-  loaderCappacity: 0
-  maxAmmunitions: 0
-  ammunitions: 0
+  reloadingTime: 1
+  loader: 5
+  loaderCappacity: 10
+  maxAmmunitions: 100
+  ammunitions: 10
   speed: 10
-  type: 2
+  type: 3
   nbbulletsbyshot: 5

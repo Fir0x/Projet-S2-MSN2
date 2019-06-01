@@ -7,15 +7,16 @@ using UnityEngine.Events;
 //Sarah (ancienne version) / Nicolas I (version actuelle)
 public class UIController : MonoBehaviour
 {
-    public Text gold;
-    public Text diamond;
-    public Text ammo;
-    public Image weaponSprite;
-    
+    [SerializeField] private Text gold;
+    [SerializeField] private Text diamond;
+    [SerializeField] private Text ammo;
+    [SerializeField] private Image weaponSprite;
+
     [SerializeField] public PlayerAsset player;
 
     [SerializeField] private Slider hp;
     [SerializeField] private Slider effect;
+    [SerializeField] private GameObject mapPannel;
 
     public UnityEvent changeHp;
     public UnityEvent changeMaxHp;
@@ -28,20 +29,31 @@ public class UIController : MonoBehaviour
 
     public static UIController uIController; //Singleton
 
+    private float originalTimeScale;
+
+    public Text Gold { get => gold; set => gold = value; }
+    public Text Diamond { get => diamond; set => diamond = value; }
+    public Text Ammo { get => ammo; set => ammo = value; }
+    public Image WeaponSprite { get => weaponSprite; set => weaponSprite = value; }
     public Slider Hp { get => hp; set => hp = value; }
     public Slider Effect { get => effect; set => effect = value; }
+    public GameObject Map { get => mapPannel; set => mapPannel = value; }
 
     private void Start()
     {
+        uIController = this; //Initi singleton
+
+        originalTimeScale = Time.timeScale;
+
         //Init UI parts with good values
         hp.maxValue = player.MaxHP;
         hp.value = player.Hp;
         effect.maxValue = player.MaxEffectValue;
         effect.value = player.EffectValue;
-        gold.text = player.Gold + "";
-        diamond.text = player.Diamond + "";
-        weaponSprite.sprite = player.WeaponsList[0].Sprite;
-        ammo.text = player.WeaponsList[0].Type == WeaponAsset.WeaponType.CQC ?
+        Gold.text = player.Gold + "";
+        Diamond.text = player.Diamond + "";
+        WeaponSprite.sprite = player.WeaponsList[0].Sprite;
+        Ammo.text = player.WeaponsList[0].Type == WeaponAsset.WeaponType.CQC ?
                                          "" : player.WeaponsList[0].Loader + " / " + player.WeaponsList[0].Ammunitions;
 
         //Init all events to change UI parts
@@ -77,15 +89,45 @@ public class UIController : MonoBehaviour
 
         changeMaxEffect.AddListener(() => effect.maxValue = player.MaxEffectValue);
 
-        changeGold.AddListener(() => gold.text = player.Gold + "");
+        changeGold.AddListener(() => Gold.text = player.Gold + "");
 
-        changeDiamond.AddListener(() => diamond.text = player.Diamond + "");
+        changeDiamond.AddListener(() => Diamond.text = player.Diamond + "");
 
-        changeWeapon.AddListener(() => weaponSprite.sprite = player.WeaponsList[0].Sprite);
+        changeWeapon.AddListener(() => WeaponSprite.sprite = player.WeaponsList[0].Sprite);
 
-        changeAmmo.AddListener(() => ammo.text = player.WeaponsList[0].Type == WeaponAsset.WeaponType.CQC ? 
+        changeAmmo.AddListener(() => Ammo.text = player.WeaponsList[0].Type == WeaponAsset.WeaponType.CQC ? 
                                          "" : player.WeaponsList[0].Loader + " / " + player.WeaponsList[0].Ammunitions);
+    }
 
-        uIController = this;
+    public void ShowMap()
+    {
+        mapPannel.SetActive(!mapPannel.activeSelf);
+
+        if (mapPannel.activeSelf)
+        {
+            foreach (Scrollbar scrollbar in mapPannel.GetComponentsInChildren<Scrollbar>())
+            {
+                if (scrollbar.gameObject.name == "Horizontal")
+                    scrollbar.size = MapController.mapScript.GetHorizontal();
+                else
+                    scrollbar.size = MapController.mapScript.GetVertical();
+            }
+        }
+
+        /*if (visu.enabled) //A revoir
+            Time.timeScale = 0;
+        else
+            Time.timeScale = originalTimeScale;*/
+    }
+
+    public void AdaptScrollbar(bool horizontal, float value)
+    {
+        foreach (Scrollbar scrollbar in mapPannel.GetComponentsInChildren<Scrollbar>())
+        {
+            if (scrollbar.gameObject.name == "Horizontal" && horizontal)
+                scrollbar.size = value;
+            else
+                scrollbar.size = value;
+        }
     }
 }

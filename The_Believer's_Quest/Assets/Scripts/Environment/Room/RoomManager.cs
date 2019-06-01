@@ -16,8 +16,13 @@ public class RoomManager : MonoBehaviour
     private TileAsset doorTiles;
     private int totalWeight = 7; //uniquement pour étage 1
     private int enemiesRemaining;
+
     private bool testForBoss;
     private int bossDoor;
+    private bool isBossRoom;
+
+    private GameObject nextLevel;
+    private GameObject chest;
 
     private Vector3 roomPosition;
     private TileGrid grid;
@@ -26,6 +31,9 @@ public class RoomManager : MonoBehaviour
 
     public void Init(int[] mapPos, List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList, Room roomCreator, int bossDoor)
     {
+        nextLevel = roomCreator.GetNextLevel();
+        chest = roomCreator.Chest;
+
         this.bossDoor = bossDoor;
         this.mapPos = mapPos;
         this.floor = floor;
@@ -34,10 +42,17 @@ public class RoomManager : MonoBehaviour
         this.roomCreator = roomCreator;
         allEnemiesList = enemiesList;
         grid = gameObject.GetComponent<TileGrid>();
-        roomPosition = this.transform.position;
+        roomPosition = transform.position;
+
         
+        if (roomCreator.GetRoomType() == Board.Type.Chest)
+        {
+            GameObject chestOnScene = Instantiate(chest, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity) as GameObject;
+            chestOnScene.transform.parent = gameObject.transform;
+        }
         if(enemiesList.Count == 1)
         {
+            isBossRoom = true;
             testForBoss = true;
             enemies.Add(enemiesList[0]);
 
@@ -64,8 +79,6 @@ public class RoomManager : MonoBehaviour
                 layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
                 layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
             }
-
-
         }
         else if (enemiesList.Count > 0)
         {
@@ -103,6 +116,11 @@ public class RoomManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col) //Nicolas L
     {
+        if (testForBoss)
+        {
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().ChangeBO(3 + (floor - 1));
+        }
+
         if (firstEntry && col.CompareTag("Player"))
         {
             SpawnEnemies();
@@ -110,11 +128,13 @@ public class RoomManager : MonoBehaviour
             enemiesRemaining = enemies.Count;
             if (enemiesRemaining > 0)
             {
-                print("allo");
                 roomCreator.Close();
             }
             firstEntry = false;
         }
+
+
+        MapController.mapScript.EnterRoom(mapPos, gameObject.name, doors);
     }
 
     public void SpawnEnemies()
@@ -129,7 +149,7 @@ public class RoomManager : MonoBehaviour
             {
                 testForBoss = false;
                 GameObject bossOnScene = Instantiate(enemies[0], roomPosition, Quaternion.identity) as GameObject;
-                bossOnScene.transform.parent = this.transform;
+                bossOnScene.transform.parent = transform;
             }
             else
             {
@@ -151,7 +171,7 @@ public class RoomManager : MonoBehaviour
                         }
 
                         GameObject enemyOnScene = Instantiate(enemy, roomPosition + new Vector3(x, y, 0), Quaternion.identity) as GameObject;
-                        enemyOnScene.transform.parent = this.transform;
+                        enemyOnScene.transform.parent = transform;
                     }
                     else
                     {
@@ -178,7 +198,7 @@ public class RoomManager : MonoBehaviour
                 }
 
                 GameObject enemyOnScene = Instantiate(enemy, roomPosition + new Vector3(x, y, 0), Quaternion.identity) as GameObject;
-                enemyOnScene.transform.parent = this.transform;
+                enemyOnScene.transform.parent = transform;
             }
         }
 
@@ -192,6 +212,11 @@ public class RoomManager : MonoBehaviour
         if (enemiesRemaining == 0)
         {
             roomCreator.Open();
+            if (isBossRoom)
+            {
+                GameObject outdoor = Instantiate(nextLevel, transform.position + new Vector3(0, 3f, 0), Quaternion.identity) as GameObject;
+                outdoor.GetComponent<NextLevel>().Wait();
+            }
         }
     }
 
@@ -218,8 +243,8 @@ public class RoomManager : MonoBehaviour
             if(d == Board.DoorPos.Up)
             {
                 GameObject colliderUp = new GameObject("ColliderUp");
-                colliderUp.transform.parent = this.transform;
-                colliderUp.transform.position = this.transform.position + new Vector3(0.5f, 6.5f, 0);
+                colliderUp.transform.parent = transform;
+                colliderUp.transform.position = transform.position + new Vector3(0.5f, 6.5f, 0);
                 colliderUp.AddComponent<BoxCollider2D>();
                 colliderUp.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderUp.tag = "Pattern";
@@ -228,8 +253,8 @@ public class RoomManager : MonoBehaviour
             else if(d == Board.DoorPos.Right)
             {
                 GameObject colliderRight = new GameObject("ColliderRight");
-                colliderRight.transform.parent = this.transform;
-                colliderRight.transform.position = this.transform.position + new Vector3(9f, 1f, 0);
+                colliderRight.transform.parent = transform;
+                colliderRight.transform.position = transform.position + new Vector3(9f, 1f, 0);
                 colliderRight.AddComponent<BoxCollider2D>();
                 colliderRight.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderRight.tag = "Pattern";
@@ -239,8 +264,8 @@ public class RoomManager : MonoBehaviour
             else if (d == Board.DoorPos.Down)
             {
                 GameObject colliderDown = new GameObject("ColliderDown");
-                colliderDown.transform.parent = this.transform;
-                colliderDown.transform.position = this.transform.position + new Vector3(0.5f, -5.75f, 0);
+                colliderDown.transform.parent = transform;
+                colliderDown.transform.position = transform.position + new Vector3(0.5f, -5.79f, 0);
                 colliderDown.AddComponent<BoxCollider2D>();
                 colliderDown.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderDown.tag = "Pattern";
@@ -249,8 +274,8 @@ public class RoomManager : MonoBehaviour
             else
             {
                 GameObject colliderLeft = new GameObject("ColliderLeft");
-                colliderLeft.transform.parent = this.transform;
-                colliderLeft.transform.position = this.transform.position + new Vector3(-8f, 1f, 0);
+                colliderLeft.transform.parent = transform;
+                colliderLeft.transform.position = transform.position + new Vector3(-8f, 1f, 0);
                 colliderLeft.AddComponent<BoxCollider2D>();
                 colliderLeft.GetComponent<BoxCollider2D>().isTrigger = true;
                 colliderLeft.tag = "Pattern";
@@ -274,9 +299,12 @@ public class RoomManager : MonoBehaviour
             script.ClearTiles(doors, doorTiles, floor);
         }*/
 
-        for(int i = 4; i < transform.childCount; i++)           //destruction of door colliders
+        for (int i = 4; i < transform.childCount; i++)           //destruction of door colliders
         {
-            Destroy(GetComponent<Transform>().GetChild(i).gameObject);
+            if(GetComponent<Transform>().GetChild(i).gameObject.tag != "Chest")
+            {
+                Destroy(GetComponent<Transform>().GetChild(i).gameObject);
+            }
         }
 
         gameObject.GetComponentInChildren<LayerFront>().ClearTiles(doors, doorTiles, floor);

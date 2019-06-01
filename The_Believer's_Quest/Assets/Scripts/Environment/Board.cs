@@ -13,12 +13,9 @@ public class Board : MonoBehaviour
     public static List<GameObject> roomList;
     private Transform board;
 
-    [SerializeField] private MapController map;
-
     public int Width { get => width; set => width = value; }
     public int Height { get => height; set => height = value; }
     public int RoomNumber { get => roomNumber; set => roomNumber = value; }
-    public MapController Map { get => map; set => map = value; }
 
     public enum DoorPos
     {
@@ -202,7 +199,7 @@ public class Board : MonoBehaviour
                 roomBase.position[1] * roomHeight + 6 }, roomBase.roomNumber, roomBase.doorsPosition, roomBase.type, roomBase.GetBossDoor());
             }
 
-            map.InitMap(boardMap, width, height);
+            MapController.mapScript.InitMap(boardMap, width, height);
 
             //Utility.ExecutionTime.PrintExecutionTime(); //DEBUG
         }
@@ -218,7 +215,13 @@ public class Board : MonoBehaviour
     {
         playerAsset.Floor += 1;
         BoardCreation();
+
+        DestroyEntrance();
     }
 
+    public void DestroyEntrance()           //to destroy nextLevel which stayed while generating the actual board
+    {
+        Destroy(GameObject.FindGameObjectWithTag("NextLevel"));
+    }
 
 }

@@ -13,8 +13,12 @@ public class Room : MonoBehaviour
     [SerializeField] private TileAsset doorTiles;
     [SerializeField] private GameObject player;
     [SerializeField] public PlayerAsset playerAsset;
+    [SerializeField] private GameObject chest;
+    [SerializeField] private GameObject nextLevel;
     private int id;
+    private Board.Type type;
 
+    public GameObject Chest { get => chest; set => chest = value; }
     public AllEnemiesAsset AllEnemies { get => allEnemies; set => allEnemies = value; }
     public PatternAsset Patterns { get => patterns; set => patterns = value; }
     public GameObject Player { get => player; set => player = value; }
@@ -46,6 +50,7 @@ public class Room : MonoBehaviour
     { 
         GameObject room;
         id = roomNumber;
+        this.type = type;
         if (roomNumber == 1 || type != Board.Type.Normal)
         {
             room = patterns.Pattern[1];
@@ -62,7 +67,9 @@ public class Room : MonoBehaviour
         if (type == Board.Type.Normal) //Name set
             roomPattern.name = "Room " + roomNumber;
         else if (type == Board.Type.Chest)
+        {
             roomPattern.name = "Chest";
+        }
         else if (type == Board.Type.Shop)
             roomPattern.name = "Shop";
         else
@@ -114,5 +121,15 @@ public class Room : MonoBehaviour
     public void Close()
     {
         closeDoors.Invoke();
+    }
+
+    public GameObject GetNextLevel()
+    {
+        return nextLevel;
+    }
+
+    public Board.Type GetRoomType()
+    {
+        return type;
     }
 }

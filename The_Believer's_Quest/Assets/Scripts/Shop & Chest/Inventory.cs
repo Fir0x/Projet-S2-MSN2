@@ -25,13 +25,13 @@ public class Inventory : MonoBehaviour
     public int space = 4;  // Amount of slots in inventory
 
     // Current list of items in inventory
-    public List<ObjectsAsset> items = new List<ObjectsAsset>();
+    public List<GameObject> items = new List<GameObject>();
 
     // Add a new item. If there is enough room we
     // return true. Else we return false.
-    public bool Add(ObjectsAsset item)
+    public bool Add(GameObject item)
     {
-        foreach(ObjectsAsset O in items) //Check if the item is already in items or not
+        foreach(GameObject O in items) //Check if the item is already in items or not
         {
             if (O == item) return false;
         }
@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour
     }
 
     // Remove an item
-    public void Remove(ObjectsAsset item)
+    public void Remove(GameObject item)
     {
         items.Remove(item);     // Remove item from list
 
