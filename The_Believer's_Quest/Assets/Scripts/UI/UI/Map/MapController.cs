@@ -162,4 +162,10 @@ public class MapController : MonoBehaviour
         float factor = 2 * maxDown.x;
         cam.transform.position = new Vector3(cam.transform.position.x, centerY + value - 0.5f, cam.transform.position.z);
     }
+
+    public void ResetMap()
+    {
+        map.ClearAllTiles();
+        cursorMask.ClearAllTiles();
+    }
 }

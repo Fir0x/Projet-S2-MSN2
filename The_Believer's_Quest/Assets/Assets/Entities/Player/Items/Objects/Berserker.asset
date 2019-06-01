@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300004, guid: 611eb00482ca3ef4ea2c3199b24f82d4, type: 3}
   passive: 0
-  price: 20
-  hP: -10
-  maxHP: 0
+  price: 40
+  hP: 0
+  maxHP: -10
   effectValue: 20
   maxEffectValue: 0
   speed: 2
   ammo: 0
   invicibility: 0
-  duration: 0
+  duration: 10
   Object: {fileID: 0}

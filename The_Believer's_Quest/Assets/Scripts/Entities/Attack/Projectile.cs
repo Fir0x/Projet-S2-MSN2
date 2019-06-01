@@ -10,13 +10,16 @@ public class Projectile : MovingObject
     
     //Sarah
 
-    public void Init(Sprite sprite, float speed, float damage, Vector3 origin, float angle, Vector3 _direction, bool player) 
+    public void Init(Sprite sprite, float speed, float damage, Vector3 origin, float angle, Vector3 _direction, bool player, bool circle) 
     {
         //projectiles ennemis
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         this.speed = speed;
         this.damage = damage;
         this.player = player;
+        if (circle)
+            _direction = transform.up;
+        
         direction = _direction;
         if (angle != 0)
             transform.RotateAround(origin, Vector3.forward, angle);
