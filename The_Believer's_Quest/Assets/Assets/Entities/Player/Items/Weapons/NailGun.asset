@@ -22,7 +22,7 @@ MonoBehaviour:
   maxAmmunitions: 0
   ammunitions: 0
   speed: 0
-  type: 2
+  type: 1
   nbbulletsbyshot: 1
   projectile: {fileID: 0}
   Object: {fileID: 0}

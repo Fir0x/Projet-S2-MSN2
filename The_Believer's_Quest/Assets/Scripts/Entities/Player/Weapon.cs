@@ -61,27 +61,29 @@ public class Weapon : MonoBehaviour
     
     IEnumerator ReloadTimer()
     {
-        shot = false;
+        Reload();
         yield return new WaitForSeconds(weapon.ReloadingTime);
-        shot = true;
     }
 
     public void Reload()
     {
-        if (weapon.Loader <= 0 && weapon.Ammunitions <= 0)
-            shot = false;
-        if (weapon.LoaderCappacity != 0)
+        shot = false;
+        if ( weapon.Ammunitions > 0)
         {
-            int bullets = weapon.Loader;
-            weapon.Loader = weapon.LoaderCappacity;
-            weapon.Ammunitions -= weapon.LoaderCappacity + bullets;
+            if (weapon.LoaderCappacity != 0 && weapon.Loader > 0)
+            {
+                int bullets = weapon.Loader;
+                weapon.Loader = weapon.LoaderCappacity;
+                weapon.Ammunitions -= weapon.LoaderCappacity + bullets;
+            }
+            else
+            {
+                weapon.Loader = weapon.LoaderCappacity;
+                weapon.Ammunitions -= weapon.LoaderCappacity;
+            }
+
+            shot = true;
         }
-        else
-        {
-            weapon.Loader = weapon.LoaderCappacity;
-            weapon.Ammunitions -= weapon.LoaderCappacity;
-        }
-        StartCoroutine(ReloadTimer());
 
     }
 
@@ -114,8 +116,8 @@ public class Weapon : MonoBehaviour
         if (weapon.Type != WeaponAsset.WeaponType.CQC)
         {
             weapon.Loader --;
-            if (weapon.Loader <=0)
-                Reload();
+            if (weapon.Loader <=0)//teste si on a encore des balles
+                StartCoroutine(ReloadTimer());
             UIController.uIController.changeAmmo.Invoke();
             if (weapon.Ammunitions <= 0)
                 shot = false;
@@ -131,17 +133,12 @@ public class Weapon : MonoBehaviour
             LineShot( weapon.Speed, weapon.Damage, 0);
         if ((weapon.Type == WeaponAsset.WeaponType.Shotgun)) 
             //attaque en Arc avec Shotgun
-            ArcShot(weapon.Nbbulletsbyshot, transform.up, weapon.Speed, weapon.Damage);
+            ArcShot(weapon.Nbbulletsbyshot);
         
         
         if ((weapon.Type == WeaponAsset.WeaponType.Circle))
             //attaque en cercle avec Circleshot
-            CircleShot(weapon.Nbbulletsbyshot, weapon.Speed, weapon.Damage);
-        
-        //teste si on a encore des balles
-
-
-   
+            CircleShot(weapon.Nbbulletsbyshot);
     }
 
     private void Cqc()
@@ -157,10 +154,10 @@ public class Weapon : MonoBehaviour
     private void LineShot( float speed, int damage, float angle)//tir linéaire
     {
         Instantiate(projectile, transform.position,
-            transform.rotation).GetComponent<Projectile>().Init(Projectile.GetComponent<SpriteRenderer>().sprite, speed, damage, transform.position, angle, true); 
+            transform.rotation).GetComponent<Projectile>().Init(weapon.Bullet, speed, damage, transform.position, angle, true); 
     }
     
-    private void CircleShot(int nbprojectile, float speed, int damage)//tir en cercle
+    private void CircleShot(int nbprojectile)//tir en cercle
     {
         
         float angle = 360 / nbprojectile;
@@ -171,7 +168,7 @@ public class Weapon : MonoBehaviour
             LineShot( weapon.Speed,weapon.Damage, angle *i);
         } 
     }
-    private  void ArcShot(int nbprojectile, Vector3 direction, float speed, int damage) //tir type shotgun
+    private  void ArcShot(int nbprojectile) //tir type shotgun
     {
         if (nbprojectile % 2 != 0)
         {
@@ -185,7 +182,6 @@ public class Weapon : MonoBehaviour
         } 
         
     }
-
 
 
 }
