@@ -43,6 +43,23 @@ public class Player : MovingObject
     public GameObject Camera { get => camera; set => camera = value; }
     public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
 
+    private void Start()
+    {
+        instance = this;
+        noForcedMove = true;
+        weapon = GetComponentInChildren<Weapon>();
+        weapon.Init(playerAsset.WeaponsList[0], playerAsset);
+        playerAsset.Position = transform.position;
+        playerAsset.Invicibility = false;
+        testForDash = true;
+
+        firstPos = transform.position;
+
+        animator = GetComponent<Animator>();
+
+        nearChest = false;
+    }
+
     public Vector3 GetPos()
     {
         return transform.position;
@@ -183,23 +200,6 @@ public class Player : MovingObject
 
             testForDash = true;
         }
-    }
-
-    private void Start()
-    {
-        instance = this;
-        noForcedMove = true;
-        weapon = GetComponentInChildren<Weapon>();
-        weapon.Init(playerAsset.WeaponsList[0], playerAsset);
-        playerAsset.Position = transform.position;
-        playerAsset.Invicibility = false;
-        testForDash = true;
-
-        firstPos = transform.position;
-
-        animator = GetComponent<Animator>();
-
-        nearChest = false;
     }
 
     public void MoveUp()

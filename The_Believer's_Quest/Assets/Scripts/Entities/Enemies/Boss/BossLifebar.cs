@@ -12,7 +12,7 @@ public class BossLifebar : MonoBehaviour
 
     public void SetMaxValue(float maxHP)
     {
-        lifeBar = UIController.uIController.transform.FindChild("Data UI").FindChild("Boss Health").GetComponent<Slider>();
+        lifeBar = UIController.uIController.transform.Find("Data UI").Find("Boss Health").GetComponent<Slider>();
         lifeBar.maxValue = maxHP;
         lifeBar.value = maxHP;
         lifeBar.gameObject.SetActive(true);

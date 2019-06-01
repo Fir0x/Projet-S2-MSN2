@@ -7,6 +7,7 @@ public class MovingObject : MonoBehaviour
     public bool Collision(Vector2 pos, float speed, int direction)     //0 : left, 1 : up, 2 : right, 3 : down
     {
         bool noCollision = true;
+
         switch (direction)
         {
             case 0:
@@ -15,6 +16,7 @@ public class MovingObject : MonoBehaviour
                 
                 if (hitLeft.collider != null && hitLeft.collider.gameObject.CompareTag("Pattern"))
                 {
+                    print("" + hitLeft.collider.name);
                     noCollision = false;
                 }
                 break;
@@ -30,6 +32,7 @@ public class MovingObject : MonoBehaviour
                 {
                     if (hitUp1.collider.gameObject.CompareTag("Pattern") || hitUp2.collider.gameObject.CompareTag("Pattern"))
                     {
+                        print("" + hitUp1.collider.name);
                         noCollision = false;
                     }
                 }
@@ -37,6 +40,7 @@ public class MovingObject : MonoBehaviour
                 {
                     if (hitUp1.collider.gameObject.CompareTag("Pattern"))
                     {
+                        print("" + hitUp1.collider.name);
                         noCollision = false;
                     }
                 }
@@ -55,6 +59,7 @@ public class MovingObject : MonoBehaviour
 
                 if (hitRight.collider != null && hitRight.collider.gameObject.CompareTag("Pattern"))
                 {
+                    print("" + hitRight.collider.name);
                     noCollision = false;
                 }
                 break;
@@ -70,6 +75,7 @@ public class MovingObject : MonoBehaviour
                 {
                     if (hitDown1.collider.gameObject.CompareTag("Pattern") || hitDown2.collider.gameObject.CompareTag("Pattern"))
                     {
+                        print("" + hitDown1.collider.name);
                         noCollision = false;
                     }
                 }
@@ -77,6 +83,7 @@ public class MovingObject : MonoBehaviour
                 {
                     if (hitDown1.collider.gameObject.CompareTag("Pattern"))
                     {
+                        print("" + hitDown1.collider.name);
                         noCollision = false;
                     }
                 }
