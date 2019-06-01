@@ -14,7 +14,7 @@ public class RoomManager : MonoBehaviour
     private List<GameObject> enemies = new List<GameObject>();
     private List<Board.DoorPos> doors;
     private TileAsset doorTiles;
-    private int totalWeight = 7; //uniquement pour étage 1
+    private int totalWeight; //uniquement pour étage 1
     private int enemiesRemaining;
 
     private bool testForBoss;
@@ -31,6 +31,7 @@ public class RoomManager : MonoBehaviour
 
     public void Init(int[] mapPos, List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList, Room roomCreator, int bossDoor)
     {
+        totalWeight = 7 * floor;
         nextLevel = roomCreator.GetNextLevel();
         chest = roomCreator.Chest;
 
@@ -44,7 +45,7 @@ public class RoomManager : MonoBehaviour
         grid = gameObject.GetComponent<TileGrid>();
         roomPosition = transform.position;
 
-        
+        print(floor + " : " + roomCreator.GetRoomType());
         if (roomCreator.GetRoomType() == Board.Type.Chest)
         {
             GameObject chestOnScene = Instantiate(chest, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity) as GameObject;
@@ -56,33 +57,39 @@ public class RoomManager : MonoBehaviour
             testForBoss = true;
             enemies.Add(enemiesList[0]);
 
-            LayerBehind layerB = GetComponent<LayerBehind>();                               //to make the boss room be opened
-            LayerFront layerF = GetComponent<LayerFront>();
-
-            if (bossDoor == 0)
-            {
-                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
-                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
-            }
-            else if (bossDoor == 1)
-            {
-                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
-                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
-            }
-            else if (bossDoor == 2)
-            {
-                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
-                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
-            }
-            else if (bossDoor == 3)
-            {
-                layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
-                layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
-            }
         }
         else if (enemiesList.Count > 0)
         {
             CreateEnemies();
+        }
+
+        LayerBehind layerB = GetComponent<LayerBehind>();                               //to make the boss room be opened
+        LayerFront layerF = GetComponent<LayerFront>();
+
+        if (bossDoor == -1)
+        {
+            layerB.ClearTiles(doors, doorTiles, floor);
+            layerF.ClearTiles(doors, doorTiles, floor);
+        }
+        if (bossDoor == 0)
+        {
+            layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
+            layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
+        }
+        else if (bossDoor == 1)
+        {
+            layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
+            layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
+        }
+        else if (bossDoor == 2)
+        {
+            layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
+            layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
+        }
+        else if (bossDoor == 3)
+        {
+            layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
+            layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
         }
 
         roomCreator.Open();
