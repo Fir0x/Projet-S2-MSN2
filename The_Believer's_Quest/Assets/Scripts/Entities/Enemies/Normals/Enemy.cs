@@ -106,8 +106,10 @@ public class Enemy : MovingObject
 
         if (nextNode != null)
             nextPos = nextNode.worldPos;
-        else
+        else if (precedentNode != null)
             nextPos = precedentNode.worldPos;
+        else
+            nextPos = playerAsset.Position;
 
         if (CanAttack())
         {
