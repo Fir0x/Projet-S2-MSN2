@@ -119,3 +119,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d62031913f924d5489042be6e2ce2dcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}

@@ -128,7 +128,7 @@ public class RoomManager : MonoBehaviour
     {
         if (testForBoss)
         {
-            GameObject.Find("SoundManager").GetComponent<SoundManager>().ChangeBO(3 + (floor - 1));
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().ChangeBO(floor + 2);
         }
 
         if (firstEntry && col.CompareTag("Player"))
@@ -160,7 +160,7 @@ public class RoomManager : MonoBehaviour
                 testForBoss = false;
                 GameObject bossOnScene = Instantiate(enemies[0], roomPosition, Quaternion.identity) as GameObject;
                 bossOnScene.transform.parent = transform;
-                bossOnScene.GetComponent<BossLifebar>().SliderAppear();
+                bossOnScene.GetComponent<BossLifebar>().SliderDisappear();
             }
             else
             {
@@ -186,7 +186,6 @@ public class RoomManager : MonoBehaviour
                     }
                     else
                     {
-                        print("" + enemy.name);
                         noBoss = true;
                     }
                 }

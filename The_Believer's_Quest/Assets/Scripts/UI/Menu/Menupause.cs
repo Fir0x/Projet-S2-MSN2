@@ -48,6 +48,7 @@ public class Menupause : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(0);
         show = false;
     }
 
