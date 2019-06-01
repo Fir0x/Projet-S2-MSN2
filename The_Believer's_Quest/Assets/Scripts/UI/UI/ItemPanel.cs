@@ -4,7 +4,7 @@ using UnityEngine;
 //Nicolas I
 public class ItemPanel : MonoBehaviour
 { 
-    private List<GameObject> items = new List<GameObject>();
+    /*private List<GameObject> items = new List<GameObject>();
 
     [SerializeField] private Transform parent;
 
@@ -27,6 +27,6 @@ public class ItemPanel : MonoBehaviour
             else
                 slots[i].ClearSlot();
         }
-    }
+    }*/
 
 }

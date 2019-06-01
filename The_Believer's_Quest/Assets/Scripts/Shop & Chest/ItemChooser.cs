@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+
 //Nicolas I
 public class ItemChooser : MonoBehaviour
 {
-    public List<GameObject> ChooseContent(AllItemsAsset availableItels)
+    /*public List<GameObject> ChooseContent(AllItemsAsset availableItels)
     {
          int nbItems = Random.Range(1, 5);
          List<GameObject> items = new List<GameObject>();
@@ -31,7 +33,7 @@ public class ItemChooser : MonoBehaviour
 
          return items;
 
-    }
+         return availableItels.AllItems;
 
-    
+    }*/
 }
