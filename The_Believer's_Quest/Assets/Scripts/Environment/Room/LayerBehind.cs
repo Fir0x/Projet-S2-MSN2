@@ -29,38 +29,38 @@ public class LayerBehind : MonoBehaviour
             if (bossDoor == -1)
             {
                 if (doors.Contains(Board.DoorPos.Up))
-                    tilemap.SetTile(new Vector3Int(0, 7, 0), tiles.Tiles[(floor - 1) * 5]);
+                    tilemap.SetTile(new Vector3Int(0, 7, 0), tiles.Tiles[(floor - 1) * 18]);
 
                 if (doors.Contains(Board.DoorPos.Right))
-                    tilemap.SetTile(new Vector3Int(8, 0, 0), tiles.Tiles[3 + (floor - 1) * 5]);
+                    tilemap.SetTile(new Vector3Int(8, 0, 0), tiles.Tiles[3 + (floor - 1) * 18]);
 
                 if (doors.Contains(Board.DoorPos.Down))
-                    tilemap.SetTile(new Vector3Int(0, -6, 0), tiles.Tiles[6 + (floor - 1) * 5]);
+                    tilemap.SetTile(new Vector3Int(0, -6, 0), tiles.Tiles[6 + (floor - 1) * 18]);
 
                 if (doors.Contains(Board.DoorPos.Left))
-                    tilemap.SetTile(new Vector3Int(-8, 0, 0), tiles.Tiles[8 + (floor - 1) * 5]);
+                    tilemap.SetTile(new Vector3Int(-8, 0, 0), tiles.Tiles[8 + (floor - 1) * 18]);
             }
             else
             {
                 if (bossDoor == 1)
-                    tilemap.SetTile(new Vector3Int(0, 7, 0), tiles.Tiles[(floor - 1) * 5 + 11]);
+                    tilemap.SetTile(new Vector3Int(0, 7, 0), tiles.Tiles[(floor - 1) * 18 + 11]);
                 else if (doors.Contains(Board.DoorPos.Up))
-                    tilemap.SetTile(new Vector3Int(0, 7, 0), tiles.Tiles[(floor - 1) * 5]);
+                    tilemap.SetTile(new Vector3Int(0, 7, 0), tiles.Tiles[(floor - 1) * 18]);
 
                 if (bossDoor == 2)
-                    tilemap.SetTile(new Vector3Int(8, 0, 0), tiles.Tiles[3 + (floor - 1) * 5 + 11]);
+                    tilemap.SetTile(new Vector3Int(8, 0, 0), tiles.Tiles[3 + (floor - 1) * 18 + 11]);
                 else if (doors.Contains(Board.DoorPos.Right))
-                    tilemap.SetTile(new Vector3Int(8, 0, 0), tiles.Tiles[3 + (floor - 1) * 5]);
+                    tilemap.SetTile(new Vector3Int(8, 0, 0), tiles.Tiles[3 + (floor - 1) * 18]);
 
                 if (bossDoor == 3)
-                    tilemap.SetTile(new Vector3Int(0, -6, 0), tiles.Tiles[6 + (floor - 1) * 5 + 9]);
+                    tilemap.SetTile(new Vector3Int(0, -6, 0), tiles.Tiles[6 + (floor - 1) * 18 + 9]);
                 else if (doors.Contains(Board.DoorPos.Down))
-                    tilemap.SetTile(new Vector3Int(0, -6, 0), tiles.Tiles[6 + (floor - 1) * 5]);
+                    tilemap.SetTile(new Vector3Int(0, -6, 0), tiles.Tiles[6 + (floor - 1) * 18]);
 
                 if (bossDoor == 0)
-                    tilemap.SetTile(new Vector3Int(-8, 0, 0), tiles.Tiles[8 + (floor - 1) * 5 + 9]);
+                    tilemap.SetTile(new Vector3Int(-8, 0, 0), tiles.Tiles[8 + (floor - 1) * 18 + 9]);
                 else if (doors.Contains(Board.DoorPos.Left))
-                    tilemap.SetTile(new Vector3Int(-8, 0, 0), tiles.Tiles[8 + (floor - 1) * 5]);
+                    tilemap.SetTile(new Vector3Int(-8, 0, 0), tiles.Tiles[8 + (floor - 1) * 18]);
             }
         }
     }
@@ -68,15 +68,27 @@ public class LayerBehind : MonoBehaviour
     public void ClearTiles(List<Board.DoorPos> doors, TileAsset tiles, int floor)
     {
         if (doors.Contains(Board.DoorPos.Up))
+        {
+            print(floor + " : clear up");
             tilemap.SetTile(new Vector3Int(0, 7, 0), null);
+        }
 
         if (doors.Contains(Board.DoorPos.Right))
-            tilemap.SetTile(new Vector3Int(8, 0, 0), tiles.Tiles[5 + (floor - 1) * 5]);
+        {
+            print(floor + " : clear right");
+            tilemap.SetTile(new Vector3Int(8, 0, 0), tiles.Tiles[5 + (floor - 1) * 18]);
+        }
 
         if (doors.Contains(Board.DoorPos.Down))
+        {
+            print(floor + " : clear down");
             tilemap.SetTile(new Vector3Int(0, -6, 0), null);
+        }
 
         if (doors.Contains(Board.DoorPos.Left))
-            tilemap.SetTile(new Vector3Int(-8, 0, 0), tiles.Tiles[10 + (floor - 1) * 5]);
+        {
+            print(floor + " : clear left");
+            tilemap.SetTile(new Vector3Int(-8, 0, 0), tiles.Tiles[10 + (floor - 1) * 18]);
+        }
     }
 }

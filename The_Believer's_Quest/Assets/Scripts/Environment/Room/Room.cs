@@ -47,19 +47,33 @@ public class Room : MonoBehaviour
     }
 
     public GameObject RoomCreator(Transform parent, int[] mapPos, float[] anchor, int roomNumber, List<Board.DoorPos> doorsPosition, Board.Type type, int bossDoor)
-    { 
+    {
         GameObject room;
         id = roomNumber;
         this.type = type;
-        if (roomNumber == 1 || type != Board.Type.Normal)
+        if (playerAsset.Floor == 1)
         {
-            room = patterns.Pattern[1];
+            if (roomNumber == 1 || type != Board.Type.Normal)
+            {
+                room = patterns.Pattern[1];
+            }
+            else
+            {
+                room = patterns.Pattern[UnityEngine.Random.Range(1, 10)];
+            }
         }
         else
         {
-            room = patterns.Pattern[UnityEngine.Random.Range(1, patterns.Pattern.Length)];
+            if (roomNumber == 1 || type != Board.Type.Normal)
+            {
+                room = patterns.Pattern[11 + 7 * (playerAsset.Floor - 2)];
+            }
+            else
+            {
+                room = patterns.Pattern[UnityEngine.Random.Range(11 + 7 * (playerAsset.Floor - 2), 17 + 7 * (playerAsset.Floor - 2))];
+            }
         }
-        
+
         //Creation and configuration of the GameObject
         GameObject roomPattern = Instantiate(room, new Vector3(anchor[0], anchor[1], 0), Quaternion.identity) as GameObject; //Instantiation
 

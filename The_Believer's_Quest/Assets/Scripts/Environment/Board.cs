@@ -9,13 +9,11 @@ public class Board : MonoBehaviour
     [SerializeField] private int height = 5;
     private int roomWidth = 17;
     private int roomHeight = 14;
-    [SerializeField] private int roomNumber = 3;
     public static List<GameObject> roomList;
     private Transform board;
 
     public int Width { get => width; set => width = value; }
     public int Height { get => height; set => height = value; }
-    public int RoomNumber { get => roomNumber; set => roomNumber = value; }
 
     public enum DoorPos
     {
@@ -86,6 +84,8 @@ public class Board : MonoBehaviour
         }
         else
         {
+            int RoomNumber = 7 * playerAsset.Floor;
+            
             //Utility.ExecutionTime.Set(); //DEBUG
             if (RoomNumber > Width * Height)
                 throw new System.Exception("Too much rooms.");
@@ -140,7 +140,7 @@ public class Board : MonoBehaviour
                             roomBaseList.Exists(roomBase => roomBase.position[0] == newX && roomBase.position[1] == newY));
 
                     //print("newX = " + newPosition[0] + "\nnewY = " + newPosition[1]); //DEBUG
-                    if (k == (int)(0.3333f * RoomNumber) || k == (int)(0.6666f * RoomNumber))
+                    if (k == (int)(0.3333f * RoomNumber))
                     {
                         actual = new RoomBase(new int[] { newX, newY }, k, Type.Chest);
                     }
