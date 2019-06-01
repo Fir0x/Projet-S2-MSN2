@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: NailGun
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300010, guid: f0ea59557350d784ebcefe7aa6d3969a, type: 3}
-  price: 0
-  damage: 0
-  cooldown: 0
-  reloadingTime: 0
-  loader: 0
-  loaderCappacity: 0
-  maxAmmunitions: 0
-  ammunitions: 0
-  speed: 0
+  price: 200
+  damage: 10
+  cooldown: 0.2
+  reloadingTime: 1
+  loader: 20
+  loaderCappacity: 20
+  maxAmmunitions: 200
+  ammunitions: 200
+  speed: 3
   type: 1
   nbbulletsbyshot: 1
   projectile: {fileID: 0}

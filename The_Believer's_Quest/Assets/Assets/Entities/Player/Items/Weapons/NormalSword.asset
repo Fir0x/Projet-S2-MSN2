@@ -16,13 +16,13 @@ MonoBehaviour:
   price: 0
   damage: 5
   cooldown: 0.2
-  reloadingTime: 5
-  loader: 5
-  loaderCappacity: 10
-  maxAmmunitions: 100
-  ammunitions: 50
-  speed: 10
-  type: 1
-  nbbulletsbyshot: 5
-  projectile: {fileID: 21300010, guid: 1e37c2890659a8d4cb47c1729cb75d0d, type: 3}
+  reloadingTime: 0
+  loader: 0
+  loaderCappacity: 0
+  maxAmmunitions: 0
+  ammunitions: 0
+  speed: 0
+  type: 0
+  nbbulletsbyshot: 0
+  projectile: {fileID: 0}
   Object: {fileID: 0}
