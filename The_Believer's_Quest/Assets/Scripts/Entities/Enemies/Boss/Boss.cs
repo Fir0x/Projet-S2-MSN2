@@ -56,6 +56,8 @@ public abstract class Boss : MonoBehaviour
     protected void OnDestroy()
     {
         GetComponentInParent<RoomManager>().DestroyEnemy(gameObject);
+        ChangeDiamonds();
+        ChangeGold();
     }
 
     protected void FixedUpdate()
@@ -94,10 +96,9 @@ public abstract class Boss : MonoBehaviour
         if (bossData.Hp <= 0)
         {
             roomManager.DestroyEnemy(gameObject);
-            healthBar.SliderAppear();
+            healthBar.SliderDisappear();
         }
 
-        //healthBar.value = bossData.Hp;
         if (bossData.Hp <= hpPhase && isFirstPhase)
         {
             ChangePhase();
@@ -136,4 +137,15 @@ public abstract class Boss : MonoBehaviour
     }
 
     protected abstract void ChangePhase();
+
+    private void ChangeGold()
+    {
+        playerAsset.Gold += (int)(Random.Range(10, 30) * playerAsset.Floor * 0.5f);
+        UIController.uIController.changeGold.Invoke();
+    }
+    private void ChangeDiamonds()
+    {
+        playerAsset.Diamond += Random.Range(1, 4) * playerAsset.Floor;
+        UIController.uIController.changeDiamond.Invoke();
+    }
 }

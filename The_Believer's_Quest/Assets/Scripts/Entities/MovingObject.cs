@@ -16,7 +16,6 @@ public class MovingObject : MonoBehaviour
                 
                 if (hitLeft.collider != null && hitLeft.collider.gameObject.CompareTag("Pattern"))
                 {
-                    print("" + hitLeft.collider.name);
                     noCollision = false;
                 }
                 break;
@@ -32,7 +31,6 @@ public class MovingObject : MonoBehaviour
                 {
                     if (hitUp1.collider.gameObject.CompareTag("Pattern") || hitUp2.collider.gameObject.CompareTag("Pattern"))
                     {
-                        print("" + hitUp1.collider.name);
                         noCollision = false;
                     }
                 }
@@ -40,7 +38,6 @@ public class MovingObject : MonoBehaviour
                 {
                     if (hitUp1.collider.gameObject.CompareTag("Pattern"))
                     {
-                        print("" + hitUp1.collider.name);
                         noCollision = false;
                     }
                 }
@@ -59,7 +56,6 @@ public class MovingObject : MonoBehaviour
 
                 if (hitRight.collider != null && hitRight.collider.gameObject.CompareTag("Pattern"))
                 {
-                    print("" + hitRight.collider.name);
                     noCollision = false;
                 }
                 break;
@@ -75,7 +71,6 @@ public class MovingObject : MonoBehaviour
                 {
                     if (hitDown1.collider.gameObject.CompareTag("Pattern") || hitDown2.collider.gameObject.CompareTag("Pattern"))
                     {
-                        print("" + hitDown1.collider.name);
                         noCollision = false;
                     }
                 }
@@ -83,7 +78,6 @@ public class MovingObject : MonoBehaviour
                 {
                     if (hitDown1.collider.gameObject.CompareTag("Pattern"))
                     {
-                        print("" + hitDown1.collider.name);
                         noCollision = false;
                     }
                 }
@@ -96,32 +90,6 @@ public class MovingObject : MonoBehaviour
                 }
                 break;
         }
-        /*RaycastHit2D hit1 = Physics2D.Raycast(pos + new Vector2(0.2f, -0.4f), new Vector2(x, y), speed * Time.deltaTime * 2f);
-        RaycastHit2D hit2 = Physics2D.Raycast(pos + new Vector2(-0.2f, -0.4f), new Vector2(x, y), speed * Time.deltaTime * 2f);
-        Debug.DrawRay(pos + new Vector2(0.2f, -0.4f), new Vector2(x, y) * speed * Time.deltaTime, Color.red);
-        Debug.DrawRay(pos + new Vector2(-0.2f, -0.4f), new Vector2(x, y) * speed * Time.deltaTime, Color.red);
-
-        if (hit1.collider != null && hit2.collider != null)
-        {
-            if (hit1.collider.gameObject.CompareTag("Pattern") || hit2.collider.gameObject.CompareTag("Pattern"))
-            {
-                noCollision = false;
-            }
-        }
-        else if (hit1.collider != null)
-        {
-            if (hit1.collider.gameObject.CompareTag("Pattern"))
-            {
-                noCollision = false;
-            }
-        }
-        else if (hit2.collider != null)
-        {
-            if (hit2.collider.gameObject.CompareTag("Pattern"))
-            {
-                noCollision = false;
-            }
-        }*/
 
         return noCollision;
     }

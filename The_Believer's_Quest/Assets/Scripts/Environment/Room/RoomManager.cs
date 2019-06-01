@@ -72,25 +72,21 @@ public class RoomManager : MonoBehaviour
         }
         if (bossDoor == 0)
         {
-            print("alo");
             layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
             layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Left }, doorTiles, floor);
         }
         else if (bossDoor == 1)
         {
-            print("alo");
             layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
             layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Up }, doorTiles, floor);
         }
         else if (bossDoor == 2)
         {
-            print("alo");
             layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
             layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Right }, doorTiles, floor);
         }
         else if (bossDoor == 3)
         {
-            print("alo");
             layerB.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
             layerF.ClearTiles(new List<Board.DoorPos> { Board.DoorPos.Down }, doorTiles, floor);
         }
@@ -128,7 +124,7 @@ public class RoomManager : MonoBehaviour
     {
         if (testForBoss)
         {
-            GameObject.Find("SoundManager").GetComponent<SoundManager>().ChangeBO(3 + (floor - 1));
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().ChangeBO(floor + 2);
         }
 
         if (firstEntry && col.CompareTag("Player"))
@@ -160,10 +156,11 @@ public class RoomManager : MonoBehaviour
                 testForBoss = false;
                 GameObject bossOnScene = Instantiate(enemies[0], roomPosition, Quaternion.identity) as GameObject;
                 bossOnScene.transform.parent = transform;
-                bossOnScene.GetComponent<BossLifebar>().SliderAppear();
+                bossOnScene.GetComponent<BossLifebar>().SliderDisappear();
             }
             else
             {
+                Vector3 player = GameObject.Find("Player").transform.position;
                 bool noBoss = false;
                 foreach (GameObject enemy in enemies)        //apparition ennemis sauf boss(pour phases de boss)
                 {
@@ -175,7 +172,7 @@ public class RoomManager : MonoBehaviour
                             x = Random.Range(-7, 7);
                             y = Random.Range(-5, 5);
 
-                            if (grid.NodeFromPos(roomPosition + new Vector3(x, y, 0)).walkable)
+                            if (grid.NodeFromPos(roomPosition + new Vector3(x, y, 0)).walkable && (x <= player.x - 1|| x >= player.x + 1) && (y <= player.y - 1 || y >= player.y + 1))
                             {
                                 posOk = true;
                             }
@@ -186,7 +183,6 @@ public class RoomManager : MonoBehaviour
                     }
                     else
                     {
-                        print("" + enemy.name);
                         noBoss = true;
                     }
                 }
