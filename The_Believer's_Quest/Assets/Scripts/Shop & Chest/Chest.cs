@@ -29,14 +29,13 @@ public class Chest : MonoBehaviour
 
         instance = this;
 
-        List<GameObject> l = new List<GameObject>();
-        l= GetComponent<ItemChooser>().ChooseContent(availableItels);
+        /*List<GameObject> l = GetComponent<ItemChooser>().ChooseContent(availableItels);
 
         int i = Random.Range(0, l.Count);
 
         GameObject g = l[i];
 
-        instance.Add(g);
+        instance.Add(g);*/
     }   
 
     // Add a new item. If there is enough room we

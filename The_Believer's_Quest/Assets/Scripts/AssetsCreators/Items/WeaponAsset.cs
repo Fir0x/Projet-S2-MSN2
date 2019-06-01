@@ -23,7 +23,7 @@ public class WeaponAsset : ScriptableObject
     [SerializeField] private int speed;
     [SerializeField] private WeaponType type;
     [SerializeField] private int nbbulletsbyshot;
-    
+    [SerializeField] private Sprite projectile;
     [SerializeField] private GameObject Object;
 
     public Sprite Sprite { get => sprite; set => sprite = value; }
@@ -38,6 +38,7 @@ public class WeaponAsset : ScriptableObject
     public int Speed { get => speed; set => speed = value; }
     public WeaponType Type { get => type; set => type = value; }
     public int Nbbulletsbyshot { get => nbbulletsbyshot; set => nbbulletsbyshot = value;}
+    public Sprite Bullet{ get => projectile; set => projectile = value;}
 
     public GameObject gameobject { get => Object; set => Object = value; }
 }
