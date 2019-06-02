@@ -24,6 +24,7 @@ public class ChestUI : MonoBehaviour
     public void SetItems(List<GameObject> items)
     {
         itemsInChest = items;
+        UpdateUI();
     }
 
     public void EnableUI()

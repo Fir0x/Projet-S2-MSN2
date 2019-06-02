@@ -30,11 +30,6 @@ public class Chest : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        print("Chest: " + items.Count);
-    }
-
     // Add a new item. If there is enough room we
     // return true. Else we return false.
     public bool Add(GameObject item)

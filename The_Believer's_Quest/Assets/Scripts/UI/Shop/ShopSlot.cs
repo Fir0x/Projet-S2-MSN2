@@ -46,7 +46,7 @@ public class ShopSlot : MonoBehaviour
             if (inventory.Add(item))
             {
                 shop.Remove(item);
-                Player.instance.PlayerAsset.Gold -= item.GetComponent<Object>().ObjectsAsset.Price;
+                Player.instance.PlayerAsset.Gold -= price;
                 UIController.uIController.changeGold.Invoke();
             }
         }

@@ -42,11 +42,15 @@ public class InventorySlot : MonoBehaviour
 
         if (GameObject.Find("Player").GetComponent<Player>().RoomType == Board.Type.Shop)
         {
+            int price = item.GetComponent<Object>().ObjectsAsset.Price;
+
             if (item != null)
             {
                 if (Shop.instance.Add(item))
                 {
                     Inventory.instance.Remove(item);
+                    Player.instance.PlayerAsset.Gold += price;
+                    UIController.uIController.changeGold.Invoke();
                 }
             }
         }

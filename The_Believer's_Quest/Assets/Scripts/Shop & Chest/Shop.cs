@@ -29,12 +29,6 @@ public class Shop : MonoBehaviour
         shopUI.SetItems(items);
     }
 
-    private void Update()
-    {
-        print("Shop: " + items.Count);
-    }
-
-
     // Add a new item. If there is enough room we
     // return true. Else we return false.
     public bool Add(GameObject item)
