@@ -44,8 +44,11 @@ public class Room : MonoBehaviour
     {
         GameObject room = patterns.Pattern[0];
         Player.transform.position = room.transform.position + new Vector3(0.5f, 3.5f, 0f);
+        GameObject nextLevelOnScene = Instantiate(nextLevel, room.transform.position + new Vector3(0.5f, 7f, 0f), Quaternion.identity) as GameObject;
+        nextLevelOnScene.GetComponent<SpriteRenderer>().enabled = false;
+        nextLevelOnScene.transform.SetParent(GameObject.Find("Board").transform);
         type = Board.Type.Shop;
-        print("hubcrea");
+       
         return room;
     }
 
