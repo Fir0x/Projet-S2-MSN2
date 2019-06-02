@@ -2680,7 +2680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d292ff0d356ea498de70cc87686e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
+  playerAsset: {fileID: 0}
   pistol: {fileID: 6167037201334550808, guid: f60a186df86b32345bc176637acbb710, type: 3}
   sliderBoss: {fileID: 2003585571846967404}
   canvasgamover: {fileID: 1822274600683581772}

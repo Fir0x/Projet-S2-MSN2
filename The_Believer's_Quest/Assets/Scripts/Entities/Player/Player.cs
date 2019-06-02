@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -51,6 +49,8 @@ public class Player : MovingObject
     public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
     public Board.Type RoomType { get => roomType; set => roomType = value; }
     public UnlockedItemsAsset UnlockedItems { get => unlockedItems; set => unlockedItems = value; }
+
+    private bool affected = false;
 
     private void Start()
     {
@@ -114,7 +114,6 @@ public class Player : MovingObject
             soundManager.PlaySingle(soundManager.lfx[4]);
             gameover.SetActive(true);
             //StartCoroutine(GameOver());
-            gameover.SetActive(true);
         }
     }
 
@@ -129,10 +128,14 @@ public class Player : MovingObject
         playerAsset.Invicibility = false;
     }
 
-    public void SetEffect(int value)
+    public void SetEffect(float value)
     {
         playerAsset.EffectValue = value;
         UIController.uIController.changeEffect.Invoke();
+        if (playerAsset.EffectValue >= playerAsset.MaxEffectValue)
+        {
+            affected = true;
+        }
     }
 
     public void SetMaxEffect(int value)
@@ -352,7 +355,7 @@ public class Player : MovingObject
 
         while (noWall && (transform.position.x > finalPos.x + 0.1f || transform.position.x < finalPos.x - 0.1f) || (transform.position.y > finalPos.y + 0.1f || transform.position.y < finalPos.y - 0.1f))
         {
-            if (!this.Collision(transform.position, playerAsset.Speed, 1))
+            if (!Collision(transform.position, playerAsset.Speed, 1))
             {
                 break;
             }
@@ -360,11 +363,11 @@ public class Player : MovingObject
             {
                 break;
             }
-            if (!this.Collision(transform.position, playerAsset.Speed, 3))
+            if (!Collision(transform.position, playerAsset.Speed, 3))
             {
                 break;
             }
-            if (!this.Collision(transform.position, playerAsset.Speed, 0))
+            if (!Collision(transform.position, playerAsset.Speed, 0))
             {
                 break;
             }
@@ -377,6 +380,9 @@ public class Player : MovingObject
 
     private void FixedUpdate()
     {
+        if (affected)
+            SetLife(playerAsset.Hp - 0.2f);
+
         moveX = PlayerAsset.Speed * Time.deltaTime;
         moveY = PlayerAsset.Speed * Time.deltaTime;
 

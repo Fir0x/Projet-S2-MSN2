@@ -16,8 +16,9 @@ public class EnemyAsset : ScriptableObject
     [SerializeField] private float shotSpeed;
     [SerializeField] private float range;
     [SerializeField] private Sprite projectile;
-    
-    
+    [SerializeField] private bool effect;
+
+
     public float Hp { get => hp; set => hp = value; }
     public float Speed { get => speed; set => speed = value; }
     public int Damage { get => damage; set => damage = value; }
@@ -32,5 +33,6 @@ public class EnemyAsset : ScriptableObject
     public float Range { get => range; set => range = value; }
 
     public Sprite Projectile { get => projectile; set => projectile = value; }
+    public bool Effect { get => effect; set => effect = value; }
 }
 

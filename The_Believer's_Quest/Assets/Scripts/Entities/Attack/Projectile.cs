@@ -6,17 +6,19 @@ public class Projectile : MovingObject
     private float damage;
     private Vector3 direction;
     private bool player;
-   
+    private bool effect;
     
     //Sarah
 
-    public void Init(Sprite sprite, float speed, float damage, Vector3 origin, float angle, Vector3 _direction, bool player, bool circle) 
+    public void Init(Sprite sprite, float speed, float damage, Vector3 origin, float angle, Vector3 _direction, bool player, bool circle, bool effect) 
     {
         //projectiles ennemis
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         this.speed = speed;
         this.damage = damage;
-        this.player = player;       
+        this.player = player;
+        this.effect = effect;
+
         if (circle || _direction == new Vector3(0, 0, 0))
             _direction = transform.up;        
         if (angle != 0)
@@ -25,6 +27,7 @@ public class Projectile : MovingObject
     }
     public void Init(Sprite sprite, float speed, float damage, Vector3 origin, float angle, bool player) 
     {
+        effect = false;
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         this.speed = speed;
         this.damage = damage;
@@ -52,6 +55,7 @@ public class Projectile : MovingObject
             if (hitInfo.collider.CompareTag("Player") && !player)
             {
                 hitInfo.collider.GetComponent<Player>().SetLife(playerAsset.Hp - damage);
+                hitInfo.collider.GetComponent<Player>().SetEffect(playerAsset.EffectValue + damage / 2);
                 Destroy(gameObject);
             }
             if (hitInfo.collider.CompareTag("Pattern"))

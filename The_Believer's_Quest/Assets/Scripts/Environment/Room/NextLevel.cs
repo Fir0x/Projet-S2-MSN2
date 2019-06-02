@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
-using System.Collections;
 
 public class NextLevel : MonoBehaviour
 {
@@ -32,9 +30,11 @@ public class NextLevel : MonoBehaviour
                     GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(playerAsset.Floor + 3);
                     Destroy(GameObject.Find("Board"));
                     MapController.mapInstance.ResetMap();
+                    Player.instance.PlayerAsset.EffectValue = 0;
                     Saver.SavePlayerData(playerAsset, Player.instance.UnlockedItems.Unlocked);
                 }
             }
+
             firstTrigger = false;
         }
     }

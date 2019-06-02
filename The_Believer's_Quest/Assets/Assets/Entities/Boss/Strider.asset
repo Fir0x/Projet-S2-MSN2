@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05daa7f2a2d083d4082ebe38a94e5d94, type: 3}
   m_Name: Strider
   m_EditorClassIdentifier: 
-  hp: 200
-  maxHp: 200
+  hp: 300
+  maxHp: 300
   speed: 1
   damage: 10
   minLoot: 0
   maxLoot: 0
   sprite: {fileID: 0}
-  range: 0
-  cooldown: 0
+  range: 3
+  cooldown: 10
