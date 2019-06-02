@@ -59,11 +59,9 @@ public class Enemy : MovingObject
         
         if(shot)
         {
-            //animatorController.ChangeAttack();
             StartCoroutine(AttackWithCoolDown());
         }
         direction = nextPos - firstPos;
-        //ChangeDirection();
         firstPos = nextPos;
     }
 
@@ -154,7 +152,6 @@ public class Enemy : MovingObject
         HP -= damage;
         if (HP <= 0)
         {
-            //animatorController.Death();
             Destroy(gameObject);
         }
     }

@@ -10,6 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cff84e8516cb74943949f4336288e06e, type: 3}
-  m_Name: NonoeilAnim
+  m_Name: EarthSentinelAnim
   m_EditorClassIdentifier: 
-  animations: []
+  move:
+  - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
+  attack:
+  - {fileID: 7400000, guid: 0f9c3f52c01a30b4e863a70401dd464e, type: 2}
+  death: {fileID: 7400000, guid: 08c36bd21fecc014fa926009988d9603, type: 2}
