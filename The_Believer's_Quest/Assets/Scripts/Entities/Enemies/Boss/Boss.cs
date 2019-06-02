@@ -16,9 +16,11 @@ public abstract class Boss : MonoBehaviour
     
     [SerializeField] protected BossAsset bossData;
     [SerializeField] protected PlayerAsset playerAsset;
+    protected float HP;
     protected float hpPhase;
     protected Animator animator;
 
+    
     protected Vector3 startPos;
     protected Node nextNode;
     protected Transform transformPlayer;
@@ -34,6 +36,7 @@ public abstract class Boss : MonoBehaviour
 
     protected void Start()
     {
+        HP = bossData.Hp;
         healthBar = GetComponent<BossLifebar>();
         healthBar.SetMaxValue(bossData.MaxHp);
         roomManager = GetComponentInParent<RoomManager>();
@@ -86,26 +89,25 @@ public abstract class Boss : MonoBehaviour
 
     public void ChangeLife(float hp)
     {
-        if (bossData.Hp + hp > bossData.MaxHp)
+        if (HP + hp > bossData.MaxHp)
         {
             hp = 0;
         }
 
-        bossData.Hp += hp;
-        healthBar.SetValue(bossData.Hp);
-        if (bossData.Hp <= 0)
+        HP += hp;
+        healthBar.SetValue(HP);
+        if (HP <= 0)
         {
             roomManager.DestroyEnemy(gameObject);
             healthBar.SliderDisappear();
         }
 
-        if (bossData.Hp <= hpPhase && isFirstPhase)
+        if (HP <= hpPhase && isFirstPhase)
         {
             ChangePhase();
             isFirstPhase = false;
         }
     }
-
     protected void AStarPathfindingMoving()
     {
         startPos = transform.position;

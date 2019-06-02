@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 200
   maxHp: 200
-  speed: 1
-  damage: 10
+  speed: 3.375
+  damage: 33.75
   minLoot: 0
   maxLoot: 0
   sprite: {fileID: 0}

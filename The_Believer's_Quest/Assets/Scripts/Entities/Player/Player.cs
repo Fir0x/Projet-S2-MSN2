@@ -30,6 +30,7 @@ public class Player : MovingObject
     [SerializeField] private GameObject gameover;
 
     private Weapon weapon;
+    private GameObject actualWeapon;
 
     private Board.Type roomType;
     private Animator animator;
@@ -52,11 +53,13 @@ public class Player : MovingObject
     private void Start()
     {
         roomType = Board.Type.Shop;
+        weapon = GetComponentInChildren<Weapon>();
 
         instance = this;
         noForcedMove = true;
-        weapon = GetComponentInChildren<Weapon>();
-        weapon.Init(playerAsset.WeaponsList[0], playerAsset);
+        actualWeapon = playerAsset.WeaponsList[0];
+        weapon.Init(actualWeapon.GetComponent<WeaponItem>().WeaponAsset, playerAsset);
+        Inventory.instance.Add(actualWeapon);
         playerAsset.Position = transform.position;
         playerAsset.Invicibility = false;
         testForDash = true;
@@ -93,7 +96,6 @@ public class Player : MovingObject
         if (playerAsset.Hp <= 0)
         {
             animator.SetTrigger(animDeathID);
-            Time.timeScale = 1f;
             Invoke("GameOver", 2);
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public class Weapon : MonoBehaviour
 {
-    public GameObject suce;
+    public GameObject weaponGO;
     private WeaponAsset weapon;
     private PlayerAsset playerAsset;
     private bool shot;
@@ -17,7 +17,6 @@ public class Weapon : MonoBehaviour
 
     public void Init(WeaponAsset weapon, PlayerAsset playerAsset)
     {
-        Inventory.instance.Add(suce);
         shot = true;
         this.weapon = weapon;
         this.playerAsset = playerAsset;
