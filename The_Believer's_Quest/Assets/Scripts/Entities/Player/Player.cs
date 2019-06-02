@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -20,6 +21,7 @@ public class Player : MovingObject
     private bool testForDash;
     private bool testForInvincibility;
 
+    private bool nearShop;
     private bool nearChest;
 
     private Rigidbody2D rigid;  //utile pour déplacement glace
@@ -28,8 +30,8 @@ public class Player : MovingObject
     [SerializeField] private GameObject gameover;
 
     private Weapon weapon;
-    
-    private List<Room> listRoom;
+
+    private Board.Type roomType;
     private Animator animator;
     private int animMoveHashID = Animator.StringToHash("Move");
     private int animDirectionHashID = Animator.StringToHash("Direction");
@@ -42,6 +44,27 @@ public class Player : MovingObject
 
     public GameObject Camera { get => camera; set => camera = value; }
     public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
+    public Board.Type RoomType { get => roomType; set => roomType = value; }
+
+    private void Start()
+    {
+        roomType = Board.Type.Shop;
+
+        instance = this;
+        noForcedMove = true;
+        weapon = GetComponentInChildren<Weapon>();
+        weapon.Init(playerAsset.WeaponsList[0], playerAsset);
+        playerAsset.Position = transform.position;
+        playerAsset.Invicibility = false;
+        testForDash = true;
+
+        firstPos = transform.position;
+
+        animator = GetComponent<Animator>();
+
+        nearShop = false;
+        nearChest = false;
+    }
 
     public Vector3 GetPos()
     {
@@ -52,6 +75,7 @@ public class Player : MovingObject
     {
         return firstPos;
     }
+
 
     public void SetLife(float value)
     {
@@ -65,9 +89,13 @@ public class Player : MovingObject
         {
             animator.SetTrigger(animDeathID);
             Time.timeScale = 1f;
-            gameover.SetActive(false);
-            print("Game Over");
+            Invoke("GameOver", 4);
         }
+    }
+
+    public void GameOver()
+    {
+        gameover.SetActive(true);
     }
 
     IEnumerator InvicibilityCoolDown()
@@ -185,23 +213,6 @@ public class Player : MovingObject
         }
     }
 
-    private void Start()
-    {
-        instance = this;
-        noForcedMove = true;
-        weapon = GetComponentInChildren<Weapon>();
-        weapon.Init(playerAsset.WeaponsList[0], playerAsset);
-        playerAsset.Position = transform.position;
-        playerAsset.Invicibility = false;
-        testForDash = true;
-
-        firstPos = transform.position;
-
-        animator = GetComponent<Animator>();
-
-        nearChest = false;
-    }
-
     public void MoveUp()
     {
         if(noForcedMove)
@@ -299,31 +310,10 @@ public class Player : MovingObject
     {
         noForcedMove = false;
 
-        bool left = false;
-        bool up = false;
-        bool right = false;
-        bool down = false;
         Vector2 pos = transform.position;
 
         float step = speed * Time.deltaTime;
         Vector2 direction = (Vector2)finalPos - pos;
-
-        if(direction.x <= 0)
-        {
-            left = true;
-        }
-        else
-        {
-            right = true;
-        }
-        if (direction.y <= 0)
-        {
-            down = true;
-        }
-        else
-        {
-            up = true;
-        }
 
         bool noWall = true;
 
@@ -371,27 +361,6 @@ public class Player : MovingObject
         }
         
         Camera.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.transform.position.z);
-
-        //déplacement honnete pour niveau glace
-
-        /*transform.Translate(moveX, moveY, 0f);   
-        
-        if(Input.GetKey( (KeyCode.LeftArrow)))
-        {
-            this.rigid.AddForce(new Vector2(-1, 0) * moveSpeed * Time.deltaTime);
-        }
-        else if(Input.GetKey( (KeyCode.RightArrow)))
-        {
-            this.rigid.AddForce(new Vector2 (1, 0) * moveSpeed * Time.deltaTime);
-        }
-        else if(Input.GetKey( (KeyCode.UpArrow)))
-        {
-            this.rigid.AddForce(new Vector2 (0, 1) * moveSpeed * Time.deltaTime);
-        }
-        else if(Input.GetKey( (KeyCode.DownArrow)))
-        {
-            this.rigid.AddForce(new Vector2 (0, -1) * moveSpeed * Time.deltaTime);
-        }*/
     }
 
     public void IsNearChest()
@@ -408,6 +377,22 @@ public class Player : MovingObject
     {
         InventoryUI.instance.EnableUI();
         ChestUI.instance.EnableUI();
+    }
+
+    public void IsNearShop()
+    {
+        nearShop = !nearShop;
+    }
+
+    public bool GetNearShop()
+    {
+        return nearShop;
+    }
+
+    public void ActiveShopUI()
+    {
+        InventoryUI.instance.EnableUI();
+        ShopUI.instance.EnableUI();
     }
 }
 

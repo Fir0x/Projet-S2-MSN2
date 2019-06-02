@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 //Nicolas I
 public class Board : MonoBehaviour
@@ -199,7 +198,7 @@ public class Board : MonoBehaviour
                 roomBase.position[1] * roomHeight + 6 }, roomBase.roomNumber, roomBase.doorsPosition, roomBase.type, roomBase.GetBossDoor());
             }
 
-            MapController.mapScript.InitMap(boardMap, width, height);
+            MapController.mapInstance.InitMap(boardMap, width, height);
 
             //Utility.ExecutionTime.PrintExecutionTime(); //DEBUG
         }
@@ -209,6 +208,10 @@ public class Board : MonoBehaviour
     {
         playerAsset.Floor = 0;
         BoardCreation();
+
+        GameObject.Find("UI").transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
+        GameObject.Find("UI").transform.GetChild(0).GetChild(4).gameObject.SetActive(true);
+        GameObject.Find("UI").transform.GetChild(0).GetChild(5).gameObject.SetActive(true);
     }
 
     public void Init()
@@ -217,6 +220,10 @@ public class Board : MonoBehaviour
         BoardCreation();
 
         DestroyEntrance();
+
+        GameObject.Find("UI").transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
+        GameObject.Find("UI").transform.GetChild(0).GetChild(4).gameObject.SetActive(true);
+        GameObject.Find("UI").transform.GetChild(0).GetChild(5).gameObject.SetActive(true);
     }
 
     public void DestroyEntrance()           //to destroy nextLevel which stayed while generating the actual board

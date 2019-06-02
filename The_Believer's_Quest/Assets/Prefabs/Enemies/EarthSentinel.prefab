@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4154963747282114332}
   - component: {fileID: 9158875689252233430}
   - component: {fileID: 2200826045953448667}
+  - component: {fileID: 4685872902455888002}
   m_Layer: 10
   m_Name: EarthSentinel
   m_TagString: Enemy
@@ -71,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 2088165611
+  m_SortingLayer: 1
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d18bff0a28431b94db3f16dbfee23591, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -131,9 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105e42523f717d5408cb50907a17ec4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: []
-  attack: []
-  death: {fileID: 0}
+  animationClips: []
 --- !u!61 &4154963747282114332
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -189,14 +188,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105e42523f717d5408cb50907a17ec4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move:
-  - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
-  - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
-  - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
-  - {fileID: 7400000, guid: 71f9263df18b4d14f9394e37e2348159, type: 2}
-  attack:
-  - {fileID: 7400000, guid: 0f9c3f52c01a30b4e863a70401dd464e, type: 2}
-  - {fileID: 7400000, guid: 0f9c3f52c01a30b4e863a70401dd464e, type: 2}
-  - {fileID: 7400000, guid: 0f9c3f52c01a30b4e863a70401dd464e, type: 2}
-  - {fileID: 7400000, guid: 0f9c3f52c01a30b4e863a70401dd464e, type: 2}
-  death: {fileID: 7400000, guid: 08c36bd21fecc014fa926009988d9603, type: 2}
+  animationClips: []
+--- !u!114 &4685872902455888002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193622213193343670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31a012cd04050449b6311c9af0c57ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

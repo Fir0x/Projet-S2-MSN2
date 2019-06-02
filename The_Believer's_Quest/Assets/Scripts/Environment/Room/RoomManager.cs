@@ -23,14 +23,19 @@ public class RoomManager : MonoBehaviour
 
     private GameObject nextLevel;
     private GameObject chest;
+    private GameObject gandulf;
 
     private Vector3 roomPosition;
     private TileGrid grid;
 
     private Room roomCreator;
 
+    private Board.Type roomType;
+
     public void Init(int[] mapPos, List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList, Room roomCreator, int bossDoor)
     {
+        gandulf = roomCreator.Shopper;
+        roomType = roomCreator.GetRoomType();
         totalWeight = 7 * floor;
         nextLevel = roomCreator.GetNextLevel();
         chest = roomCreator.Chest;
@@ -44,13 +49,18 @@ public class RoomManager : MonoBehaviour
         allEnemiesList = enemiesList;
         grid = gameObject.GetComponent<TileGrid>();
         roomPosition = transform.position;
-
+        
         if (roomCreator.GetRoomType() == Board.Type.Chest)
         {
             GameObject chestOnScene = Instantiate(chest, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity) as GameObject;
             chestOnScene.transform.parent = gameObject.transform;
         }
-        if(enemiesList.Count == 1)
+        else if (roomCreator.GetRoomType() == Board.Type.Shop)
+        {
+            GameObject shopOnScene = Instantiate(gandulf, transform.position + new Vector3(-4.5f, 3f, 0), Quaternion.identity) as GameObject;
+            shopOnScene.transform.parent = gameObject.transform;
+        }
+        else if (roomCreator.GetRoomType() == Board.Type.Boss)
         {
             isBossRoom = true;
             testForBoss = true;
@@ -122,9 +132,10 @@ public class RoomManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col) //Nicolas L
     {
+        GameObject.Find("Player").GetComponent<Player>().RoomType = roomType;
         if (testForBoss)
         {
-            GameObject.Find("SoundManager").GetComponent<SoundManager>().ChangeBO(3 + (floor - 1));
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().ChangeBO(floor + 2);
         }
 
         if (firstEntry && col.CompareTag("Player"))
@@ -140,7 +151,7 @@ public class RoomManager : MonoBehaviour
         }
 
 
-        MapController.mapScript.EnterRoom(mapPos, gameObject.name, doors);
+        MapController.mapInstance.EnterRoom(mapPos, gameObject.name, doors);
     }
 
     public void SpawnEnemies()
@@ -156,10 +167,11 @@ public class RoomManager : MonoBehaviour
                 testForBoss = false;
                 GameObject bossOnScene = Instantiate(enemies[0], roomPosition, Quaternion.identity) as GameObject;
                 bossOnScene.transform.parent = transform;
-                bossOnScene.GetComponent<BossLifebar>().SliderAppear();
+                bossOnScene.GetComponent<BossLifebar>().SliderDisappear();
             }
             else
             {
+                Vector3 player = GameObject.Find("Player").transform.position;
                 bool noBoss = false;
                 foreach (GameObject enemy in enemies)        //apparition ennemis sauf boss(pour phases de boss)
                 {
@@ -171,7 +183,7 @@ public class RoomManager : MonoBehaviour
                             x = Random.Range(-7, 7);
                             y = Random.Range(-5, 5);
 
-                            if (grid.NodeFromPos(roomPosition + new Vector3(x, y, 0)).walkable)
+                            if (grid.NodeFromPos(roomPosition + new Vector3(x, y, 0)).walkable && (x <= player.x - 1|| x >= player.x + 1) && (y <= player.y - 1 || y >= player.y + 1))
                             {
                                 posOk = true;
                             }
@@ -182,7 +194,6 @@ public class RoomManager : MonoBehaviour
                     }
                     else
                     {
-                        print("" + enemy.name);
                         noBoss = true;
                     }
                 }
@@ -308,7 +319,7 @@ public class RoomManager : MonoBehaviour
 
         for (int i = 4; i < transform.childCount; i++)           //destruction of door colliders
         {
-            if(GetComponent<Transform>().GetChild(i).gameObject.tag != "Chest")
+            if(GetComponent<Transform>().GetChild(i).gameObject.tag != "Chest" && GetComponent<Transform>().GetChild(i).gameObject.tag != "Shop")
             {
                 Destroy(GetComponent<Transform>().GetChild(i).gameObject);
             }

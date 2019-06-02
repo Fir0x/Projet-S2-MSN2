@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Hammer
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300024, guid: f0ea59557350d784ebcefe7aa6d3969a, type: 3}
-  price: 0
-  damage: 0
-  cooldown: 0
+  price: 110
+  damage: 10
+  cooldown: 0.5
   reloadingTime: 0
   loader: 0
   loaderCappacity: 0

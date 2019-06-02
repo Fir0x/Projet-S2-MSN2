@@ -53,7 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 8643787426481538859, guid: fddef213d0325fa4b9ebd046b3e9ea98, type: 3}
   playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
-  ui: {fileID: 9191210180019234503, guid: d1cde67dc7783d04990639b029ea2312, type: 3}
   gameover: {fileID: 0}
 --- !u!212 &4659674338766441832
 SpriteRenderer:
@@ -89,8 +88,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2088165611
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300058, guid: 13de8a9df23cac74a9ce28ddf6497e3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -113,7 +112,7 @@ Animator:
   m_GameObject: {fileID: 7281622167015739582}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2682241ca8b85eb4fa3d874c46ba14fc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

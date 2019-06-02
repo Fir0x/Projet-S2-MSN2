@@ -58,7 +58,7 @@ public class KeyBoardManager : MonoBehaviour
         if (Input.GetButtonDown("Dash"))
             player.doDash();
 
-        if (Input.GetButton("Map"))
+        if (Input.GetButtonDown("Map"))
         {
             isMapActive = !isMapActive;
             UIController.uIController.ShowMap();
@@ -67,6 +67,11 @@ public class KeyBoardManager : MonoBehaviour
         if (Input.GetButtonDown("Interact") && Player.instance.GetNearChest())
         {
             player.ActiveChestUI();
+        }
+
+        if (Input.GetButtonDown("Interact") && Player.instance.GetNearShop())
+        {
+            player.ActiveShopUI();
         }
     }
 }

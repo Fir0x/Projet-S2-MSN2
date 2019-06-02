@@ -18,44 +18,6 @@ public class Interactable : MonoBehaviour
         isChest = false;
     }
 
-    //public virtual void Interact() {}
-
-    void Update()
-    {
-        if (isFocus && !isOpen)
-        {
-            float distance = Vector3.Distance(player.position, interactionTransform.position);
-            if (distance <= radius)
-            {
-                //Interact();
-                isOpen = true;
-            }
-        }
-    }
-
-    public void OnFocused(Transform playerTransform)
-    {
-        isFocus = true;
-        player = playerTransform;
-        isOpen = false;
-    }
-    
-    public void OnDefocused()
-    {
-        isFocus = false;
-        player = null;
-        isOpen = false;
-    }
-    
-    void OnDrawGizmosSelected()
-    {
-        if (interactionTransform == null)
-            interactionTransform = transform;
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(interactionTransform.position, radius);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(debugTrigger)
@@ -64,6 +26,11 @@ public class Interactable : MonoBehaviour
             {
                 collision.gameObject.GetComponent<Player>().IsNearChest();
             }
+            else if (gameObject.CompareTag("Shop") && collision.CompareTag("Player"))
+            {
+                collision.gameObject.GetComponent<Player>().IsNearShop();
+            }
+
             debugTrigger = false;
         }
     }
@@ -75,11 +42,18 @@ public class Interactable : MonoBehaviour
             if (collision.tag == "Player" && gameObject.tag == "Chest")
             {
                 collision.gameObject.GetComponent<Player>().IsNearChest();
+
             }
+            else if (collision.tag == "Player" && gameObject.tag == "Shop")
+            {
+                collision.gameObject.GetComponent<Player>().IsNearShop();
+            }
+
             debugTrigger = true;
 
             ChestUI.instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             InventoryUI.instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            ShopUI.instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 

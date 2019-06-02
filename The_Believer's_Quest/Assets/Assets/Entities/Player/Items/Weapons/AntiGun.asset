@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: AntiGun
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300012, guid: f0ea59557350d784ebcefe7aa6d3969a, type: 3}
-  price: 0
-  damage: 0
-  cooldown: 0
-  reloadingTime: 0
-  loader: 0
-  loaderCappacity: 0
-  maxAmmunitions: 0
-  ammunitions: 0
-  speed: 0
-  type: 2
+  price: 300
+  damage: 50
+  cooldown: 2
+  reloadingTime: 3
+  loader: 5
+  loaderCappacity: 5
+  maxAmmunitions: 100
+  ammunitions: 100
+  speed: 1
+  type: 1
   nbbulletsbyshot: 1
-  projectile: {fileID: 21300006, guid: f0ea59557350d784ebcefe7aa6d3969a, type: 3}
+  projectile: {fileID: 21300006, guid: ddd38c8d7035c1d4184fa7019c563cb9, type: 3}
   Object: {fileID: 0}

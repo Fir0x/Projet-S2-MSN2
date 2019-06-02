@@ -4,9 +4,11 @@ using System.Collections;
 
 public class NextLevel : MonoBehaviour
 {
+    [SerializeField] private PlayerAsset playerAsset;
     private bool canGo;
     private bool firstTrigger;              //just in case
 
+    public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
     private void Start()
     {
         canGo = true;
@@ -31,9 +33,13 @@ public class NextLevel : MonoBehaviour
         {
             if(firstTrigger)
             {
-                Destroy(GameObject.Find("Board"));
                 GameObject.FindGameObjectWithTag("BoardManager").GetComponent<Board>().Init();
-                GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO((col.GetComponent<Player>().PlayerAsset.Floor - 1) + 2);
+                if (playerAsset.Floor != 0)
+                {
+                    GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(playerAsset.Floor + 3);
+                    Destroy(GameObject.Find("Board"));
+                    MapController.mapInstance.ResetMap();
+                }
             }
             firstTrigger = false;
         }

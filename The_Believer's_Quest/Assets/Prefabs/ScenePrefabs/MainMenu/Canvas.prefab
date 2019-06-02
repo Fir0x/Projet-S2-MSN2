@@ -1584,8 +1584,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 24a48236da5c06c4184622636867952c, type: 2}
-  soundSlider: {fileID: 0}
-  musicSlider: {fileID: 0}
+  soundSlider: {fileID: 7188216009259399681}
+  musicSlider: {fileID: 2609926081946093978}
 --- !u!1 &7188216010054348016
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,12 +2282,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11500000, guid: fe16bcd4ed40d0249b177b6161f16474, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 8517848612728615734}
+        m_MethodName: StartNewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2307,7 +2307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe16bcd4ed40d0249b177b6161f16474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 0}
+  playerData: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   unlockedItems: {fileID: 0}
 --- !u!1 &8908280631768337677
 GameObject:

@@ -5,73 +5,58 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     public static Chest instance;
+    private ChestUI chestUI;
 
-    public List<GameObject> l;
+    [SerializeField] private AllItemsAsset allItems;
+
     public int space = 12;  // Amount of slots in chest
 
-    //[SerializeField] public AllItemsAsset availableItels;
-    
-    // Callback which is triggered when
-    // an item gets added/removed.
-    public delegate void OnItemChanged();
-    public OnItemChanged onItemChangedCallback;
+    public AllItemsAsset AllItems { get => allItems; }
 
-   
     // Current list of items in chest
     public List<GameObject> items = new List<GameObject>();
 
     void Start()
     {
-        if (instance != null)
+        instance = this;
+        chestUI = ChestUI.instance;
+        
+        for(int i = 0; i < 10; i++)
         {
-            print("should not do that"); //DEBUG
-            return;
+            items.Add(AllItems.AllItems[i]);
         }
 
-        instance = this;
+        chestUI.SetItems(items);
 
-        /*List<GameObject> l = GetComponent<ItemChooser>().ChooseContent(availableItels);*/
+    }
 
-        int i = Random.Range(0, l.Count);
-
-        GameObject g = l[i];
-
-        instance.Add(g);
-        
-       
-    }   
+    private void Update()
+    {
+        print("Chest: " + items.Count);
+    }
 
     // Add a new item. If there is enough room we
     // return true. Else we return false.
     public bool Add(GameObject item)
     {
-        foreach (GameObject O in items) //Check if the item is already in items or not
-        {
-            if (O == item) return false;
-        }
-
-        // Check if out of space
         if (items.Count < space)
         {
-            items.Add(item);    // Add item to list
-            // Trigger callback
-            if (onItemChangedCallback != null)
-                onItemChangedCallback.Invoke();
-
+            items.Add(item);
+            chestUI.SetItems(items);
             return true;
         }
-
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     // Remove an item
     public void Remove(GameObject item)
     {
         items.Remove(item);     // Remove item from list
-
+        chestUI.SetItems(items);
         // Trigger callback
-        if (onItemChangedCallback != null)
-            onItemChangedCallback.Invoke();
     }
 
 }

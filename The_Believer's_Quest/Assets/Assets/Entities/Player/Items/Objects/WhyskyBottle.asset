@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300006, guid: 611eb00482ca3ef4ea2c3199b24f82d4, type: 3}
   passive: 0
-  price: 10
+  price: 25
   hP: 30
   maxHP: 0
   effectValue: -5
@@ -22,5 +22,5 @@ MonoBehaviour:
   speed: 0.5
   ammo: 0
   invicibility: 0
-  duration: 0
+  duration: 60
   Object: {fileID: 0}

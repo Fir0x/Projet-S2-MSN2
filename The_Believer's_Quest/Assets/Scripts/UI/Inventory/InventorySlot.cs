@@ -14,8 +14,7 @@ public class InventorySlot : MonoBehaviour
     public void AddItem(GameObject newItem)
     {
         item = newItem;
-
-        icon.sprite = item.GetComponent<SpriteRenderer>().sprite;
+        icon.sprite = item.GetComponent<Object>().ObjectsAsset.Sprite;
         icon.enabled = true;
     }
 
@@ -30,12 +29,25 @@ public class InventorySlot : MonoBehaviour
     // Called when the item is pressed
     public void UseItem()
     {
-        if (item != null)
+        if (GameObject.Find("Player").GetComponent<Player>().RoomType == Board.Type.Chest)
         {
-            if (!Chest.instance.Add(item))
+            if (item != null)
             {
-                Inventory.instance.Remove(item);
-                ClearSlot();
+                if (Chest.instance.Add(item))
+                {
+                    Inventory.instance.Remove(item);
+                }
+            }
+        }
+
+        if (GameObject.Find("Player").GetComponent<Player>().RoomType == Board.Type.Shop)
+        {
+            if (item != null)
+            {
+                if (Shop.instance.Add(item))
+                {
+                    Inventory.instance.Remove(item);
+                }
             }
         }
     }

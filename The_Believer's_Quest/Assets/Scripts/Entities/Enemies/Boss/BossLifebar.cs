@@ -18,10 +18,9 @@ public class BossLifebar : MonoBehaviour
         lifeBar.gameObject.SetActive(true);
     }
 
-    public void SliderAppear()
+    public void SliderDisappear()
     {
-        print(lifeBar);
-         lifeBar.gameObject.SetActive(false);
+        lifeBar.gameObject.SetActive(false);
     }
 
     public void SetValue(float HP)

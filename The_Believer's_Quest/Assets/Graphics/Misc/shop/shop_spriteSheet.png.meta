@@ -3,6 +3,10 @@ guid: 0839663a541173a4885f11e0b80f0aec
 TextureImporter:
   fileIDToRecycleName:
     21300000: shop_spriteSheet_0
+    21300002: shop_spriteSheet_1
+    21300004: shop_spriteSheet_2
+    21300006: shop_spriteSheet_3
+    21300008: shop_spriteSheet_4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -93,13 +97,93 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: c51e0bad938b43245ac8a5cdd586b660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_spriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 460
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffbab53d386720f4e96d3f3262936c06
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_spriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 418
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4157ccb2ebbd3b44d80d51c64f7d9fb5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_spriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 451
+        width: 15
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8be39d980a383a4aa9f7847cb639536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shop_spriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 395
+        width: 114
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14f373d366a3d404fb0beb5051e1f9ea
       vertices: []
       indices: 
       edges: []
