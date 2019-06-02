@@ -21,7 +21,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySingle(AudioClip clip)
     {
-        print("sele");
         currentFx.clip = clip;
         currentFx.Play();
     }

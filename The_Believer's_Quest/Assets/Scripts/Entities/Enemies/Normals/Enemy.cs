@@ -134,17 +134,19 @@ public class Enemy : MovingObject
         return EnemyAsset.Weight;
     }
 
-    public void OnDestroy()
-    {
-        ChangeGold();
-    }
-
     public void ChangeGold()
     {
         playerAsset.Gold += Random.Range(2, 15) * enemyAsset.Weight;
         UIController.uIController.changeGold.Invoke();
     }
 
+
+    private void OnDestroy()
+    {
+        ChangeGold();
+        gameObject.GetComponentInParent<RoomManager>().DestroyEnemy(this.gameObject);
+        print("couueju");
+    }
     public void TakeDamage(float damage)
     {
         HP -= damage;
