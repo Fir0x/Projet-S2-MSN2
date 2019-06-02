@@ -98,7 +98,7 @@ public abstract class Boss : MonoBehaviour
         if (HP <= 0)
         {
             healthBar.SliderDisappear();
-            roomManager.DestroyEnemy(gameObject);
+            roomManager.DestroyEnemy(this.gameObject);
         }
 
         if (HP <= hpPhase && isFirstPhase)

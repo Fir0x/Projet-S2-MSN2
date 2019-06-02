@@ -157,7 +157,6 @@ public class Weapon : MonoBehaviour
         }
         //attaque corps à corps
          Cqc();
-        print("HOZL");
         GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().PlaySingle(playerAsset.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Clip);
     }
 

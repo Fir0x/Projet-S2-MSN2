@@ -132,11 +132,6 @@ public class Enemy : MovingObject
         return EnemyAsset.Weight;
     }
 
-    public void OnDestroy()
-    {
-        ChangeGold();
-    }
-
     public void ChangeGold()
     {
         playerAsset.Gold += Random.Range(2, 15) * enemyAsset.Weight;
@@ -148,12 +143,18 @@ public class Enemy : MovingObject
         HP = hp;
     }
 
+    private void OnDestroy()
+    {
+        ChangeGold();
+        gameObject.GetComponentInParent<RoomManager>().DestroyEnemy(this.gameObject);
+        print("couueju");
+    }
     public void TakeDamage(float damage)
     {
         HP -= damage;
         if (HP <= 0)
         {
-            Destroy(gameObject);
+            Destroy(this);
         }
     }
 
