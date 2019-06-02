@@ -1,14 +1,17 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 //Maxence
 public class SoundManager : MonoBehaviour
 {
     public AudioSource currentMusic;
+    public AudioSource currentFx;
 
     [SerializeField] MusicAsset Musics;
     AudioClip[] musics;
     public static SoundManager instance = null;
 
+    public List<AudioClip> lfx;
 
     void Start ()
     {
@@ -18,20 +21,14 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySingle(AudioClip clip)
     {
-        currentMusic.clip = clip;
-        currentMusic.Play ();
+        print("sele");
+        currentFx.clip = clip;
+        currentFx.Play();
     }
 
     public void ChangeVolume(float volume)
     {
         currentMusic.volume = (80f + volume) / 80f;
-    }
-
-    public void RandomizeSfx (params AudioClip[] clips)
-    {
-        int randomIndex = Random.Range(0, clips.Length);
-        currentMusic.clip = clips[randomIndex];
-        currentMusic.Play();
     }
 
     public void ChangeBO(int x)

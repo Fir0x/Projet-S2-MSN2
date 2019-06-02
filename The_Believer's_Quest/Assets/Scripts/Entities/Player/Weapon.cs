@@ -154,9 +154,11 @@ public class Weapon : MonoBehaviour
             if ((weapon.Type == WeaponAsset.WeaponType.Circle))
                 //attaque en cercle avec Circleshot
                 CircleShot(weapon.Nbbulletsbyshot);
-        } 
+        }
         //attaque corps à corps
-         Cqc();        
+         Cqc();
+        print("HOZL");
+        GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().PlaySingle(playerAsset.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Clip);
     }
 
     private void Cqc()
