@@ -71,7 +71,7 @@ public class Attack : MonoBehaviour
     private void LineShot(Vector3 direction, float speed, float damage, float angle)//tir linéaire
     {
        Instantiate(projectile, transform.position,
-            transform.rotation).GetComponent<Projectile>().Init(enemy.Projectile, speed, damage, transform.position, angle, (direction-transform.position).normalized,false, false); 
+            transform.rotation).GetComponent<Projectile>().Init(enemy.Projectile, speed, damage, transform.position, angle, (direction-transform.position),false, false); 
     }
     
     private void CircleShot(int nbprojectile, float speed, float damage)//tir en cercle
