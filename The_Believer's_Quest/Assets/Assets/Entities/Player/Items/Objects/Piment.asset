@@ -22,5 +22,4 @@ MonoBehaviour:
   speed: 2
   ammo: 0
   invicibility: 0
-  duration: 30
-  Object: {fileID: 0}
+  duration: 10
