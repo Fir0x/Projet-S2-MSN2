@@ -13,9 +13,9 @@ public class InventorySlot : MonoBehaviour
     // Add item to the slot
     public void AddItem(GameObject newItem)
     {
+        print("inventorySlot AddItem");
         item = newItem;
-
-        icon.sprite = item.GetComponent<SpriteRenderer>().sprite;
+        icon.sprite = item.GetComponent<Object>().ObjectsAsset.Sprite;
         icon.enabled = true;
     }
 

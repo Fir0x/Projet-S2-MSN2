@@ -5,41 +5,36 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     public static Chest instance;
+    private ChestUI chestUI;
+
+    [SerializeField] private AllItemsAsset allItems;
 
     public List<GameObject> l;
     public int space = 12;  // Amount of slots in chest
-
-    //[SerializeField] public AllItemsAsset availableItels;
     
     // Callback which is triggered when
     // an item gets added/removed.
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
 
-   
+    public AllItemsAsset AllItems { get => allItems; }
+
     // Current list of items in chest
     public List<GameObject> items = new List<GameObject>();
 
     void Start()
     {
-        if (instance != null)
-        {
-            print("should not do that"); //DEBUG
-            return;
-        }
-
         instance = this;
-
-        /*List<GameObject> l = GetComponent<ItemChooser>().ChooseContent(availableItels);*/
-
-        int i = Random.Range(0, l.Count);
-
-        GameObject g = l[i];
-
-        instance.Add(g);
+        chestUI = ChestUI.instance;
+        l = new List<GameObject>();
         
-       
-    }   
+        for(int i = 0; i < 10; i++)
+        {
+            items.Add(AllItems.AllItems[i]);
+        }
+        chestUI.SetItems(items);
+    }
+
 
     // Add a new item. If there is enough room we
     // return true. Else we return false.
@@ -54,9 +49,6 @@ public class Chest : MonoBehaviour
         if (items.Count < space)
         {
             items.Add(item);    // Add item to list
-            // Trigger callback
-            if (onItemChangedCallback != null)
-                onItemChangedCallback.Invoke();
 
             return true;
         }
@@ -70,8 +62,6 @@ public class Chest : MonoBehaviour
         items.Remove(item);     // Remove item from list
 
         // Trigger callback
-        if (onItemChangedCallback != null)
-            onItemChangedCallback.Invoke();
     }
 
 }

@@ -46,6 +46,7 @@ public class Player : MovingObject
 
     private void Start()
     {
+
         instance = this;
         noForcedMove = true;
         weapon = GetComponentInChildren<Weapon>();
