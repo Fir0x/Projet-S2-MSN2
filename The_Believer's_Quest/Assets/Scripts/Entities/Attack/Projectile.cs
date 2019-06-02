@@ -16,8 +16,7 @@ public class Projectile : MovingObject
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
         this.speed = speed;
         this.damage = damage;
-        this.player = player;
-       
+        this.player = player;       
         if (circle || _direction == new Vector3(0, 0, 0))
             _direction = transform.up;        
         if (angle != 0)
