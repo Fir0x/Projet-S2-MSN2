@@ -22,6 +22,6 @@ MonoBehaviour:
   sprite: {fileID: 21300018, guid: ddd38c8d7035c1d4184fa7019c563cb9, type: 3}
   nbofprojectiles: 1
   trajectory: 0
-  shotSpeed: 4
+  shotSpeed: 40
   range: 2
   projectile: {fileID: 21300018, guid: ddd38c8d7035c1d4184fa7019c563cb9, type: 3}
