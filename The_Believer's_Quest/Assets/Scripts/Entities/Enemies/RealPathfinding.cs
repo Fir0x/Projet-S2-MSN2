@@ -22,6 +22,7 @@ namespace Entities
 
             if (startNode != finishNode)
             {
+
                 List<Node> openSet = new List<Node>();
                 HashSet<Node> closedSet = new HashSet<Node>();
 
