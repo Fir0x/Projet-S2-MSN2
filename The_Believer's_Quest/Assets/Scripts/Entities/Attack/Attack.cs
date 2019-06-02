@@ -3,12 +3,17 @@
 public class Attack : MonoBehaviour
 {
     public GameObject projectile;
-    public PlayerAsset player;
+    private PlayerAsset player;
     public EnemyAsset enemy;
     public BossAsset boss;
 
     private bool effect = false;
-    
+
+    private void Start()
+    {
+        player = Player.instance.PlayerAsset;
+    }
+
     public enum Trajectory
     {
         Line,

@@ -9,7 +9,7 @@ public class Enemy : MovingObject
     private bool testForCoolDown;
 
     [SerializeField] private EnemyAsset enemyAsset;
-    [SerializeField] private PlayerAsset playerAsset;
+    private PlayerAsset playerAsset;
 
     private Vector3 startPos;
     private float HP;
@@ -36,6 +36,8 @@ public class Enemy : MovingObject
 
     void Start()
     {
+        playerAsset = Player.instance.PlayerAsset;
+
         animatorController = GetComponent<EnemyAnimation>();
         firstPos = transform.position;
 

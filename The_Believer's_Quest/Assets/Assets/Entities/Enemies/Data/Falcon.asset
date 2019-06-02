@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7fa40ba4b50ecf4780829f9b1e17631, type: 3}
-  m_Name: WalkingTurret
+  m_Name: Falcon
   m_EditorClassIdentifier: 
   hp: 10
   speed: 1
@@ -19,10 +19,10 @@ MonoBehaviour:
   maxLoot: 0
   weight: 0
   cooldown: 0
-  sprite: {fileID: 21300016, guid: 129e83b390a29ed4d92282d9d2f4090a, type: 3}
+  sprite: {fileID: 21300000, guid: 886f81538e775144cb8a734c7948ffe9, type: 3}
   nbofprojectiles: 0
   trajectory: 0
   shotSpeed: 0
   range: 0
-  projectile: {fileID: 21300012, guid: ddd38c8d7035c1d4184fa7019c563cb9, type: 3}
+  projectile: {fileID: 21300028, guid: 886f81538e775144cb8a734c7948ffe9, type: 3}
   effect: 0
