@@ -37,7 +37,7 @@ public class Projectile : MovingObject
     }
     private void FixedUpdate()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, 0.1f, LayerMask.GetMask("Aerial", "Ground", "Obstacle"));
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, 0.1f, LayerMask.GetMask("Aerial", "Ground", "Obstacle", "Default"));
    
         if (hitInfo.collider != null)
         {
@@ -46,17 +46,17 @@ public class Projectile : MovingObject
                 hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
                 Destroy(gameObject);
             }
-            else if (hitInfo.collider.CompareTag("Boss") && player)
+            if (hitInfo.collider.CompareTag("Boss") && player)
             {
                 hitInfo.collider.GetComponent<Boss>().ChangeLife(-damage);
                 Destroy(gameObject);
             }
-            else if (hitInfo.collider.CompareTag("Player") && !player)
+            if (hitInfo.collider.CompareTag("Player") && !player)
             {
                 hitInfo.collider.GetComponent<Player>().SetLife(playerAsset.Hp - damage);
                 Destroy(gameObject);
             }
-            else if (hitInfo.collider.CompareTag("Pattern"))
+            if (hitInfo.collider.CompareTag("Pattern"))
             {
                Destroy(gameObject);
             }

@@ -23,6 +23,10 @@ public class Inventory : MonoBehaviour
     // return true. Else we return false.
     public bool Add(GameObject item)
     {
+        if(item.CompareTag("Object") && item.GetComponent<Object>().ObjectsAsset.passive)
+        {
+            return true;
+        }
         // Check if out of space
         if (items.Count < space)
         { 

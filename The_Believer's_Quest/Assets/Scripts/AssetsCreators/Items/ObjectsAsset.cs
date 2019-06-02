@@ -15,8 +15,6 @@ public class ObjectsAsset : ScriptableObject
     [SerializeField] private bool invicibility;
     [SerializeField] private uint duration;
 
-    [SerializeField] private GameObject Object;
-
     public Sprite Sprite { get => sprite; set => sprite = value; }
     public int Price { get => price; set => price = value; }
     public int HP { get => hP; set => hP = value; }
@@ -27,9 +25,6 @@ public class ObjectsAsset : ScriptableObject
     public int Ammo { get => ammo; set => ammo = value; }
     public bool Invicibility { get => invicibility; set => invicibility = value; }
     public uint Duration { get => duration; set => duration = value; }
-
-
-    public GameObject gameobject { get => Object; set => Object = value; }
 
 
 }

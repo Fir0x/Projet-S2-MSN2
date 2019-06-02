@@ -13,17 +13,16 @@ MonoBehaviour:
   m_Name: Winchester
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300020, guid: f0ea59557350d784ebcefe7aa6d3969a, type: 3}
-  price: 110
+  price: 155
   damage: 5
-  cooldown: 0.5
-  reloadingTime: 1
+  cooldown: 1
+  reloadingTime: 1.5
   loader: 7
   loaderCappacity: 7
   maxAmmunitions: 200
   ammunitions: 200
-  speed: 2
+  speed: 40
   type: 2
   nbbulletsbyshot: 7
   projectile: {fileID: 21300012, guid: ddd38c8d7035c1d4184fa7019c563cb9, type: 3}
-  Object: {fileID: 0}
-  diamondPrice: 5
+  diamondPrice: 7

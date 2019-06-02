@@ -89,7 +89,7 @@ public class Player : MovingObject
         {
             animator.SetTrigger(animDeathID);
             Time.timeScale = 1f;
-            Invoke("GameOver", 4);
+            Invoke("GameOver", 2);
         }
     }
 
@@ -391,7 +391,10 @@ public class Player : MovingObject
 
     public void ActiveShopUI()
     {
-        InventoryUI.instance.EnableUI();
+        if (playerAsset.Floor != 0)
+        {
+            InventoryUI.instance.EnableUI();
+        }
         ShopUI.instance.EnableUI();
     }
 }
