@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
     public void Remove(GameObject item)
     {
         items.Remove(item);     // Remove item from list
-
+        inventoryUI.RemoveItem(item);
         // Trigger callback
     }
 

@@ -38,13 +38,16 @@ public class ShopSlot : MonoBehaviour
     // Called when the item is pressed
     public void UseItem()
     {
-        print("cc");
-        if (item != null)
+        int gold = Player.instance.PlayerAsset.Gold;
+        int price = item.GetComponent<Object>().ObjectsAsset.Price;
+
+        if (item != null && price <= gold)
         {
             if (inventory.Add(item))
             {
                 shop.Remove(item);
-                ClearSlot();
+                Player.instance.PlayerAsset.Gold -= item.GetComponent<Object>().ObjectsAsset.Price;
+                UIController.uIController.changeGold.Invoke();
             }
         }
     }

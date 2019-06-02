@@ -29,6 +29,11 @@ public class Shop : MonoBehaviour
         shopUI.SetItems(items);
     }
 
+    private void Update()
+    {
+        print("Shop: " + items.Count);
+    }
+
 
     // Add a new item. If there is enough room we
     // return true. Else we return false.
@@ -37,29 +42,20 @@ public class Shop : MonoBehaviour
         if (items.Count < space)
         {
             items.Add(item);
-            shopUI.UpdateUI();
+            shopUI.SetItems(items);
             return true;
         }
         else
         {
             return false;
         }
-
-        // Check if out of space
-        if (items.Count < space)
-        {
-            items.Add(item);    // Add item to list
-
-            return true;
-        }
-
-        return false;
     }
 
     // Remove an item
     public void Remove(GameObject item)
     {
         items.Remove(item);     // Remove item from list
+        shopUI.SetItems(items);
 
         // Trigger callback
     }

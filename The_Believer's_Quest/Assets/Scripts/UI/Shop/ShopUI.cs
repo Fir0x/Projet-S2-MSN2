@@ -8,7 +8,7 @@ public class ShopUI : MonoBehaviour
 
     public static ShopUI instance;
 
-    private List<GameObject> itemsInChest;
+    private List<GameObject> itemsInShop;
 
     ShopSlot[] slots;
 
@@ -23,7 +23,8 @@ public class ShopUI : MonoBehaviour
 
     public void SetItems(List<GameObject> items)
     {
-        itemsInChest = items;
+        itemsInShop = items;
+        UpdateUI();
     }
 
     public void EnableUI()
@@ -36,9 +37,9 @@ public class ShopUI : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i < itemsInChest.Count)
+            if (i < itemsInShop.Count)
             {
-                slots[i].AddItem(itemsInChest[i]);
+                slots[i].AddItem(itemsInShop[i]);
             }
             else
             {

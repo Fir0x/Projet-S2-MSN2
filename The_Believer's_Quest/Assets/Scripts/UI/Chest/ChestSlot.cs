@@ -40,10 +40,9 @@ public class ChestSlot : MonoBehaviour
     {
         if (item != null)
         {
-            if(inventory.Add(item))
+            if (inventory.Add(item))
             {
                 chest.Remove(item);
-                ClearSlot();
             }
         }
     }

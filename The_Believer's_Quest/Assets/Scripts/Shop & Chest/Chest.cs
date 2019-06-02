@@ -25,9 +25,15 @@ public class Chest : MonoBehaviour
         {
             items.Add(AllItems.AllItems[i]);
         }
+
         chestUI.SetItems(items);
+
     }
 
+    private void Update()
+    {
+        print("Chest: " + items.Count);
+    }
 
     // Add a new item. If there is enough room we
     // return true. Else we return false.
@@ -36,7 +42,7 @@ public class Chest : MonoBehaviour
         if (items.Count < space)
         {
             items.Add(item);
-            chestUI.UpdateUI();
+            chestUI.SetItems(items);
             return true;
         }
         else
@@ -49,7 +55,7 @@ public class Chest : MonoBehaviour
     public void Remove(GameObject item)
     {
         items.Remove(item);     // Remove item from list
-
+        chestUI.SetItems(items);
         // Trigger callback
     }
 

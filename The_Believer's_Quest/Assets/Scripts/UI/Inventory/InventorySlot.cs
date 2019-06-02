@@ -36,7 +36,6 @@ public class InventorySlot : MonoBehaviour
                 if (Chest.instance.Add(item))
                 {
                     Inventory.instance.Remove(item);
-                    ClearSlot();
                 }
             }
         }
@@ -48,7 +47,6 @@ public class InventorySlot : MonoBehaviour
                 if (Shop.instance.Add(item))
                 {
                     Inventory.instance.Remove(item);
-                    ClearSlot();
                 }
             }
         }
