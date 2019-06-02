@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-//Maxence
+//Maxence && Nicolasz
 public class SoundManager : MonoBehaviour
 {
     public AudioSource currentMusic;
