@@ -535,6 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   sword: {fileID: 11400000, guid: a270b238d7b638c4184ad35280778eba, type: 2}
+  sliderBoss: {fileID: 7587365739480505806}
   canvasgamover: {fileID: 1279300734}
 --- !u!1 &1294066976 stripped
 GameObject:
@@ -4642,3 +4643,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1cde67dc7783d04990639b029ea2312, type: 3}
+--- !u!1 &7587365739480505806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2003585571846967404, guid: d1cde67dc7783d04990639b029ea2312,
+    type: 3}
+  m_PrefabInstance: {fileID: 7587365739480505805}
+  m_PrefabAsset: {fileID: 0}

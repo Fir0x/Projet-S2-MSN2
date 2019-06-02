@@ -96,7 +96,6 @@ public class Player : MovingObject
         if (playerAsset.Hp <= 0)
         {
             animator.SetTrigger(animDeathID);
-            Time.timeScale = 1f;
             Invoke("GameOver", 2);
         }
     }
