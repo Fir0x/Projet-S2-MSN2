@@ -8,10 +8,12 @@ public class Chest : MonoBehaviour
     private ChestUI chestUI;
 
     [SerializeField] private AllItemsAsset allItems;
+    [SerializeField] private UnlockedItemsAsset unlockedItems;
 
     public int space = 12;  // Amount of slots in chest
 
     public AllItemsAsset AllItems { get => allItems; }
+    public UnlockedItemsAsset UnlockedItems { get => unlockedItems; set => unlockedItems = value; }
 
     // Current list of items in chest
     public List<GameObject> items = new List<GameObject>();
@@ -22,7 +24,7 @@ public class Chest : MonoBehaviour
         instance = this;
         chestUI = ChestUI.instance;
 
-        items = chestUI.gameObject.GetComponent<ItemChooser>().ChooseContentChest(allItems);
+        items = chestUI.gameObject.GetComponent<ItemChooser>().ChooseContentChest(allItems, unlockedItems.Unlocked);
 
         chestUI.SetItems(items);
 

@@ -34,8 +34,9 @@ public class Shop : MonoBehaviour
         instance = this;
         shopUI = ShopUI.instance;
 
-        if (!isHub)
+        if (isHub == false)
         {
+            
             items = shopUI.gameObject.GetComponent<ItemChooser>().ChooseContentShop(allItems, unlockedItems);
         }
         else
