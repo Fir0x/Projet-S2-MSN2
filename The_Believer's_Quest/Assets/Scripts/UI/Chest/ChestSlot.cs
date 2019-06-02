@@ -21,7 +21,6 @@ public class ChestSlot : MonoBehaviour
     // Add item to the slot
     public void AddItem(GameObject newItem)
     {
-        print("AddItem");
         item = newItem;
         icon.sprite = item.GetComponent<Object>().ObjectsAsset.Sprite;
         icon.enabled = true;

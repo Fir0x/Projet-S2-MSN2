@@ -49,9 +49,6 @@ public class Chest : MonoBehaviour
         if (items.Count < space)
         {
             items.Add(item);    // Add item to list
-            // Trigger callback
-            if (onItemChangedCallback != null)
-                onItemChangedCallback.Invoke();
 
             return true;
         }
@@ -65,8 +62,6 @@ public class Chest : MonoBehaviour
         items.Remove(item);     // Remove item from list
 
         // Trigger callback
-        if (onItemChangedCallback != null)
-            onItemChangedCallback.Invoke();
     }
 
 }

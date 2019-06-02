@@ -38,7 +38,6 @@ public class ChestUI : MonoBehaviour
         {
             if (i < itemsInChest.Count)
             {
-                print("::" + itemsInChest[i]);
                 slots[i].AddItem(itemsInChest[i]);
             }
             else
