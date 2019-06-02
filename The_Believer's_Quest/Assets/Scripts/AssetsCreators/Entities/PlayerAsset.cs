@@ -7,7 +7,7 @@ public class PlayerAsset : ScriptableObject
     [SerializeField] private int floor;
     [SerializeField] private float hp = 50;
     [SerializeField] private float maxHP = 50;
-    [SerializeField] private int effectValue;
+    [SerializeField] private float effectValue;
     [SerializeField] private int maxEffectValue = 30;
     [SerializeField] private float speed = 0.5f;
     [SerializeField] private bool invicibility;
@@ -29,7 +29,7 @@ public class PlayerAsset : ScriptableObject
         }
     }
     public float MaxHP { get => maxHP; set => maxHP = value; }
-    public int EffectValue
+    public float EffectValue
     {
         get => effectValue;
         set

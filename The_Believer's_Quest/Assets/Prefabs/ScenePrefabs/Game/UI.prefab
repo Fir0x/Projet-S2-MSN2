@@ -2664,7 +2664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d292ff0d356ea498de70cc87686e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
+  playerAsset: {fileID: 0}
   pistol: {fileID: 6167037201334550808, guid: f60a186df86b32345bc176637acbb710, type: 3}
   sliderBoss: {fileID: 2003585571846967404}
   canvasgamover: {fileID: 1822274600683581772}
@@ -8749,6 +8749,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8006406410486706299}
     m_Modifications:
+    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
+        type: 3}
+      propertyPath: m_Name
+      value: ChestSlot
+      objectReference: {fileID: 0}
     - target: {fileID: 8162264843875868976, guid: 39baa5e16889e674eabd5a98baf93645,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8853,11 +8858,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
-        type: 3}
-      propertyPath: m_Name
-      value: ChestSlot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39baa5e16889e674eabd5a98baf93645, type: 3}
@@ -9193,6 +9193,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8006406410486706299}
     m_Modifications:
+    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
+        type: 3}
+      propertyPath: m_Name
+      value: ChestSlot (7)
+      objectReference: {fileID: 0}
     - target: {fileID: 8162264843875868976, guid: 39baa5e16889e674eabd5a98baf93645,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9298,11 +9303,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
-        type: 3}
-      propertyPath: m_Name
-      value: ChestSlot (7)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39baa5e16889e674eabd5a98baf93645, type: 3}
 --- !u!224 &7652681420402922046 stripped
@@ -9318,6 +9318,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8006406410486706299}
     m_Modifications:
+    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
+        type: 3}
+      propertyPath: m_Name
+      value: ChestSlot (9)
+      objectReference: {fileID: 0}
     - target: {fileID: 8162264843875868976, guid: 39baa5e16889e674eabd5a98baf93645,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9422,11 +9427,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
-        type: 3}
-      propertyPath: m_Name
-      value: ChestSlot (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39baa5e16889e674eabd5a98baf93645, type: 3}
@@ -9590,6 +9590,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8006406410486706299}
     m_Modifications:
+    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
+        type: 3}
+      propertyPath: m_Name
+      value: ChestSlot (6)
+      objectReference: {fileID: 0}
     - target: {fileID: 8162264843875868976, guid: 39baa5e16889e674eabd5a98baf93645,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9695,11 +9700,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
-        type: 3}
-      propertyPath: m_Name
-      value: ChestSlot (6)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39baa5e16889e674eabd5a98baf93645, type: 3}
 --- !u!224 &6074586791833641661 stripped
@@ -9715,6 +9715,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8006406410486706299}
     m_Modifications:
+    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
+        type: 3}
+      propertyPath: m_Name
+      value: ChestSlot (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 8162264843875868976, guid: 39baa5e16889e674eabd5a98baf93645,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9819,11 +9824,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
-        type: 3}
-      propertyPath: m_Name
-      value: ChestSlot (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39baa5e16889e674eabd5a98baf93645, type: 3}
@@ -10128,6 +10128,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8006406410486706299}
     m_Modifications:
+    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
+        type: 3}
+      propertyPath: m_Name
+      value: ChestSlot (11)
+      objectReference: {fileID: 0}
     - target: {fileID: 8162264843875868976, guid: 39baa5e16889e674eabd5a98baf93645,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10233,11 +10238,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
-        type: 3}
-      propertyPath: m_Name
-      value: ChestSlot (11)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39baa5e16889e674eabd5a98baf93645, type: 3}
 --- !u!224 &5471876414166803972 stripped
@@ -10253,6 +10253,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8006406410486706299}
     m_Modifications:
+    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
+        type: 3}
+      propertyPath: m_Name
+      value: ChestSlot (8)
+      objectReference: {fileID: 0}
     - target: {fileID: 8162264843875868976, guid: 39baa5e16889e674eabd5a98baf93645,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10358,11 +10363,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
-        type: 3}
-      propertyPath: m_Name
-      value: ChestSlot (8)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39baa5e16889e674eabd5a98baf93645, type: 3}
 --- !u!224 &3954298966854791779 stripped
@@ -10378,6 +10378,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8006406410486706299}
     m_Modifications:
+    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
+        type: 3}
+      propertyPath: m_Name
+      value: ChestSlot (10)
+      objectReference: {fileID: 0}
     - target: {fileID: 8162264843875868976, guid: 39baa5e16889e674eabd5a98baf93645,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10482,11 +10487,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
-        type: 3}
-      propertyPath: m_Name
-      value: ChestSlot (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39baa5e16889e674eabd5a98baf93645, type: 3}
@@ -11122,6 +11122,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8006406410486706299}
     m_Modifications:
+    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
+        type: 3}
+      propertyPath: m_Name
+      value: ChestSlot (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 8162264843875868976, guid: 39baa5e16889e674eabd5a98baf93645,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11226,11 +11231,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
-        type: 3}
-      propertyPath: m_Name
-      value: ChestSlot (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39baa5e16889e674eabd5a98baf93645, type: 3}
@@ -11420,6 +11420,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8006406410486706299}
     m_Modifications:
+    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
+        type: 3}
+      propertyPath: m_Name
+      value: ChestSlot (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 8162264843875868976, guid: 39baa5e16889e674eabd5a98baf93645,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11524,11 +11529,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
-        type: 3}
-      propertyPath: m_Name
-      value: ChestSlot (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39baa5e16889e674eabd5a98baf93645, type: 3}
@@ -11692,6 +11692,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8006406410486706299}
     m_Modifications:
+    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
+        type: 3}
+      propertyPath: m_Name
+      value: ChestSlot (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 8162264843875868976, guid: 39baa5e16889e674eabd5a98baf93645,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11797,11 +11802,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
-        type: 3}
-      propertyPath: m_Name
-      value: ChestSlot (3)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39baa5e16889e674eabd5a98baf93645, type: 3}
 --- !u!224 &1793564653493927450 stripped
@@ -11817,6 +11817,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8006406410486706299}
     m_Modifications:
+    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
+        type: 3}
+      propertyPath: m_Name
+      value: ChestSlot (5)
+      objectReference: {fileID: 0}
     - target: {fileID: 8162264843875868976, guid: 39baa5e16889e674eabd5a98baf93645,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11921,11 +11926,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8162264843875868983, guid: 39baa5e16889e674eabd5a98baf93645,
-        type: 3}
-      propertyPath: m_Name
-      value: ChestSlot (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39baa5e16889e674eabd5a98baf93645, type: 3}

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
@@ -10,6 +7,7 @@ public class Attack : MonoBehaviour
     public EnemyAsset enemy;
     public BossAsset boss;
 
+    private bool effect = false;
     
     public enum Trajectory
     {
@@ -33,11 +31,13 @@ public class Attack : MonoBehaviour
             Cqc(boss.Damage);
         if (traj == Trajectory.Railgun)
             Railgun(boss.Damage);
+
+        effect = boss.Effect;
     }
 
     public void Launcher()                          //for regular enemies
     {
-        Transform playerT = GameObject.FindGameObjectWithTag("Player").transform;
+        Transform playerT = Player.instance.transform; //GameObject.FindGameObjectWithTag("Player").transform;
         if (enemy._Trajectory == Trajectory.Line)
             LineShot(playerT.position, enemy.Speed, enemy.Damage, 0f);
         if (enemy._Trajectory == Trajectory.Arc)
@@ -48,6 +48,8 @@ public class Attack : MonoBehaviour
             Cqc(enemy.Damage);
         if (enemy._Trajectory == Trajectory.Railgun)
             Railgun(enemy.Damage);
+
+        effect = enemy.Effect;
     }
     private void Cqc(float damage)
     {
@@ -63,7 +65,7 @@ public class Attack : MonoBehaviour
                     
                     Vector3 forcedMov = -(gameObject.transform.position - playerTouched[i].transform.position).normalized;              //to make player move in the opposite way when touched
                     playerTouched[i].GetComponent<Player>().ForcedMovement(forcedMov);
-
+                    Player.instance.SetEffect(player.EffectValue + damage / 2);
                 }
             }
         }
@@ -71,7 +73,7 @@ public class Attack : MonoBehaviour
     private void LineShot(Vector3 direction, float speed, float damage, float angle)//tir linéaire
     {
        Instantiate(projectile, transform.position,
-            transform.rotation).GetComponent<Projectile>().Init(enemy.Projectile, speed, damage, transform.position, angle, (direction-transform.position),false, false); 
+            transform.rotation).GetComponent<Projectile>().Init(enemy.Projectile, speed, damage, transform.position, angle, (direction-transform.position),false, false, effect); 
     }
     
     private void CircleShot(int nbprojectile, float speed, float damage)//tir en cercle
@@ -82,7 +84,7 @@ public class Attack : MonoBehaviour
         for (int i = 0; i < nbprojectile; i++)
         {
             Instantiate(projectile, transform.position,
-                transform.rotation).GetComponent<Projectile>().Init(enemy.Projectile, speed, damage, transform.position, angle, transform.up,false, true); 
+                transform.rotation).GetComponent<Projectile>().Init(enemy.Projectile, speed, damage, transform.position, angle, transform.up,false, true, effect); 
 
         } 
     }
