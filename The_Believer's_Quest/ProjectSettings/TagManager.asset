@@ -11,6 +11,9 @@ TagManager:
   - Boss
   - NextLevel
   - Chest
+  - Shop
+  - Weapon
+  - Object
   layers:
   - Default
   - TransparentFX

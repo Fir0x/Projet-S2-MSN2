@@ -68,5 +68,10 @@ public class KeyBoardManager : MonoBehaviour
         {
             player.ActiveChestUI();
         }
+
+        if (Input.GetButtonDown("Interact") && Player.instance.GetNearShop())
+        {
+            player.ActiveShopUI();
+        }
     }
 }

@@ -14,6 +14,7 @@ public class Room : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] public PlayerAsset playerAsset;
     [SerializeField] private GameObject chest;
+    [SerializeField] private GameObject shopper;
     [SerializeField] private GameObject nextLevel;
     private int id;
     private Board.Type type;
@@ -23,6 +24,7 @@ public class Room : MonoBehaviour
     public PatternAsset Patterns { get => patterns; set => patterns = value; }
     public GameObject Player { get => player; set => player = value; }
     public TileAsset DoorTiles { get => doorTiles; set => doorTiles = value; }
+    public GameObject Shopper { get => shopper; set => shopper = value; }
 
     UnityEvent closeDoors;
     UnityEvent openDoors;
@@ -42,6 +44,7 @@ public class Room : MonoBehaviour
     {
         GameObject room = patterns.Pattern[0];
         Player.transform.position = room.transform.position + new Vector3(0.5f, 3.5f, 0f);
+        type = Board.Type.Shop;
 
         return room;
     }
@@ -76,7 +79,6 @@ public class Room : MonoBehaviour
 
         //Creation and configuration of the GameObject
         GameObject roomPattern = Instantiate(room, new Vector3(anchor[0], anchor[1], 0), Quaternion.identity) as GameObject; //Instantiation
-
         roomPattern.transform.parent = parent; //Parent set
         if (type == Board.Type.Normal) //Name set
             roomPattern.name = "Room " + roomNumber;

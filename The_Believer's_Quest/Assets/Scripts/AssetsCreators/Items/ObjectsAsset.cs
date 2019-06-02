@@ -31,13 +31,5 @@ public class ObjectsAsset : ScriptableObject
 
     public GameObject gameobject { get => Object; set => Object = value; }
 
-    public virtual void Use()
-    {
-    }
-
-    public void RemoveFromInventory()
-    {
-        //Inventory.instance.Remove(this);
-    }
 
 }

@@ -26,7 +26,12 @@ public class InventoryUI : MonoBehaviour
     {
         itemsInInventory.Add(item);
         UpdateUI();
-        print("InventoryUI SetItems");
+    }
+
+    public void RemoveItem(GameObject item)
+    {
+        itemsInInventory.Remove(item);
+        UpdateUI();
     }
 
     public void EnableUI()
@@ -39,9 +44,9 @@ public class InventoryUI : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i < itemsInInventory.Count)  
+            if (i < itemsInInventory.Count)
             {
-                slots[i].AddItem(itemsInInventory[i]);   
+                slots[i].AddItem(itemsInInventory[i]);
             }
             else
             {

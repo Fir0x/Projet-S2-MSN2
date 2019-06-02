@@ -22,7 +22,14 @@ public class ChestSlot : MonoBehaviour
     public void AddItem(GameObject newItem)
     {
         item = newItem;
-        icon.sprite = item.GetComponent<Object>().ObjectsAsset.Sprite;
+        if (item.CompareTag("Object"))
+        {
+            icon.sprite = item.GetComponent<Object>().ObjectsAsset.Sprite;
+        }
+        else if (item.CompareTag("Weapon"))
+        {
+            icon.sprite = item.GetComponent<WeaponItem>().WeaponAsset.Sprite;
+        }
         icon.enabled = true;
     }
 
@@ -40,10 +47,9 @@ public class ChestSlot : MonoBehaviour
     {
         if (item != null)
         {
-            if(inventory.Add(item))
+            if (inventory.Add(item))
             {
                 chest.Remove(item);
-                ClearSlot();
             }
         }
     }

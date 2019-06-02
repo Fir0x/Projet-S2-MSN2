@@ -25,8 +25,7 @@ public class Inventory : MonoBehaviour
     {
         // Check if out of space
         if (items.Count < space)
-        {
-            print("Inventory Add");
+        { 
             items.Add(item);    // Add item to list
             InventoryUI.instance.AddItem(item);
             return true;
@@ -39,7 +38,7 @@ public class Inventory : MonoBehaviour
     public void Remove(GameObject item)
     {
         items.Remove(item);     // Remove item from list
-
+        inventoryUI.RemoveItem(item);
         // Trigger callback
     }
 

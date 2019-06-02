@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 488561121820511563}
   m_Layer: 0
   m_Name: WhyskyBottle
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
