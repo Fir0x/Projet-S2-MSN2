@@ -83,7 +83,7 @@ public class KeyBoardManager : MonoBehaviour
         {
             if (player.PlayerAsset.ObjectsList[0] != null)
             {
-                player.PlayerAsset.ObjectsList[0].
+                //player.PlayerAsset.ObjectsList[0].
             }
         }
 
