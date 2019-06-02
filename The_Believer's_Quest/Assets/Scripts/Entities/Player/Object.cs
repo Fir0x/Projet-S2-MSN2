@@ -12,12 +12,13 @@ public class Object : MonoBehaviour
 
     private void Start()
     {
-        playerAsset = GameObject.Find("Player").GetComponent<Player>().PlayerAsset;
     }
 
     public void PassiveChange()
     {
-        playerAsset.MaxHP += objectsAsset.MaxHP;
+        playerAsset = GameObject.Find("Player").GetComponent<Player>().PlayerAsset;
+        
+        GameObject.Find("Player").GetComponent<Player>().SetLife(playerAsset.Hp + objectsAsset.MaxHP);
         playerAsset.Hp += objectsAsset.HP;
         if (playerAsset.Hp > playerAsset.MaxHP)
             playerAsset.Hp = playerAsset.MaxHP;
@@ -32,6 +33,25 @@ public class Object : MonoBehaviour
 
     public void ActiveChange()
     {
+        playerAsset.Hp += item.HP;
+        playerAsset.MaxHP += item.MaxHP;
+        playerAsset.EffectValue += item.EffectValue;
+        playerAsset.MaxEffectValue += item.MaxEffectValue;
+        playerAsset.Speed += item.Speed;
 
+        if (item.Duration != 0)
+        {
+            StartCoroutine(Duration(item, item.Duration));
+        }
+    }
+
+    IEnumerator Duration(ObjectsAsset item, uint duration)
+    {
+        yield return new WaitForSeconds(duration);
+        playerAsset.Hp -= item.HP;
+        playerAsset.MaxHP -= item.MaxHP;
+        playerAsset.EffectValue -= item.EffectValue;
+        playerAsset.MaxEffectValue -= item.MaxEffectValue;
+        playerAsset.Speed -= item.Speed;
     }
 }

@@ -40,6 +40,16 @@ public class Inventory : MonoBehaviour
                 nbItems += 1;
                 items.Add(item);    // Add item to list
                 InventoryUI.instance.AddItem(item);
+
+                for (int i = 0; i < 2; i++)
+                {
+                    if (GetComponent<Player>().PlayerAsset.ObjectsList[i] == null || GetComponent<Player>().PlayerAsset.ObjectsList[i] == item)
+                    {
+                        GetComponent<Player>().PlayerAsset.ObjectsList[i] = item;
+                        break;
+                    }
+                }
+
                 return true;
             }
 
@@ -48,6 +58,15 @@ public class Inventory : MonoBehaviour
                 nbWeapons += 1;
                 items.Add(item);    // Add item to list
                 InventoryUI.instance.AddItem(item);
+
+                for (int i = 0; i < 2; i++)
+                {
+                    if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == null || GetComponent<Player>().PlayerAsset.WeaponsList[i] == item)
+                    {
+                        GetComponent<Player>().PlayerAsset.WeaponsList[i] = item;
+                        break;
+                    }
+                }
                 return true;
             }
 
@@ -62,10 +81,31 @@ public class Inventory : MonoBehaviour
         items.Remove(item);     // Remove item from list
         inventoryUI.RemoveItem(item);
         if (item.CompareTag("Object"))
+        {
             nbItems -= 1;
+            for (int i = 0; i < 2; i++)
+            {
+                if (GetComponent<Player>().PlayerAsset.ObjectsList[i] == item)
+                {
+                    GetComponent<Player>().PlayerAsset.ObjectsList[i] = null;
+                    break;
+                }
+            }
+        }
         else if (item.CompareTag("Weapon"))
+        {
             nbWeapons -= 1;
-        // Trigger callback
+            for (int i = 0; i < 2; i++)
+            {
+                if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == item)
+                {
+                    GetComponent<Player>().PlayerAsset.WeaponsList[i] = null;
+                    break;
+                }
+            }
+        }
+          
+
     }
 
 }

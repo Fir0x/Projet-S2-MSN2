@@ -28,11 +28,21 @@ public class Weapon : MonoBehaviour
         return weapon;
     }
 
-    public void SetWeapon(WeaponAsset weapon)
+    public void SetWeapon(GameObject weapon)
     {
-        this.weapon = weapon;
-        UIController.uIController.changeWeapon.Invoke();
+        if(weapon != null)
+        {
+            this.weapon = weapon.GetComponent<WeaponItem>().WeaponAsset;
+            GameObject temp;
+            temp = playerAsset.WeaponsList[1];
+            playerAsset.WeaponsList[1] = playerAsset.WeaponsList[0];
+            playerAsset.WeaponsList[0] = temp;
+
+            UIController.uIController.changeWeapon.Invoke();
+            UIController.uIController.changeAmmo.Invoke();
+        }
     }
+        
 
     public int GetDamage()
     {

@@ -46,6 +46,7 @@ public class PlayerAsset : ScriptableObject
     public int Diamond { get => diamond; set => diamond = value; }
     public GameObject[] WeaponsList { get => weaponsList; set => weaponsList = value; }
     public Vector3 Position { get => position; set => position = value; }
+    public GameObject[] ObjectsList { get => objectsList; set => objectsList = value; }
 
     public string SerializeWeapons()
     {

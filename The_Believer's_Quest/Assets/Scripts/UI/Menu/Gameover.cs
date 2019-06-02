@@ -19,7 +19,7 @@ public class Gameover : MonoBehaviour
         playerAsset.MaxEffectValue = 0;
         playerAsset.Gold = 0;
         playerAsset.Diamond = 0;
-        playerAsset.WeaponsList = new []{sword, null};
+        //playerAsset.WeaponsList = new []{sword, null};
         playerAsset.Floor = -1;
         playerAsset.Invicibility = false;
         UIController.uIController.changeHp.Invoke();

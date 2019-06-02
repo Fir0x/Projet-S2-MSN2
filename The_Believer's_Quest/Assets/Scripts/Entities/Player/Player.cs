@@ -57,15 +57,16 @@ public class Player : MovingObject
 
         instance = this;
         noForcedMove = true;
+
         actualWeapon = playerAsset.WeaponsList[0];
         weapon.Init(actualWeapon.GetComponent<WeaponItem>().WeaponAsset, playerAsset);
         Inventory.instance.Add(actualWeapon);
+
         playerAsset.Position = transform.position;
         playerAsset.Invicibility = false;
         testForDash = true;
 
         firstPos = transform.position;
-
         animator = GetComponent<Animator>();
 
         nearShop = false;
@@ -91,6 +92,12 @@ public class Player : MovingObject
         StartCoroutine(InvicibilityCoolDown());
 
         playerAsset.Hp = value;
+
+        if (playerAsset.Hp > playerAsset.MaxHP)
+        {
+            playerAsset.Hp = playerAsset.MaxHP;
+        }
+
         UIController.uIController.changeHp.Invoke();
         print(UIController.uIController.changeHp);
         if (playerAsset.Hp <= 0)
