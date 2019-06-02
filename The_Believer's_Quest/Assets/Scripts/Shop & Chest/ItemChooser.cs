@@ -90,33 +90,27 @@ public class ItemChooser : MonoBehaviour
             j = Random.Range(0, len2);
 
             if (stillWeapon > 0 && 100 / unlocked[j].GetComponent<WeaponItem>().WeaponAsset.Price >= minRarity &&
-                                          100 / unlocked[j].GetComponent<WeaponItem>().WeaponAsset.Price <= maxRarity)
+                                          100 / unlocked[j].GetComponent<WeaponItem>().WeaponAsset.Price <= maxRarity && !items.Contains(unlocked[j]) && !Inventory.instance.items.Contains(unlocked[j]))
             {
                 stillWeapon -= 1;
                 nbItems -= 1;
                 items.Add(unlocked[j]);
-                unlocked.Remove(unlocked[j]);
-                len2 = unlocked.Count;
             }
             if (active && stillObject > 0 && allItems[i].CompareTag("Object") && !allItems[i].GetComponent<Object>().ObjectsAsset.passive && 100 / allItems[i].GetComponent<Object>().ObjectsAsset.Price >= minRarity &&
-                                          100 / allItems[i].GetComponent<Object>().ObjectsAsset.Price <= maxRarity && !allItems[i].GetComponent<Object>().ObjectsAsset.passive)
+                                          100 / allItems[i].GetComponent<Object>().ObjectsAsset.Price <= maxRarity && !allItems[i].GetComponent<Object>().ObjectsAsset.passive && !items.Contains(allItems[i]) && !Inventory.instance.items.Contains(allItems[i]))
             {
                 stillObject -= 1;
                 nbItems -= 1;
                 items.Add(allItems[i]);
-                allItems.Remove(allItems[i]);
                 active = false;
-                len1 = allItems.Count;
             }
 
             if (!active && stillObject > 0 && allItems[i].CompareTag("Object") && allItems[i].GetComponent<Object>().ObjectsAsset.passive && 100 / allItems[i].GetComponent<Object>().ObjectsAsset.Price >= minRarity &&
-                                           100 / allItems[i].GetComponent<Object>().ObjectsAsset.Price <= maxRarity && allItems[i].GetComponent<Object>().ObjectsAsset.passive)
+                                           100 / allItems[i].GetComponent<Object>().ObjectsAsset.Price <= maxRarity && allItems[i].GetComponent<Object>().ObjectsAsset.passive && !items.Contains(allItems[i]) && !Inventory.instance.items.Contains(allItems[i]))
             {
                 stillObject -= 1;
                 nbItems -= 1;
                 items.Add(allItems[i]);
-                allItems.Remove(allItems[i]);
-                len1 = allItems.Count;
             }
         }
 

@@ -24,7 +24,6 @@ public class ShopUI : MonoBehaviour
     public void SetItems(List<GameObject> items)
     {
         itemsInShop = items;
-        print(items + "");
         UpdateUI();
     }
 

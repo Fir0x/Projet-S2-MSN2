@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9335e7ac496e064ba1c37bc43ea394a, type: 3}
   m_Name: Hammer
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300020, guid: f0ea59557350d784ebcefe7aa6d3969a, type: 3}
+  sprite: {fileID: 21300024, guid: f0ea59557350d784ebcefe7aa6d3969a, type: 3}
   price: 110
   damage: 10
   cooldown: 0.5

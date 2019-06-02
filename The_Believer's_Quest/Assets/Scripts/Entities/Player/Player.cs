@@ -391,7 +391,10 @@ public class Player : MovingObject
 
     public void ActiveShopUI()
     {
-        InventoryUI.instance.EnableUI();
+        if (playerAsset.Floor != 0)
+        {
+            InventoryUI.instance.EnableUI();
+        }
         ShopUI.instance.EnableUI();
     }
 }

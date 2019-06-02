@@ -4499,5 +4499,10 @@ PrefabInstance:
       propertyPath: shopUI
       value: 
       objectReference: {fileID: 1294066976}
+    - target: {fileID: 4367669199476456035, guid: d1cde67dc7783d04990639b029ea2312,
+        type: 3}
+      propertyPath: m_Text
+      value: Inventaire
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1cde67dc7783d04990639b029ea2312, type: 3}
