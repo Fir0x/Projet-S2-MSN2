@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-//Nicolas I
+//Nicolas I && Nicolas L && Maxence
 [Serializable]
 public class Room : MonoBehaviour
 {

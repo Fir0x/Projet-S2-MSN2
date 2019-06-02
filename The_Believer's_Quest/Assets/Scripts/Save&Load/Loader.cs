@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-//Nicolas I
+//Nicolas I && Maxence
 public static class Loader
 {
 
@@ -35,6 +35,7 @@ public static class Loader
 
             i++;
         }
+        
         //GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(.GetComponent<Player>().PlayerAsset.Floor + 2);
     }
 

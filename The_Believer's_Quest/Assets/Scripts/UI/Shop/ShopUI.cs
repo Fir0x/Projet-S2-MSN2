@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+//Maxence && Nicolas L
 public class ShopUI : MonoBehaviour
 {
     public Transform itemsParent;

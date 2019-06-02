@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+//Nicolas I
 [CreateAssetMenu(fileName = "NewBossAnimAsset", menuName = "Animation/Boss animations")]
 public class BossAnimAsset : ScriptableObject
 {

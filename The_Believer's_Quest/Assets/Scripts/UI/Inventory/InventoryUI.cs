@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+//Maxence && Nicolas L
 public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParent;   

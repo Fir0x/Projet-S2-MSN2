@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-//Nicolas I
+//Nicolas I && Maxence && Nicolas L
 public class Board : MonoBehaviour
 {
     public static Board instance;
