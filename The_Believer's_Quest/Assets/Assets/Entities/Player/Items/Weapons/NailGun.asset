@@ -21,7 +21,7 @@ MonoBehaviour:
   loaderCappacity: 20
   maxAmmunitions: 200
   ammunitions: 200
-  speed: 3
+  speed: 50
   type: 1
   nbbulletsbyshot: 1
   projectile: {fileID: 0}

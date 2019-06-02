@@ -721,6 +721,21 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5710170098172399849, guid: 321cef1288d49514fa043b3adc2c08b7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.092
+      objectReference: {fileID: 0}
+    - target: {fileID: 5710170098172399849, guid: 321cef1288d49514fa043b3adc2c08b7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.241
+      objectReference: {fileID: 0}
+    - target: {fileID: 5710170098172399849, guid: 321cef1288d49514fa043b3adc2c08b7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 321cef1288d49514fa043b3adc2c08b7, type: 3}
 --- !u!1001 &1588084678
@@ -1274,6 +1289,48 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: weaponSprite
+      value: 
+      objectReference: {fileID: 3000740917392928271}
+    - target: {fileID: 0}
+      propertyPath: playerGO
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1822274600683581772, guid: d1cde67dc7783d04990639b029ea2312,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 196322341987607390, guid: d1cde67dc7783d04990639b029ea2312,
+        type: 3}
+      propertyPath: m_Name
+      value: Shop
+      objectReference: {fileID: 0}
+    - target: {fileID: 196322341987607390, guid: d1cde67dc7783d04990639b029ea2312,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 287172975668042503, guid: d1cde67dc7783d04990639b029ea2312,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935344500, guid: d1cde67dc7783d04990639b029ea2312, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3000740917392928271, guid: d1cde67dc7783d04990639b029ea2312,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3000740917392928271, guid: d1cde67dc7783d04990639b029ea2312,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3100619942072857318, guid: d1cde67dc7783d04990639b029ea2312,
         type: 3}
       propertyPath: m_Text
@@ -1699,28 +1756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopSlot
       objectReference: {fileID: 0}
-    - target: {fileID: 196322341987607390, guid: d1cde67dc7783d04990639b029ea2312,
-        type: 3}
-      propertyPath: m_Name
-      value: Shop
-      objectReference: {fileID: 0}
-    - target: {fileID: 196322341987607390, guid: d1cde67dc7783d04990639b029ea2312,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 957844150366670555, guid: d1cde67dc7783d04990639b029ea2312,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: weaponSprite
-      value: 
-      objectReference: {fileID: 3000740917392928271}
-    - target: {fileID: 0}
-      propertyPath: playerGO
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5607098263938762746, guid: d1cde67dc7783d04990639b029ea2312,
         type: 3}
@@ -1735,30 +1774,6 @@ PrefabInstance:
     - target: {fileID: 9191210180019234503, guid: d1cde67dc7783d04990639b029ea2312,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1822274600683581772, guid: d1cde67dc7783d04990639b029ea2312,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 287172975668042503, guid: d1cde67dc7783d04990639b029ea2312,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1935344500, guid: d1cde67dc7783d04990639b029ea2312, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3000740917392928271, guid: d1cde67dc7783d04990639b029ea2312,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3000740917392928271, guid: d1cde67dc7783d04990639b029ea2312,
-        type: 3}
-      propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2170850776730672919, guid: d1cde67dc7783d04990639b029ea2312,
