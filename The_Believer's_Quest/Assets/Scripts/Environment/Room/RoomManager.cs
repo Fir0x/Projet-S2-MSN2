@@ -232,7 +232,6 @@ public class RoomManager : MonoBehaviour
             if (isBossRoom)
             {
                 GameObject outdoor = Instantiate(nextLevel, transform.position + new Vector3(0, 3f, 0), Quaternion.identity) as GameObject;
-                outdoor.GetComponent<NextLevel>().Wait();
             }
         }
     }
