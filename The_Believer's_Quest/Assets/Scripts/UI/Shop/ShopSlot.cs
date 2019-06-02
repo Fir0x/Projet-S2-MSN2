@@ -3,13 +3,21 @@ using UnityEngine.UI;
 
 /* Sits on all InventorySlots. */
 
-public class InventorySlot : MonoBehaviour
+public class ShopSlot : MonoBehaviour
 {
-
+    private Inventory inventory;
+    private Shop shop;
+    private ShopUI shopUI;
     public Image icon;          // Reference to the Icon image
 
     GameObject item;  // Current item in the slot
 
+    private void Start()
+    {
+        inventory = Inventory.instance;
+        shop = Shop.instance;
+        shopUI = ShopUI.instance;
+    }
     // Add item to the slot
     public void AddItem(GameObject newItem)
     {
@@ -22,6 +30,7 @@ public class InventorySlot : MonoBehaviour
     public void ClearSlot()
     {
         item = null;
+
         icon.sprite = null;
         icon.enabled = false;
     }
@@ -29,27 +38,13 @@ public class InventorySlot : MonoBehaviour
     // Called when the item is pressed
     public void UseItem()
     {
-        if (GameObject.Find("Player").GetComponent<Player>().RoomType == Board.Type.Chest)
+        print("cc");
+        if (item != null)
         {
-            if (item != null)
+            if (inventory.Add(item))
             {
-                if (Chest.instance.Add(item))
-                {
-                    Inventory.instance.Remove(item);
-                    ClearSlot();
-                }
-            }
-        }
-
-        if (GameObject.Find("Player").GetComponent<Player>().RoomType == Board.Type.Shop)
-        {
-            if (item != null)
-            {
-                if (Shop.instance.Add(item))
-                {
-                    Inventory.instance.Remove(item);
-                    ClearSlot();
-                }
+                shop.Remove(item);
+                ClearSlot();
             }
         }
     }

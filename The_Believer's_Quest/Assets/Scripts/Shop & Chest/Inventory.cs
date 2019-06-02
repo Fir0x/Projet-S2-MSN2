@@ -25,8 +25,7 @@ public class Inventory : MonoBehaviour
     {
         // Check if out of space
         if (items.Count < space)
-        {
-            print("Inventory Add");
+        { 
             items.Add(item);    // Add item to list
             InventoryUI.instance.AddItem(item);
             return true;

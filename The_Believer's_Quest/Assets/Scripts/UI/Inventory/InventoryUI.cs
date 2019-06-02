@@ -26,7 +26,6 @@ public class InventoryUI : MonoBehaviour
     {
         itemsInInventory.Add(item);
         UpdateUI();
-        print("InventoryUI SetItems");
     }
 
     public void EnableUI()

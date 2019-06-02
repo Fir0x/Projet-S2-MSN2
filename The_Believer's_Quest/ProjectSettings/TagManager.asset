@@ -11,6 +11,7 @@ TagManager:
   - Boss
   - NextLevel
   - Chest
+  - Shop
   layers:
   - Default
   - TransparentFX

@@ -20,6 +20,7 @@ public class Player : MovingObject
     private bool testForDash;
     private bool testForInvincibility;
 
+    private bool nearShop;
     private bool nearChest;
 
     private Rigidbody2D rigid;  //utile pour déplacement glace
@@ -28,8 +29,8 @@ public class Player : MovingObject
     [SerializeField] private GameObject gameover;
 
     private Weapon weapon;
-    
-    private List<Room> listRoom;
+
+    private Board.Type roomType;
     private Animator animator;
     private int animMoveHashID = Animator.StringToHash("Move");
     private int animDirectionHashID = Animator.StringToHash("Direction");
@@ -42,9 +43,11 @@ public class Player : MovingObject
 
     public GameObject Camera { get => camera; set => camera = value; }
     public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
+    public Board.Type RoomType { get => roomType; set => roomType = value; }
 
     private void Start()
     {
+        roomType = Board.Type.Shop;
 
         instance = this;
         noForcedMove = true;
@@ -58,6 +61,7 @@ public class Player : MovingObject
 
         animator = GetComponent<Animator>();
 
+        nearShop = false;
         nearChest = false;
     }
 
@@ -367,6 +371,22 @@ public class Player : MovingObject
     {
         InventoryUI.instance.EnableUI();
         ChestUI.instance.EnableUI();
+    }
+
+    public void IsNearShop()
+    {
+        nearShop = !nearShop;
+    }
+
+    public bool GetNearShop()
+    {
+        return nearShop;
+    }
+
+    public void ActiveShopUI()
+    {
+        InventoryUI.instance.EnableUI();
+        ShopUI.instance.EnableUI();
     }
 }
 

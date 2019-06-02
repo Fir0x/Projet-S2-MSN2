@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 //Nicolas I
 public class Board : MonoBehaviour
@@ -212,6 +211,7 @@ public class Board : MonoBehaviour
 
         GameObject.Find("UI").transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
         GameObject.Find("UI").transform.GetChild(0).GetChild(4).gameObject.SetActive(true);
+        GameObject.Find("UI").transform.GetChild(0).GetChild(5).gameObject.SetActive(true);
     }
 
     public void Init()
@@ -223,6 +223,7 @@ public class Board : MonoBehaviour
 
         GameObject.Find("UI").transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
         GameObject.Find("UI").transform.GetChild(0).GetChild(4).gameObject.SetActive(true);
+        GameObject.Find("UI").transform.GetChild(0).GetChild(5).gameObject.SetActive(true);
     }
 
     public void DestroyEntrance()           //to destroy nextLevel which stayed while generating the actual board

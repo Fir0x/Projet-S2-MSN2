@@ -23,14 +23,19 @@ public class RoomManager : MonoBehaviour
 
     private GameObject nextLevel;
     private GameObject chest;
+    private GameObject gandulf;
 
     private Vector3 roomPosition;
     private TileGrid grid;
 
     private Room roomCreator;
 
+    private Board.Type roomType;
+
     public void Init(int[] mapPos, List<Board.DoorPos> doors, int floor, TileAsset doorTiles, List<GameObject> enemiesList, Room roomCreator, int bossDoor)
     {
+        gandulf = roomCreator.Shopper;
+        roomType = roomCreator.GetRoomType();
         totalWeight = 7 * floor;
         nextLevel = roomCreator.GetNextLevel();
         chest = roomCreator.Chest;
@@ -50,7 +55,12 @@ public class RoomManager : MonoBehaviour
             GameObject chestOnScene = Instantiate(chest, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity) as GameObject;
             chestOnScene.transform.parent = gameObject.transform;
         }
-        if(enemiesList.Count == 1)
+        else if (roomCreator.GetRoomType() == Board.Type.Shop)
+        {
+            GameObject shopOnScene = Instantiate(gandulf, transform.position + new Vector3(-4.5f, 3f, 0), Quaternion.identity) as GameObject;
+            shopOnScene.transform.parent = gameObject.transform;
+        }
+        else if (roomCreator.GetRoomType() == Board.Type.Boss)
         {
             isBossRoom = true;
             testForBoss = true;
@@ -122,6 +132,7 @@ public class RoomManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col) //Nicolas L
     {
+        GameObject.Find("Player").GetComponent<Player>().RoomType = roomType;
         if (testForBoss)
         {
             GameObject.Find("SoundManager").GetComponent<SoundManager>().ChangeBO(floor + 2);
@@ -308,7 +319,7 @@ public class RoomManager : MonoBehaviour
 
         for (int i = 4; i < transform.childCount; i++)           //destruction of door colliders
         {
-            if(GetComponent<Transform>().GetChild(i).gameObject.tag != "Chest")
+            if(GetComponent<Transform>().GetChild(i).gameObject.tag != "Chest" && GetComponent<Transform>().GetChild(i).gameObject.tag != "Shop")
             {
                 Destroy(GetComponent<Transform>().GetChild(i).gameObject);
             }

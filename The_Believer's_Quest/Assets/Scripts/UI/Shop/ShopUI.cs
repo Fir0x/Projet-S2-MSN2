@@ -1,24 +1,24 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ChestUI : MonoBehaviour
+public class ShopUI : MonoBehaviour
 {
     public Transform itemsParent;
-    public GameObject chestUI;
+    public GameObject shopUI;
 
-    public static ChestUI instance;
+    public static ShopUI instance;
 
     private List<GameObject> itemsInChest;
 
-    ChestSlot[] slots;
+    ShopSlot[] slots;
 
     void Start()
     {
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
-  
-        instance = this;
 
-        slots = itemsParent.GetComponentsInChildren<ChestSlot>();
+        instance = this;
+        
+        slots = itemsParent.GetComponentsInChildren<ShopSlot>();
     }
 
     public void SetItems(List<GameObject> items)
@@ -28,7 +28,7 @@ public class ChestUI : MonoBehaviour
 
     public void EnableUI()
     {
-        chestUI.SetActive(!chestUI.activeSelf);
+        shopUI.SetActive(!shopUI.activeSelf);
         UpdateUI();
     }
 
