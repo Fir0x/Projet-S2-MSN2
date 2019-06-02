@@ -323,6 +323,11 @@ PrefabInstance:
       propertyPath: m_Colors.m_ColorMultiplier
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7188216009039004855, guid: ff7e3a92cfca634499e9d72702af17e4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CONTINUE
+      objectReference: {fileID: 0}
     - target: {fileID: 7188216009795778606, guid: ff7e3a92cfca634499e9d72702af17e4,
         type: 3}
       propertyPath: m_LocalPosition.x

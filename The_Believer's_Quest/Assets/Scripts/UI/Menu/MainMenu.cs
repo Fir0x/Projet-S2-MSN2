@@ -20,7 +20,8 @@ public class MainMenu : MonoBehaviour
 
     public void CONTINUE()
     {
-        Random.state = Loader.LoadingPlayerData(ref playerAsset, ref unlockedItems);
+        Loader.LoadingPlayerData(ref playerAsset, ref unlockedItems);
+        START_GAME();
     }
 
 }

@@ -64,6 +64,7 @@ public class ShopSlot : MonoBehaviour
                 shop.Remove(item);
                 Player.instance.PlayerAsset.Diamond -= price;
                 UIController.uIController.changeDiamond.Invoke();
+                Saver.SavePlayerData(Player.instance.PlayerAsset, shop.UnlockedItems.Unlocked);
             }
         }
         else
