@@ -40,6 +40,7 @@ public class Weapon : MonoBehaviour
 
             UIController.uIController.changeWeapon.Invoke();
             UIController.uIController.changeAmmo.Invoke();
+            weaponGO.GetComponent<SpriteRenderer>().sprite = weapon.GetComponent<WeaponItem>().WeaponAsset.Sprite;
         }
     }
         

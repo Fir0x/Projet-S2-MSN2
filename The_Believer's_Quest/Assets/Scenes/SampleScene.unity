@@ -386,6 +386,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9cc01b55c036404da6ab3ddc8345ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &684703384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7892602917040036623, guid: 321cef1288d49514fa043b3adc2c08b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1514407853}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &712026233 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7680021226926721944, guid: d1cde67dc7783d04990639b029ea2312,
@@ -831,7 +837,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 9100000, guid: c45cd3d1f6c0d8b43a6efe6a11366539, type: 2}
+=======
+      objectReference: {fileID: 9100000, guid: 2682241ca8b85eb4fa3d874c46ba14fc, type: 2}
+>>>>>>> 9b8c00dc13703c61a346ce7eaaa249862a9f0f8a
     - target: {fileID: 8882872389677197813, guid: 321cef1288d49514fa043b3adc2c08b7,
         type: 3}
       propertyPath: items.Array.size
@@ -889,6 +899,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2780578934673590853, guid: ee803c5e989afdf40836139af4fc392c,
         type: 3}
+    - target: {fileID: 854977504751522105, guid: 321cef1288d49514fa043b3adc2c08b7,
+        type: 3}
+      propertyPath: weaponGO
+      value: 
+      objectReference: {fileID: 684703384}
     - target: {fileID: 8245448492886440594, guid: 321cef1288d49514fa043b3adc2c08b7,
         type: 3}
       propertyPath: developmentTool

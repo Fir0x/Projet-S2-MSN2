@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d028474a3df4e38438ea9fa2b2749674, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   floor: 0
   hp: 100
   maxHP: 100
@@ -23,8 +24,9 @@ MonoBehaviour:
   diamond: 3
   weaponsList:
   - {fileID: 6167037201334550808, guid: f60a186df86b32345bc176637acbb710, type: 3}
-  - {fileID: 0}
+  - {fileID: 4835953459227582507, guid: 82baddb24cd155548b0de6d080ebc621, type: 3}
   objectsList:
   - {fileID: 0}
   - {fileID: 0}
+<<<<<<< HEAD
   position: {x: 0.7092, y: 4.4413996, z: 0}
