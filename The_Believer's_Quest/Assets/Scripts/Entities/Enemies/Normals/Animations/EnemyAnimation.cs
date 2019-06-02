@@ -16,8 +16,7 @@ public class EnemyAnimation : MonoBehaviour
         string test = gameObject.name;
         animator = gameObject.GetComponent<Animator>();
         animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
-        /*animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
-        animatorOverrideController["Move_Up"] = anims.Move[0];
+        /*animatorOverrideController["Move_Up"] = anims.Move[0];
         animatorOverrideController["Move_Right"] = anims.Move[1];
         animatorOverrideController["Move_Low"] = anims.Move[2];
         animatorOverrideController["Move_Left"] = anims.Move[3];
@@ -25,10 +24,8 @@ public class EnemyAnimation : MonoBehaviour
         animatorOverrideController["Attack_Right"] = anims.Attack[2];
         animatorOverrideController["Attack_Down"] = anims.Attack[3];
         animatorOverrideController["Attack_Left"] = anims.Attack[4];
-        animatorOverrideController["Death"] = anims.Attack[5];
-
-        animator.runtimeAnimatorController = animatorOverrideController;*/
-
+        animatorOverrideController["Death"] = anims.Death;*/
+        
         animatorOverrideController["Move"] = anims.Move[0];
         animatorOverrideController["Attack"] = anims.Attack[0];
         animatorOverrideController["Death"] = anims.Death;

@@ -31,7 +31,7 @@ public class Object : MonoBehaviour
 
     }
 
-    public void ActiveChange()
+    /*public void ActiveChange()
     {
         playerAsset.Hp += item.HP;
         playerAsset.MaxHP += item.MaxHP;
@@ -43,7 +43,7 @@ public class Object : MonoBehaviour
         {
             StartCoroutine(Duration(item, item.Duration));
         }
-    }
+    }*/
 
     IEnumerator Duration(ObjectsAsset item, uint duration)
     {

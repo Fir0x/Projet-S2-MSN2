@@ -230,8 +230,8 @@ InputManager:
     axis: 1
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Change Weapon
-    descriptiveName: 
+    m_Name: Mouse ScrollWheel
+    descriptiveName: Change weapon
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
