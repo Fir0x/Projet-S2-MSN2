@@ -13,7 +13,7 @@ public static class Loader
         Settings
     };
 
-    public static UnityEngine.Random.State LoadingPlayerData(ref PlayerAsset playerData, ref UnlockedItemsAsset unlockedItems)
+    public static void LoadingPlayerData(ref PlayerAsset playerData, ref UnlockedItemsAsset unlockedItems)
     {
         string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerData.bin");
         //Debug.Log("File path: " + path); //DEBUG
@@ -22,30 +22,20 @@ public static class Loader
         //Loading the GameSave object from the binary file
         Saver.PlayerSave save = JsonUtility.FromJson<Saver.PlayerSave>((string)new BinaryFormatter().Deserialize(streamRestauration));
         playerData = save.playerData;
-        foreach (GameObject item in save.unlockedItems)
+        int i = 0;
+        while (i < save.unlockedItems.Count)
         {
+            GameObject item = save.unlockedItems[i];
             if (unlockedItems.Locked.Contains(item))
             {
                 unlockedItems.Unlocked.Add(item);
                 unlockedItems.Locked.Remove(item);
+                i--;
             }
+
+            i++;
         }
         //GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(.GetComponent<Player>().PlayerAsset.Floor + 2);
-
-        return save.seed;
-    }
-
-    private static GameObject[] DeserializeItem(string serialized)
-    {
-        string[] split = serialized.Split(',');
-        GameObject[] result = new GameObject[2];
-        for (int i = 0; i < 2; i++)
-        {
-            string[] infos = split[i].Split('/');
-            result[i] = infos[0] == "Object" ? Resources.Load<GameObject>("Items/" + infos[1]) : Resources.Load<GameObject>("Items/" + infos[1]);
-        }
-
-        return result;
     }
 
     public static Tuple<float, float> LoadingPlayerSettings()

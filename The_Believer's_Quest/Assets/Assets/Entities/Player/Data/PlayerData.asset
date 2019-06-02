@@ -20,8 +20,8 @@ MonoBehaviour:
   speed: 3
   invicibility: 0
   gold: 171
-  diamond: 0
+  diamond: 986
   weaponsList:
   - {fileID: 11400000, guid: a270b238d7b638c4184ad35280778eba, type: 2}
   - {fileID: 0}
-  position: {x: -3.9599977, y: 3.56, z: 0}
+  position: {x: 30.790215, y: 17.222486, z: 0}

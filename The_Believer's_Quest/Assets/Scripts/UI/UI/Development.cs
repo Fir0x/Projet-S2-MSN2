@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 //Nicolas I
 public class Development : MonoBehaviour
@@ -52,6 +53,17 @@ public class Development : MonoBehaviour
 
     public void Save()
     {
-        Saver.SavePlayerData(playerData, new System.Collections.Generic.List<GameObject>(), Random.state);
+        Saver.SavePlayerData(playerData, new List<GameObject>());
+    }
+
+    public void ResetUnlocked()
+    {
+        List<GameObject> unlocked = Player.instance.UnlockedItems.Unlocked;
+        List<GameObject> originLocked = unlocked.FindAll(item => unlocked.IndexOf(item) > 2);
+        foreach (GameObject toLock in originLocked)
+        {
+            Player.instance.UnlockedItems.Locked.Add(toLock);
+            Player.instance.UnlockedItems.Unlocked.Remove(toLock);
+        }
     }
 }
