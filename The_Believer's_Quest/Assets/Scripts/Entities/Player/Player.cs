@@ -89,7 +89,7 @@ public class Player : MovingObject
         {
             animator.SetTrigger(animDeathID);
             Time.timeScale = 1f;
-            Invoke("GameOver", 4);
+            Invoke("GameOver", 2);
         }
     }
 

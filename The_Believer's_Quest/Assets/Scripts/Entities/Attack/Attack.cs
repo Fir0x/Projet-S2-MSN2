@@ -51,7 +51,7 @@ public class Attack : MonoBehaviour
     }
     private void Cqc(float damage)
     {
-        Collider2D[] playerTouched = Physics2D.OverlapCircleAll(transform.position, 0.5f, LayerMask.GetMask("Default"));
+        Collider2D[] playerTouched = Physics2D.OverlapCircleAll(transform.position, 0.7f, LayerMask.GetMask("Default"));
 
         if(!player.Invicibility)
         {

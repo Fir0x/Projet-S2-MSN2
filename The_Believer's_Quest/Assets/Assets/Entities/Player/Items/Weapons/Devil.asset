@@ -25,5 +25,4 @@ MonoBehaviour:
   type: 3
   nbbulletsbyshot: 8
   projectile: {fileID: 21300008, guid: ddd38c8d7035c1d4184fa7019c563cb9, type: 3}
-  Object: {fileID: 0}
-  diamondPrice: 5
+  diamondPrice: 8
