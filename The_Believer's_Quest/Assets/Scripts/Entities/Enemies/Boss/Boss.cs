@@ -20,6 +20,7 @@ public abstract class Boss : MonoBehaviour
     protected float hpPhase;
     protected Animator animator;
 
+    
     protected Vector3 startPos;
     protected Node nextNode;
     protected Transform transformPlayer;

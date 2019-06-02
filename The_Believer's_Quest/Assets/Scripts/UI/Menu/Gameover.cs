@@ -4,7 +4,7 @@ using UnityEngine;
 public class Gameover : MonoBehaviour
 {
     [SerializeField] private PlayerAsset playerAsset;
-    [SerializeField] private WeaponAsset sword;
+    [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject sliderBoss;
 
     public GameObject canvasgamover;
@@ -19,7 +19,7 @@ public class Gameover : MonoBehaviour
         playerAsset.MaxEffectValue = 0;
         playerAsset.Gold = 0;
         playerAsset.Diamond = 0;
-        //playerAsset.WeaponsList = new []{sword, null};
+        playerAsset.WeaponsList = new []{pistol, null};
         playerAsset.Floor = -1;
         playerAsset.Invicibility = false;
         UIController.uIController.changeHp.Invoke();
