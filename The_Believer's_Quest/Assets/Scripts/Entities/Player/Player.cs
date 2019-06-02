@@ -107,6 +107,8 @@ public class Player : MovingObject
         if (playerAsset.Hp <= 0)
         {
             animator.SetTrigger(animDeathID);
+            SoundManager soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+            soundManager.PlaySingle(soundManager.lfx[4]);
             StartCoroutine(GameOver());
         }
     }
@@ -145,6 +147,8 @@ public class Player : MovingObject
         if((goUp || goRight || goDown || goLeft) && testForDash)
         {
             StartCoroutine(Dash());
+            SoundManager soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+            soundManager.PlaySingle(soundManager.lfx[3]);
         }
     }
 

@@ -60,9 +60,11 @@ public class Enemy : MovingObject
         
         if(shot)
         {
+            animatorController.Attack();
             StartCoroutine(AttackWithCoolDown());
         }
         direction = nextPos - firstPos;
+        ChangeDirection();
         firstPos = nextPos;
 
         if (precedentNode != nextNode && nextNode != null)
@@ -138,10 +140,6 @@ public class Enemy : MovingObject
         UIController.uIController.changeGold.Invoke();
     }
 
-    public void SetHP(int hp)
-    {
-        HP = hp;
-    }
 
     private void OnDestroy()
     {
@@ -154,22 +152,23 @@ public class Enemy : MovingObject
         HP -= damage;
         if (HP <= 0)
         {
-            Destroy(this);
+            animatorController.Death();
+            Destroy(gameObject);
         }
     }
 
-    /*public void ChangeDirection()
+    public void ChangeDirection()
     {
         float x = direction.x;
         float y = direction.y;
 
         if (x < 0)
-            animatorController.Direction(3);
+            animatorController.ChangeDirection(3);
         else if (x > 0)
-            animatorController.Direction(1);
+            animatorController.ChangeDirection(1);
         else if (y < 0)
-            animatorController.Direction(2);
+            animatorController.ChangeDirection(2);
         else
-            animatorController.Direction(0);
-    }*/
+            animatorController.ChangeDirection(0);
+    }
 }
