@@ -114,7 +114,6 @@ public class Player : MovingObject
             soundManager.PlaySingle(soundManager.lfx[4]);
             gameover.SetActive(true);
             //StartCoroutine(GameOver());
-            gameover.SetActive(true);
         }
     }
 

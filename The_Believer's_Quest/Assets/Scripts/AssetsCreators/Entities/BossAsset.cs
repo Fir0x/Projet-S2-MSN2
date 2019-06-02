@@ -12,6 +12,7 @@ public class BossAsset : ScriptableObject
     [SerializeField] private Sprite sprite;
     [SerializeField] private float range;
     [SerializeField] private float cooldown;
+    [SerializeField] private float nbOfProjectiles;
     [SerializeField] private bool effect;
 
 
@@ -25,6 +26,7 @@ public class BossAsset : ScriptableObject
     public float Range { get => range; set => range = value; }
     public float Cooldown { get => cooldown; set => cooldown = value; }
     public bool Effect { get => effect; set => effect = value; }
+    public float NbOfProjectiles { get => nbOfProjectiles; set => nbOfProjectiles = value; }
 
     private void Awake()
     {

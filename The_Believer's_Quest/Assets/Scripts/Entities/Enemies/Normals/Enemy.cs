@@ -145,7 +145,6 @@ public class Enemy : MovingObject
     {
         ChangeGold();
         gameObject.GetComponentInParent<RoomManager>().DestroyEnemy(this.gameObject);
-        print("couueju");
     }
     public void TakeDamage(float damage)
     {
