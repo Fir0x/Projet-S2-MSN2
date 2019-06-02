@@ -64,13 +64,15 @@ public class Weapon : MonoBehaviour
     
     IEnumerator ReloadTimer()
     {
+        shot = false;
         Reload();
         yield return new WaitForSeconds(weapon.ReloadingTime);
+        if (weapon.Loader > 0)
+            shot = true;
     }
 
     public void Reload()
     {
-        shot = false;
         if ( weapon.Ammunitions > 0)
         {
             if (weapon.LoaderCappacity != 0 && weapon.Loader > 0)
@@ -81,21 +83,32 @@ public class Weapon : MonoBehaviour
             }
             else
             {
-                weapon.Loader = weapon.LoaderCappacity;
-                weapon.Ammunitions -= weapon.LoaderCappacity;
+                if (weapon.Ammunitions < weapon.LoaderCappacity)
+                {
+                    weapon.Loader = weapon.Ammunitions;
+                    weapon.Ammunitions = 0;
+                }
+                else
+                {
+                    weapon.Loader = weapon.LoaderCappacity;
+                    weapon.Ammunitions -= weapon.LoaderCappacity;
+                }
             }
-
-            shot = true;
         }
 
     }
 
     IEnumerator CoolDown()
     {
-        Shot();
-        shot = false;
-        yield return new WaitForSeconds(weapon.Cooldown);
-        shot = true;
+        if (weapon.Ammunitions >= 0 && weapon.Loader > 0)
+        {
+            Shot();
+            shot = false;
+            yield return new WaitForSeconds(weapon.Cooldown);
+            shot = true;
+        }
+        else
+            shot = false;
     }
 
     public void Attack() //tourne l'arme dans le bon sens
@@ -118,30 +131,23 @@ public class Weapon : MonoBehaviour
     {
         if (weapon.Type != WeaponAsset.WeaponType.CQC)
         {
-            weapon.Loader --;
-            if (weapon.Loader <=0)//teste si on a encore des balles
+            if (weapon.Loader <= 0)//teste si on a encore des balles
                 StartCoroutine(ReloadTimer());
+            weapon.Loader--;
             UIController.uIController.changeAmmo.Invoke();
-            if (weapon.Ammunitions <= 0)
-                shot = false;
-        }
-        
-        if ((weapon.Type == WeaponAsset.WeaponType.CQC)) 
-            //attaque corps à corps
-            Cqc();
-        
 
-        if ((weapon.Type == WeaponAsset.WeaponType.Line))
-            //attaque en ligne avec RailGun
-            LineShot( weapon.Speed, weapon.Damage, 0);
-        if ((weapon.Type == WeaponAsset.WeaponType.Shotgun)) 
-            //attaque en Arc avec Shotgun
-            ArcShot(weapon.Nbbulletsbyshot);
-        
-        
-        if ((weapon.Type == WeaponAsset.WeaponType.Circle))
-            //attaque en cercle avec Circleshot
-            CircleShot(weapon.Nbbulletsbyshot);
+            if ((weapon.Type == WeaponAsset.WeaponType.Line))
+                //attaque en ligne avec RailGun
+                LineShot(weapon.Speed, weapon.Damage, 0);
+            if ((weapon.Type == WeaponAsset.WeaponType.Shotgun))
+                //attaque en Arc avec Shotgun
+                ArcShot(weapon.Nbbulletsbyshot);
+            if ((weapon.Type == WeaponAsset.WeaponType.Circle))
+                //attaque en cercle avec Circleshot
+                CircleShot(weapon.Nbbulletsbyshot);
+        } 
+        //attaque corps à corps
+         Cqc();        
     }
 
     private void Cqc()
