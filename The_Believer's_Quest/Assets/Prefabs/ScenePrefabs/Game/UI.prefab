@@ -1271,7 +1271,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 551, y: -138}
+  m_AnchoredPosition: {x: -24.3, y: 25.3}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1070149522632268999
@@ -1708,7 +1708,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6822496543497287650
 CanvasRenderer:
@@ -2680,7 +2680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d292ff0d356ea498de70cc87686e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAsset: {fileID: 0}
+  playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   pistol: {fileID: 6167037201334550808, guid: f60a186df86b32345bc176637acbb710, type: 3}
   sliderBoss: {fileID: 2003585571846967404}
   canvasgamover: {fileID: 1822274600683581772}
@@ -3027,7 +3027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 499, y: -137.99998}
+  m_AnchoredPosition: {x: -74.7, y: 25.1}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1844473149123355665

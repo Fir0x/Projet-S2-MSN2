@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 //Everyone
@@ -28,7 +29,9 @@ public class Player : MovingObject
 
     [SerializeField] private PlayerAsset playerAsset;
     [SerializeField] private GameObject gameover;
-
+    [SerializeField] private GameObject SlotItem1;
+    [SerializeField] private GameObject SlotItem2;
+    
     private Weapon weapon;
     private GameObject actualWeapon;
 
@@ -403,6 +406,10 @@ public class Player : MovingObject
         }
         
         Camera.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.transform.position.z);
+        if (playerAsset.ObjectsList[0] != null)
+            SlotItem1.GetComponent<Image>().sprite = playerAsset.ObjectsList[0].GetComponent<Object>().ObjectsAsset.Sprite;
+        if (playerAsset.ObjectsList[1] != null)
+            SlotItem2.GetComponent<Image>().sprite = playerAsset.ObjectsList[1].GetComponent<Object>().ObjectsAsset.Sprite;
     }
 
     public void IsNearChest()
