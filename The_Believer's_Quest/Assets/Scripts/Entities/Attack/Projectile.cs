@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+//Sarah
 public class Projectile : MovingObject
 {
     [SerializeField] protected PlayerAsset playerAsset;
@@ -7,8 +8,6 @@ public class Projectile : MovingObject
     private Vector3 direction;
     private bool player;
     private bool effect;
-    
-    //Sarah
 
     public void Init(Sprite sprite, float speed, float damage, Vector3 origin, float angle, Vector3 _direction, bool player, bool circle, bool effect) 
     {

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+//Sarah
 public class Attack : MonoBehaviour
 {
     public GameObject projectile;
@@ -29,9 +29,9 @@ public class Attack : MonoBehaviour
         if (traj == Trajectory.Line)
             LineShot(playerT.position, enemy.Speed, boss.Damage, 0f);
         if (traj == Trajectory.Arc)
-            ArcShot(enemy.NbOfProjectiles, playerT.position, enemy.ShotSpeed, boss.Damage);
+            ArcShot(boss.NbOfProjectiles, playerT.position, boss.ShotSpeed, boss.Damage);
         if (traj == Trajectory.Circle)
-            CircleShot(enemy.NbOfProjectiles, enemy.ShotSpeed, boss.Damage);
+            CircleShot(boss.NbOfProjectiles, boss.ShotSpeed, boss.Damage);
         if (traj == Trajectory.Cqc)
             Cqc(boss.Damage);
         if (traj == Trajectory.Railgun)

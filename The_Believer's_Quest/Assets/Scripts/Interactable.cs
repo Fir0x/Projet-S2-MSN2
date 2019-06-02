@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+//Maxence
 public class Interactable : MonoBehaviour
 {
     private float radius = 3f;               

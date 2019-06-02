@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-//Nicolas I
+//Nicolas L
 [CreateAssetMenu (fileName = "UnlockedItems", menuName = "Items/UnlockedItems")]
 public class UnlockedItemsAsset : ScriptableObject
 {

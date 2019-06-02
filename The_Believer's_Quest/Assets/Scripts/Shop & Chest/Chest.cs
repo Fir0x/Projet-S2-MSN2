@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Maxence && Nicolas L
 public class Chest : MonoBehaviour
 {
     public static Chest instance;

@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 
-//Nicolas I
+//Nicolas L && Maxence
 public class ItemChooser : MonoBehaviour
 {
     public List<GameObject> ChooseContentChest(AllItemsAsset availableItems, List<GameObject> unlocked)

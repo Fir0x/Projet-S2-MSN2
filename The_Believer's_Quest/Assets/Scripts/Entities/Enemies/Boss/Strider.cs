@@ -5,8 +5,6 @@ using UnityEngine;
 //Nicolas L
 public class Strider : Boss
 {
-    public GameObject blueSlime;
-
     bool test;
 
     void Start()
@@ -15,7 +13,6 @@ public class Strider : Boss
         attackList.Add(DashAttack);
         nbAttacks = 1;
         test = true;
-
     }
 
     protected override void ChangePhase()
@@ -71,6 +68,7 @@ public class Strider : Boss
     private IEnumerator Throwing(float sec)
     {
         test = false;
+        print("throwing");
         attack.BossLauncher(Attack.Trajectory.Circle);
         yield return new WaitForSeconds(sec);
         test = true;

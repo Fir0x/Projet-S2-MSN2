@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//Nicolas I
+//Nicolas I && Maxence && Nicolas L
 [CreateAssetMenu (fileName = "AllItems", menuName = "Items/AllItem")]
 public class AllItemsAsset : ScriptableObject
 {
