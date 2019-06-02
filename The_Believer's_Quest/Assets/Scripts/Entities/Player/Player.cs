@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -70,6 +71,7 @@ public class Player : MovingObject
         return firstPos;
     }
 
+
     public void SetLife(float value)
     {
         playerAsset.Invicibility = true;
@@ -82,9 +84,13 @@ public class Player : MovingObject
         {
             animator.SetTrigger(animDeathID);
             Time.timeScale = 1f;
-            gameover.SetActive(false);
-            print("Game Over");
+            Invoke("GameOver", 4);
         }
+    }
+
+    public void GameOver()
+    {
+        gameover.SetActive(true);
     }
 
     IEnumerator InvicibilityCoolDown()
