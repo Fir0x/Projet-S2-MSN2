@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6976372195499847953}
   - component: {fileID: 7329086224284767979}
   - component: {fileID: 5477245301561926363}
+  - component: {fileID: 5286540183293032608}
   - component: {fileID: 4617531710058134491}
   - component: {fileID: 8709767248929008384}
   - component: {fileID: 7976210795579958276}
@@ -18,7 +19,7 @@ GameObject:
   - component: {fileID: 8596093604270518986}
   m_Layer: 9
   m_Name: Strider
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,6 +105,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5286540183293032608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5496302451493326244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54561521db517f446b9730f0b63a26b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossData: {fileID: 11400000, guid: a5dce0e92b8e0f149894cdca54bb3ebf, type: 2}
+  playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
+  healthBar: {fileID: 0}
 --- !u!114 &4617531710058134491
 MonoBehaviour:
   m_ObjectHideFlags: 0
