@@ -85,6 +85,11 @@ public class Player : MovingObject
         return firstPos;
     }
 
+    public void SetMaxLife(float value)
+    {
+        playerAsset.MaxHP = value;
+        UIController.uIController.changeMaxHp.Invoke();
+    }
 
     public void SetLife(float value)
     {
@@ -99,16 +104,16 @@ public class Player : MovingObject
         }
 
         UIController.uIController.changeHp.Invoke();
-        print(UIController.uIController.changeHp);
         if (playerAsset.Hp <= 0)
         {
             animator.SetTrigger(animDeathID);
-            Invoke("GameOver", 2);
+            StartCoroutine(GameOver());
         }
     }
 
-    public void GameOver()
+    IEnumerator GameOver()
     {
+        yield return new WaitForSeconds(2);
         gameover.SetActive(true);
     }
 
@@ -122,6 +127,12 @@ public class Player : MovingObject
     {
         playerAsset.EffectValue = value;
         UIController.uIController.changeEffect.Invoke();
+    }
+
+    public void SetMaxEffect(int value)
+    {
+        PlayerAsset.MaxEffectValue = value;
+        UIController.uIController.changeMaxEffect.Invoke();
     }
     
     public void Attack()

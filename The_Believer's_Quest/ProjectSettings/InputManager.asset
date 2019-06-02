@@ -231,10 +231,11 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Mouse ScrollWheel
-    descriptiveName: Change weapon
+
+    descriptiveName: Change Weapon
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0

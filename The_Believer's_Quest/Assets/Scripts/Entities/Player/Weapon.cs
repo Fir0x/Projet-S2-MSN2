@@ -161,7 +161,6 @@ public class Weapon : MonoBehaviour
 
     private void Cqc()
     {
-        print("Cac");
         Collider2D[] enemiesTouched =
             Physics2D.OverlapCircleAll(transform.position, 0.5f, LayerMask.GetMask("Aerial", "Ground"));
         for(int i = 0; i < enemiesTouched.Length; i++)

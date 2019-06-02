@@ -37,7 +37,6 @@ public class Enemy : MovingObject
     void Start()
     {
         animatorController = GetComponent<EnemyAnimation>();
-        precedentNode = null;
         firstPos = transform.position;
 
         testForCoolDown = true;
@@ -49,6 +48,8 @@ public class Enemy : MovingObject
         GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
         transformPlayer = playerGO.GetComponent<Transform>();
         mask = gameObject.layer;
+
+        precedentNode = new Node(true, transformPlayer.position, 0, 0);
 
         Pathfinding = AStarPathfindingMoving;
     }
@@ -63,6 +64,11 @@ public class Enemy : MovingObject
         }
         direction = nextPos - firstPos;
         firstPos = nextPos;
+
+        if (precedentNode != nextNode && nextNode != null)
+        {
+            precedentNode = nextNode;
+        }
     }
 
     IEnumerator AttackWithCoolDown()
@@ -85,10 +91,6 @@ public class Enemy : MovingObject
         startPos = transform.position;
 
         nextNode = realPathfinding.FindPath(startPos, transformPlayer.position);
-        if(precedentNode != nextNode && nextNode != null)
-        {
-            precedentNode = nextNode;
-        }
 
         if (nextNode != null)
         {
@@ -132,7 +134,6 @@ public class Enemy : MovingObject
 
     public void OnDestroy()
     {
-        GetComponentInParent<RoomManager>().DestroyEnemy(gameObject);
         ChangeGold();
     }
 

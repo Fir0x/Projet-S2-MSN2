@@ -18,13 +18,25 @@ public class Object : MonoBehaviour
     {
         playerAsset = GameObject.Find("Player").GetComponent<Player>().PlayerAsset;
         
-        GameObject.Find("Player").GetComponent<Player>().SetLife(playerAsset.Hp + objectsAsset.MaxHP);
-        playerAsset.Hp += objectsAsset.HP;
-        if (playerAsset.Hp > playerAsset.MaxHP)
-            playerAsset.Hp = playerAsset.MaxHP;
+        if(objectsAsset.HP != 0)
+        {
+            GameObject.Find("Player").GetComponent<Player>().SetLife(playerAsset.Hp + objectsAsset.HP);
+        }
 
-        playerAsset.EffectValue += objectsAsset.EffectValue;
-        playerAsset.MaxEffectValue += objectsAsset.MaxEffectValue;
+        if (objectsAsset.MaxHP != 0)
+        {
+            GameObject.Find("Player").GetComponent<Player>().SetMaxLife(playerAsset.MaxHP + objectsAsset.MaxHP);
+        }
+        
+        if (objectsAsset.EffectValue != 0)
+        {
+            GameObject.Find("Player").GetComponent<Player>().SetEffect(playerAsset.EffectValue + objectsAsset.EffectValue);
+        }
+
+        if (objectsAsset.MaxEffectValue != 0)
+        {
+            GameObject.Find("Player").GetComponent<Player>().SetMaxEffect(playerAsset.MaxEffectValue + objectsAsset.MaxEffectValue);
+        }
 
         if (objectsAsset.Speed != 0)
             playerAsset.Speed *= objectsAsset.Speed;

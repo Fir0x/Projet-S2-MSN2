@@ -81,7 +81,6 @@ public class KeyBoardManager : MonoBehaviour
 
         if (Input.GetButtonDown("Item 1"))
         {
-            print("1");
             if (player.PlayerAsset.ObjectsList[0] != null)
             {
 
@@ -90,7 +89,6 @@ public class KeyBoardManager : MonoBehaviour
 
         if (Input.GetButtonDown("Item 2"))
         {
-            print("2");
             if (player.PlayerAsset.ObjectsList[1] != null)
             {
 
