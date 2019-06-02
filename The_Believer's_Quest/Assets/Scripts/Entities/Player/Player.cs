@@ -85,6 +85,11 @@ public class Player : MovingObject
         return firstPos;
     }
 
+    public void SetMaxLife(float value)
+    {
+        playerAsset.MaxHP = value;
+        UIController.uIController.changeMaxHp.Invoke();
+    }
 
     public void SetLife(float value)
     {
@@ -99,7 +104,6 @@ public class Player : MovingObject
         }
 
         UIController.uIController.changeHp.Invoke();
-        print(UIController.uIController.changeHp);
         if (playerAsset.Hp <= 0)
         {
             animator.SetTrigger(animDeathID);

@@ -18,8 +18,17 @@ public class Object : MonoBehaviour
     {
         playerAsset = GameObject.Find("Player").GetComponent<Player>().PlayerAsset;
         
-        GameObject.Find("Player").GetComponent<Player>().SetLife(playerAsset.Hp + objectsAsset.MaxHP);
-        playerAsset.Hp += objectsAsset.HP;
+        if(objectsAsset.HP != 0)
+        {
+            GameObject.Find("Player").GetComponent<Player>().SetLife(playerAsset.Hp + objectsAsset.HP);
+        }
+
+        if (objectsAsset.MaxHP != 0)
+        {
+            GameObject.Find("Player").GetComponent<Player>().SetMaxLife(playerAsset.MaxHP + objectsAsset.MaxHP);
+        }
+        
+
         if (playerAsset.Hp > playerAsset.MaxHP)
             playerAsset.Hp = playerAsset.MaxHP;
 
@@ -31,7 +40,7 @@ public class Object : MonoBehaviour
 
     }
 
-    public void ActiveChange()
+    /*public void ActiveChange()
     {
         playerAsset.Hp += item.HP;
         playerAsset.MaxHP += item.MaxHP;
@@ -43,7 +52,7 @@ public class Object : MonoBehaviour
         {
             StartCoroutine(Duration(item, item.Duration));
         }
-    }
+    }*/
 
     IEnumerator Duration(ObjectsAsset item, uint duration)
     {
