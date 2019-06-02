@@ -1569,8 +1569,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c69dd28418e554e8de45aa1f0dbf49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAsset: {fileID: 0}
-  unlockedItems: {fileID: 0}
+  playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
+  unlockedItems: {fileID: 11400000, guid: 047f8f84eb1573e48bc9a66cd3596c84, type: 2}
 --- !u!114 &7299230952994487298
 MonoBehaviour:
   m_ObjectHideFlags: 0

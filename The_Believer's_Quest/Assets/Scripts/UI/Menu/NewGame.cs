@@ -12,6 +12,6 @@ public class NewGame : MonoBehaviour
 
     public void StartNewGame()    
     {
-        Saver.SavePlayerData(playerData, new List<GameObject>(), Random.state);
+        Saver.SavePlayerData(playerData, new List<GameObject>());
     }
 }

@@ -100,7 +100,7 @@ public class Weapon : MonoBehaviour
 
     IEnumerator CoolDown()
     {
-        if (weapon.Ammunitions >= 0 && weapon.Loader > 0)
+        if (weapon.Type == WeaponAsset.WeaponType.CQC ||( weapon.Ammunitions >= 0 && weapon.Loader > 0))
         {
             Shot();
             shot = false;
@@ -157,6 +157,7 @@ public class Weapon : MonoBehaviour
             Physics2D.OverlapCircleAll(transform.position, 0.5f, LayerMask.GetMask("Aerial", "Ground"));
         for(int i = 0; i < enemiesTouched.Length; i++)
         {
+            if (enemiesTouched[i].CompareTag("Enemy"))
                 enemiesTouched[i].gameObject.GetComponent<Enemy>().TakeDamage(weapon.Damage);
             if (enemiesTouched[i].CompareTag("Boss"))
                 enemiesTouched[i].gameObject.GetComponent<Boss>().ChangeLife(-weapon.Damage);

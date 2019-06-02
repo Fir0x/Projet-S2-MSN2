@@ -45,6 +45,7 @@ public class NextLevel : MonoBehaviour
                     GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(playerAsset.Floor + 3);
                     Destroy(GameObject.Find("Board"));
                     MapController.mapInstance.ResetMap();
+                    Saver.SavePlayerData(playerAsset, Player.instance.UnlockedItems.Unlocked);
                 }
             }
             firstTrigger = false;

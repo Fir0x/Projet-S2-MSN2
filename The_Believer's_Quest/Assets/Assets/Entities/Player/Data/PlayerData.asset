@@ -19,6 +19,7 @@ MonoBehaviour:
   maxEffectValue: 0
   speed: 3
   invicibility: 0
+
   gold: 147
   diamond: 957
   weaponsList:

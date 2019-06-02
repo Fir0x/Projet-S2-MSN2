@@ -42,9 +42,12 @@ public class Player : MovingObject
     private float moveY;
     private Vector2 firstPos;
 
+    [SerializeField] private UnlockedItemsAsset unlockedItems;
+
     public GameObject Camera { get => camera; set => camera = value; }
     public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
     public Board.Type RoomType { get => roomType; set => roomType = value; }
+    public UnlockedItemsAsset UnlockedItems { get => unlockedItems; set => unlockedItems = value; }
 
     private void Start()
     {
@@ -64,6 +67,8 @@ public class Player : MovingObject
 
         nearShop = false;
         nearChest = false;
+
+        unlockedItems.CheckDuplicate();
     }
 
     public Vector3 GetPos()

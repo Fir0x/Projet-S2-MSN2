@@ -54,6 +54,7 @@ MonoBehaviour:
   camera: {fileID: 8643787426481538859, guid: fddef213d0325fa4b9ebd046b3e9ea98, type: 3}
   playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   gameover: {fileID: 0}
+  unlockedItems: {fileID: 11400000, guid: 047f8f84eb1573e48bc9a66cd3596c84, type: 2}
 --- !u!212 &4659674338766441832
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -313,5 +314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa3792fed4fb024b81246d02702eae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  suce: {fileID: 0}
   projectile: {fileID: 3965654078627227375, guid: a345e41e75ad0b94aa845a60b71e5d4f,
     type: 3}
