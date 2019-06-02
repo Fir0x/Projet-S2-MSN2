@@ -615,6 +615,11 @@ PrefabInstance:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7584383160408248086, guid: 06705fef10342644c87cfd71544c31d3,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.693
+      objectReference: {fileID: 0}
     - target: {fileID: 4241710226174738886, guid: 06705fef10342644c87cfd71544c31d3,
         type: 3}
       propertyPath: lfx.Array.size
@@ -708,7 +713,7 @@ PrefabInstance:
     - target: {fileID: 8585158490761645554, guid: 06705fef10342644c87cfd71544c31d3,
         type: 3}
       propertyPath: m_Volume
-      value: 0.079
+      value: 0.599
       objectReference: {fileID: 0}
     - target: {fileID: 8585158490761645554, guid: 06705fef10342644c87cfd71544c31d3,
         type: 3}
@@ -826,6 +831,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
+
       objectReference: {fileID: 9100000, guid: c45cd3d1f6c0d8b43a6efe6a11366539, type: 2}
     - target: {fileID: 8882872389677197813, guid: 321cef1288d49514fa043b3adc2c08b7,
         type: 3}

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 //Nicolas I
-[CreateAssetMenu(fileName = "NewAnimationsAsset", menuName = "Entity/Animations")]
+[CreateAssetMenu(fileName = "NewEnemyAnimsAsset", menuName = "Animation/Enemy animations")]
 public class EnemyAnimAsset : ScriptableObject
 {
     [SerializeField] private AnimationClip[] move;
