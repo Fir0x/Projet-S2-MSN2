@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8409686291797151701}
   - component: {fileID: 3948150150598197446}
   m_Layer: 0
-  m_Name: RedRing 1
-  m_TagString: Untagged
+  m_Name: RedRing
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

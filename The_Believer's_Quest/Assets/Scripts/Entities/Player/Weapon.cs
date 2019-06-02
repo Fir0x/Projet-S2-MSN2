@@ -5,6 +5,7 @@ using UnityEngine;
 [Serializable]
 public class Weapon : MonoBehaviour
 {
+    public GameObject suce;
     private WeaponAsset weapon;
     private PlayerAsset playerAsset;
     private bool shot;
@@ -16,6 +17,7 @@ public class Weapon : MonoBehaviour
 
     public void Init(WeaponAsset weapon, PlayerAsset playerAsset)
     {
+        Inventory.instance.Add(suce);
         shot = true;
         this.weapon = weapon;
         this.playerAsset = playerAsset;
@@ -151,7 +153,7 @@ public class Weapon : MonoBehaviour
     private void Cqc()
     {
         Collider2D[] enemiesTouched =
-            Physics2D.OverlapCircleAll(transform.position, 0.5f, LayerMask.GetMask("Aerial", "Ground"));
+            Physics2D.OverlapCircleAll(transform.position, 1f, LayerMask.GetMask("Aerial", "Ground"));
         for(int i = 0; i < enemiesTouched.Length; i++)
         {
             if(enemiesTouched[i].CompareTag("Enemy"))

@@ -22,7 +22,14 @@ public class ChestSlot : MonoBehaviour
     public void AddItem(GameObject newItem)
     {
         item = newItem;
-        icon.sprite = item.GetComponent<Object>().ObjectsAsset.Sprite;
+        if (item.CompareTag("Object"))
+        {
+            icon.sprite = item.GetComponent<Object>().ObjectsAsset.Sprite;
+        }
+        else if (item.CompareTag("Weapon"))
+        {
+            icon.sprite = item.GetComponent<WeaponItem>().WeaponAsset.Sprite;
+        }
         icon.enabled = true;
     }
 

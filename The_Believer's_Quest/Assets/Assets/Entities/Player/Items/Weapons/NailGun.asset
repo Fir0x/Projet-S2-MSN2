@@ -25,4 +25,4 @@ MonoBehaviour:
   type: 1
   nbbulletsbyshot: 1
   projectile: {fileID: 0}
-  Object: {fileID: 0}
+  diamondPrice: 2

@@ -8,22 +8,39 @@ public class Shop : MonoBehaviour
     private ShopUI shopUI;
 
     [SerializeField] private AllItemsAsset allItems;
+    [SerializeField] private UnlockedItemsAsset unlockedItems;
+
+    public bool isHub;
 
     public int space = 12;  // Amount of slots in chest
 
     public AllItemsAsset AllItems { get => allItems; }
+    public UnlockedItemsAsset UnlockedItems { get => unlockedItems; set => unlockedItems = value; }
 
     // Current list of items in chest
     public List<GameObject> items = new List<GameObject>();
 
     void Start()
     {
+        if (GameObject.Find("Player").GetComponent<Player>().PlayerAsset.Floor == 0)
+        {
+            isHub = true;
+        }
+        else
+        {
+            isHub = false;
+        }
+
         instance = this;
         shopUI = ShopUI.instance;
 
-        for (int i = 0; i < 10; i++)
+        if (!isHub)
         {
-            items.Add(AllItems.AllItems[i]);
+            items = shopUI.gameObject.GetComponent<ItemChooser>().ChooseContentShop(allItems, unlockedItems);
+        }
+        else
+        {
+            items = unlockedItems.Locked;
         }
 
         shopUI.SetItems(items);

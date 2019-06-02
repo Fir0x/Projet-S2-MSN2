@@ -18,13 +18,11 @@ public class Chest : MonoBehaviour
 
     void Start()
     {
+        
         instance = this;
         chestUI = ChestUI.instance;
-        
-        for(int i = 0; i < 10; i++)
-        {
-            items.Add(AllItems.AllItems[i]);
-        }
+
+        items = chestUI.gameObject.GetComponent<ItemChooser>().ChooseContentChest(allItems);
 
         chestUI.SetItems(items);
 

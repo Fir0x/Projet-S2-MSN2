@@ -3,6 +3,8 @@ using UnityEngine;
 //Nicolas I
 public class Board : MonoBehaviour
 {
+    public static Board instance;
+
     [SerializeField] private PlayerAsset playerAsset;
     [SerializeField] private int width = 10;
     [SerializeField] private int height = 5;
@@ -84,7 +86,7 @@ public class Board : MonoBehaviour
         else
         {
             int RoomNumber = 7 * playerAsset.Floor;
-            
+
             //Utility.ExecutionTime.Set(); //DEBUG
             if (RoomNumber > Width * Height)
                 throw new System.Exception("Too much rooms.");
@@ -108,7 +110,6 @@ public class Board : MonoBehaviour
 
             int[,] boardMap = new int[height, width];
             boardMap[startPoint[1], startPoint[0]] = 1;
-
             while (k < RoomNumber)
             {
                 k++;
@@ -124,20 +125,18 @@ public class Board : MonoBehaviour
                 nbFree += lastY - 1 > 0 && !roomBaseList.Exists(roomBase => roomBase.position[0] == lastX && roomBase.position[1] == lastY - 1) ? 1 : 0;
                 nbFree += lastY + 1 < Height && !roomBaseList.Exists(roombase => roombase.position[0] == lastX && roombase.position[1] == lastY + 1) ? 1 : 0;
 
+                
                 if (nbFree != 0)
                 {
-
                     do //Choose randomly one place in the free
                     {
                         newX = Random.Range(lastX - 1, lastX + 2);
                         newY = lastY;
                         if (newX == lastX)
                             newY = Random.Range(lastY - 1, lastY + 2);
-
                     } while (newX < 0 || newX >= Width ||
                             newY < 0 || newY >= Height ||
                             roomBaseList.Exists(roomBase => roomBase.position[0] == newX && roomBase.position[1] == newY));
-
                     //print("newX = " + newPosition[0] + "\nnewY = " + newPosition[1]); //DEBUG
                     if (k == (int)(0.3333f * RoomNumber))
                     {
@@ -190,14 +189,12 @@ public class Board : MonoBehaviour
                     k--;
                 }
             }
-
             Room room = GetComponent<Room>();
             foreach (RoomBase roomBase in roomBaseList)
             {
                 room.RoomCreator(board, roomBase.position, new float[] { roomBase.position[0] * roomWidth + 8,
                 roomBase.position[1] * roomHeight + 6 }, roomBase.roomNumber, roomBase.doorsPosition, roomBase.type, roomBase.GetBossDoor());
             }
-
             MapController.mapInstance.InitMap(boardMap, width, height);
 
             //Utility.ExecutionTime.PrintExecutionTime(); //DEBUG
@@ -206,6 +203,7 @@ public class Board : MonoBehaviour
 
     public void Start()
     {
+        instance = this;
         playerAsset.Floor = 0;
         BoardCreation();
 
@@ -218,9 +216,7 @@ public class Board : MonoBehaviour
     {
         playerAsset.Floor += 1;
         BoardCreation();
-
         DestroyEntrance();
-
         GameObject.Find("UI").transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
         GameObject.Find("UI").transform.GetChild(0).GetChild(4).gameObject.SetActive(true);
         GameObject.Find("UI").transform.GetChild(0).GetChild(5).gameObject.SetActive(true);

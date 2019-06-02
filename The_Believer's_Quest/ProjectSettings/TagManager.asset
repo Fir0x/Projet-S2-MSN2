@@ -12,6 +12,8 @@ TagManager:
   - NextLevel
   - Chest
   - Shop
+  - Weapon
+  - Object
   layers:
   - Default
   - TransparentFX

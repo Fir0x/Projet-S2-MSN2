@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300020, guid: 611eb00482ca3ef4ea2c3199b24f82d4, type: 3}
   passive: 0
-  price: 0
+  price: 50
   hP: 0
   maxHP: 0
   effectValue: 0
