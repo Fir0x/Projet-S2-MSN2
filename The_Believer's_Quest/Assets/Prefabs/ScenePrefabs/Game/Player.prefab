@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 8643787426481538859, guid: fddef213d0325fa4b9ebd046b3e9ea98, type: 3}
+  canAttack: 0
   playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   gameover: {fileID: 0}
   unlockedItems: {fileID: 11400000, guid: 047f8f84eb1573e48bc9a66cd3596c84, type: 2}
