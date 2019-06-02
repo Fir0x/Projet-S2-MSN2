@@ -10,11 +10,7 @@ public class Object : MonoBehaviour
 
     PlayerAsset playerAsset;
     private bool cooldown;
-
-    private void Start()
-    {
-        cooldown = true;
-    }
+    int life;
 
     public void PassiveChange()
     {
@@ -47,47 +43,55 @@ public class Object : MonoBehaviour
 
     public void ActiveChange()
     {
-        if (cooldown)
+        print("Active CHange");
+        life = 0;
+
+        playerAsset = GameObject.Find("Player").GetComponent<Player>().PlayerAsset;
+
+        if (objectsAsset.HP == -999)
         {
-            cooldown = false;
-
-            playerAsset = GameObject.Find("Player").GetComponent<Player>().PlayerAsset;
-
-            if (objectsAsset.HP != 0)
-            {
-                GameObject.Find("Player").GetComponent<Player>().SetLife(playerAsset.Hp + objectsAsset.HP);
-            }
-
-            if (objectsAsset.MaxHP != 0)
-            {
-                GameObject.Find("Player").GetComponent<Player>().SetMaxLife(playerAsset.MaxHP + objectsAsset.MaxHP);
-            }
-
-            if (objectsAsset.EffectValue != 0)
-            {
-                GameObject.Find("Player").GetComponent<Player>().SetEffect(playerAsset.EffectValue + objectsAsset.EffectValue);
-            }
-
-            if (objectsAsset.MaxEffectValue != 0)
-            {
-                GameObject.Find("Player").GetComponent<Player>().SetMaxEffect(playerAsset.MaxEffectValue + objectsAsset.MaxEffectValue);
-            }
-
-            if (objectsAsset.Speed != 0)
-                playerAsset.Speed *= objectsAsset.Speed;
-
-            StartCoroutine(Duration(objectsAsset, objectsAsset.Duration));
-
-            Inventory.instance.Remove(gameObject);
-            
-            for(int i = 0; i < 2; i++)
-            {
-                if (playerAsset.ObjectsList[i] == gameObject)
-                {
-                    playerAsset.ObjectsList[i] = null;
-                }
-            }
+            life = (int)GameObject.Find("Player").GetComponent<Player>().PlayerAsset.Hp;
+            GameObject.Find("Player").GetComponent<Player>().SetLife(1);
+            GameObject.Find("Player").GetComponentInChildren<Weapon>().SetDamage(2);
         }
+        print("ou");
+
+        if (objectsAsset.HP != 0)
+        {
+            GameObject.Find("Player").GetComponent<Player>().SetLife(playerAsset.Hp + objectsAsset.HP);
+        }
+
+        if (objectsAsset.MaxHP != 0)
+        {
+            GameObject.Find("Player").GetComponent<Player>().SetMaxLife(playerAsset.MaxHP + objectsAsset.MaxHP);
+        }
+
+        if (objectsAsset.EffectValue != 0)
+        {
+            GameObject.Find("Player").GetComponent<Player>().SetEffect(playerAsset.EffectValue + objectsAsset.EffectValue);
+        }
+
+        if (objectsAsset.MaxEffectValue != 0)
+        {
+            GameObject.Find("Player").GetComponent<Player>().SetMaxEffect(playerAsset.MaxEffectValue + objectsAsset.MaxEffectValue);
+        }
+
+        if (objectsAsset.Speed != 0)
+            playerAsset.Speed *= objectsAsset.Speed;
+
+        if (objectsAsset.Invicibility)
+        {
+            playerAsset.Invicibility = true;
+        }
+
+        if (objectsAsset.Ammo != 0)
+        {
+            GameObject.Find("Player").GetComponentInChildren<Weapon>().SetDamage(2);
+        }
+
+        StartCoroutine(Duration(objectsAsset, objectsAsset.Duration));
+
+        Inventory.instance.Remove(gameObject);
     }
 
     IEnumerator Duration(ObjectsAsset item, uint duration)
@@ -98,7 +102,11 @@ public class Object : MonoBehaviour
         playerAsset.EffectValue -= item.EffectValue;
         playerAsset.MaxEffectValue -= item.MaxEffectValue;
         playerAsset.Speed -= item.Speed;
-
-        cooldown = true;
+        playerAsset.Invicibility = false;
+        if (objectsAsset.HP == -999)
+        {
+            GameObject.Find("Player").GetComponent<Player>().SetLife(life);
+            GameObject.Find("Player").GetComponentInChildren<Weapon>().SetDamage(0.5f);
+        }
     }
 }

@@ -85,6 +85,7 @@ public class KeyBoardManager : MonoBehaviour
             {
                 print("objet 1");
                 player.PlayerAsset.ObjectsList[0].GetComponent<Object>().ActiveChange();
+                player.PlayerAsset.ObjectsList[0] = null;
             }
         }
 
@@ -94,6 +95,7 @@ public class KeyBoardManager : MonoBehaviour
             {
                 print("objet 2");
                 player.PlayerAsset.ObjectsList[1].GetComponent<Object>().ActiveChange();
+                player.PlayerAsset.ObjectsList[1] = null;
             }
         }
     }

@@ -43,7 +43,10 @@ public class Weapon : MonoBehaviour
         }
     }
         
-
+    public void SetDamage(float dmg)
+    {
+        weapon.Damage *= (int) dmg;
+    }
     public int GetDamage()
     {
         return weapon.Damage;
