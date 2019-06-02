@@ -705,6 +705,16 @@ PrefabInstance:
       propertyPath: lfx.Array.data[16]
       value: 
       objectReference: {fileID: 8300000, guid: e83796dbb63c28b4999b8729c31ca3e8, type: 3}
+    - target: {fileID: 8585158490761645554, guid: 06705fef10342644c87cfd71544c31d3,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.079
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585158490761645554, guid: 06705fef10342644c87cfd71544c31d3,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06705fef10342644c87cfd71544c31d3, type: 3}
 --- !u!114 &1501051464 stripped
