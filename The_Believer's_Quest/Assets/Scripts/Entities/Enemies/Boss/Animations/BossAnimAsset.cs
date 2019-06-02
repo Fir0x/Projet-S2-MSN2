@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewBossAnimAsset", menuName = "Animation/Boss animations")]
+//Nicolas I
+[CreateAssetMenu(fileName = "NewBossAnimAsset", menuName = "AnimationStocker/Boss animations")]
 public class BossAnimAsset : ScriptableObject
 {
     [SerializeField] private AnimationClip[] move;

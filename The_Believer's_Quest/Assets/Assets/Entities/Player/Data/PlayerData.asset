@@ -11,20 +11,20 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d028474a3df4e38438ea9fa2b2749674, type: 3}
   m_Name: PlayerData
-  m_EditorClassIdentifier:
-  floor: 0
-  hp: 100
+  m_EditorClassIdentifier: 
+  floor: 1
+  hp: 0
   maxHP: 100
-  effectValue: 0
-  maxEffectValue: 0
+  effectValue: 15
+  maxEffectValue: 600
   speed: 5.23
   invicibility: 0
-  gold: 0
+  gold: 72
   diamond: 3
   weaponsList:
   - {fileID: 6167037201334550808, guid: f60a186df86b32345bc176637acbb710, type: 3}
-  - {fileID: 4835953459227582507, guid: 82baddb24cd155548b0de6d080ebc621, type: 3}
+  - {fileID: 0}
   objectsList:
   - {fileID: 0}
-  - {fileID: 0}
-  position: {x: 0.7092, y: 4.4413996, z: 0}
+  - {fileID: 5150180764114344761, guid: 3e698ec3dcc0e5841a999e8dc43a8c80, type: 3}
+  position: {x: 76.871086, y: 19.200191, z: 0}

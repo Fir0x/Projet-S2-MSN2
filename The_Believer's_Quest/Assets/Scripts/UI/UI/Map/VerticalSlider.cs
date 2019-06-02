@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+//Nicolas I
 public class VerticalSlider : MonoBehaviour
 {
     public void ChangeCamPosition()

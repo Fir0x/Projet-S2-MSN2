@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+//Maxence && Nicolas L
 /* Sits on all InventorySlots. */
 
 public class InventorySlot : MonoBehaviour

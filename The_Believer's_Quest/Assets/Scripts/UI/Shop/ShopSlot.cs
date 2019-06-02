@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 /* Sits on all InventorySlots. */
-
+//Maxence && Nicolas L
 public class ShopSlot : MonoBehaviour
 {
     private Inventory inventory;
@@ -27,10 +27,11 @@ public class ShopSlot : MonoBehaviour
         item = newItem;
         if (isHub)
         {
-            print(isHub + "");
-            print("" + item.name);
-            icon.sprite = item.GetComponent<WeaponItem>().WeaponAsset.Sprite;
-            icon.enabled = true;
+            if (item != null)
+            {
+                icon.sprite = item.GetComponent<WeaponItem>().WeaponAsset.Sprite;
+                icon.enabled = true;
+            }
         }
         else
         {

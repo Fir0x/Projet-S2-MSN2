@@ -1,14 +1,19 @@
 ﻿using UnityEngine;
-
+//Sarah
 public class Attack : MonoBehaviour
 {
     public GameObject projectile;
-    public PlayerAsset player;
+    private PlayerAsset player;
     public EnemyAsset enemy;
     public BossAsset boss;
 
     private bool effect = false;
-    
+
+    private void Start()
+    {
+        player = Player.instance.PlayerAsset;
+    }
+
     public enum Trajectory
     {
         Line,
@@ -24,9 +29,9 @@ public class Attack : MonoBehaviour
         if (traj == Trajectory.Line)
             LineShot(playerT.position, enemy.Speed, boss.Damage, 0f);
         if (traj == Trajectory.Arc)
-            ArcShot(enemy.NbOfProjectiles, playerT.position, enemy.ShotSpeed, boss.Damage);
+            ArcShot((int)boss.NbOfProjectiles, playerT.position, boss.ShotSpeed, boss.Damage);
         if (traj == Trajectory.Circle)
-            CircleShot(enemy.NbOfProjectiles, enemy.ShotSpeed, boss.Damage);
+            CircleShot((int)boss.NbOfProjectiles, boss.ShotSpeed, boss.Damage);
         if (traj == Trajectory.Cqc)
             Cqc(boss.Damage);
         if (traj == Trajectory.Railgun)

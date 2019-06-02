@@ -14,6 +14,7 @@ public class BossAsset : ScriptableObject
     [SerializeField] private float cooldown;
     [SerializeField] private float nbOfProjectiles;
     [SerializeField] private bool effect;
+    [SerializeField] private float shotSpeed;
 
 
     public float Hp { get => hp; set => hp = value; }
@@ -27,6 +28,7 @@ public class BossAsset : ScriptableObject
     public float Cooldown { get => cooldown; set => cooldown = value; }
     public bool Effect { get => effect; set => effect = value; }
     public float NbOfProjectiles { get => nbOfProjectiles; set => nbOfProjectiles = value; }
+    public float ShotSpeed { get => shotSpeed; set => shotSpeed = value; }
 
     private void Awake()
     {

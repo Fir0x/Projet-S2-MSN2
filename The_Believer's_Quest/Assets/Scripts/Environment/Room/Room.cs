@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-//Nicolas I
+//Nicolas I && Nicolas L && Maxence
 [Serializable]
 public class Room : MonoBehaviour
 {
@@ -44,8 +44,11 @@ public class Room : MonoBehaviour
     {
         GameObject room = patterns.Pattern[0];
         Player.transform.position = room.transform.position + new Vector3(0.5f, 3.5f, 0f);
+        GameObject nextLevelOnScene = Instantiate(nextLevel, room.transform.position + new Vector3(0.5f, 7f, 0f), Quaternion.identity) as GameObject;
+        nextLevelOnScene.GetComponent<SpriteRenderer>().enabled = false;
+        nextLevelOnScene.transform.SetParent(GameObject.Find("Board").transform);
         type = Board.Type.Shop;
-
+       
         return room;
     }
 
@@ -54,6 +57,12 @@ public class Room : MonoBehaviour
         GameObject room;
         id = roomNumber;
         this.type = type;
+        if (playerAsset.Floor == 5)
+        {
+            playerAsset.Floor = 0;
+            playerAsset.Gold = 0;
+            HubCreator();
+        }
         if (playerAsset.Floor == 1)
         {
             if (roomNumber == 1 || type != Board.Type.Normal)
@@ -67,13 +76,27 @@ public class Room : MonoBehaviour
         }
         else
         {
-            if (roomNumber == 1 || type != Board.Type.Normal)
+            if (playerAsset.Floor == 4)
             {
-                room = patterns.Pattern[11 + 7 * (playerAsset.Floor - 2)];
+                if (roomNumber == 1 || type != Board.Type.Normal)
+                {
+                    room = patterns.Pattern[1];
+                }
+                else
+                {
+                    room = patterns.Pattern[UnityEngine.Random.Range(0, patterns.Pattern.Length)];
+                }
             }
             else
             {
-                room = patterns.Pattern[UnityEngine.Random.Range(11 + 7 * (playerAsset.Floor - 2), 17 + 7 * (playerAsset.Floor - 2))];
+                if (roomNumber == 1 || type != Board.Type.Normal)
+                {
+                    room = patterns.Pattern[11 + 7 * (playerAsset.Floor - 2)];
+                }
+                else
+                {
+                    room = patterns.Pattern[UnityEngine.Random.Range(11 + 7 * (playerAsset.Floor - 2), 17 + 7 * (playerAsset.Floor - 2))];
+                }
             }
         }
 

@@ -21,3 +21,5 @@ MonoBehaviour:
   sprite: {fileID: 0}
   range: 3
   cooldown: 10
+  nbOfProjectiles: 6
+  effect: 0

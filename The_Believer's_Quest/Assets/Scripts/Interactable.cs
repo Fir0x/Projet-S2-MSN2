@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+//Maxence
 public class Interactable : MonoBehaviour
 {
     private float radius = 3f;               
@@ -54,6 +54,7 @@ public class Interactable : MonoBehaviour
             ChestUI.instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             InventoryUI.instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             ShopUI.instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            GameObject.Find("Player").GetComponent<Player>().canAttack = true;
         }
     }
 

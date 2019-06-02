@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-//Sarah et Nicolas I
+//Everyone
 public class KeyBoardManager : MonoBehaviour
 {
     private Player player;
@@ -67,11 +67,13 @@ public class KeyBoardManager : MonoBehaviour
         if (Input.GetButtonDown("Interact") && Player.instance.GetNearChest())
         {
             player.ActiveChestUI();
+            player.canAttack = !player.canAttack;
         }
 
         if (Input.GetButtonDown("Interact") && Player.instance.GetNearShop())
         {
             player.ActiveShopUI();
+            player.canAttack = !player.canAttack;
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") != 0f)

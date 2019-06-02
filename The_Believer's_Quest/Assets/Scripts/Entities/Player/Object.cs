@@ -101,7 +101,7 @@ public class Object : MonoBehaviour
         playerAsset.MaxHP -= item.MaxHP;
         playerAsset.EffectValue -= item.EffectValue;
         playerAsset.MaxEffectValue -= item.MaxEffectValue;
-        playerAsset.Speed -= item.Speed;
+        playerAsset.Speed /= item.Speed;
         playerAsset.Invicibility = false;
         if (objectsAsset.HP == -999)
         {

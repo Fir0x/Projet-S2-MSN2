@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Entities;
-//Nicolas I
+//Nicolas I && Nicolas L
 public abstract class Boss : MonoBehaviour
 {
     protected bool isAttacking;
