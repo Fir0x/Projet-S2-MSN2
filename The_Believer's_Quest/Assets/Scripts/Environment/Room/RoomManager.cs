@@ -224,6 +224,7 @@ public class RoomManager : MonoBehaviour
 
     public void DestroyEnemy(GameObject enemy) //Nicolas L
     {
+        Destroy(enemy);
         enemiesRemaining -= 1;
         if (enemiesRemaining == 0)
         {
