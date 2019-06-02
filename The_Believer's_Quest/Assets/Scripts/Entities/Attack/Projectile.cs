@@ -19,7 +19,11 @@ public class Projectile : MovingObject
         this.player = player;
         if (circle)
             _direction = transform.up;
-        
+
+        if (_direction == new Vector3(0, 0, 0))
+        {
+            direction = transform.up;
+        }
         direction = _direction;
         if (angle != 0)
             transform.RotateAround(origin, Vector3.forward, angle);
@@ -62,7 +66,6 @@ public class Projectile : MovingObject
             }
         }
         
-
         if (player)
             direction = transform.up;
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
