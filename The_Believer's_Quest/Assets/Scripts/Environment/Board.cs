@@ -125,7 +125,7 @@ public class Board : MonoBehaviour
                 nbFree += lastY - 1 > 0 && !roomBaseList.Exists(roomBase => roomBase.position[0] == lastX && roomBase.position[1] == lastY - 1) ? 1 : 0;
                 nbFree += lastY + 1 < Height && !roomBaseList.Exists(roombase => roombase.position[0] == lastX && roombase.position[1] == lastY + 1) ? 1 : 0;
 
-                
+
                 if (nbFree != 0)
                 {
                     do //Choose randomly one place in the free
@@ -155,7 +155,7 @@ public class Board : MonoBehaviour
                     roomBaseList.Add(actual);
                     //Add doors between the parent and his child
 
-                    if(newX > lastX)
+                    if (newX > lastX)
                     {
                         parent.AddDoors(DoorPos.Right, isBoss);
                         actual.AddDoors(DoorPos.Left, isBoss);
@@ -176,12 +176,12 @@ public class Board : MonoBehaviour
                         actual.AddDoors(DoorPos.Up, isBoss);
                     }
 
-                    
+
 
                     parent = roomBaseList[Random.Range(0, roomBaseList.Count)];
 
                     boardMap[newY, newX] = k; //Add id of room for mapping
-                    
+
                 }
                 else
                 {

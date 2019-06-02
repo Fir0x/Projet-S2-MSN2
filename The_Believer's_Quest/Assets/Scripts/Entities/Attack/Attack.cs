@@ -29,9 +29,9 @@ public class Attack : MonoBehaviour
         if (traj == Trajectory.Line)
             LineShot(playerT.position, enemy.Speed, boss.Damage, 0f);
         if (traj == Trajectory.Arc)
-            ArcShot(boss.NbOfProjectiles, playerT.position, boss.ShotSpeed, boss.Damage);
+            ArcShot((int)boss.NbOfProjectiles, playerT.position, boss.ShotSpeed, boss.Damage);
         if (traj == Trajectory.Circle)
-            CircleShot(boss.NbOfProjectiles, boss.ShotSpeed, boss.Damage);
+            CircleShot((int)boss.NbOfProjectiles, boss.ShotSpeed, boss.Damage);
         if (traj == Trajectory.Cqc)
             Cqc(boss.Damage);
         if (traj == Trajectory.Railgun)
