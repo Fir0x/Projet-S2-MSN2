@@ -398,6 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allItems: {fileID: 11400000, guid: 0898eac12f097784ba17872ccf4ed1d3, type: 2}
+  unlockedItems: {fileID: 11400000, guid: 047f8f84eb1573e48bc9a66cd3596c84, type: 2}
   space: 12
   items: []
 --- !u!114 &1089724515189544524

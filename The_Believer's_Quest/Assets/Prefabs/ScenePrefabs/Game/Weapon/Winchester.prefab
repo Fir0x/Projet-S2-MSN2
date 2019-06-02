@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 412093103814606089}
   m_Layer: 0
   m_Name: Winchester
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e1ccc4903dab648bbb3587fe4327b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponAsset: {fileID: 0}
+  weaponAsset: {fileID: 11400000, guid: 40852d7a4e77afa4398dfae6ee48021e, type: 2}

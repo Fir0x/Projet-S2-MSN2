@@ -79,7 +79,6 @@ public class Room : MonoBehaviour
 
         //Creation and configuration of the GameObject
         GameObject roomPattern = Instantiate(room, new Vector3(anchor[0], anchor[1], 0), Quaternion.identity) as GameObject; //Instantiation
-
         roomPattern.transform.parent = parent; //Parent set
         if (type == Board.Type.Normal) //Name set
             roomPattern.name = "Room " + roomNumber;

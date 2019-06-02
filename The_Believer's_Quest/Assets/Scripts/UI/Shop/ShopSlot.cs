@@ -22,7 +22,10 @@ public class ShopSlot : MonoBehaviour
     public void AddItem(GameObject newItem)
     {
         item = newItem;
-        icon.sprite = item.GetComponent<Object>().ObjectsAsset.Sprite;
+        if (item.CompareTag("Object"))
+            icon.sprite = item.GetComponent<Object>().ObjectsAsset.Sprite;
+        else if (item.CompareTag("Weapon"))
+            icon.sprite = item.GetComponent<WeaponItem>().WeaponAsset.Sprite;
         icon.enabled = true;
     }
 
@@ -39,7 +42,11 @@ public class ShopSlot : MonoBehaviour
     public void UseItem()
     {
         int gold = Player.instance.PlayerAsset.Gold;
-        int price = item.GetComponent<Object>().ObjectsAsset.Price;
+        int price = 0;
+        if (item.CompareTag("Object"))
+            price = item.GetComponent<Object>().ObjectsAsset.Price;
+        else if (item.CompareTag("Weapon"))
+            price = item.GetComponent<WeaponItem>().WeaponAsset.Price;
 
         if (item != null && price <= gold)
         {

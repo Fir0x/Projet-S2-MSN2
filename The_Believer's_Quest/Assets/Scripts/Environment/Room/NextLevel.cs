@@ -4,15 +4,22 @@ using System.Collections;
 
 public class NextLevel : MonoBehaviour
 {
+    private Board board;
     [SerializeField] private PlayerAsset playerAsset;
     private bool canGo;
     private bool firstTrigger;              //just in case
 
+    private GameObject boardManager;
+
     public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
+
     private void Start()
     {
-        canGo = true;
+        board = Board.instance;
+        boardManager = GameObject.Find("BoardManager");
+        canGo = false;
         firstTrigger = true;
+        Wait();
     }
 
     public void Wait()
@@ -22,8 +29,7 @@ public class NextLevel : MonoBehaviour
 
     IEnumerator CoolDown()
     {
-        canGo = false;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         canGo = true;
     }
 
@@ -33,8 +39,8 @@ public class NextLevel : MonoBehaviour
         {
             if(firstTrigger)
             {
-                GameObject.FindGameObjectWithTag("BoardManager").GetComponent<Board>().Init();
-                if (playerAsset.Floor != 0)
+                board.Init();
+                if (playerAsset.Floor > 0)
                 {
                     GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(playerAsset.Floor + 3);
                     Destroy(GameObject.Find("Board"));
