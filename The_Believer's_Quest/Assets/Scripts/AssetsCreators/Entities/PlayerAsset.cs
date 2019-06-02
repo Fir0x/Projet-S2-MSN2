@@ -13,8 +13,8 @@ public class PlayerAsset : ScriptableObject
     [SerializeField] private bool invicibility;
     [SerializeField] private int gold;
     [SerializeField] private int diamond;
-    [SerializeField] private Weapon[] weaponsList = new Weapon[2];
-    [SerializeField] private Object[] objectsList = new Object[2];
+    [SerializeField] private GameObject[] weaponsList = new GameObject[2];
+    [SerializeField] private GameObject[] objectsList = new GameObject[2];
     [SerializeField] private Vector3 position;
    
     public int Floor { get => floor; set => floor = value; }
@@ -44,7 +44,7 @@ public class PlayerAsset : ScriptableObject
     public bool Invicibility { get => invicibility; set => invicibility = value; }
     public int Gold { get => gold; set => gold = value; }
     public int Diamond { get => diamond; set => diamond = value; }
-    public Weapon[] WeaponsList { get => weaponsList; set => weaponsList = value; }
+    public GameObject[] WeaponsList { get => weaponsList; set => weaponsList = value; }
     public Vector3 Position { get => position; set => position = value; }
 
     public string SerializeWeapons()

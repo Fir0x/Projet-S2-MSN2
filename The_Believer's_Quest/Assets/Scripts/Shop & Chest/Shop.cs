@@ -28,6 +28,7 @@ public class Shop : MonoBehaviour
         }
         else
         {
+            print("miaou");
             isHub = false;
         }
 

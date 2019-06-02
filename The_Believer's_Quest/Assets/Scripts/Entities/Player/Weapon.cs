@@ -17,7 +17,6 @@ public class Weapon : MonoBehaviour
 
     public void Init(WeaponAsset weapon, PlayerAsset playerAsset)
     {
-        Inventory.instance.Add(weaponGO);
         shot = true;
         this.weapon = weapon;
         this.playerAsset = playerAsset;

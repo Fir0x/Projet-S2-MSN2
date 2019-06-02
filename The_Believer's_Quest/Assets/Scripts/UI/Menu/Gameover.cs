@@ -20,7 +20,7 @@ public class Gameover : MonoBehaviour
         playerAsset.MaxEffectValue = 0;
         playerAsset.Gold = 0;
         playerAsset.Diamond = 0;
-        playerAsset.WeaponsList = new []{sword};
+        //playerAsset.WeaponsList = new []{sword};
         playerAsset.Floor = -1;
         
         GameObject.FindGameObjectWithTag("BoardManager").GetComponent<Board>().Init();

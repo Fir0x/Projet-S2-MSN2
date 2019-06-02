@@ -17,6 +17,8 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
+        nbItems = 0;
+        nbWeapons = 0;
         inventoryUI = InventoryUI.instance;
         instance = this;
     }
@@ -32,14 +34,23 @@ public class Inventory : MonoBehaviour
         }
         // Check if out of space
         if (items.Count < space)
-        { 
+        {
             if (item.CompareTag("Object") && nbItems != 2)
             {
-
+                nbItems += 1;
+                items.Add(item);    // Add item to list
+                InventoryUI.instance.AddItem(item);
+                return true;
             }
-            items.Add(item);    // Add item to list
-            InventoryUI.instance.AddItem(item);
-            return true;
+
+            if (item.CompareTag("Weapon") && nbWeapons != 2)
+            {
+                nbWeapons += 1;
+                items.Add(item);    // Add item to list
+                InventoryUI.instance.AddItem(item);
+                return true;
+            }
+
         }
 
         return false;
@@ -50,6 +61,10 @@ public class Inventory : MonoBehaviour
     {
         items.Remove(item);     // Remove item from list
         inventoryUI.RemoveItem(item);
+        if (item.CompareTag("Object"))
+            nbItems -= 1;
+        else if (item.CompareTag("Weapon"))
+            nbWeapons -= 1;
         // Trigger callback
     }
 
