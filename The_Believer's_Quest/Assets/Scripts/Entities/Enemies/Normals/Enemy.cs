@@ -37,7 +37,6 @@ public class Enemy : MovingObject
     void Start()
     {
         animatorController = GetComponent<EnemyAnimation>();
-        precedentNode = null;
         firstPos = transform.position;
 
         testForCoolDown = true;
@@ -50,6 +49,8 @@ public class Enemy : MovingObject
         transformPlayer = playerGO.GetComponent<Transform>();
         mask = gameObject.layer;
 
+        precedentNode = new Node(true, transformPlayer.position, 0, 0);
+
         Pathfinding = AStarPathfindingMoving;
     }
 
@@ -59,12 +60,17 @@ public class Enemy : MovingObject
         
         if(shot)
         {
-            //animatorController.ChangeAttack();
+            animatorController.Attack();
             StartCoroutine(AttackWithCoolDown());
         }
         direction = nextPos - firstPos;
-        //ChangeDirection();
+        ChangeDirection();
         firstPos = nextPos;
+
+        if (precedentNode != nextNode && nextNode != null)
+        {
+            precedentNode = nextNode;
+        }
     }
 
     IEnumerator AttackWithCoolDown()
@@ -87,10 +93,6 @@ public class Enemy : MovingObject
         startPos = transform.position;
 
         nextNode = realPathfinding.FindPath(startPos, transformPlayer.position);
-        if(precedentNode != nextNode && nextNode != null)
-        {
-            precedentNode = nextNode;
-        }
 
         if (nextNode != null)
         {
@@ -132,45 +134,41 @@ public class Enemy : MovingObject
         return EnemyAsset.Weight;
     }
 
-    public void OnDestroy()
-    {
-        GetComponentInParent<RoomManager>().DestroyEnemy(gameObject);
-        ChangeGold();
-    }
-
     public void ChangeGold()
     {
         playerAsset.Gold += Random.Range(2, 15) * enemyAsset.Weight;
         UIController.uIController.changeGold.Invoke();
     }
 
-    public void SetHP(int hp)
-    {
-        HP = hp;
-    }
 
+    private void OnDestroy()
+    {
+        ChangeGold();
+        gameObject.GetComponentInParent<RoomManager>().DestroyEnemy(this.gameObject);
+        print("couueju");
+    }
     public void TakeDamage(float damage)
     {
         HP -= damage;
         if (HP <= 0)
         {
-            //animatorController.Death();
+            animatorController.Death();
             Destroy(gameObject);
         }
     }
 
-    /*public void ChangeDirection()
+    public void ChangeDirection()
     {
         float x = direction.x;
         float y = direction.y;
 
         if (x < 0)
-            animatorController.Direction(3);
+            animatorController.ChangeDirection(3);
         else if (x > 0)
-            animatorController.Direction(1);
+            animatorController.ChangeDirection(1);
         else if (y < 0)
-            animatorController.Direction(2);
+            animatorController.ChangeDirection(2);
         else
-            animatorController.Direction(0);
-    }*/
+            animatorController.ChangeDirection(0);
+    }
 }

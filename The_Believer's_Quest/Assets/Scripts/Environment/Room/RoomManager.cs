@@ -149,8 +149,6 @@ public class RoomManager : MonoBehaviour
             }
             firstEntry = false;
         }
-
-
         MapController.mapInstance.EnterRoom(mapPos, gameObject.name, doors);
     }
 
@@ -167,7 +165,7 @@ public class RoomManager : MonoBehaviour
                 testForBoss = false;
                 GameObject bossOnScene = Instantiate(enemies[0], roomPosition, Quaternion.identity) as GameObject;
                 bossOnScene.transform.parent = transform;
-                bossOnScene.GetComponent<BossLifebar>().SliderDisappear();
+                //bossOnScene.GetComponent<BossLifebar>().SliderDisappear();
             }
             else
             {
@@ -226,6 +224,7 @@ public class RoomManager : MonoBehaviour
 
     public void DestroyEnemy(GameObject enemy) //Nicolas L
     {
+        Destroy(enemy);
         enemiesRemaining -= 1;
         if (enemiesRemaining == 0)
         {
@@ -255,6 +254,8 @@ public class RoomManager : MonoBehaviour
         {
             script.SetTiles(doors, doorTiles, floor);
         }*/
+        SoundManager soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+        soundManager.PlaySingle(soundManager.lfx[2]);
 
         foreach (Board.DoorPos d in doors)                      //creation of door colliders
         {
@@ -316,7 +317,8 @@ public class RoomManager : MonoBehaviour
         {
             script.ClearTiles(doors, doorTiles, floor);
         }*/
-
+        SoundManager soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+        soundManager.PlaySingle(soundManager.lfx[9]);
         for (int i = 4; i < transform.childCount; i++)           //destruction of door colliders
         {
             if(GetComponent<Transform>().GetChild(i).gameObject.tag != "Chest" && GetComponent<Transform>().GetChild(i).gameObject.tag != "Shop")

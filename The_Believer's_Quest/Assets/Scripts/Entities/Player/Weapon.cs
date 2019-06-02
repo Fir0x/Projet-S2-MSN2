@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public class Weapon : MonoBehaviour
 {
-    public GameObject suce;
+    public GameObject weaponGO;
     private WeaponAsset weapon;
     private PlayerAsset playerAsset;
     private bool shot;
@@ -17,7 +17,6 @@ public class Weapon : MonoBehaviour
 
     public void Init(WeaponAsset weapon, PlayerAsset playerAsset)
     {
-        Inventory.instance.Add(suce);
         shot = true;
         this.weapon = weapon;
         this.playerAsset = playerAsset;
@@ -29,12 +28,25 @@ public class Weapon : MonoBehaviour
         return weapon;
     }
 
-    public void SetWeapon(WeaponAsset weapon)
+    public void SetWeapon(GameObject weapon)
     {
-        this.weapon = weapon;
-        UIController.uIController.changeWeapon.Invoke();
-    }
+        if(weapon != null)
+        {
+            this.weapon = weapon.GetComponent<WeaponItem>().WeaponAsset;
+            GameObject temp;
+            temp = playerAsset.WeaponsList[1];
+            playerAsset.WeaponsList[1] = playerAsset.WeaponsList[0];
+            playerAsset.WeaponsList[0] = temp;
 
+            UIController.uIController.changeWeapon.Invoke();
+            UIController.uIController.changeAmmo.Invoke();
+        }
+    }
+        
+    public void SetDamage(float dmg)
+    {
+        weapon.Damage *= (int) dmg;
+    }
     public int GetDamage()
     {
         return weapon.Damage;
@@ -100,7 +112,7 @@ public class Weapon : MonoBehaviour
 
     IEnumerator CoolDown()
     {
-        if (weapon.Ammunitions >= 0 && weapon.Loader > 0)
+        if (weapon.Type == WeaponAsset.WeaponType.CQC ||( weapon.Ammunitions >= 0 && weapon.Loader > 0))
         {
             Shot();
             shot = false;
@@ -145,18 +157,19 @@ public class Weapon : MonoBehaviour
             if ((weapon.Type == WeaponAsset.WeaponType.Circle))
                 //attaque en cercle avec Circleshot
                 CircleShot(weapon.Nbbulletsbyshot);
-        } 
+        }
         //attaque corps à corps
-         Cqc();        
+         Cqc();
+        GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().PlaySingle(playerAsset.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Clip);
     }
 
     private void Cqc()
     {
         Collider2D[] enemiesTouched =
-            Physics2D.OverlapCircleAll(transform.position, 1f, LayerMask.GetMask("Aerial", "Ground"));
+            Physics2D.OverlapCircleAll(transform.position, 0.5f, LayerMask.GetMask("Aerial", "Ground"));
         for(int i = 0; i < enemiesTouched.Length; i++)
         {
-            if(enemiesTouched[i].CompareTag("Enemy"))
+            if (enemiesTouched[i].CompareTag("Enemy"))
                 enemiesTouched[i].gameObject.GetComponent<Enemy>().TakeDamage(weapon.Damage);
             if (enemiesTouched[i].CompareTag("Boss"))
                 enemiesTouched[i].gameObject.GetComponent<Boss>().ChangeLife(-weapon.Damage);

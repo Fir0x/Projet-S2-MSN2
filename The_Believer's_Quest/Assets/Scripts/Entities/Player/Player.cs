@@ -30,6 +30,7 @@ public class Player : MovingObject
     [SerializeField] private GameObject gameover;
 
     private Weapon weapon;
+    private GameObject actualWeapon;
 
     private Board.Type roomType;
     private Animator animator;
@@ -42,28 +43,36 @@ public class Player : MovingObject
     private float moveY;
     private Vector2 firstPos;
 
+    [SerializeField] private UnlockedItemsAsset unlockedItems;
+
     public GameObject Camera { get => camera; set => camera = value; }
     public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
     public Board.Type RoomType { get => roomType; set => roomType = value; }
+    public UnlockedItemsAsset UnlockedItems { get => unlockedItems; set => unlockedItems = value; }
 
     private void Start()
     {
         roomType = Board.Type.Shop;
+        weapon = GetComponentInChildren<Weapon>();
 
         instance = this;
         noForcedMove = true;
-        weapon = GetComponentInChildren<Weapon>();
-        weapon.Init(playerAsset.WeaponsList[0], playerAsset);
+
+        actualWeapon = playerAsset.WeaponsList[0];
+        weapon.Init(actualWeapon.GetComponent<WeaponItem>().WeaponAsset, playerAsset);
+        Inventory.instance.Add(actualWeapon);
+
         playerAsset.Position = transform.position;
         playerAsset.Invicibility = false;
         testForDash = true;
 
         firstPos = transform.position;
-
         animator = GetComponent<Animator>();
 
         nearShop = false;
         nearChest = false;
+
+        unlockedItems.CheckDuplicate();
     }
 
     public Vector3 GetPos()
@@ -76,6 +85,11 @@ public class Player : MovingObject
         return firstPos;
     }
 
+    public void SetMaxLife(float value)
+    {
+        playerAsset.MaxHP = value;
+        UIController.uIController.changeMaxHp.Invoke();
+    }
 
     public void SetLife(float value)
     {
@@ -83,18 +97,25 @@ public class Player : MovingObject
         StartCoroutine(InvicibilityCoolDown());
 
         playerAsset.Hp = value;
+
+        if (playerAsset.Hp > playerAsset.MaxHP)
+        {
+            playerAsset.Hp = playerAsset.MaxHP;
+        }
+
         UIController.uIController.changeHp.Invoke();
-        print(UIController.uIController.changeHp);
         if (playerAsset.Hp <= 0)
         {
             animator.SetTrigger(animDeathID);
-            Time.timeScale = 1f;
-            Invoke("GameOver", 2);
+            SoundManager soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+            soundManager.PlaySingle(soundManager.lfx[4]);
+            StartCoroutine(GameOver());
         }
     }
 
-    public void GameOver()
+    IEnumerator GameOver()
     {
+        yield return new WaitForSeconds(2);
         gameover.SetActive(true);
     }
 
@@ -109,6 +130,12 @@ public class Player : MovingObject
         playerAsset.EffectValue = value;
         UIController.uIController.changeEffect.Invoke();
     }
+
+    public void SetMaxEffect(int value)
+    {
+        PlayerAsset.MaxEffectValue = value;
+        UIController.uIController.changeMaxEffect.Invoke();
+    }
     
     public void Attack()
     {
@@ -120,6 +147,8 @@ public class Player : MovingObject
         if((goUp || goRight || goDown || goLeft) && testForDash)
         {
             StartCoroutine(Dash());
+            SoundManager soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+            soundManager.PlaySingle(soundManager.lfx[3]);
         }
     }
 

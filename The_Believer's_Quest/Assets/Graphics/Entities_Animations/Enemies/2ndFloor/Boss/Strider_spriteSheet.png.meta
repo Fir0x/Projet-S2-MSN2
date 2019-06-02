@@ -1,0 +1,1590 @@
+fileFormatVersion: 2
+guid: 132168c21fdd2314dbb69b71022139d7
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Strider_spriteSheet_0
+    21300002: Strider_spriteSheet_1
+    21300004: Strider_spriteSheet_2
+    21300006: Strider_spriteSheet_3
+    21300008: Strider_spriteSheet_4
+    21300010: Strider_spriteSheet_5
+    21300012: Strider_spriteSheet_6
+    21300014: Strider_spriteSheet_7
+    21300016: Strider_spriteSheet_8
+    21300018: Strider_spriteSheet_9
+    21300020: Strider_spriteSheet_10
+    21300022: Strider_spriteSheet_11
+    21300024: Strider_spriteSheet_12
+    21300026: Strider_spriteSheet_13
+    21300028: Strider_spriteSheet_14
+    21300030: Strider_spriteSheet_15
+    21300032: Strider_spriteSheet_16
+    21300034: Strider_spriteSheet_17
+    21300036: Strider_spriteSheet_18
+    21300038: Strider_spriteSheet_19
+    21300040: Strider_spriteSheet_20
+    21300042: Strider_spriteSheet_21
+    21300044: Strider_spriteSheet_22
+    21300046: Strider_spriteSheet_23
+    21300048: Strider_spriteSheet_24
+    21300050: Strider_spriteSheet_25
+    21300052: Strider_spriteSheet_26
+    21300054: Strider_spriteSheet_27
+    21300056: Strider_spriteSheet_28
+    21300058: Strider_spriteSheet_29
+    21300060: Strider_spriteSheet_30
+    21300062: Strider_spriteSheet_31
+    21300064: Strider_spriteSheet_32
+    21300066: Strider_spriteSheet_33
+    21300068: Strider_spriteSheet_34
+    21300070: Strider_spriteSheet_35
+    21300072: Strider_spriteSheet_36
+    21300074: Strider_spriteSheet_37
+    21300076: Strider_spriteSheet_38
+    21300078: Strider_spriteSheet_39
+    21300080: Strider_spriteSheet_40
+    21300082: Strider_spriteSheet_41
+    21300084: Strider_spriteSheet_42
+    21300086: Strider_spriteSheet_43
+    21300088: Strider_spriteSheet_44
+    21300090: Strider_spriteSheet_45
+    21300092: Strider_spriteSheet_46
+    21300094: Strider_spriteSheet_47
+    21300096: Strider_spriteSheet_48
+    21300098: Strider_spriteSheet_49
+    21300100: Strider_spriteSheet_50
+    21300102: Strider_spriteSheet_51
+    21300104: Strider_spriteSheet_52
+    21300106: Strider_spriteSheet_53
+    21300108: Strider_spriteSheet_54
+    21300110: Strider_spriteSheet_55
+    21300112: Strider_spriteSheet_56
+    21300114: Strider_spriteSheet_57
+    21300116: Strider_spriteSheet_58
+    21300118: Strider_spriteSheet_59
+    21300120: Strider_spriteSheet_60
+    21300122: Strider_spriteSheet_61
+    21300124: Strider_spriteSheet_62
+    21300126: Strider_spriteSheet_63
+    21300128: Strider_spriteSheet_64
+    21300130: Strider_spriteSheet_65
+    21300132: Strider_spriteSheet_66
+    21300134: Strider_spriteSheet_67
+    21300136: Strider_spriteSheet_68
+    21300138: Strider_spriteSheet_69
+    21300140: Strider_spriteSheet_70
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Strider_spriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 964
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c77df762eb5ece49a59e0d44ab5e02e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 964
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcbf24af19d5c1646bee6d6ed6e421f1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 964
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c7900ea73151d34f9f1b15f1a67f300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 964
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38ebfc12d142f0b46a30086df0ed0202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 964
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f665ce2806461af45bd29d5f8f3f1dc3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 928
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d89f7233fb92354b962a5dcbef409fa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 928
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 143e32e5e175b224eba6b9291cbefe20
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 928
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 836eacf47afad0a40ab46b3a3b6c3150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 928
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99cb1032d91f64d47bb368664d5eda6b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 928
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c1a727372d776c4bbb63f778231c128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 892
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c33ce3d6894a1624896e724091a19d59
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 892
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56268861977faa54991af71685065e00
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 892
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d04cb8709f0bb264abe79f0d680b9d7f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 892
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c24ee486a4ec1a24f9449ea39f4471f7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 892
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61ea5f7f4cfcd1d41a9c01d23530b6fe
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 856
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f43c8b0e3d8cc84ca947bf749930cd0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 856
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feff0e87924232f43b91c64a7f09b794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 856
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0331e3f8109dfb4a8b5984a270dd2bd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 856
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 328134af4a50b1d4cb4c8f5c715aefc4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 856
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66c1274049c4bc641988ef22bf50f9a6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 820
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc525e32beb11a44199c7e6cfef9926f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 820
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42c4cd19e0e101349915a03963472d24
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 820
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c34a5c6896beaf746a1991a12bdd1f96
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 784
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3927c371373fc3b4d999e90d4faff188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 784
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89fb94f7258eca142bae0facf89c748a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 784
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e35c2dbe376d254991eccec0d5bb98e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 748
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d85827a806daf54aa06d1d87a426a09
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 748
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 806ad8028364c7a4c93dff8839acbb6e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 748
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1063d3595d6cff944ac5a5a5e8544bc0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 712
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cbbb9a24ee27dd4e9c81bc276844a0f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 712
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c513a4dde134045ab7584579f4b9c1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 712
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3234ff2dc65d4cd4c8e5a89fd6e89b8b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 676
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f1d309dd5fe99d4699d90a132f0b59b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 676
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6e694ad63153a4478351b1fd7bc3e0d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 676
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bd4e558f99e5fe408b6ae70c14f4160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 676
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 180b500a63a91584bbfc8db3e00a2f93
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_36
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 640
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c3aaa03727daf744be3a3aadff4cc59
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_37
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 640
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6d388b833b5b2c45b01b3333f5bf76c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_38
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 640
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83ba4d85ced6bb747b1333fb2c5ba37e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_39
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 640
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 496e290b52689f5448d4157204894a19
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_40
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 640
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70f4bfa596bedc34cb287c8ff823f582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_41
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 604
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71a8e36d32ac3e34ba0855c366ff39ed
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_42
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 604
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb50a5eda9f328540b5a95aa9dd9e8bc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_43
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 604
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57808de594cbdc34d8c27773115c0240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_44
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 604
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37621da862c258b4cb7859068dce3f01
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_45
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 604
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22e587df97ac9434982e77a53c74244c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_46
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 568
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09e4790076215f54db6fb5332b85779f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_47
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 568
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4944d0de9525fe046b9eda16da631dac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_48
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 568
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1484999e2665ed44e803492ea63c7ec6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_49
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 568
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7373cab11aa919f4598966f695cdfd95
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_50
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 568
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e3164f78e4cd2245b081ef8b15b127d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_51
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 532
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d9501e3e0f32fa479354c2766d46a83
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_52
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 532
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae9a1181b3bb22648994ca357c4e465e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_53
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 532
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28fba13bd319cc14b8a826c1036f3c03
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_54
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 532
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01a492a7880c41843a5c90118c8d1699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_55
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 532
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daafbe9631dc66f4b890babcc8c521bc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_56
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 496
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f206f4c8a7ab54541a3d19b6b03722c0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_57
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 496
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4727ce824a43c34c885c3408d52bb2d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_58
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 496
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6ab6524cdc2b8d4f85edeb429ff2b6c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_59
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 460
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36c0a19400ca53f4588eae4dc35dad0a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_60
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 460
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e772a1c7c12843f40bace815145ea0c2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_61
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 460
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4282604f18879f84ab2b05d1caeaee6f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_62
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 424
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3a0d81b2744aef4e8f3ae60b6be4dc8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_63
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 424
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 870e387a830205041b904e3b749bb137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_64
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 424
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e2760ac29b4fd4a92bf6f4e6c97043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_65
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 388
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c559c4450337f34479922e2111a4ff96
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_66
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 388
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 129098d047d2dbf49b8a4c5e73f17c81
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_67
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 388
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b91c67080c62e04a9aaa285f7ee10c3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_68
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 352
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e8fed702a9acde478c9935a5e904fd0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_69
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 352
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc7e4ef854dc90f42b86fbc7f8321e70
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Strider_spriteSheet_70
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 352
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 659b8a5b1e0623240acb11ab408e4920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 229b5de2a544b0c4cbd8035e50af4f47
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

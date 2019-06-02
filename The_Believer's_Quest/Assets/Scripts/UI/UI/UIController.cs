@@ -52,9 +52,16 @@ public class UIController : MonoBehaviour
         effect.value = player.EffectValue;
         Gold.text = player.Gold + "";
         Diamond.text = player.Diamond + "";
-        WeaponSprite.sprite = player.WeaponsList[0].Sprite;
-        Ammo.text = player.WeaponsList[0].Type == WeaponAsset.WeaponType.CQC ?
-                                         "" : player.WeaponsList[0].Loader + " / " + player.WeaponsList[0].Ammunitions;
+        WeaponSprite.sprite = player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Sprite;
+        
+        if (player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Type == WeaponAsset.WeaponType.CQC)
+        {
+            Ammo.text = "";
+        }
+        else
+        {
+            Ammo.text = player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Loader + " / " + player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Ammunitions;
+        }
 
         //Init all events to change UI parts
         if (changeHp == null)
@@ -93,10 +100,10 @@ public class UIController : MonoBehaviour
 
         changeDiamond.AddListener(() => Diamond.text = player.Diamond + "");
 
-        changeWeapon.AddListener(() => WeaponSprite.sprite = player.WeaponsList[0].Sprite);
+        changeWeapon.AddListener(() => WeaponSprite.sprite = player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Sprite);
 
-        changeAmmo.AddListener(() => Ammo.text = player.WeaponsList[0].Type == WeaponAsset.WeaponType.CQC ? 
-                                         "" : player.WeaponsList[0].Loader + " / " + player.WeaponsList[0].Ammunitions);
+        changeAmmo.AddListener(() => Ammo.text = player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Type == WeaponAsset.WeaponType.CQC ? 
+                                         "" : player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Loader + " / " + player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Ammunitions);
     }
 
     public void ShowMap()

@@ -24,13 +24,11 @@ public static class Saver
     {
         public PlayerAsset playerData;
         public List<GameObject> unlockedItems;
-        public UnityEngine.Random.State seed;
 
-        public PlayerSave(PlayerAsset playerData, List<GameObject> unlockedItems, UnityEngine.Random.State seed)
+        public PlayerSave(PlayerAsset playerData, List<GameObject> unlockedItems)
         {
             this.playerData = playerData;
             this.unlockedItems = unlockedItems;
-            this.seed = seed;
         }
     }
 
@@ -53,9 +51,9 @@ public static class Saver
         stream.Close();
     }
 
-    public static void SavePlayerData(PlayerAsset playerData, List<GameObject> unlockedItems, UnityEngine.Random.State seed)
+    public static void SavePlayerData(PlayerAsset playerData, List<GameObject> unlockedItems)
     {
-        Saving(new PlayerSave(playerData, new List<GameObject>(), seed));
+        Saving(new PlayerSave(playerData, unlockedItems));
     }
 
     public static void SavePlayerSettings(float BGMvolume, float BGSvolume)

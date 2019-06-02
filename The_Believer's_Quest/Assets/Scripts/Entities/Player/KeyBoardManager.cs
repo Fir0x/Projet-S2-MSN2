@@ -73,5 +73,30 @@ public class KeyBoardManager : MonoBehaviour
         {
             player.ActiveShopUI();
         }
+
+        if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+        {
+            player.transform.GetChild(0).GetComponent<Weapon>().SetWeapon(player.PlayerAsset.WeaponsList[1]);
+        }
+
+        if (Input.GetButtonDown("Item 1"))
+        {
+            if (player.PlayerAsset.ObjectsList[0] != null)
+            {
+                print("objet 1");
+                player.PlayerAsset.ObjectsList[0].GetComponent<Object>().ActiveChange();
+                player.PlayerAsset.ObjectsList[0] = null;
+            }
+        }
+
+        if (Input.GetButtonDown("Item 2"))
+        {
+            if (player.PlayerAsset.ObjectsList[1] != null)
+            {
+                print("objet 2");
+                player.PlayerAsset.ObjectsList[1].GetComponent<Object>().ActiveChange();
+                player.PlayerAsset.ObjectsList[1] = null;
+            }
+        }
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    private int nbWeapons;
+    private int nbItems;
     public static Inventory instance;
     private InventoryUI inventoryUI;
 
@@ -15,6 +17,8 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
+        nbItems = 0;
+        nbWeapons = 0;
         inventoryUI = InventoryUI.instance;
         instance = this;
     }
@@ -25,14 +29,47 @@ public class Inventory : MonoBehaviour
     {
         if(item.CompareTag("Object") && item.GetComponent<Object>().ObjectsAsset.passive)
         {
+            item.GetComponent<Object>().PassiveChange();
             return true;
         }
         // Check if out of space
         if (items.Count < space)
-        { 
-            items.Add(item);    // Add item to list
-            InventoryUI.instance.AddItem(item);
-            return true;
+        {
+            if (item.CompareTag("Object") && nbItems != 2)
+            {
+                nbItems += 1;
+                items.Add(item);    // Add item to list
+                InventoryUI.instance.AddItem(item);
+
+                for (int i = 0; i < 2; i++)
+                {
+                    if (GetComponent<Player>().PlayerAsset.ObjectsList[i] == null || GetComponent<Player>().PlayerAsset.ObjectsList[i] == item)
+                    {
+                        GetComponent<Player>().PlayerAsset.ObjectsList[i] = item;
+                        break;
+                    }
+                }
+
+                return true;
+            }
+
+            if (item.CompareTag("Weapon") && nbWeapons != 2)
+            {
+                nbWeapons += 1;
+                items.Add(item);    // Add item to list
+                InventoryUI.instance.AddItem(item);
+
+                for (int i = 0; i < 2; i++)
+                {
+                    if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == null || GetComponent<Player>().PlayerAsset.WeaponsList[i] == item)
+                    {
+                        GetComponent<Player>().PlayerAsset.WeaponsList[i] = item;
+                        break;
+                    }
+                }
+                return true;
+            }
+
         }
 
         return false;
@@ -43,7 +80,32 @@ public class Inventory : MonoBehaviour
     {
         items.Remove(item);     // Remove item from list
         inventoryUI.RemoveItem(item);
-        // Trigger callback
+        if (item.CompareTag("Object"))
+        {
+            nbItems -= 1;
+            for (int i = 0; i < 2; i++)
+            {
+                if (GetComponent<Player>().PlayerAsset.ObjectsList[i] == item)
+                {
+                    GetComponent<Player>().PlayerAsset.ObjectsList[i] = null;
+                    break;
+                }
+            }
+        }
+        else if (item.CompareTag("Weapon"))
+        {
+            nbWeapons -= 1;
+            for (int i = 0; i < 2; i++)
+            {
+                if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == item)
+                {
+                    GetComponent<Player>().PlayerAsset.WeaponsList[i] = null;
+                    break;
+                }
+            }
+        }
+          
+
     }
 
 }

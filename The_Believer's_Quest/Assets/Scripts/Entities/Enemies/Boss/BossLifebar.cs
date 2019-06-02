@@ -5,10 +5,6 @@ public class BossLifebar : MonoBehaviour
 {
     private Slider lifeBar;
 
-    public void Start()
-    {
-
-    }
 
     public void SetMaxValue(float maxHP)
     {

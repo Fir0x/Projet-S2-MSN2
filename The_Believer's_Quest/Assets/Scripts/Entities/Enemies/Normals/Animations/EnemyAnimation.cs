@@ -2,46 +2,32 @@
 //Nicolas I
 public class EnemyAnimation : MonoBehaviour
 {
-    /*[SerializeField] private AnimationClip[] move;
-    [SerializeField] private AnimationClip[] attack;
-    [SerializeField] private AnimationClip death;*/
+    [SerializeField] private EnemyAnimAsset anims;
 
-    public AnimationClip[] animationClips;
+    //public AnimationClip[] animationClips;
 
     private Animator animator;
     private AnimatorOverrideController animatorOverrideController;
 
+    public EnemyAnimAsset Anims { get => anims; set => anims = value; }
+
     public void Start()
     {
+        string test = gameObject.name;
         animator = gameObject.GetComponent<Animator>();
         animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
-        animatorOverrideController["Move"] = animationClips[0];
-        animatorOverrideController["Move_Right"] = animationClips[1];
-        animatorOverrideController["Move_Low"] = animationClips[2];
-        animatorOverrideController["Move_Left"] = animationClips[3];
-        animatorOverrideController["Attack"] = animationClips[4];
-        animatorOverrideController["Death"] = animationClips[5];
+        
+        animatorOverrideController["Move"] = anims.Move[0];
+        animatorOverrideController["Attack"] = anims.Attack[0];
+        animatorOverrideController["Death"] = anims.Death;
+
         animator.runtimeAnimatorController = animatorOverrideController;
-
-        /*animatorOverrideController["Move"] = move[0];
-        animatorOverrideController["Attack"] = attack[0];
-        animatorOverrideController["Death"] = death;*/
     }
 
-    /*public void ChangeMove()
+    public void ChangeDirection(int direction)
     {
-        print("direction: " + animator.GetInteger("direction"));
-        animatorOverrideController["Move"] = move[animator.GetInteger("direction")];
-    }
-
-    public void ChangeAttack()
-    {
-        animatorOverrideController["Attack"] = attack[animator.GetInteger("direction")];
-    }
-
-    public void Direction(int direction)
-    {
-        animator.SetInteger("direction", direction);
+        animatorOverrideController["Move"] = anims.Move[direction];
+        animatorOverrideController["Attack"] = anims.Attack[direction];
     }
 
     public void Attack()
@@ -52,5 +38,5 @@ public class EnemyAnimation : MonoBehaviour
     public void Death()
     {
         animator.SetTrigger("death");
-    }*/
+    }
 }
