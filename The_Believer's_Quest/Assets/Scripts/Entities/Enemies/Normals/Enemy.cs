@@ -134,7 +134,6 @@ public class Enemy : MovingObject
 
     public void OnDestroy()
     {
-        GetComponentInParent<RoomManager>().DestroyEnemy(gameObject);
         ChangeGold();
     }
 
