@@ -6,11 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD:The_Believer's_Quest/Assets/Animations/Enemies/Base/Move_Right.anim
-  m_Name: Move_Right
-=======
   m_Name: Move
->>>>>>> e6d36d5853b252ec59207f5a9eeb4ce866e903f9:The_Believer's_Quest/Assets/Animations/Enemies/Normals/Base/Move.anim
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
