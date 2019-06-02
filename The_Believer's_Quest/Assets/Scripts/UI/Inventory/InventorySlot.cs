@@ -62,7 +62,7 @@ public class InventorySlot : MonoBehaviour
                 if (Shop.instance.Add(item))
                 {
                     Inventory.instance.Remove(item);
-                    Player.instance.PlayerAsset.Gold += price;
+                    Player.instance.PlayerAsset.Gold += price / 2;
                     UIController.uIController.changeGold.Invoke();
                 }
             }
