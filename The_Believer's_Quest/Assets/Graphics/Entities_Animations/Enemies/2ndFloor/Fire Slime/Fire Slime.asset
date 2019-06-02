@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff84e8516cb74943949f4336288e06e, type: 3}
+  m_Name: Fire Slime
+  m_EditorClassIdentifier: 
+  move:
+  - {fileID: 7400000, guid: a8a81c40db105a04bbd9294cb7824a84, type: 2}
+  - {fileID: 7400000, guid: a8a81c40db105a04bbd9294cb7824a84, type: 2}
+  - {fileID: 7400000, guid: a8a81c40db105a04bbd9294cb7824a84, type: 2}
+  - {fileID: 7400000, guid: a8a81c40db105a04bbd9294cb7824a84, type: 2}
+  attack:
+  - {fileID: 7400000, guid: 15415dd2360e45b46b955069cb93d316, type: 2}
+  - {fileID: 7400000, guid: 15415dd2360e45b46b955069cb93d316, type: 2}
+  - {fileID: 7400000, guid: 15415dd2360e45b46b955069cb93d316, type: 2}
+  - {fileID: 7400000, guid: 15415dd2360e45b46b955069cb93d316, type: 2}
+  death: {fileID: 7400000, guid: 74f00de7872fc8b4db0e4bae85f66e33, type: 2}

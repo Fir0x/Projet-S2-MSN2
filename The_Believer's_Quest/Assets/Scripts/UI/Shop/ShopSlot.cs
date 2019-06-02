@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 /* Sits on all InventorySlots. */
-
+//Maxence && Nicolas L
 public class ShopSlot : MonoBehaviour
 {
     private Inventory inventory;

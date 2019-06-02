@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Nicolas I
+//Nicolas I && Nicolas L && Maxence
 public class RoomManager : MonoBehaviour
 {
     private List<GameObject> allEnemiesList;

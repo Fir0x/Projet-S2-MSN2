@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 6634441455969789342}
   - component: {fileID: 6024006248589231551}
   - component: {fileID: 7554333048861493424}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WalkingTurret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAsset: {fileID: 11400000, guid: 709a0fd38add6dd44a053b98a81fe243, type: 2}
-  playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   shot: 0
 --- !u!61 &7554333048861493424
 BoxCollider2D:

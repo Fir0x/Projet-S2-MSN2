@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db59510b2346974d816c02c55bed593, type: 3}
+  m_Name: Strider
+  m_EditorClassIdentifier: 
+  move:
+  - {fileID: 7400000, guid: c3a74e9c0a0e1b449b2b975ce2cb04a0, type: 2}
+  - {fileID: 7400000, guid: da20e4aa2454f1348b36524c318a7c32, type: 2}
+  - {fileID: 7400000, guid: 05499dd8000769f41b87ee400bee995c, type: 2}
+  - {fileID: 7400000, guid: 538a2eed257447b47ad65d7cca1d6b2c, type: 2}
+  - {fileID: 7400000, guid: ddee6ea599c8c634188f2dc6e9df5754, type: 2}
+  - {fileID: 7400000, guid: 667ab5c53bafd9142acee3815ef4c785, type: 2}
+  - {fileID: 7400000, guid: 53ff7a38ee863d143b3a4278a9eaf862, type: 2}
+  - {fileID: 7400000, guid: 281a57d49de039343843c757af36d30c, type: 2}
+  attack:
+  - {fileID: 7400000, guid: d7f3759d6dcd3134e8ccafc5475b2336, type: 2}
+  - {fileID: 7400000, guid: 7ad1ec3b52290314e9e1d7be85c51c67, type: 2}
+  - {fileID: 7400000, guid: 2597d11513022264e946cec2a4a72d86, type: 2}
+  - {fileID: 7400000, guid: da0d4601ed171b64da10101934143f06, type: 2}
+  - {fileID: 7400000, guid: 53f9b19fd58d24b46b7f961b614fce2f, type: 2}
+  - {fileID: 7400000, guid: 53f9b19fd58d24b46b7f961b614fce2f, type: 2}
+  - {fileID: 7400000, guid: 53f9b19fd58d24b46b7f961b614fce2f, type: 2}
+  - {fileID: 7400000, guid: 53f9b19fd58d24b46b7f961b614fce2f, type: 2}
+  appearance: {fileID: 7400000, guid: dcf262df43192fa47b1584b8ada6b4f5, type: 2}
+  change_phase: {fileID: 7400000, guid: 759717c04f5737543a0d1d29a97772cc, type: 2}
+  death: {fileID: 7400000, guid: 69bc244330412564981889d6507b8a7b, type: 2}

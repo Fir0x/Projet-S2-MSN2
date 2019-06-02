@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-//Sarah et Nicolas I
+//Everyone
 public class KeyBoardManager : MonoBehaviour
 {
     private Player player;
