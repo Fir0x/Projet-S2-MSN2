@@ -57,7 +57,6 @@ public class LayerFront : MonoBehaviour
 
     public void ClearTiles(List<Board.DoorPos> doors, TileAsset tiles, int floor)
     {
-        print("cleartiles");
         if (doors.Contains(Board.DoorPos.Up))
             tilemap.SetTile(new Vector3Int(0, 6, 0), null);
 

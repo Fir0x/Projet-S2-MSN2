@@ -69,25 +69,21 @@ public class LayerBehind : MonoBehaviour
     {
         if (doors.Contains(Board.DoorPos.Up))
         {
-            print(floor + " : clear up");
             tilemap.SetTile(new Vector3Int(0, 7, 0), null);
         }
 
         if (doors.Contains(Board.DoorPos.Right))
         {
-            print(floor + " : clear right");
             tilemap.SetTile(new Vector3Int(8, 0, 0), tiles.Tiles[5 + (floor - 1) * 18]);
         }
 
         if (doors.Contains(Board.DoorPos.Down))
         {
-            print(floor + " : clear down");
             tilemap.SetTile(new Vector3Int(0, -6, 0), null);
         }
 
         if (doors.Contains(Board.DoorPos.Left))
         {
-            print(floor + " : clear left");
             tilemap.SetTile(new Vector3Int(-8, 0, 0), tiles.Tiles[10 + (floor - 1) * 18]);
         }
     }

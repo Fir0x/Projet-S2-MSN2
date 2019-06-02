@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6225617713631837348}
   - component: {fileID: 8933164833386594153}
   - component: {fileID: 7236448259413741707}
+  - component: {fileID: 6506889898015630986}
   - component: {fileID: 6394343281324081106}
   m_Layer: 9
   m_Name: King Slime
@@ -117,8 +118,6 @@ MonoBehaviour:
   bossData: {fileID: 11400000, guid: cf4a1e74b455a9c42b85ec852173a22f, type: 2}
   playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   healthBar: {fileID: 0}
-  nextLevel: {fileID: 6396777126365564326, guid: 7884a5e71ff080d4cbd0662b972469bb,
-    type: 3}
   blueSlime: {fileID: 917192810353389789, guid: 20ce829acefb8324c8df9f6352811168,
     type: 3}
 --- !u!114 &7236448259413741707
@@ -137,6 +136,19 @@ MonoBehaviour:
   player: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   enemy: {fileID: 0}
   boss: {fileID: 11400000, guid: cf4a1e74b455a9c42b85ec852173a22f, type: 2}
+--- !u!114 &6506889898015630986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334360431834512438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1290cb2325324264fac7cc4dfcad3bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeBar: {fileID: 0}
 --- !u!61 &6394343281324081106
 BoxCollider2D:
   m_ObjectHideFlags: 0

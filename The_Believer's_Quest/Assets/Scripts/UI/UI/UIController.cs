@@ -105,29 +105,8 @@ public class UIController : MonoBehaviour
 
         if (mapPannel.activeSelf)
         {
-            foreach (Scrollbar scrollbar in mapPannel.GetComponentsInChildren<Scrollbar>())
-            {
-                if (scrollbar.gameObject.name == "Horizontal")
-                    scrollbar.size = MapController.mapScript.GetHorizontal();
-                else
-                    scrollbar.size = MapController.mapScript.GetVertical();
-            }
-        }
-
-        /*if (visu.enabled) //A revoir
-            Time.timeScale = 0;
-        else
-            Time.timeScale = originalTimeScale;*/
-    }
-
-    public void AdaptScrollbar(bool horizontal, float value)
-    {
-        foreach (Scrollbar scrollbar in mapPannel.GetComponentsInChildren<Scrollbar>())
-        {
-            if (scrollbar.gameObject.name == "Horizontal" && horizontal)
-                scrollbar.size = value;
-            else
-                scrollbar.size = value;
+            foreach (Slider scrollbar in mapPannel.GetComponentsInChildren<Slider>())
+                scrollbar.value = 0.5f;
         }
     }
 }
