@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db59510b2346974d816c02c55bed593, type: 3}
+  m_Name: NewBossAnimAsset
+  m_EditorClassIdentifier: 
+  move:
+  - {fileID: 7400000, guid: 322d236a8d134304896871d9c1a69ba1, type: 2}
+  - {fileID: 7400000, guid: 322d236a8d134304896871d9c1a69ba1, type: 2}
+  - {fileID: 7400000, guid: 322d236a8d134304896871d9c1a69ba1, type: 2}
+  - {fileID: 7400000, guid: 322d236a8d134304896871d9c1a69ba1, type: 2}
+  - {fileID: 7400000, guid: 322d236a8d134304896871d9c1a69ba1, type: 2}
+  - {fileID: 7400000, guid: e885f3769aa561c4e967d865318d7534, type: 2}
+  - {fileID: 7400000, guid: e885f3769aa561c4e967d865318d7534, type: 2}
+  - {fileID: 7400000, guid: e885f3769aa561c4e967d865318d7534, type: 2}
+  - {fileID: 7400000, guid: e885f3769aa561c4e967d865318d7534, type: 2}
+  - {fileID: 7400000, guid: e885f3769aa561c4e967d865318d7534, type: 2}
+  attack:
+  - {fileID: 7400000, guid: 42aec6354d1b4114784e9b728ddccb36, type: 2}
+  - {fileID: 7400000, guid: 42aec6354d1b4114784e9b728ddccb36, type: 2}
+  - {fileID: 7400000, guid: 42aec6354d1b4114784e9b728ddccb36, type: 2}
+  - {fileID: 7400000, guid: 42aec6354d1b4114784e9b728ddccb36, type: 2}
+  - {fileID: 7400000, guid: 42aec6354d1b4114784e9b728ddccb36, type: 2}
+  - {fileID: 7400000, guid: 9b8077a391ab59d4eb03ed795f1e1f93, type: 2}
+  - {fileID: 7400000, guid: 9b8077a391ab59d4eb03ed795f1e1f93, type: 2}
+  - {fileID: 7400000, guid: 9b8077a391ab59d4eb03ed795f1e1f93, type: 2}
+  - {fileID: 7400000, guid: 9b8077a391ab59d4eb03ed795f1e1f93, type: 2}
+  - {fileID: 7400000, guid: 9b8077a391ab59d4eb03ed795f1e1f93, type: 2}
+  appearance: {fileID: 7400000, guid: e77ef25b4393c5e4b879a42da08dbae9, type: 2}
+  change_phase: {fileID: 7400000, guid: 621c7775585be9a438b1253aba5c0e6a, type: 2}
+  death: {fileID: 7400000, guid: 6ae57c391540ffb4daa99aaad4a1d0b3, type: 2}
