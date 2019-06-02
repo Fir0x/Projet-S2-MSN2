@@ -22,6 +22,6 @@ MonoBehaviour:
   gold: 0
   diamond: 0
   weaponsList:
-  - {fileID: 11400000, guid: a270b238d7b638c4184ad35280778eba, type: 2}
+  - {fileID: 11400000, guid: 9efa5f1e23e836540b2f7649d7e00e55, type: 2}
   - {fileID: 0}
-  position: {x: 24.08, y: 25.83, z: 0}
+  position: {x: 74.58008, y: 48.5, z: 0}
