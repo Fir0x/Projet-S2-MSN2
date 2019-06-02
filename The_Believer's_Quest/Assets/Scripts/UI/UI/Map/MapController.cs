@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-
+//Nicolas I
 public class MapController : MonoBehaviour
 {
     [SerializeField] private Tilemap map;
@@ -137,26 +137,20 @@ public class MapController : MonoBehaviour
 
     public void MoveHorizontal(float value)
     {
-        print("X Cam origin: " + cam.transform.position);
         Vector3 maxRight = map.GetCellCenterWorld(new Vector3Int(maxPosX, 0, 0));
         Vector3 maxLeft = map.GetCellCenterWorld(new Vector3Int(minPosX, 0, 0));
         float dist = maxRight.x - maxLeft.x;
         float centerX = (maxRight.x + maxLeft.x) / 2;
-        print("maxRight: " + maxRight + ", maxLeft: " + maxLeft + ", Dist: " + dist + ", CenterX: " + centerX + "new CamX: " + (centerX + value - 0.5f));
         cam.transform.position = new Vector3(centerX + (value - 0.5f) * dist / 2, cam.transform.position.y, cam.transform.position.z);
-        print("Cam pos: " + cam.transform.position);
     }
 
     public void MoveVertical(float value)
     {
-        print("Y Cam origin: " + cam.transform.position);
         Vector3 maxUp = map.GetCellCenterWorld(new Vector3Int(0, maxPosY, 0));
         Vector3 maxDown = map.GetCellCenterWorld(new Vector3Int(0, minPosY, 0));
         float dist = maxUp.y - maxDown.y;
         float centerY = (maxUp.y + maxDown.y) / 2;
-        print("maxUp: " + maxUp + ", maxDown: " + maxDown);
         cam.transform.position = new Vector3(cam.transform.position.x, centerY + (value - 0.5f) * dist / 2, cam.transform.position.z);
-        print("Cam pos: " + cam.transform.position);
     }
 
     public void ResetMap()

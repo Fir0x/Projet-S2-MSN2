@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300002, guid: f0ea59557350d784ebcefe7aa6d3969a, type: 3}
   price: 100
-  damage: 7
-  cooldown: 0.5
+  damage: 15
+  cooldown: 1.5
   reloadingTime: 1
-  loader: 15
+  loader: 8
   loaderCappacity: 15
   maxAmmunitions: 200
-  ammunitions: 200
-  speed: 1
+  ammunitions: 185
+  speed: 20
   type: 1
   nbbulletsbyshot: 1
   projectile: {fileID: 21300000, guid: ddd38c8d7035c1d4184fa7019c563cb9, type: 3}

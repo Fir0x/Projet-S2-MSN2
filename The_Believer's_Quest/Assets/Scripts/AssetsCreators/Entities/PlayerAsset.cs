@@ -17,9 +17,27 @@ public class PlayerAsset : ScriptableObject
     [SerializeField] private Vector3 position;
    
     public int Floor { get => floor; set => floor = value; }
-    public float Hp { get => hp; set => hp = value; }
+    public float Hp
+    {
+        get => hp;
+        set
+        {
+            hp = value;
+            if (hp < 0)
+                hp = 0;
+        }
+    }
     public float MaxHP { get => maxHP; set => maxHP = value; }
-    public int EffectValue { get => effectValue; set => effectValue = value; }
+    public int EffectValue
+    {
+        get => effectValue;
+        set
+        {
+            effectValue = value;
+            if (effectValue < 0)
+                effectValue = 0;
+        }
+    }
     public int MaxEffectValue { get => maxEffectValue; set => maxEffectValue = value; }
     public float Speed { get => speed; set => speed = value; }
     public bool Invicibility { get => invicibility; set => invicibility = value; }
