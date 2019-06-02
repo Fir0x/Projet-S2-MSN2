@@ -26,3 +26,4 @@ MonoBehaviour:
   nbbulletsbyshot: 1
   projectile: {fileID: 21300000, guid: ddd38c8d7035c1d4184fa7019c563cb9, type: 3}
   diamondPrice: 1
+  clip: {fileID: 8300000, guid: be7dad900cede9d4f9d785fed84e2e25, type: 3}

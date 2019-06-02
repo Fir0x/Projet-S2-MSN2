@@ -25,5 +25,5 @@ MonoBehaviour:
   type: 0
   nbbulletsbyshot: 0
   projectile: {fileID: 0}
-  Object: {fileID: 0}
   diamondPrice: 5
+  clip: {fileID: 8300000, guid: bf0fa6dcbf7bcb5498e58dd895f34482, type: 3}

@@ -149,8 +149,6 @@ public class RoomManager : MonoBehaviour
             }
             firstEntry = false;
         }
-
-
         MapController.mapInstance.EnterRoom(mapPos, gameObject.name, doors);
     }
 

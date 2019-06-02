@@ -24,6 +24,7 @@ public class WeaponAsset : ScriptableObject
     [SerializeField] private int nbbulletsbyshot;
     [SerializeField] private Sprite projectile;
     [SerializeField] private int diamondPrice;
+    [SerializeField] private AudioClip clip;
 
     public Sprite Sprite { get => sprite; set => sprite = value; }
     public int Price { get => price; set => price = value; }
@@ -39,4 +40,5 @@ public class WeaponAsset : ScriptableObject
     public int Nbbulletsbyshot { get => nbbulletsbyshot; set => nbbulletsbyshot = value;}
     public Sprite Bullet{ get => projectile; set => projectile = value;}
     public int DiamondPrice { get => diamondPrice; set => diamondPrice = value; }
+    public AudioClip Clip { get => clip; set => clip = value; }
 }
