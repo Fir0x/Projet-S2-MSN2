@@ -14,6 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move:
   - {fileID: 7400000, guid: 2c724112aa83ef746b6850fbe46cbe61, type: 2}
+  - {fileID: 7400000, guid: b1faa3c7cecf86240b03da48f914f380, type: 2}
+  - {fileID: 7400000, guid: b1faa3c7cecf86240b03da48f914f380, type: 2}
+  - {fileID: 7400000, guid: b1faa3c7cecf86240b03da48f914f380, type: 2}
+  - {fileID: 7400000, guid: b1faa3c7cecf86240b03da48f914f380, type: 2}
   attack:
   - {fileID: 7400000, guid: 10726115ead12b2499a2eb429dd74d23, type: 2}
+  - {fileID: 7400000, guid: 50c2d4fbd6c3cd64f9688dc8bcb09201, type: 2}
+  - {fileID: 7400000, guid: 50c2d4fbd6c3cd64f9688dc8bcb09201, type: 2}
+  - {fileID: 7400000, guid: 50c2d4fbd6c3cd64f9688dc8bcb09201, type: 2}
+  - {fileID: 7400000, guid: 50c2d4fbd6c3cd64f9688dc8bcb09201, type: 2}
   death: {fileID: 7400000, guid: f42d4e6046d1c4549a81d37bc9e53bfe, type: 2}

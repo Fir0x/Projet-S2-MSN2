@@ -9,17 +9,17 @@ public class Gameover : MonoBehaviour
 
     public GameObject canvasgamover;
     public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
+    private bool debug;
+
 
     public void Return_to_hub()
     {
-        
         playerAsset.Hp = 100;
         playerAsset.MaxHP = 100;
         playerAsset.EffectValue = 0;
         playerAsset.MaxEffectValue = 0;
         playerAsset.Gold = 0;
-        playerAsset.Diamond = 0;
-        playerAsset.WeaponsList = new []{pistol, null};
+        playerAsset.WeaponsList = new[] { pistol, null };
         playerAsset.Floor = -1;
         playerAsset.Invicibility = false;
         UIController.uIController.changeHp.Invoke();
@@ -42,7 +42,7 @@ public class Gameover : MonoBehaviour
 
     public void QUIT_GAME()
     {
-        Application.Quit(); 
+        Application.Quit();
     }
 
 }

@@ -58,7 +58,6 @@ public abstract class Boss : MonoBehaviour
 
     protected void OnDestroy()
     {
-        GetComponentInParent<RoomManager>().DestroyEnemy(gameObject);
         ChangeDiamonds();
         ChangeGold();
     }
@@ -98,8 +97,8 @@ public abstract class Boss : MonoBehaviour
         healthBar.SetValue(HP);
         if (HP <= 0)
         {
-            roomManager.DestroyEnemy(gameObject);
             healthBar.SliderDisappear();
+            roomManager.DestroyEnemy(gameObject);
         }
 
         if (HP <= hpPhase && isFirstPhase)

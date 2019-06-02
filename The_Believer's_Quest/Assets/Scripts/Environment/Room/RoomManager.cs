@@ -165,7 +165,7 @@ public class RoomManager : MonoBehaviour
                 testForBoss = false;
                 GameObject bossOnScene = Instantiate(enemies[0], roomPosition, Quaternion.identity) as GameObject;
                 bossOnScene.transform.parent = transform;
-                bossOnScene.GetComponent<BossLifebar>().SliderDisappear();
+                //bossOnScene.GetComponent<BossLifebar>().SliderDisappear();
             }
             else
             {
