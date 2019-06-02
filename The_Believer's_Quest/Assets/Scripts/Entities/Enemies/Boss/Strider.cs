@@ -47,6 +47,7 @@ public class Strider : Boss
 
     private IEnumerator DoingDashAttack()
     {
+        print("aled");
         Vector3 finalPos = playerAsset.Position;
 
         float step = 2 * bossData.Speed * Time.deltaTime;
@@ -54,7 +55,8 @@ public class Strider : Boss
         {
             if (test)
             {
-                Throwing(1f);
+                print("test");
+                StartCoroutine(Throwing(0.4f));
             }
             
             transform.position = Vector3.MoveTowards(transform.position, finalPos, step);

@@ -134,7 +134,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 3121467787199422030, guid: 2c4227669e6f32147ac8b64ecffcb029,
     type: 3}
-  player: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   enemy: {fileID: 0}
   boss: {fileID: 11400000, guid: a5dce0e92b8e0f149894cdca54bb3ebf, type: 2}
 --- !u!114 &8709767248929008384
@@ -199,4 +198,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05479148429097a4b9f7f8b95afa4ed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anims: {fileID: 0}
+  anims: {fileID: 11400000, guid: 9cb035bc82c2f704f9baf99f58b118f9, type: 2}

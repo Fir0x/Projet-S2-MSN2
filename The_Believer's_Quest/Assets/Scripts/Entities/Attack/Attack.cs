@@ -31,7 +31,7 @@ public class Attack : MonoBehaviour
         if (traj == Trajectory.Arc)
             ArcShot((int)boss.NbOfProjectiles, playerT.position, boss.ShotSpeed, boss.Damage);
         if (traj == Trajectory.Circle)
-            CircleShot((int)boss.NbOfProjectiles, boss.ShotSpeed, boss.Damage);
+            CircleShot((int)boss.NbOfProjectiles, boss.ShotSpeed, boss.Damage, boss.Sprite);
         if (traj == Trajectory.Cqc)
             Cqc(boss.Damage);
         if (traj == Trajectory.Railgun)
@@ -48,7 +48,7 @@ public class Attack : MonoBehaviour
         if (enemy._Trajectory == Trajectory.Arc)
             ArcShot(enemy.NbOfProjectiles, playerT.position, enemy.ShotSpeed, enemy.Damage);
         if (enemy._Trajectory == Trajectory.Circle)
-            CircleShot(enemy.NbOfProjectiles, enemy.ShotSpeed, enemy.Damage);
+            CircleShot(enemy.NbOfProjectiles, enemy.ShotSpeed, enemy.Damage, enemy.Sprite);
         if (enemy._Trajectory == Trajectory.Cqc)
             Cqc(enemy.Damage);
         if (enemy._Trajectory == Trajectory.Railgun)
@@ -81,15 +81,16 @@ public class Attack : MonoBehaviour
             transform.rotation).GetComponent<Projectile>().Init(enemy.Projectile, speed, damage, transform.position, angle, (direction-transform.position),false, false, effect); 
     }
     
-    private void CircleShot(int nbprojectile, float speed, float damage)//tir en cercle
+    private void CircleShot(int nbprojectile, float speed, float damage, Sprite projo)//tir en cercle
     {
         
         float angle = 360 / nbprojectile;
         
         for (int i = 0; i < nbprojectile; i++)
         {
+            
             Instantiate(projectile, transform.position,
-                transform.rotation).GetComponent<Projectile>().Init(enemy.Projectile, speed, damage, transform.position, angle, transform.up,false, true, effect); 
+                transform.rotation).GetComponent<Projectile>().Init(projo, speed, damage, transform.position, angle, transform.up,false, true, effect); 
 
         } 
     }
