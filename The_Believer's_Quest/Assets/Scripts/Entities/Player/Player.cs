@@ -112,14 +112,15 @@ public class Player : MovingObject
             animator.SetTrigger(animDeathID);
             SoundManager soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
             soundManager.PlaySingle(soundManager.lfx[4]);
-            StartCoroutine(GameOver());
+            gameover.SetActive(true);
+            //StartCoroutine(GameOver());
+            gameover.SetActive(true);
         }
     }
 
     IEnumerator GameOver()
     {
         yield return new WaitForSeconds(2);
-        gameover.SetActive(true);
     }
 
     IEnumerator InvicibilityCoolDown()

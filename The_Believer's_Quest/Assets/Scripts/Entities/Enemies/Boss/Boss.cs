@@ -56,7 +56,8 @@ public abstract class Boss : MonoBehaviour
         testForCoolDown = true;
         isAttacking = false;
         attackList = new List<BossAttack>();
-        precedentNode = new Node(true, transformPlayer.position, 0, 0);
+
+        precedentNode = new Node(true, GameObject.Find("Player").transform.position, 0, 0);
 
         hpPhase = bossData.Hp / 2;
         realPathfinding = GetComponentInParent<RealPathfinding>();
@@ -133,7 +134,7 @@ public abstract class Boss : MonoBehaviour
         startPos = transform.position;
 
         nextNode = realPathfinding.FindPath(startPos, transformPlayer.position);
-
+        print(nextNode);
         if (nextNode != null)
         {
             transform.position = Vector2.MoveTowards(startPos, nextNode.worldPos + new Vector3(0.5f, 0.5f, 0), bossData.Speed * Time.deltaTime);

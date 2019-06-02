@@ -31,9 +31,9 @@ public class Gameover : MonoBehaviour
         UIController.uIController.changeEffect.Invoke();
         UIController.uIController.changeMaxEffect.Invoke();
 
+        Destroy(GameObject.Find("Board"));
         GameObject.FindGameObjectWithTag("BoardManager").GetComponent<Board>().Init();
         GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(1);
-        Destroy(GameObject.Find("Board"));
         MapController.mapInstance.ResetMap();
 
         canvasgamover.SetActive(false);
