@@ -57,6 +57,12 @@ public class Room : MonoBehaviour
         GameObject room;
         id = roomNumber;
         this.type = type;
+        if (playerAsset.Floor == 5)
+        {
+            playerAsset.Floor = 0;
+            playerAsset.Gold = 0;
+            HubCreator();
+        }
         if (playerAsset.Floor == 1)
         {
             if (roomNumber == 1 || type != Board.Type.Normal)
@@ -70,13 +76,27 @@ public class Room : MonoBehaviour
         }
         else
         {
-            if (roomNumber == 1 || type != Board.Type.Normal)
+            if (playerAsset.Floor == 4)
             {
-                room = patterns.Pattern[11 + 7 * (playerAsset.Floor - 2)];
+                if (roomNumber == 1 || type != Board.Type.Normal)
+                {
+                    room = patterns.Pattern[1];
+                }
+                else
+                {
+                    room = patterns.Pattern[UnityEngine.Random.Range(0, patterns.Pattern.Length)];
+                }
             }
             else
             {
-                room = patterns.Pattern[UnityEngine.Random.Range(11 + 7 * (playerAsset.Floor - 2), 17 + 7 * (playerAsset.Floor - 2))];
+                if (roomNumber == 1 || type != Board.Type.Normal)
+                {
+                    room = patterns.Pattern[11 + 7 * (playerAsset.Floor - 2)];
+                }
+                else
+                {
+                    room = patterns.Pattern[UnityEngine.Random.Range(11 + 7 * (playerAsset.Floor - 2), 17 + 7 * (playerAsset.Floor - 2))];
+                }
             }
         }
 
