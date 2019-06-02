@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    private int nbWeapons;
+    private int nbItems;
     public static Inventory instance;
     private InventoryUI inventoryUI;
 
@@ -25,11 +27,16 @@ public class Inventory : MonoBehaviour
     {
         if(item.CompareTag("Object") && item.GetComponent<Object>().ObjectsAsset.passive)
         {
+            item.GetComponent<Object>().PassiveChange();
             return true;
         }
         // Check if out of space
         if (items.Count < space)
         { 
+            if (item.CompareTag("Object") && nbItems != 2)
+            {
+
+            }
             items.Add(item);    // Add item to list
             InventoryUI.instance.AddItem(item);
             return true;

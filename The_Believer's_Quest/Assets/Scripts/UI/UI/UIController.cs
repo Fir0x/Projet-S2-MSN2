@@ -52,9 +52,9 @@ public class UIController : MonoBehaviour
         effect.value = player.EffectValue;
         Gold.text = player.Gold + "";
         Diamond.text = player.Diamond + "";
-        WeaponSprite.sprite = player.WeaponsList[0].Sprite;
+        WeaponSprite.sprite = player.WeaponsList[0].GetAsset().Sprite;
         Ammo.text = player.WeaponsList[0].Type == WeaponAsset.WeaponType.CQC ?
-                                         "" : player.WeaponsList[0].Loader + " / " + player.WeaponsList[0].Ammunitions;
+                                         "" : player.WeaponsList[0].GetAsset().Loader + " / " + player.WeaponsList[0].GetAsset().Ammunitions;
 
         //Init all events to change UI parts
         if (changeHp == null)
@@ -93,10 +93,10 @@ public class UIController : MonoBehaviour
 
         changeDiamond.AddListener(() => Diamond.text = player.Diamond + "");
 
-        changeWeapon.AddListener(() => WeaponSprite.sprite = player.WeaponsList[0].Sprite);
+        changeWeapon.AddListener(() => WeaponSprite.sprite = player.WeaponsList[0].GetAsset().Sprite);
 
         changeAmmo.AddListener(() => Ammo.text = player.WeaponsList[0].Type == WeaponAsset.WeaponType.CQC ? 
-                                         "" : player.WeaponsList[0].Loader + " / " + player.WeaponsList[0].Ammunitions);
+                                         "" : player.WeaponsList[0].GetAsset().Loader + " / " + player.WeaponsList[0].GetAsset().Ammunitions);
     }
 
     public void ShowMap()
