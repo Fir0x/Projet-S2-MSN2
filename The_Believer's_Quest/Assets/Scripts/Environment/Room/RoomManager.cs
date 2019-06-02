@@ -317,7 +317,7 @@ public class RoomManager : MonoBehaviour
             script.ClearTiles(doors, doorTiles, floor);
         }*/
         SoundManager soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
-        soundManager.PlaySingle(soundManager.lfx[9]);
+        soundManager.PlaySingle(soundManager.lfx[2]);
         for (int i = 4; i < transform.childCount; i++)           //destruction of door colliders
         {
             if(GetComponent<Transform>().GetChild(i).gameObject.tag != "Chest" && GetComponent<Transform>().GetChild(i).gameObject.tag != "Shop")
