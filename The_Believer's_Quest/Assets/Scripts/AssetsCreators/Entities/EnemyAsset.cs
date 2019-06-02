@@ -9,7 +9,7 @@ public class EnemyAsset : ScriptableObject
     [SerializeField] [Range(2, 14)] private int minLoot;
     [SerializeField] [Range(3, 15)] private int maxLoot;
     [SerializeField] private int weight;
-    [SerializeField] private int cooldown;
+    [SerializeField] private float cooldown;
     [SerializeField] private Sprite sprite;
     [SerializeField] private int nbofprojectiles;
     [SerializeField] private Attack.Trajectory trajectory;
@@ -24,7 +24,7 @@ public class EnemyAsset : ScriptableObject
     public int MinLoot { get => minLoot; set => minLoot = value; }
     public int MaxLoot { get => maxLoot; set => maxLoot = value; }
     public int Weight { get => weight; set => weight = value; }
-    public int Cooldown { get => cooldown; set => cooldown = value; }
+    public float Cooldown { get => cooldown; set => cooldown = value; }
     public Sprite Sprite{get => sprite;set => sprite = value;}
     public int NbOfProjectiles{get => nbofprojectiles;set => nbofprojectiles = value;}
     public Attack.Trajectory _Trajectory{get => trajectory;set => trajectory = value;}

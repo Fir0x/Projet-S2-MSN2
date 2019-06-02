@@ -21,6 +21,7 @@ public class BossAnimation : MonoBehaviour
 
         animatorOverrideController["Move"] = anims.Move[0];
         animatorOverrideController["Attack"] = anims.Attack[0];
+        animatorOverrideController["Appearance"] = anims.Appearance;
         animatorOverrideController["Change_phase"] = anims.Change_phase;
         animatorOverrideController["Death"] = anims.Death;
 

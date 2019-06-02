@@ -23,4 +23,3 @@ MonoBehaviour:
   ammo: 0
   invicibility: 0
   duration: 0
-  Object: {fileID: 0}
