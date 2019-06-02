@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //Nicolas L
-public class Slider : Boss
+public class Strider : Boss
 {
     public GameObject blueSlime;
 

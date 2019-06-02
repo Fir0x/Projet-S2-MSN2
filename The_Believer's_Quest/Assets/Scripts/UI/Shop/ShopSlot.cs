@@ -29,8 +29,11 @@ public class ShopSlot : MonoBehaviour
         {
             print(isHub + "");
             print("" + item.name);
-            icon.sprite = item.GetComponent<WeaponItem>().WeaponAsset.Sprite;
-            icon.enabled = true;
+            if (item != null)
+            {
+                icon.sprite = item.GetComponent<WeaponItem>().WeaponAsset.Sprite;
+                icon.enabled = true;
+            }
         }
         else
         {

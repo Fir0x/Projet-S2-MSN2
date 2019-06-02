@@ -45,7 +45,7 @@ public class Room : MonoBehaviour
         GameObject room = patterns.Pattern[0];
         Player.transform.position = room.transform.position + new Vector3(0.5f, 3.5f, 0f);
         type = Board.Type.Shop;
-
+        print("hubcrea");
         return room;
     }
 

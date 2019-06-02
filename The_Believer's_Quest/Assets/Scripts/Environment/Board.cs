@@ -82,6 +82,7 @@ public class Board : MonoBehaviour
             GameObject room = GetComponent<Room>().HubCreator();
             GameObject hub = Instantiate(room);
             hub.transform.parent = board;
+            print("allez");
         }
         else
         {

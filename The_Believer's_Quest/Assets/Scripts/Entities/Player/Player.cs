@@ -146,7 +146,10 @@ public class Player : MovingObject
     
     public void Attack()
     {
-        weapon.Attack();
+        if (canAttack)
+        {
+            weapon.Attack();
+        }
     }
 
     public void doDash()

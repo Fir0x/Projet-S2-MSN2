@@ -67,11 +67,13 @@ public class KeyBoardManager : MonoBehaviour
         if (Input.GetButtonDown("Interact") && Player.instance.GetNearChest())
         {
             player.ActiveChestUI();
+            player.canAttack = !player.canAttack;
         }
 
         if (Input.GetButtonDown("Interact") && Player.instance.GetNearShop())
         {
             player.ActiveShopUI();
+            player.canAttack = !player.canAttack;
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") != 0f)
