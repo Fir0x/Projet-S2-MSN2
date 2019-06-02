@@ -12,6 +12,8 @@ public class Player : MovingObject
     public static Player instance;
     [SerializeField] private GameObject camera;
 
+    public bool canAttack;
+
     private bool goLeft;
     private bool goUp;
     private bool goRight;
@@ -52,6 +54,7 @@ public class Player : MovingObject
 
     private void Start()
     {
+        canAttack = true;
         roomType = Board.Type.Shop;
         weapon = GetComponentInChildren<Weapon>();
 

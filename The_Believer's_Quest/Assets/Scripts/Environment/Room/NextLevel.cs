@@ -17,25 +17,12 @@ public class NextLevel : MonoBehaviour
     {
         board = Board.instance;
         boardManager = GameObject.Find("BoardManager");
-        canGo = false;
         firstTrigger = true;
-        Wait();
-    }
-
-    public void Wait()
-    {
-        StartCoroutine(CoolDown());
-    }
-
-    IEnumerator CoolDown()
-    {
-        yield return new WaitForSeconds(1);
-        canGo = true;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if(canGo && col.CompareTag("Player"))
+        if(col.CompareTag("Player"))
         {
             if(firstTrigger)
             {
