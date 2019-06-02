@@ -27,6 +27,7 @@ public class ShopSlot : MonoBehaviour
         item = newItem;
         if (isHub)
         {
+            icon.sprite = item.GetComponent<WeaponItem>().WeaponAsset.Sprite;
             icon.enabled = true;
         }
         else
@@ -58,10 +59,10 @@ public class ShopSlot : MonoBehaviour
 
             if (item != null && price <= diamond)
             {
+                shop.UnlockedItems.Locked.Remove(item);
+                shop.UnlockedItems.Unlocked.Add(item);
                 shop.Remove(item);
                 Player.instance.PlayerAsset.Diamond -= price;
-                shop.UnlockedItems.Unlocked.Add(item);
-                shop.UnlockedItems.Locked.Remove(item);
                 UIController.uIController.changeDiamond.Invoke();
             }
         }
