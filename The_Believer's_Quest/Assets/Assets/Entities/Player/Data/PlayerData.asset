@@ -16,15 +16,15 @@ MonoBehaviour:
   hp: 100
   maxHP: 100
   effectValue: 0
-  maxEffectValue: 50
+  maxEffectValue: 100
   speed: 3
   invicibility: 0
   gold: 0
-  diamond: 10
+  diamond: 0
   weaponsList:
   - {fileID: 6167037201334550808, guid: f60a186df86b32345bc176637acbb710, type: 3}
   - {fileID: 0}
   objectsList:
+  - {fileID: 7599824383928266145, guid: d52e548175accef4fa808e4c335a0865, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
-  position: {x: 0.5, y: 3.5, z: 0}
+  position: {x: 45.7826, y: 24.874641, z: 0}

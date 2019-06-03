@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 200
   maxHp: 200
-  speed: 5
-  damage: 10
+  speed: 4.5
+  damage: 22.5
   minLoot: 0
   maxLoot: 0
   sprite: {fileID: 0}
   range: 0
   cooldown: 5
+  nbOfProjectiles: 0
+  effect: 0
+  shotSpeed: 0

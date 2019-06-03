@@ -25,4 +25,4 @@ MonoBehaviour:
   shotSpeed: 0
   range: 0
   projectile: {fileID: 21300028, guid: 886f81538e775144cb8a734c7948ffe9, type: 3}
-  effect: 0
+  effect: 1

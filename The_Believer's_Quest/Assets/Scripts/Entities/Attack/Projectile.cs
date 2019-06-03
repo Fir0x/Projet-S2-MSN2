@@ -54,7 +54,8 @@ public class Projectile : MovingObject
             if (hitInfo.collider.CompareTag("Player") && !player)
             {
                 hitInfo.collider.GetComponent<Player>().SetLife(playerAsset.Hp - damage);
-                hitInfo.collider.GetComponent<Player>().SetEffect(playerAsset.EffectValue + damage / 2);
+                if (effect)
+                    hitInfo.collider.GetComponent<Player>().SetEffect(playerAsset.EffectValue + damage / 2);
                 Destroy(gameObject);
             }
             if (hitInfo.collider.CompareTag("Pattern"))

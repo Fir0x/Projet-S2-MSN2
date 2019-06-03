@@ -15,7 +15,7 @@ public abstract class Boss : MonoBehaviour
     protected int nbAttacks;
     
     [SerializeField] protected BossAsset bossData;
-    [SerializeField] protected PlayerAsset playerAsset;
+    protected PlayerAsset playerAsset;
     protected float HP;
     protected float hpPhase;
     protected Animator animator;
@@ -45,6 +45,8 @@ public abstract class Boss : MonoBehaviour
     {
         animatorController = GetComponent<BossAnimation>();
         animator = GetComponent<Animator>();
+
+        playerAsset = Player.instance.PlayerAsset;
 
         HP = bossData.Hp;
         healthBar = GetComponent<BossLifebar>();

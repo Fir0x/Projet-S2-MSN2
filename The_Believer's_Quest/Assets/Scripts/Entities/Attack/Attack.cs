@@ -70,7 +70,8 @@ public class Attack : MonoBehaviour
                     
                     Vector3 forcedMov = -(gameObject.transform.position - playerTouched[i].transform.position).normalized;              //to make player move in the opposite way when touched
                     playerTouched[i].GetComponent<Player>().ForcedMovement(forcedMov);
-                    Player.instance.SetEffect(player.EffectValue + damage / 2);
+                    if (effect)
+                        Player.instance.SetEffect(player.EffectValue + damage / 2);
                 }
             }
         }

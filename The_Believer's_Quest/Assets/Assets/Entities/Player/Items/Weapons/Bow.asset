@@ -17,10 +17,10 @@ MonoBehaviour:
   damage: 15
   cooldown: 1.5
   reloadingTime: 1
-  loader: 142
+  loader: 15
   loaderCappacity: 15
   maxAmmunitions: 200
-  ammunitions: 185
+  ammunitions: 200
   speed: 40
   type: 1
   nbbulletsbyshot: 1
