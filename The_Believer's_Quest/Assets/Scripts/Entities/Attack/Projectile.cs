@@ -19,10 +19,13 @@ public class Projectile : MovingObject
         this.effect = effect;
 
         if (circle || _direction == new Vector3(0, 0, 0))
-            _direction = transform.up;        
+            _direction = transform.up;
         if (angle != 0)
+        {
             transform.RotateAround(origin, Vector3.forward, angle);
-        direction = _direction;
+        }
+        else
+            direction = _direction.normalized;
     }
     public void Init(Sprite sprite, float speed, float damage, Vector3 origin, float angle, bool player) 
     {
