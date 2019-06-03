@@ -16,12 +16,14 @@ public class Gameover : MonoBehaviour
     {
         playerAsset.Hp = 100;
         playerAsset.MaxHP = 100;
-        playerAsset.EffectValue = 0;
-        playerAsset.MaxEffectValue = 0;
+        Player.instance.SetEffect(0);
+        playerAsset.MaxEffectValue = 50;
         playerAsset.Gold = 0;
         playerAsset.WeaponsList = new[] { pistol, null };
         playerAsset.Floor = -1;
         playerAsset.Invicibility = false;
+        playerAsset.Speed = 3;
+        Inventory.instance.items.Clear();
         UIController.uIController.changeHp.Invoke();
         UIController.uIController.changeMaxHp.Invoke();
         UIController.uIController.changeGold.Invoke();
