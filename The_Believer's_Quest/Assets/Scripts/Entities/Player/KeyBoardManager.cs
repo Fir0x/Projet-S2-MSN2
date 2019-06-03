@@ -76,26 +76,26 @@ public class KeyBoardManager : MonoBehaviour
             player.canAttack = !player.canAttack;
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+        if (Input.GetAxis("Mouse ScrollWheel") != 0f) //Change weapon
         {
-            player.transform.GetChild(0).GetComponent<Weapon>().SetWeapon(player.PlayerAsset.WeaponsList[1]);
+            player.transform.GetChild(0).GetComponent<Weapon>().SetWeapon(player.PlayerAsset.weaponsInstance[1]);
         }
 
-        if (Input.GetButtonDown("Item 1"))
+        if (Input.GetButtonDown("Item 1")) //Use item 1
         {
             if (player.PlayerAsset.ObjectsList[0] != null)
             {
-                print("objet 1");
+                print("objet 1"); //DEBUG
                 player.PlayerAsset.ObjectsList[0].GetComponent<Object>().ActiveChange();
                 player.PlayerAsset.ObjectsList[0] = null;
             }
         }
 
-        if (Input.GetButtonDown("Item 2"))
+        if (Input.GetButtonDown("Item 2")) //Use item 2
         {
             if (player.PlayerAsset.ObjectsList[1] != null)
             {
-                print("objet 2");
+                print("objet 2"); //DEBUG
                 player.PlayerAsset.ObjectsList[1].GetComponent<Object>().ActiveChange();
                 player.PlayerAsset.ObjectsList[1] = null;
             }

@@ -14,6 +14,7 @@ public class PlayerAsset : ScriptableObject
     [SerializeField] private int gold;
     [SerializeField] private int diamond;
     [SerializeField] private GameObject[] weaponsList = new GameObject[2];
+    public GameObject[] weaponsInstance = new GameObject[2];
     [SerializeField] private GameObject[] objectsList = new GameObject[2];
     [SerializeField] private Vector3 position;
    

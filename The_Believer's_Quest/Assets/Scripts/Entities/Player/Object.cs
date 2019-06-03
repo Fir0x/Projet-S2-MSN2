@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-//Nicolas I
+//Nicolas L
 public class Object : MonoBehaviour
 {
     [SerializeField] private ObjectsAsset objectsAsset;
@@ -14,27 +13,20 @@ public class Object : MonoBehaviour
 
     public void PassiveChange()
     {
-        playerAsset = GameObject.Find("Player").GetComponent<Player>().PlayerAsset;
-        
-        if(objectsAsset.HP != 0)
-        {
-            GameObject.Find("Player").GetComponent<Player>().SetLife(playerAsset.Hp + objectsAsset.HP);
-        }
+        Player player = GameObject.Find("Player").GetComponent<Player>();
+        playerAsset = player.PlayerAsset;
+
+        if (objectsAsset.HP != 0)
+            player.SetLife(playerAsset.Hp + objectsAsset.HP);
 
         if (objectsAsset.MaxHP != 0)
-        {
-            GameObject.Find("Player").GetComponent<Player>().SetMaxLife(playerAsset.MaxHP + objectsAsset.MaxHP);
-        }
+            player.SetMaxLife(playerAsset.MaxHP + objectsAsset.MaxHP);
         
         if (objectsAsset.EffectValue != 0)
-        {
-            GameObject.Find("Player").GetComponent<Player>().SetEffect(playerAsset.EffectValue + objectsAsset.EffectValue);
-        }
+            player.SetEffect(playerAsset.EffectValue + objectsAsset.EffectValue);
 
         if (objectsAsset.MaxEffectValue != 0)
-        {
-            GameObject.Find("Player").GetComponent<Player>().SetMaxEffect(playerAsset.MaxEffectValue + objectsAsset.MaxEffectValue);
-        }
+            player.SetMaxEffect(playerAsset.MaxEffectValue + objectsAsset.MaxEffectValue);
 
         if (objectsAsset.Speed != 0)
             playerAsset.Speed *= objectsAsset.Speed;
@@ -44,69 +36,61 @@ public class Object : MonoBehaviour
     public void ActiveChange()
     {
         print("Active CHange");
-        life = 0;
 
-        playerAsset = GameObject.Find("Player").GetComponent<Player>().PlayerAsset;
+        GameObject player = GameObject.Find("Player");
+        playerAsset = player.GetComponent<Player>().PlayerAsset;
 
         if (objectsAsset.HP == -999)
         {
-            life = (int)GameObject.Find("Player").GetComponent<Player>().PlayerAsset.Hp;
-            GameObject.Find("Player").GetComponent<Player>().SetLife(1);
-            GameObject.Find("Player").GetComponentInChildren<Weapon>().SetDamage(2);
+            player.GetComponent<Player>().SetLife(1);
+            player.GetComponentInChildren<Weapon>().MultiplyDamage(2);
         }
-        print("ou");
 
-        if (objectsAsset.HP != 0)
-        {
-            GameObject.Find("Player").GetComponent<Player>().SetLife(playerAsset.Hp + objectsAsset.HP);
-        }
+        if (objectsAsset.HP != 0 && objectsAsset.HP != -999)
+            player.GetComponent<Player>().SetLife(playerAsset.Hp + objectsAsset.HP);
 
         if (objectsAsset.MaxHP != 0)
-        {
-            GameObject.Find("Player").GetComponent<Player>().SetMaxLife(playerAsset.MaxHP + objectsAsset.MaxHP);
-        }
+            player.GetComponent<Player>().SetMaxLife(playerAsset.MaxHP + objectsAsset.MaxHP);
 
         if (objectsAsset.EffectValue != 0)
-        {
-            GameObject.Find("Player").GetComponent<Player>().SetEffect(playerAsset.EffectValue + objectsAsset.EffectValue);
-        }
+            player.GetComponent<Player>().SetEffect(playerAsset.EffectValue + objectsAsset.EffectValue);
 
         if (objectsAsset.MaxEffectValue != 0)
-        {
-            GameObject.Find("Player").GetComponent<Player>().SetMaxEffect(playerAsset.MaxEffectValue + objectsAsset.MaxEffectValue);
-        }
+            player.GetComponent<Player>().SetMaxEffect(playerAsset.MaxEffectValue + objectsAsset.MaxEffectValue);
 
         if (objectsAsset.Speed != 0)
             playerAsset.Speed *= objectsAsset.Speed;
 
         if (objectsAsset.Invicibility)
-        {
             playerAsset.Invicibility = true;
-        }
 
         if (objectsAsset.Ammo != 0)
-        {
-            GameObject.Find("Player").GetComponentInChildren<Weapon>().SetDamage(2);
-        }
+            player.GetComponentInChildren<Weapon>().MultiplyDamage(2);
 
-        StartCoroutine(Duration(objectsAsset, objectsAsset.Duration));
-
+        if (objectsAsset.Duration != 0)
+            Instantiate(gameObject).GetComponent<Object>().StartDuration(player, objectsAsset, objectsAsset.Duration); //Instantiate to use coroutine
+        
         Inventory.instance.Remove(gameObject);
     }
 
-    IEnumerator Duration(ObjectsAsset item, uint duration)
+    public void StartDuration(GameObject player, ObjectsAsset item, uint duration)
+    {
+        StartCoroutine(Duration(player, objectsAsset, objectsAsset.Duration));
+    }
+
+    IEnumerator Duration(GameObject player, ObjectsAsset item, uint duration) //applies object's effects for a duration
     {
         yield return new WaitForSeconds(duration);
+        PlayerAsset playerAsset = player.GetComponent<Player>().PlayerAsset;
         playerAsset.Hp -= item.HP;
         playerAsset.MaxHP -= item.MaxHP;
         playerAsset.EffectValue -= item.EffectValue;
         playerAsset.MaxEffectValue -= item.MaxEffectValue;
         playerAsset.Speed /= item.Speed;
         playerAsset.Invicibility = false;
-        if (objectsAsset.HP == -999)
-        {
-            GameObject.Find("Player").GetComponent<Player>().SetLife(life);
-            GameObject.Find("Player").GetComponentInChildren<Weapon>().SetDamage(0.5f);
-        }
+        if (objectsAsset.HP == -999) //AFIT object's effect
+            player.GetComponentInChildren<Weapon>().MultiplyDamage(0.5f);
+
+        Destroy(gameObject); //Destroy trash gameObject's instance
     }
 }
