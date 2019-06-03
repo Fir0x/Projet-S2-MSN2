@@ -14,7 +14,7 @@ public class MasseEnemy : MonoBehaviour
         ok = false;
         allEnemies = new List<GameObject>();
         StartCoroutine(Spawn());
-        thisManager = gameObject.GetComponentInParent<RoomManager>();
+        thisManager = gameObject.transform.parent.gameObject.GetComponent<RoomManager>();
     }
 
     IEnumerator Spawn()
@@ -26,18 +26,21 @@ public class MasseEnemy : MonoBehaviour
             x = Random.Range(-4, 5);
             y = Random.Range(-3, 4);
             GameObject slime1 = Instantiate(iceSlime, new Vector3(this.gameObject.transform.position.x + x, this.gameObject.transform.position.y + y, 0), Quaternion.identity);
-            slime1.transform.SetParent(this.transform);
-            thisManager.AddEnemies(new GameObject[] { slime1 });
+            slime1.transform.SetParent(gameObject.transform.parent.transform);
+            print(slime1);
+            print(gameObject.transform.parent);
+            gameObject.transform.parent.GetComponent<RoomManager>().SpawnEnemiesForThirdBoss(slime1);
 
             x = Random.Range(-4, 5);
             y = Random.Range(-3, 4);
             GameObject slime2 = Instantiate(iceSlime, new Vector3(this.gameObject.transform.position.x + x, this.gameObject.transform.position.y + y, 0), Quaternion.identity);
             slime2.transform.SetParent(this.transform);
 
-            thisManager.AddEnemies(new GameObject[] { slime1 });
+            gameObject.transform.parent.GetComponent<RoomManager>().SpawnEnemiesForThirdBoss(slime1);
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(5);
         }
+        gameObject.transform.parent.GetComponent<RoomManager>().SpawnEnemiesForThirdBoss(null);
     }
 
     private void Update()

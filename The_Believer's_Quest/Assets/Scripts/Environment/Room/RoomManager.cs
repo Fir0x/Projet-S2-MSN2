@@ -152,6 +152,15 @@ public class RoomManager : MonoBehaviour
         SpawnEnemies();
     }
 
+    public void SpawnEnemiesForThirdBoss(GameObject enemy)
+    {
+        if(enemy == null)
+        {
+            OpenDoors();
+            GameObject outdoor = Instantiate(nextLevel, transform.position + new Vector3(0, 3f, 0), Quaternion.identity) as GameObject;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D col) //Nicolas L
     {
         GameObject.Find("Player").GetComponent<Player>().RoomType = roomType;
