@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6148401782318648713}
   - component: {fileID: 6461841583331952468}
   - component: {fileID: 5220010834888391155}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chest
   m_TagString: Chest
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4283497962902459402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 363.49945, y: 281.15414, z: 24.347557}
+  m_LocalPosition: {x: 363.476, y: 281.17, z: 24.347557}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

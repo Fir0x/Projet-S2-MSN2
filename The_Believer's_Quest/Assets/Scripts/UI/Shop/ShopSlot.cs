@@ -58,7 +58,7 @@ public class ShopSlot : MonoBehaviour
     // Called when the item is pressed
     public void UseItem()
     {
-        if (isHub)
+        if (GameObject.Find("Player").GetComponent<Player>().PlayerAsset.Floor == 0)
         {
             int diamond = Player.instance.PlayerAsset.Diamond;
             int price = item.GetComponent<WeaponItem>().WeaponAsset.DiamondPrice;

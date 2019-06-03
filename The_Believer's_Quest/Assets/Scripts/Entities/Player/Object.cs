@@ -86,7 +86,12 @@ public class Object : MonoBehaviour
         playerAsset.MaxHP -= item.MaxHP;
         playerAsset.EffectValue -= item.EffectValue;
         playerAsset.MaxEffectValue -= item.MaxEffectValue;
-        playerAsset.Speed /= item.Speed;
+
+        if (item.Speed != 0)
+        {
+            playerAsset.Speed /= item.Speed;
+        }
+
         playerAsset.Invicibility = false;
         if (objectsAsset.HP == -999) //AFIT object's effect
             player.GetComponentInChildren<Weapon>().MultiplyDamage(0.5f);
