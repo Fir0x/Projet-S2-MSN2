@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AllBoss
   m_EditorClassIdentifier: 
   allEnemies:
+  - {fileID: 1334360431834512438, guid: ca413c35c596d384a9808312dec08771, type: 3}
   - {fileID: 5496302451493326244, guid: 2189283576624844b9257a080b14ea40, type: 3}
-  - {fileID: 1334360431834512438, guid: ca413c35c596d384a9808312dec08771, type: 3}
-  - {fileID: 1334360431834512438, guid: ca413c35c596d384a9808312dec08771, type: 3}
+  - {fileID: 1303902788080748870, guid: a59c9f448cf37804f8eea1402fb612b7, type: 3}
