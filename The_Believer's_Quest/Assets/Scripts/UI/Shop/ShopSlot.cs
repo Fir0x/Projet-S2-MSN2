@@ -25,12 +25,15 @@ public class ShopSlot : MonoBehaviour
     public void AddItem(GameObject newItem)
     {
         item = newItem;
-        if (isHub)
+        if (GameObject.Find("Player").GetComponent<Player>().PlayerAsset.Floor == 0)
         {
             if (item != null)
             {
-                icon.sprite = item.GetComponent<WeaponItem>().WeaponAsset.Sprite;
-                icon.enabled = true;
+                if (item.GetComponent<WeaponItem>().WeaponAsset.Sprite != null)
+                {
+                    icon.sprite = item.GetComponent<WeaponItem>().WeaponAsset.Sprite;
+                    icon.enabled = true;
+                }
             }
         }
         else

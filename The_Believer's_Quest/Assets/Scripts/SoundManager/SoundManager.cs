@@ -25,9 +25,14 @@ public class SoundManager : MonoBehaviour
         currentFx.Play();
     }
 
-    public void ChangeVolume(float volume)
+    public void ChangeVolumeMusic(float volume)
     {
         currentMusic.volume = (80f + volume) / 80f;
+    }
+
+    public void ChangeVolumeFx(float volume)
+    {
+        currentFx.volume = (80f + volume) / 80f;
     }
 
     public void ChangeBO(int x)
