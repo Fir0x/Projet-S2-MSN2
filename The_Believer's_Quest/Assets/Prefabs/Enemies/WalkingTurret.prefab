@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 6634441455969789342}
   - component: {fileID: 6024006248589231551}
   - component: {fileID: 7554333048861493424}
-  - component: {fileID: 8620867354819832368}
+
+  - component: {fileID: 5362020327908296551}
   m_Layer: 9
   m_Name: WalkingTurret
   m_TagString: Enemy
@@ -156,7 +157,8 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4745865, y: 0.55887604}
   m_EdgeRadius: 0
---- !u!114 &8620867354819832368
+
+--- !u!114 &5362020327908296551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
