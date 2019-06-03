@@ -71,8 +71,8 @@ public class Player : MovingObject
         noForcedMove = true;
 
         inEditor = Application.isEditor;
-        actualWeapon = playerAsset.WeaponsList[0];
-        weapon.Init(Instantiate(actualWeapon), playerAsset);
+        actualWeapon = Instantiate(playerAsset.WeaponsList[0]);
+        weapon.Init(actualWeapon, playerAsset);
         if (inEditor)
             Inventory.instance.Add(actualWeapon);
 
