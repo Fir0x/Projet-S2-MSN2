@@ -22,12 +22,4 @@ public class WeaponItem : MonoBehaviour
         ammunitions = WeaponAsset.Ammunitions;
         speed = WeaponAsset.Speed;
     }
-
-    public void ResetWeapon()
-    {
-        damage = WeaponAsset.Damage;
-        loader = WeaponAsset.Loader;
-        ammunitions = WeaponAsset.Ammunitions;
-        speed = WeaponAsset.Speed;
-    }
 }

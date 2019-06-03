@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
 
     public int space = 12;  // Amount of slots in chest
 
-    
+
     // Current list of items in inventory
     public List<GameObject> items = new List<GameObject>();
 
@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour
     // return true. Else we return false.
     public bool Add(GameObject item)
     {
-        if(item.CompareTag("Object") && item.GetComponent<Object>().ObjectsAsset.passive)
+        if (item.CompareTag("Object") && item.GetComponent<Object>().ObjectsAsset.passive)
         {
             item.GetComponent<Object>().PassiveChange();
             return true;
@@ -61,17 +61,12 @@ public class Inventory : MonoBehaviour
                 items.Add(item);    // Add item to list
                 InventoryUI.instance.AddItem(item);
 
-                if (!Player.instance.start)
+                for (int i = 0; i < 2; i++)
                 {
-                    for (int i = 0; i < 2; i++)
+                    if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == null || GetComponent<Player>().PlayerAsset.WeaponsList[i] == item)
                     {
-                        if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == null || GetComponent<Player>().PlayerAsset.WeaponsList[i].name == item.name)
-                        {
-                            PlayerAsset playerAsset = GetComponent<Player>().PlayerAsset;
-                            Destroy(playerAsset.WeaponsList[i]);
-                            playerAsset.WeaponsList[i] = Instantiate(item);
-                            break;
-                        }
+                        GetComponent<Player>().PlayerAsset.WeaponsList[i] = item;
+                        break;
                     }
                 }
                 return true;
@@ -101,19 +96,17 @@ public class Inventory : MonoBehaviour
         }
         else if (item.CompareTag("Weapon"))
         {
-            PlayerAsset playerAsset = GetComponent<Player>().PlayerAsset;
             nbWeapons -= 1;
             for (int i = 0; i < 2; i++)
             {
-                if (playerAsset.WeaponsList[i].name == item.name)
+                if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == item)
                 {
-                    Destroy(playerAsset.WeaponsList[i]);
-                    playerAsset.WeaponsList[i] = null;
+                    GetComponent<Player>().PlayerAsset.WeaponsList[i] = null;
                     break;
                 }
             }
         }
-          
+
 
     }
 

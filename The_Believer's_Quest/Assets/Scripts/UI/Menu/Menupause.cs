@@ -8,7 +8,6 @@ public class Menupause : MonoBehaviour
     //cette classe a été réalisé par Sarah
     public static bool show = false;
     public GameObject canvaspause;
-    public GameObject originWeapon;
 
     private void Awake()
     {
@@ -49,10 +48,6 @@ public class Menupause : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        Destroy(Player.instance.PlayerAsset.WeaponsList[0]);
-        Destroy(Player.instance.PlayerAsset.WeaponsList[1]);
-        Player.instance.PlayerAsset.WeaponsList[0] = Instantiate(originWeapon);
-        Player.instance.PlayerAsset.WeaponsList[0] = null;
         SceneManager.LoadScene("MainMenu");
         GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(0);
         show = false;
