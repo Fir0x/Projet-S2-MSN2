@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6634441455969789342}
   - component: {fileID: 6024006248589231551}
   - component: {fileID: 7554333048861493424}
+  - component: {fileID: 5362020327908296551}
   m_Layer: 9
   m_Name: WalkingTurret
   m_TagString: Enemy
@@ -155,3 +156,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4745865, y: 0.55887604}
   m_EdgeRadius: 0
+--- !u!114 &5362020327908296551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4152029757633249111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070a2885a37d4eb43a66426a070c7a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 3965654078627227375, guid: a345e41e75ad0b94aa845a60b71e5d4f,
+    type: 3}
+  enemy: {fileID: 11400000, guid: 709a0fd38add6dd44a053b98a81fe243, type: 2}
+  boss: {fileID: 0}
