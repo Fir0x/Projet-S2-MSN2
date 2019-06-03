@@ -46,6 +46,7 @@ public class Projectile : MovingObject
         {
             if (hitInfo.collider.CompareTag("Enemy") && player)
             {
+                print("touché");
                 hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
                 Destroy(gameObject);
             }

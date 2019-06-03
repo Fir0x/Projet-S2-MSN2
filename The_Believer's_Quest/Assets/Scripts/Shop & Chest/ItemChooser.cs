@@ -22,15 +22,13 @@ public class ItemChooser : MonoBehaviour
         while (nbItems > 0)
         {
             i = Random.Range(0, len);
-            if (stillWeapon && unlocked.Contains(allItems[i]) && allItems[i].CompareTag("Weapon") && 100 / allItems[i].GetComponent<WeaponItem>().WeaponAsset.Price >= minRarity &&
-                                          100 / allItems[i].GetComponent<WeaponItem>().WeaponAsset.Price <= maxRarity)
+            if (stillWeapon && unlocked.Contains(allItems[i]) && allItems[i].CompareTag("Weapon")) 
             {
                 stillWeapon = false;
                 nbItems -= 1;
                 items.Add(allItems[i]);
             }
-            if (stillObject && allItems[i].CompareTag("Object") && 100 / allItems[i].GetComponent<Object>().ObjectsAsset.Price >= minRarity &&
-                                          100 / allItems[i].GetComponent<Object>().ObjectsAsset.Price <= maxRarity && !allItems[i].GetComponent<Object>().ObjectsAsset.passive)
+            if (stillObject && allItems[i].CompareTag("Object")  && !allItems[i].GetComponent<Object>().ObjectsAsset.passive)
             {
                 stillObject = false;
                 nbItems -= 1;

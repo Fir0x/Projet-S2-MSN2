@@ -75,7 +75,7 @@ public class ShopSlot : MonoBehaviour
     // Called when the item is pressed
     public void UseItem()
     {
-        if (isHub)
+        if (GameObject.Find("Player").GetComponent<Player>().PlayerAsset.Floor == 0)
         {
             int diamond = Player.instance.PlayerAsset.Diamond;
             int price = item.GetComponent<WeaponItem>().WeaponAsset.DiamondPrice;
@@ -99,7 +99,7 @@ public class ShopSlot : MonoBehaviour
             else if (item.CompareTag("Weapon"))
                 price = item.GetComponent<WeaponItem>().WeaponAsset.Price;
 
-            if (item != null && price <= gold)
+            if (item != null && price <= gold && GameObject.Find("Player").GetComponent<Player>().PlayerAsset.WeaponsList[0] != item && GameObject.Find("Player").GetComponent<Player>().PlayerAsset.WeaponsList[1] != item)
             {
                 if (inventory.Add(item))
                 {

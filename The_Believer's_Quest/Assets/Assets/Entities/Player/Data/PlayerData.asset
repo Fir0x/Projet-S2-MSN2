@@ -17,7 +17,7 @@ MonoBehaviour:
   maxHP: 100
   effectValue: 0
   maxEffectValue: 50
-  speed: 3
+  speed: 4
   invicibility: 0
   gold: 0
   diamond: 0
