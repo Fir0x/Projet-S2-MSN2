@@ -61,13 +61,17 @@ public class Inventory : MonoBehaviour
                 items.Add(item);    // Add item to list
                 InventoryUI.instance.AddItem(item);
 
-                for (int i = 0; i < 2; i++)
+                if (!Player.instance.start)
                 {
-                    if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == null || GetComponent<Player>().PlayerAsset.WeaponsList[i] == item)
+                    for (int i = 0; i < 2; i++)
                     {
-                        PlayerAsset playerAsset = GetComponent<Player>().PlayerAsset;
-                        playerAsset.WeaponsList[i] = item;
-                        break;
+                        if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == null || GetComponent<Player>().PlayerAsset.WeaponsList[i].name == item.name)
+                        {
+                            PlayerAsset playerAsset = GetComponent<Player>().PlayerAsset;
+                            Destroy(playerAsset.WeaponsList[i]);
+                            playerAsset.WeaponsList[i] = Instantiate(item);
+                            break;
+                        }
                     }
                 }
                 return true;
@@ -101,8 +105,9 @@ public class Inventory : MonoBehaviour
             nbWeapons -= 1;
             for (int i = 0; i < 2; i++)
             {
-                if (playerAsset.WeaponsList[i] == item)
+                if (playerAsset.WeaponsList[i].name == item.name)
                 {
+                    Destroy(playerAsset.WeaponsList[i]);
                     playerAsset.WeaponsList[i] = null;
                     break;
                 }
