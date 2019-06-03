@@ -4,7 +4,7 @@
 public class NextLevel : MonoBehaviour
 {
     private Board board;
-    [SerializeField] private PlayerAsset playerAsset;
+    private PlayerAsset playerAsset;
     private bool canGo;
     private bool firstTrigger;              //just in case
 
@@ -17,6 +17,7 @@ public class NextLevel : MonoBehaviour
         board = Board.instance;
         boardManager = GameObject.Find("BoardManager");
         firstTrigger = true;
+        playerAsset = Player.instance.PlayerAsset;
     }
 
     private void OnTriggerEnter2D(Collider2D col)

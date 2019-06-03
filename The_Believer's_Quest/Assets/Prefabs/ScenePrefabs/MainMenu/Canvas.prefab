@@ -2308,7 +2308,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
-  unlockedItems: {fileID: 0}
 --- !u!1 &8908280631768337677
 GameObject:
   m_ObjectHideFlags: 0
