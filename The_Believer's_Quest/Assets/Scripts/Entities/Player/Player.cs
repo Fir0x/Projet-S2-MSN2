@@ -48,23 +48,39 @@ public class Player : MovingObject
 
     [SerializeField] private UnlockedItemsAsset unlockedItems;
 
+    private bool affected = false;
+
+    public bool inventorySignal = false;
+    private bool inEditor;
+
+    public GameObject firstWeapon;
+    public GameObject secondWeapon;
+
     public GameObject Camera { get => camera; set => camera = value; }
     public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
     public Board.Type RoomType { get => roomType; set => roomType = value; }
     public UnlockedItemsAsset UnlockedItems { get => unlockedItems; set => unlockedItems = value; }
 
-    private bool affected = false;
-
-    public bool inventorySignal = false;
-
     private void Start()
     {
+        if (playerAsset.WeaponsList[0] != null)
+            playerAsset.weaponsInstance[0] = Instantiate(playerAsset.WeaponsList[0]);
+
+        if (playerAsset.WeaponsList[1] != null)
+            playerAsset.weaponsInstance[1] = Instantiate(playerAsset.WeaponsList[1]);
+
         canAttack = true;
         roomType = Board.Type.Shop;
         weapon = GetComponentInChildren<Weapon>();
 
         instance = this;
         noForcedMove = true;
+
+        inEditor = Application.isEditor;
+        actualWeapon = playerAsset.weaponsInstance[0];
+        weapon.Init(actualWeapon, playerAsset);
+        if (inEditor)
+            Inventory.instance.Add(actualWeapon);
 
         playerAsset.Position = transform.position;
         playerAsset.Invicibility = false;
@@ -77,6 +93,48 @@ public class Player : MovingObject
         nearChest = false;
 
         unlockedItems.CheckDuplicate();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!inEditor && inventorySignal) //fix a bug in build
+        {
+            gameObject.GetComponent<Inventory>().Add(actualWeapon);
+            inventorySignal = false;
+        }
+
+        if (affected)
+            SetLife(playerAsset.Hp - 0.2f);
+
+        moveX = PlayerAsset.Speed * Time.deltaTime;
+        moveY = PlayerAsset.Speed * Time.deltaTime;
+
+        //déplacement et collision
+        if (!Input.anyKey)
+        {
+            animator.SetBool(animMoveHashID, false);
+        }
+        Camera.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.transform.position.z);
+        if (playerAsset.ObjectsList[0] != null)
+        {
+            SlotItem1.GetComponent<Image>().enabled = true;
+            SlotItem1.GetComponent<Image>().sprite = playerAsset.ObjectsList[0].GetComponent<Object>().ObjectsAsset.Sprite;
+        }
+        else
+        {
+            SlotItem1.GetComponent<Image>().enabled = false;
+            SlotItem1.GetComponent<Image>().sprite = null;
+        }
+        if (playerAsset.ObjectsList[1] != null)
+        {
+            SlotItem2.GetComponent<Image>().enabled = true;
+            SlotItem2.GetComponent<Image>().sprite = playerAsset.ObjectsList[1].GetComponent<Object>().ObjectsAsset.Sprite;
+        }
+        else
+        {
+            SlotItem2.GetComponent<Image>().enabled = false;
+            SlotItem2.GetComponent<Image>().sprite = null;
+        }
     }
 
     public Vector3 GetPos()
@@ -382,50 +440,6 @@ public class Player : MovingObject
             yield return null;
         }
         noForcedMove = true;
-    }
-
-    private void FixedUpdate()
-    {
-        if (inventorySignal)
-        {
-            actualWeapon = playerAsset.WeaponsList[0];
-            weapon.Init(actualWeapon.GetComponent<WeaponItem>().WeaponAsset, playerAsset);
-            gameObject.GetComponent<Inventory>().Add(actualWeapon);
-            inventorySignal = false;
-        }
-
-        if (affected)
-            SetLife(playerAsset.Hp - 0.2f);
-
-        moveX = PlayerAsset.Speed * Time.deltaTime;
-        moveY = PlayerAsset.Speed * Time.deltaTime;
-
-        //déplacement et collision
-        if (!Input.anyKey)
-        {
-            animator.SetBool(animMoveHashID, false);
-        }
-        Camera.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.transform.position.z);
-        if (playerAsset.ObjectsList[0] != null)
-        {
-            SlotItem1.GetComponent<Image>().enabled = true;
-            SlotItem1.GetComponent<Image>().sprite = playerAsset.ObjectsList[0].GetComponent<Object>().ObjectsAsset.Sprite;
-        }
-        else
-        {
-            SlotItem1.GetComponent<Image>().enabled = false;
-            SlotItem1.GetComponent<Image>().sprite = null;
-        }
-        if (playerAsset.ObjectsList[1] != null)
-        {
-            SlotItem2.GetComponent<Image>().enabled = true;
-            SlotItem2.GetComponent<Image>().sprite = playerAsset.ObjectsList[1].GetComponent<Object>().ObjectsAsset.Sprite;
-        }
-        else
-        {
-            SlotItem2.GetComponent<Image>().enabled = false;
-            SlotItem2.GetComponent<Image>().sprite = null;
-        }
     }
 
     public void IsNearChest()

@@ -27,7 +27,7 @@ public class Attack : MonoBehaviour
     {
         Transform playerT = GameObject.FindGameObjectWithTag("Player").transform;
         if (traj == Trajectory.Line)
-            LineShot(playerT.position, enemy.Speed, boss.Damage, 0f);
+            LineShot(playerT.position, enemy.Speed, boss.Damage, 0f, false);
         if (traj == Trajectory.Arc)
             ArcShot((int)boss.NbOfProjectiles, playerT.position, boss.ShotSpeed, boss.Damage);
         if (traj == Trajectory.Circle)
@@ -44,7 +44,7 @@ public class Attack : MonoBehaviour
     {
         Transform playerT = Player.instance.transform; //GameObject.FindGameObjectWithTag("Player").transform;
         if (enemy._Trajectory == Trajectory.Line)
-            LineShot(playerT.position, enemy.Speed, enemy.Damage, 0f);
+            LineShot(playerT.position, enemy.Speed, enemy.Damage, 0f, false);
         if (enemy._Trajectory == Trajectory.Arc)
             ArcShot(enemy.NbOfProjectiles, playerT.position, enemy.ShotSpeed, enemy.Damage);
         if (enemy._Trajectory == Trajectory.Circle)
@@ -76,10 +76,10 @@ public class Attack : MonoBehaviour
             }
         }
     }
-    private void LineShot(Vector3 direction, float speed, float damage, float angle)//tir linéaire
+    private void LineShot(Vector3 direction, float speed, float damage, float angle, bool shot)//tir linéaire
     {
        Instantiate(projectile, transform.position,
-            transform.rotation).GetComponent<Projectile>().Init(enemy.Projectile, speed, damage, transform.position, angle, (direction-transform.position),false, false, effect); 
+            transform.rotation).GetComponent<Projectile>().Init(enemy.Projectile, speed, damage, transform.position, angle, (direction-transform.position),false, shot, effect); 
     }
     
     private void CircleShot(int nbprojectile, float speed, float damage, Sprite projo)//tir en cercle
@@ -100,13 +100,13 @@ public class Attack : MonoBehaviour
     {
         if (nbprojectile % 2 != 0)
         {
-            LineShot(direction, enemy.Speed, damage, 0);
+            LineShot(direction, enemy.Speed, damage, 0, false);
         }
 
         for (int i = 1; i <= nbprojectile / 2; i++)
         {
-            LineShot(direction, speed, damage, 10 * i);
-            LineShot(direction, speed, damage, -10 * i);
+            LineShot(direction, speed, damage, 10 * i,true);
+            LineShot(direction, speed, damage, -10 * i, true);
         }
     }
 

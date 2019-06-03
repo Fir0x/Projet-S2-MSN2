@@ -169,7 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 070a2885a37d4eb43a66426a070c7a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
+  projectile: {fileID: 3965654078627227375, guid: a345e41e75ad0b94aa845a60b71e5d4f,
+    type: 3}
   enemy: {fileID: 11400000, guid: 51d80b659fb964a4e938268a8138cd3a, type: 2}
   boss: {fileID: 0}
 --- !u!114 &1991061991737586826

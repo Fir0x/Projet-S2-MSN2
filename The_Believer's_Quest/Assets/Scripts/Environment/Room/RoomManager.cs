@@ -106,6 +106,8 @@ public class RoomManager : MonoBehaviour
 
    private void CreateEnemies()
    {
+        int count = 0;
+        int security = 0;
         while (totalWeight > 0)
         {
             GameObject enemy;
@@ -130,10 +132,14 @@ public class RoomManager : MonoBehaviour
             {
                 enemies.Add(enemy);
                 totalWeight -= enemy.GetComponent<Enemy>().GetWeight();
+                count++;
             }
+            security++;
+            if (security == 40)
+                break;
         }
 
-        enemiesRemaining = enemies.Count;
+        enemiesRemaining = count;
    }
 
     public void AddEnemies(GameObject[] newEnemies)

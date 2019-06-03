@@ -6,6 +6,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public GameObject weaponGO;
+    private WeaponItem dynamicData;
     private WeaponAsset weapon;
     private PlayerAsset playerAsset;
     private bool shot;
@@ -15,12 +16,13 @@ public class Weapon : MonoBehaviour
     public GameObject Projectile { get => projectile; set => projectile = value; }
     public WeaponAsset.WeaponType Type { get => weapon.Type; }
 
-    public void Init(WeaponAsset weapon, PlayerAsset playerAsset)
+    public void Init(GameObject weapon, PlayerAsset playerAsset)
     {
         shot = true;
-        this.weapon = weapon;
+        dynamicData = weapon.GetComponent<WeaponItem>();
+        this.weapon = dynamicData.WeaponAsset;
         this.playerAsset = playerAsset;
-        GetComponent<SpriteRenderer>().sprite = weapon.Sprite;
+        GetComponent<SpriteRenderer>().sprite = this.weapon.Sprite;
     }
 
     private void FixedUpdate()
@@ -50,11 +52,15 @@ public class Weapon : MonoBehaviour
     {
         if(weapon != null)
         {
-            this.weapon = weapon.GetComponent<WeaponItem>().WeaponAsset;
+            dynamicData = weapon.GetComponent<WeaponItem>();
+            this.weapon = dynamicData.WeaponAsset;
             GameObject temp;
             temp = playerAsset.WeaponsList[1];
             playerAsset.WeaponsList[1] = playerAsset.WeaponsList[0];
             playerAsset.WeaponsList[0] = temp;
+            temp = playerAsset.weaponsInstance[1];
+            playerAsset.weaponsInstance[1] = playerAsset.weaponsInstance[0];
+            playerAsset.weaponsInstance[0] = temp;
 
             UIController.uIController.changeWeapon.Invoke();
             UIController.uIController.changeAmmo.Invoke();
@@ -62,35 +68,35 @@ public class Weapon : MonoBehaviour
         }
     }
         
-    public void SetDamage(float dmg)
+    public void MultiplyDamage(float dmg)
     {
-        weapon.Damage *= (int) dmg;
+        dynamicData.Damage *= (int) dmg;
     }
     public int GetDamage()
     {
-        return weapon.Damage;
+        return dynamicData.Damage;
     }
 
     public int GetAmmunitions()
     {
-        return weapon.Ammunitions;
+        return dynamicData.Ammunitions;
     }
 
     public void SetAmmunitions(int ammunitions)
     {
-        weapon.Ammunitions = ammunitions;
+        dynamicData.Ammunitions = ammunitions;
         UIController.uIController.changeAmmo.Invoke();
     }
 
     public void AddAmmunitions(int ammo)
     {
-        weapon.Ammunitions = (weapon.Ammunitions + ammo) % weapon.MaxAmmunitions;
+        dynamicData.Ammunitions = (weapon.Ammunitions + ammo) % weapon.MaxAmmunitions;
         UIController.uIController.changeAmmo.Invoke();
     }
 
     public int GetLoaderAmmo()
     {
-        return weapon.Loader;
+        return dynamicData.Loader;
     }
     
     IEnumerator ReloadTimer()
@@ -98,31 +104,31 @@ public class Weapon : MonoBehaviour
         shot = false;
         Reload();
         yield return new WaitForSeconds(weapon.ReloadingTime);
-        if (weapon.Loader > 0)
+        if (dynamicData.Loader > 0)
             shot = true;
     }
 
     public void Reload()
     {
-        if ( weapon.Ammunitions > 0)
+        if ( dynamicData.Ammunitions > 0)
         {
-            if (weapon.LoaderCappacity != 0 && weapon.Loader > 0)
+            if (weapon.LoaderCappacity != 0 && dynamicData.Loader > 0)
             {
-                int bullets = weapon.Loader;
-                weapon.Loader = weapon.LoaderCappacity;
-                weapon.Ammunitions -= weapon.LoaderCappacity + bullets;
+                int bullets = dynamicData.Loader;
+                dynamicData.Loader = weapon.LoaderCappacity;
+                dynamicData.Ammunitions -= weapon.LoaderCappacity + bullets;
             }
             else
             {
-                if (weapon.Ammunitions < weapon.LoaderCappacity)
+                if (dynamicData.Ammunitions < weapon.LoaderCappacity)
                 {
-                    weapon.Loader = weapon.Ammunitions;
-                    weapon.Ammunitions = 0;
+                    dynamicData.Loader = dynamicData.Ammunitions;
+                    dynamicData.Ammunitions = 0;
                 }
                 else
                 {
-                    weapon.Loader = weapon.LoaderCappacity;
-                    weapon.Ammunitions -= weapon.LoaderCappacity;
+                    dynamicData.Loader = weapon.LoaderCappacity;
+                    dynamicData.Ammunitions -= weapon.LoaderCappacity;
                 }
             }
         }
@@ -131,7 +137,7 @@ public class Weapon : MonoBehaviour
 
     IEnumerator CoolDown()
     {
-        if (weapon.Type == WeaponAsset.WeaponType.CQC ||( weapon.Ammunitions >= 0 && weapon.Loader > 0))
+        if (weapon.Type == WeaponAsset.WeaponType.CQC ||(dynamicData.Ammunitions >= 0 && dynamicData.Loader >= 0))
         {
             Shot();
             shot = false;
@@ -164,14 +170,15 @@ public class Weapon : MonoBehaviour
     {
         if (weapon.Type != WeaponAsset.WeaponType.CQC)
         {
-            if (weapon.Loader <= 0)//teste si on a encore des balles
+            if (dynamicData.Loader <= 0)//teste si on a encore des balles
                 StartCoroutine(ReloadTimer());
-            weapon.Loader--;
+            dynamicData.Loader--;
+            print(UIController.uIController);
             UIController.uIController.changeAmmo.Invoke();
 
             if ((weapon.Type == WeaponAsset.WeaponType.Line))
                 //attaque en ligne avec RailGun
-                LineShot(weapon.Speed, weapon.Damage, 0);
+                LineShot(dynamicData.Speed, dynamicData.Damage, 0);
             if ((weapon.Type == WeaponAsset.WeaponType.Shotgun))
                 //attaque en Arc avec Shotgun
                 ArcShot(weapon.Nbbulletsbyshot);
@@ -191,9 +198,9 @@ public class Weapon : MonoBehaviour
         for(int i = 0; i < enemiesTouched.Length; i++)
         {
             if (enemiesTouched[i].CompareTag("Enemy"))
-                enemiesTouched[i].gameObject.GetComponent<Enemy>().TakeDamage(weapon.Damage);
+                enemiesTouched[i].gameObject.GetComponent<Enemy>().TakeDamage(dynamicData.Damage);
             if (enemiesTouched[i].CompareTag("Boss"))
-                enemiesTouched[i].gameObject.GetComponent<Boss>().ChangeLife(-weapon.Damage);
+                enemiesTouched[i].gameObject.GetComponent<Boss>().ChangeLife(-dynamicData.Damage);
         }
 
     }
@@ -211,20 +218,20 @@ public class Weapon : MonoBehaviour
         for (int i = 0; i < nbprojectile; i++)
         {
 
-            LineShot( weapon.Speed,weapon.Damage, angle *i);
+            LineShot(dynamicData.Speed, dynamicData.Damage, angle *i);
         } 
     }
     private  void ArcShot(int nbprojectile) //tir type shotgun
     {
         if (nbprojectile % 2 != 0)
         {
-            LineShot( weapon.Speed, weapon.Damage, 0);
+            LineShot(dynamicData.Speed, dynamicData.Damage, 0);
         }
 
         for (int i = 1; i <= nbprojectile / 2; i++)
         {
-            LineShot(weapon.Speed, weapon.Damage, 10 * i);
-            LineShot(weapon.Speed, weapon.Damage, -10 * i);
+            LineShot(dynamicData.Speed, dynamicData.Damage, 10 * i);
+            LineShot(dynamicData.Speed, dynamicData.Damage, -10 * i);
         } 
         
     }
