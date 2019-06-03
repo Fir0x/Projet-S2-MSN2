@@ -65,7 +65,13 @@ public class Inventory : MonoBehaviour
                 {
                     if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == null || GetComponent<Player>().PlayerAsset.WeaponsList[i] == item)
                     {
-                        GetComponent<Player>().PlayerAsset.WeaponsList[i] = item;
+                        PlayerAsset playerAsset = GetComponent<Player>().PlayerAsset;
+                        playerAsset.WeaponsList[i] = item;
+                        if (!Player.instance.start)
+                        {
+                            Destroy(playerAsset.weaponsInstance[i]);
+                            playerAsset.weaponsInstance[i] = Instantiate(item);
+                        }
                         break;
                     }
                 }
@@ -96,12 +102,15 @@ public class Inventory : MonoBehaviour
         }
         else if (item.CompareTag("Weapon"))
         {
+            PlayerAsset playerAsset = GetComponent<Player>().PlayerAsset;
             nbWeapons -= 1;
             for (int i = 0; i < 2; i++)
             {
-                if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == item)
+                if (playerAsset.WeaponsList[i] == item)
                 {
-                    GetComponent<Player>().PlayerAsset.WeaponsList[i] = null;
+                    playerAsset.WeaponsList[i] = null;
+                    Destroy(playerAsset.weaponsInstance[i]);
+                    playerAsset.weaponsInstance[i] = null;
                     break;
                 }
             }

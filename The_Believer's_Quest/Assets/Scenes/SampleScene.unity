@@ -844,6 +844,12 @@ PrefabInstance:
       propertyPath: SlotItem2
       value: 
       objectReference: {fileID: 1681942524}
+    - target: {fileID: 6295750534380910213, guid: 321cef1288d49514fa043b3adc2c08b7,
+        type: 3}
+      propertyPath: firstWeapon
+      value: 
+      objectReference: {fileID: 6167037201334550808, guid: f60a186df86b32345bc176637acbb710,
+        type: 3}
     - target: {fileID: 4659674338766441832, guid: 321cef1288d49514fa043b3adc2c08b7,
         type: 3}
       propertyPath: m_SortingLayerID
