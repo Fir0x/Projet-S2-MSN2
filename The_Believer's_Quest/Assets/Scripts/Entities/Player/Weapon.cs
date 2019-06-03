@@ -23,6 +23,24 @@ public class Weapon : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = weapon.Sprite;
     }
 
+    private void FixedUpdate()
+    {
+        if (GameObject.Find("Player").GetComponent<Player>().PlayerAsset.WeaponsList[0] != null)
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            gameObject.GetComponent<SpriteRenderer>().sprite = GameObject.Find("Player").GetComponent<Player>().PlayerAsset.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Sprite;
+        }
+        else if (GameObject.Find("Player").GetComponent<Player>().PlayerAsset.WeaponsList[0] != null)
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            gameObject.GetComponent<SpriteRenderer>().sprite = GameObject.Find("Player").GetComponent<Player>().PlayerAsset.WeaponsList[1].GetComponent<WeaponItem>().WeaponAsset.Sprite;
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
+    }
+
     public WeaponAsset GetAsset()
     {
         return weapon;
@@ -126,8 +144,10 @@ public class Weapon : MonoBehaviour
 
     public void Attack() //tourne l'arme dans le bon sens
     {
+        print("attack");
         if (shot)
         {
+            print("attack2");
             Vector3 angle = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             float rotz = Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg;
             if (!(weapon.Type == WeaponAsset.WeaponType.CQC))

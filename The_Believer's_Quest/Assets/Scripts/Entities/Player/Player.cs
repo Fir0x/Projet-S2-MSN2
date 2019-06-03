@@ -407,9 +407,25 @@ public class Player : MovingObject
         }
         Camera.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.transform.position.z);
         if (playerAsset.ObjectsList[0] != null)
+        {
+            SlotItem1.GetComponent<Image>().enabled = true;
             SlotItem1.GetComponent<Image>().sprite = playerAsset.ObjectsList[0].GetComponent<Object>().ObjectsAsset.Sprite;
+        }
+        else
+        {
+            SlotItem1.GetComponent<Image>().enabled = false;
+            SlotItem1.GetComponent<Image>().sprite = null;
+        }
         if (playerAsset.ObjectsList[1] != null)
+        {
+            SlotItem2.GetComponent<Image>().enabled = true;
             SlotItem2.GetComponent<Image>().sprite = playerAsset.ObjectsList[1].GetComponent<Object>().ObjectsAsset.Sprite;
+        }
+        else
+        {
+            SlotItem2.GetComponent<Image>().enabled = false;
+            SlotItem2.GetComponent<Image>().sprite = null;
+        }
     }
 
     public void IsNearChest()
