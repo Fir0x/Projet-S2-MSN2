@@ -47,9 +47,4 @@ public class PlayerAsset : ScriptableObject
     public GameObject[] WeaponsList { get => weaponsList; set => weaponsList = value; }
     public Vector3 Position { get => position; set => position = value; }
     public GameObject[] ObjectsList { get => objectsList; set => objectsList = value; }
-
-    public string SerializeWeapons()
-    {
-        return (weaponsList[0] != null ? weaponsList[0].name : "null") + "," + (weaponsList[1] != null ? weaponsList[1].name : "null");
-    }
 }
