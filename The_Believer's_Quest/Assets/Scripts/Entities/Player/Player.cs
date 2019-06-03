@@ -56,8 +56,6 @@ public class Player : MovingObject
     public GameObject firstWeapon;
     public GameObject secondWeapon;
 
-    public bool start = true;
-
     public GameObject Camera { get => camera; set => camera = value; }
     public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
     public Board.Type RoomType { get => roomType; set => roomType = value; }
@@ -65,12 +63,6 @@ public class Player : MovingObject
 
     private void Start()
     {
-        if (playerAsset.WeaponsList[0] != null)
-            playerAsset.weaponsInstance[0] = Instantiate(playerAsset.WeaponsList[0]);
-
-        if (playerAsset.WeaponsList[1] != null)
-            playerAsset.weaponsInstance[1] = Instantiate(playerAsset.WeaponsList[1]);
-
         canAttack = true;
         roomType = Board.Type.Shop;
         weapon = GetComponentInChildren<Weapon>();
@@ -80,7 +72,7 @@ public class Player : MovingObject
 
         inEditor = Application.isEditor;
         actualWeapon = playerAsset.WeaponsList[0];
-        weapon.Init(actualWeapon, playerAsset);
+        weapon.Init(Instantiate(actualWeapon), playerAsset);
         if (inEditor)
             Inventory.instance.Add(actualWeapon);
 
@@ -95,8 +87,6 @@ public class Player : MovingObject
         nearChest = false;
 
         unlockedItems.CheckDuplicate();
-
-        start = false;
     }
 
     private void FixedUpdate()

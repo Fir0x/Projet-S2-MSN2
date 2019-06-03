@@ -67,11 +67,6 @@ public class Inventory : MonoBehaviour
                     {
                         PlayerAsset playerAsset = GetComponent<Player>().PlayerAsset;
                         playerAsset.WeaponsList[i] = item;
-                        if (!Player.instance.start)
-                        {
-                            Destroy(playerAsset.weaponsInstance[i]);
-                            playerAsset.weaponsInstance[i] = Instantiate(item);
-                        }
                         break;
                     }
                 }
@@ -109,8 +104,6 @@ public class Inventory : MonoBehaviour
                 if (playerAsset.WeaponsList[i] == item)
                 {
                     playerAsset.WeaponsList[i] = null;
-                    Destroy(playerAsset.weaponsInstance[i]);
-                    playerAsset.weaponsInstance[i] = null;
                     break;
                 }
             }

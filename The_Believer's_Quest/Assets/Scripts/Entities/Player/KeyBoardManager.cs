@@ -78,7 +78,7 @@ public class KeyBoardManager : MonoBehaviour
 
         if (Input.GetAxis("Mouse ScrollWheel") != 0f) //Change weapon
         {
-            player.transform.GetChild(0).GetComponent<Weapon>().SetWeapon(player.PlayerAsset.weaponsInstance[1]);
+            player.transform.GetChild(0).GetComponent<Weapon>().SetWeapon(player.PlayerAsset.WeaponsList[1]);
         }
 
         if (Input.GetButtonDown("Item 1")) //Use item 1
