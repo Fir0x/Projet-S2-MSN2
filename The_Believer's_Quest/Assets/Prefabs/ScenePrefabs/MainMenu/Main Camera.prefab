@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2037134130203412975}
   - component: {fileID: 2037134130203412974}
   - component: {fileID: 2037134130203412968}
-  - component: {fileID: 2037134130203412971}
   - component: {fileID: 2037134130203412969}
   m_Layer: 0
   m_Name: Main Camera
@@ -77,7 +76,7 @@ Camera:
   m_GameObject: {fileID: 2037134130203412970}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.14509805, g: 0.6, b: 0.8862746, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -95,7 +94,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -104,20 +103,12 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
+  m_AllowMSAA: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2037134130203412971
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037134130203412970}
-  m_Enabled: 1
 --- !u!222 &2037134130203412969
 CanvasRenderer:
   m_ObjectHideFlags: 0

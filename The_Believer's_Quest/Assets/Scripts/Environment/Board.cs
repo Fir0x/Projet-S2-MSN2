@@ -204,7 +204,6 @@ public class Board : MonoBehaviour
     public void Start()
     {
         instance = this;
-        playerAsset.Floor = 0;
         BoardCreation();
 
         GameObject.Find("UI").transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
