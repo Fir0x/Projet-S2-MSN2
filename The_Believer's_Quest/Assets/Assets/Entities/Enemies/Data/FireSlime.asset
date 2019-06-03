@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7fa40ba4b50ecf4780829f9b1e17631, type: 3}
   m_Name: FireSlime
   m_EditorClassIdentifier: 
-  hp: 10
-  speed: 1
-  damage: 3
-  minLoot: 0
-  maxLoot: 0
-  weight: 0
-  cooldown: 0
+  hp: 20
+  speed: 2
+  damage: 6
+  minLoot: 4
+  maxLoot: 14
+  weight: 2
+  cooldown: 1
   sprite: {fileID: 0}
   nbofprojectiles: 0
-  trajectory: 0
+  trajectory: 3
   shotSpeed: 0
   range: 0
   projectile: {fileID: 0}

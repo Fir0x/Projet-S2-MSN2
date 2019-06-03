@@ -1969,7 +1969,7 @@ PrefabInstance:
     - target: {fileID: 9191210180019234503, guid: d1cde67dc7783d04990639b029ea2312,
         type: 3}
       propertyPath: m_Name
-      value: UI
+      value: UI2
       objectReference: {fileID: 0}
     - target: {fileID: 9191210180019234503, guid: d1cde67dc7783d04990639b029ea2312,
         type: 3}

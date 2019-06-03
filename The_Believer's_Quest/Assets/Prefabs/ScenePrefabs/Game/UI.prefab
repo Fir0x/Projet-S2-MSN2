@@ -8052,7 +8052,7 @@ GameObject:
   - component: {fileID: 7047724594145156659}
   - component: {fileID: 3254127276806522615}
   m_Layer: 0
-  m_Name: UI
+  m_Name: UI2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

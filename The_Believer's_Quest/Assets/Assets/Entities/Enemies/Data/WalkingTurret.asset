@@ -15,13 +15,13 @@ MonoBehaviour:
   hp: 10
   speed: 1
   damage: 3
-  minLoot: 0
-  maxLoot: 0
-  weight: 0
-  cooldown: 0
+  minLoot: 3
+  maxLoot: 10
+  weight: 4
+  cooldown: 2
   sprite: {fileID: 21300016, guid: 129e83b390a29ed4d92282d9d2f4090a, type: 3}
-  nbofprojectiles: 0
-  trajectory: 3
+  nbofprojectiles: 5
+  trajectory: 1
   shotSpeed: 2
   range: 0
   projectile: {fileID: 21300012, guid: ddd38c8d7035c1d4184fa7019c563cb9, type: 3}

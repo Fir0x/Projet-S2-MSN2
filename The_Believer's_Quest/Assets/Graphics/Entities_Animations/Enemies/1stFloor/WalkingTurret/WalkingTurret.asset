@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff84e8516cb74943949f4336288e06e, type: 3}
   m_Name: WalkingTurret
   m_EditorClassIdentifier: 
-  move: []
-  attack: []
-  death: {fileID: 0}
+  move:
+  - {fileID: 7400000, guid: 5513994ed43048c4eb1d2c4ca376da21, type: 2}
+  - {fileID: 7400000, guid: 8fea26ab1da53f946b8095ea17b417a4, type: 2}
+  - {fileID: 7400000, guid: ba0035f8bfd69bd4dbc70f73deaed9b0, type: 2}
+  - {fileID: 7400000, guid: 097e8dd986a33a4459f20c435c92edf5, type: 2}
+  attack:
+  - {fileID: 7400000, guid: 58eb49a50d1beaf4fb64e75660812f0c, type: 2}
+  - {fileID: 7400000, guid: e187934be6986024ebce5b06d0a5fdcd, type: 2}
+  - {fileID: 7400000, guid: a38e8fa1deacfbc4bb0eba594e0bba25, type: 2}
+  - {fileID: 7400000, guid: 964556d4759f71b47b3ef73cd2100d27, type: 2}
+  death: {fileID: 7400000, guid: 1aabd64a630fe09448994d4c16055634, type: 2}

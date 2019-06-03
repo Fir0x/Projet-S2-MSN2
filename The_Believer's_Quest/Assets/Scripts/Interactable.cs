@@ -2,15 +2,11 @@
 //Maxence
 public class Interactable : MonoBehaviour
 {
-    private float radius = 3f;               
     private Transform interactionTransform;
     private bool isChest;
     bool debugTrigger;
 
-    bool isFocus = false;   
     Transform player; 
-
-    bool isOpen = false;
 
     private void Start()
     {
