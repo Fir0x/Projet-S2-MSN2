@@ -108,7 +108,23 @@ public class RoomManager : MonoBehaviour
    {
         while (totalWeight > 0)
         {
-            GameObject enemy = allEnemiesList[Random.Range(0, allEnemiesList.Count)];
+            GameObject enemy;
+            if (floor == 1)
+            {
+                enemy = allEnemiesList[Random.Range(0, 3)];
+            }
+            else if (floor == 2)
+            {
+                enemy = allEnemiesList[Random.Range(3, 5)];
+            }
+            else if (floor == 3)
+            {
+                enemy = allEnemiesList[Random.Range(5, 6)];
+            }
+            else
+            {
+                enemy = allEnemiesList[Random.Range(0, allEnemiesList.Count)];
+            }
 
             if (totalWeight - enemy.GetComponent<Enemy>().GetWeight() >= 0)
             {

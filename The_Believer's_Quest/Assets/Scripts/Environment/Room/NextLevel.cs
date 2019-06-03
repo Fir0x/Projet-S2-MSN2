@@ -25,16 +25,18 @@ public class NextLevel : MonoBehaviour
         {
             if(firstTrigger)
             {
+                board.Init();
                 if (playerAsset.Floor > 0)
                 {
+                    print("u");
                     GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(playerAsset.Floor + 3);
-                    Destroy(GameObject.Find("Board"));
                     MapController.mapInstance.ResetMap();
                     Player.instance.PlayerAsset.EffectValue = 0;
                     Saver.SavePlayerData(playerAsset, Player.instance.UnlockedItems.Unlocked);
+                    print("uu");
+                    Destroy(GameObject.Find("Board"));
                 }
 
-                board.Init();
                 Destroy(gameObject);
             }
 
