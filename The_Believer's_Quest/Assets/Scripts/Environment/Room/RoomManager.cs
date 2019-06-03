@@ -52,7 +52,6 @@ public class RoomManager : MonoBehaviour
         
         if (roomCreator.GetRoomType() == Board.Type.Chest)
         {
-            print("yo");
             GameObject chestOnScene = Instantiate(chest, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity) as GameObject;
             chestOnScene.transform.parent = gameObject.transform;
         }

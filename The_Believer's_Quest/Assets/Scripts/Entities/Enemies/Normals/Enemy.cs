@@ -154,7 +154,7 @@ public class Enemy : MovingObject
         if (HP <= 0)
         {
             animatorController.Death();
-            Destroy(gameObject);
+            Destroy(gameObject, 0.4f);
         }
     }
 

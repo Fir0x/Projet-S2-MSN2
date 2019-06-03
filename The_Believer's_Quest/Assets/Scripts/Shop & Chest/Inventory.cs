@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
 
     public int space = 12;  // Amount of slots in chest
 
-    
+
     // Current list of items in inventory
     public List<GameObject> items = new List<GameObject>();
 
@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour
     // return true. Else we return false.
     public bool Add(GameObject item)
     {
-        if(item.CompareTag("Object") && item.GetComponent<Object>().ObjectsAsset.passive)
+        if (item.CompareTag("Object") && item.GetComponent<Object>().ObjectsAsset.passive)
         {
             item.GetComponent<Object>().PassiveChange();
             return true;
@@ -65,8 +65,7 @@ public class Inventory : MonoBehaviour
                 {
                     if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == null || GetComponent<Player>().PlayerAsset.WeaponsList[i] == item)
                     {
-                        PlayerAsset playerAsset = GetComponent<Player>().PlayerAsset;
-                        playerAsset.WeaponsList[i] = item;
+                        GetComponent<Player>().PlayerAsset.WeaponsList[i] = item;
                         break;
                     }
                 }
@@ -97,18 +96,17 @@ public class Inventory : MonoBehaviour
         }
         else if (item.CompareTag("Weapon"))
         {
-            PlayerAsset playerAsset = GetComponent<Player>().PlayerAsset;
             nbWeapons -= 1;
             for (int i = 0; i < 2; i++)
             {
-                if (playerAsset.WeaponsList[i] == item)
+                if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == item)
                 {
-                    playerAsset.WeaponsList[i] = null;
+                    GetComponent<Player>().PlayerAsset.WeaponsList[i] = null;
                     break;
                 }
             }
         }
-          
+
 
     }
 

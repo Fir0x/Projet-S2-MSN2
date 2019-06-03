@@ -31,7 +31,7 @@ public class Player : MovingObject
     [SerializeField] private GameObject gameover;
     [SerializeField] private GameObject SlotItem1;
     [SerializeField] private GameObject SlotItem2;
-    
+
     private Weapon weapon;
     private GameObject actualWeapon;
 
@@ -48,18 +48,15 @@ public class Player : MovingObject
 
     [SerializeField] private UnlockedItemsAsset unlockedItems;
 
-    private bool affected = false;
-
-    public bool inventorySignal = false;
-    private bool inEditor;
-
-    public GameObject firstWeapon;
-    public GameObject secondWeapon;
-
     public GameObject Camera { get => camera; set => camera = value; }
     public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
     public Board.Type RoomType { get => roomType; set => roomType = value; }
     public UnlockedItemsAsset UnlockedItems { get => unlockedItems; set => unlockedItems = value; }
+
+    private bool affected = false;
+
+    public bool inventorySignal = false;
+    private bool inEditor;
 
     private void Start()
     {
@@ -72,7 +69,7 @@ public class Player : MovingObject
 
         inEditor = Application.isEditor;
         actualWeapon = playerAsset.WeaponsList[0];
-        weapon.Init(Instantiate(actualWeapon), playerAsset);
+        weapon.Init(actualWeapon.GetComponent<WeaponItem>().WeaponAsset, playerAsset);
         if (inEditor)
             Inventory.instance.Add(actualWeapon);
 
@@ -198,7 +195,7 @@ public class Player : MovingObject
         PlayerAsset.MaxEffectValue = value;
         UIController.uIController.changeMaxEffect.Invoke();
     }
-    
+
     public void Attack()
     {
         if (canAttack)
@@ -209,7 +206,7 @@ public class Player : MovingObject
 
     public void doDash()
     {
-        if((goUp || goRight || goDown || goLeft) && testForDash)
+        if ((goUp || goRight || goDown || goLeft) && testForDash)
         {
             StartCoroutine(Dash());
             SoundManager soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
@@ -223,12 +220,12 @@ public class Player : MovingObject
         {
             goUp = false;
         }
-        
+
         if (!Input.GetButton("Down"))
         {
             goDown = false;
         }
-        
+
         if (!Input.GetButton("Left"))
         {
             goLeft = false;
@@ -309,7 +306,7 @@ public class Player : MovingObject
 
     public void MoveUp()
     {
-        if(noForcedMove)
+        if (noForcedMove)
         {
             goUp = true;
 
@@ -471,6 +468,3 @@ public class Player : MovingObject
         ShopUI.instance.EnableUI();
     }
 }
-
-
-

@@ -26,10 +26,8 @@ public class Perspective : MonoBehaviour
         if (playerBox.bounds.center.y < objectBox.bounds.center.y)
         {
             objectRenderer.sortingOrder = -1;
-            print("épepeé");
             if (gameObject.name == "Shopper")
             {
-                print("avant:" + gameObject.transform.Find("Gandulf").GetComponent<SpriteRenderer>().sortingOrder);
                 for (int i = 0; i < gameObject.transform.childCount; i ++)
                 {
                     if (gameObject.transform.GetChild(i).name == "Gandulf" || gameObject.transform.GetChild(i).name == "Bag")
@@ -41,7 +39,6 @@ public class Perspective : MonoBehaviour
                         gameObject.transform.GetChild(i).GetComponent<SpriteRenderer>().sortingOrder = -2;
                     }
                 }
-                print("après:" + gameObject.transform.Find("Gandulf").GetComponent<SpriteRenderer>().sortingOrder);
             }
         }
         else

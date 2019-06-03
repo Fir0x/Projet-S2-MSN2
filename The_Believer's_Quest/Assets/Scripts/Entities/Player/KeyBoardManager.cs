@@ -29,7 +29,9 @@ public class KeyBoardManager : MonoBehaviour
             developmentTool.SetActive(!developmentTool.activeInHierarchy); //Make development toll appear/disappear
 
         if (Input.GetButton("Up"))
+        {
             player.MoveUp();
+        }
 
         if (Input.GetButtonUp("Up"))
             player.StopMoveUp();

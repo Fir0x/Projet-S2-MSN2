@@ -1671,6 +1671,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvaspause: {fileID: 287172975668042503}
+  originWeapon: {fileID: 6167037201334550808, guid: f60a186df86b32345bc176637acbb710,
+    type: 3}
 --- !u!1 &324659145311710302
 GameObject:
   m_ObjectHideFlags: 0
@@ -7717,6 +7719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvaspause: {fileID: 287172975668042503}
+  originWeapon: {fileID: 0}
 --- !u!114 &8384547111973298842
 MonoBehaviour:
   m_ObjectHideFlags: 0

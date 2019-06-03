@@ -52,7 +52,7 @@ public class InventorySlot : MonoBehaviour
 
         if (GameObject.Find("Player").GetComponent<Player>().RoomType == Board.Type.Shop)
         {
-            if (item != null)
+            if (item != null && !GameObject.Find("Player").GetComponent<Player>().PlayerAsset.WeaponsList[0] == item || !GameObject.Find("Player").GetComponent<Player>().PlayerAsset.WeaponsList[1] == item)
             {
                 int price = 0;
                 if (item.CompareTag("Object"))

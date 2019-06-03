@@ -13,6 +13,11 @@ public class ShopSlot : MonoBehaviour
 
     GameObject item;  // Current item in the slot
 
+    public GameObject goldGO;
+    public GameObject diamsGO;
+    public Text gold;
+    public Text diamond;
+
     private void Start()
     {
         inventory = Inventory.instance;
@@ -32,17 +37,28 @@ public class ShopSlot : MonoBehaviour
                 if (item.GetComponent<WeaponItem>().WeaponAsset.Sprite != null)
                 {
                     icon.sprite = item.GetComponent<WeaponItem>().WeaponAsset.Sprite;
+                    diamsGO.SetActive(true);
+                    diamond.text = item.GetComponent<WeaponItem>().WeaponAsset.DiamondPrice + "";
                     icon.enabled = true;
                 }
             }
         }
         else
         {
+            diamsGO.SetActive(false);
             if (item.CompareTag("Object"))
+            {
                 icon.sprite = item.GetComponent<Object>().ObjectsAsset.Sprite;
+                goldGO.SetActive(true);
+                gold.text = item.GetComponent<Object>().ObjectsAsset.Price + "";
+            }
             else if (item.CompareTag("Weapon"))
+            {
                 icon.sprite = item.GetComponent<WeaponItem>().WeaponAsset.Sprite;
-            icon.enabled = true;
+                goldGO.SetActive(true);
+                gold.text = item.GetComponent<WeaponItem>().WeaponAsset.Price + "";
+            }
+                icon.enabled = true;
         }
     }
 
@@ -50,7 +66,8 @@ public class ShopSlot : MonoBehaviour
     public void ClearSlot()
     {
         item = null;
-
+        goldGO.SetActive(false);
+        diamsGO.SetActive(false);
         icon.sprite = null;
         icon.enabled = false;
     }
@@ -82,7 +99,7 @@ public class ShopSlot : MonoBehaviour
             else if (item.CompareTag("Weapon"))
                 price = item.GetComponent<WeaponItem>().WeaponAsset.Price;
 
-            if (item != null && price <= gold)
+            if (item != null && price <= gold && GameObject.Find("Player").GetComponent<Player>().PlayerAsset.WeaponsList[0] != item && GameObject.Find("Player").GetComponent<Player>().PlayerAsset.WeaponsList[1] != item)
             {
                 if (inventory.Add(item))
                 {

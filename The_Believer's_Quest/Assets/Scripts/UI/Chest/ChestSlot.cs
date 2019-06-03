@@ -45,7 +45,7 @@ public class ChestSlot : MonoBehaviour
     // Called when the item is pressed
     public void UseItem()
     {
-        if (item != null)
+        if (item != null && GameObject.Find("Player").GetComponent<Player>().PlayerAsset.WeaponsList[0] != item && GameObject.Find("Player").GetComponent<Player>().PlayerAsset.WeaponsList[1] != item)
         {
             if (inventory.Add(item))
             {

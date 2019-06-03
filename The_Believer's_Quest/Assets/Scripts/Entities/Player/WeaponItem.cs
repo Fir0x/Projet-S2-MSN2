@@ -23,11 +23,11 @@ public class WeaponItem : MonoBehaviour
         speed = WeaponAsset.Speed;
     }
 
-    public void ResetWeapon()
+    public void ResetAsset()
     {
-        damage = WeaponAsset.Damage;
-        loader = WeaponAsset.Loader;
-        ammunitions = WeaponAsset.Ammunitions;
-        speed = WeaponAsset.Speed;
+        Damage = damage;
+        Loader = loader;
+        Ammunitions = ammunitions;
+        Speed = speed;
     }
 }
