@@ -139,6 +139,8 @@ public class Player : MovingObject
         {
             affected = true;
         }
+        else
+            affected = false;
     }
 
     public void SetMaxEffect(int value)
