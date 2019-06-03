@@ -33,7 +33,7 @@ public class Player : MovingObject
     [SerializeField] private GameObject SlotItem2;
 
     private Weapon weapon;
-    private GameObject actualWeapon;
+    private GameObject originWeapon;
 
     private Board.Type roomType;
     private Animator animator;
@@ -48,15 +48,20 @@ public class Player : MovingObject
 
     [SerializeField] private UnlockedItemsAsset unlockedItems;
 
-    public GameObject Camera { get => camera; set => camera = value; }
-    public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
-    public Board.Type RoomType { get => roomType; set => roomType = value; }
-    public UnlockedItemsAsset UnlockedItems { get => unlockedItems; set => unlockedItems = value; }
-
     private bool affected = false;
 
     public bool inventorySignal = false;
     private bool inEditor;
+
+    public GameObject firstWeapon;
+    public GameObject secondWeapon;
+
+    public bool start = true;
+
+    public GameObject Camera { get => camera; set => camera = value; }
+    public PlayerAsset PlayerAsset { get => playerAsset; set => playerAsset = value; }
+    public Board.Type RoomType { get => roomType; set => roomType = value; }
+    public UnlockedItemsAsset UnlockedItems { get => unlockedItems; set => unlockedItems = value; }
 
     private void Start()
     {
@@ -68,10 +73,12 @@ public class Player : MovingObject
         noForcedMove = true;
 
         inEditor = Application.isEditor;
-        actualWeapon = playerAsset.WeaponsList[0];
-        weapon.Init(actualWeapon.GetComponent<WeaponItem>().WeaponAsset, playerAsset);
+        originWeapon = playerAsset.WeaponsList[0];
+        playerAsset.WeaponsList[0] = Instantiate(originWeapon);
         if (inEditor)
-            Inventory.instance.Add(actualWeapon);
+            Inventory.instance.Add(originWeapon);
+
+        weapon.Init(playerAsset.WeaponsList[0], playerAsset);
 
         playerAsset.Position = transform.position;
         playerAsset.Invicibility = false;
@@ -84,13 +91,14 @@ public class Player : MovingObject
         nearChest = false;
 
         unlockedItems.CheckDuplicate();
+        start = false;
     }
 
     private void FixedUpdate()
     {
         if (!inEditor && inventorySignal) //fix a bug in build
         {
-            gameObject.GetComponent<Inventory>().Add(actualWeapon);
+            gameObject.GetComponent<Inventory>().Add(originWeapon);
             inventorySignal = false;
         }
 
@@ -198,7 +206,7 @@ public class Player : MovingObject
 
     public void Attack()
     {
-        if (canAttack)
+        if (canAttack && playerAsset.Floor != 0)
         {
             weapon.Attack();
         }
@@ -468,3 +476,6 @@ public class Player : MovingObject
         ShopUI.instance.EnableUI();
     }
 }
+
+
+
