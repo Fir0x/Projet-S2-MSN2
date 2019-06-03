@@ -14,7 +14,7 @@ public class Menupause : MonoBehaviour
         canvaspause.SetActive(false);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -47,6 +47,7 @@ public class Menupause : MonoBehaviour
 
     public void LoadMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
         GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(0);
         show = false;
