@@ -16,7 +16,7 @@ public static class Loader
     public static void LoadingPlayerData(ref PlayerAsset playerData, ref UnlockedItemsAsset unlockedItems)
     {
         string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerData.bin");
-        //Debug.Log("File path: " + path); //DEBUG
+        Debug.Log("File path: " + path); //DEBUG
         //Binary save file opening
         Stream streamRestauration = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
         //Loading the GameSave object from the binary file
