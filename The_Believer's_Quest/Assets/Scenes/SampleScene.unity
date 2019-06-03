@@ -916,6 +916,12 @@ PrefabInstance:
       propertyPath: weaponGO
       value: 
       objectReference: {fileID: 684703384}
+    - target: {fileID: 854977504751522105, guid: 321cef1288d49514fa043b3adc2c08b7,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 3965654078627227375, guid: a345e41e75ad0b94aa845a60b71e5d4f,
+        type: 3}
     - target: {fileID: 8245448492886440594, guid: 321cef1288d49514fa043b3adc2c08b7,
         type: 3}
       propertyPath: developmentTool
@@ -4900,22 +4906,6 @@ PrefabInstance:
       objectReference: {fileID: 21300022, guid: ddd38c8d7035c1d4184fa7019c563cb9,
         type: 3}
     - target: {fileID: 5502972290622355019, guid: d1cde67dc7783d04990639b029ea2312,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5923136787967542923, guid: d1cde67dc7783d04990639b029ea2312,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5923136787967542923, guid: d1cde67dc7783d04990639b029ea2312,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300022, guid: ddd38c8d7035c1d4184fa7019c563cb9,
-        type: 3}
-    - target: {fileID: 5923136787967542923, guid: d1cde67dc7783d04990639b029ea2312,
         type: 3}
       propertyPath: m_RaycastTarget
       value: 0

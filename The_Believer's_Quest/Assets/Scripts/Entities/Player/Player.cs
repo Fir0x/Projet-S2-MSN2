@@ -55,6 +55,8 @@ public class Player : MovingObject
 
     private bool affected = false;
 
+    public bool inventorySignal = false;
+
     private void Start()
     {
         canAttack = true;
@@ -63,10 +65,6 @@ public class Player : MovingObject
 
         instance = this;
         noForcedMove = true;
-
-        actualWeapon = playerAsset.WeaponsList[0];
-        weapon.Init(actualWeapon.GetComponent<WeaponItem>().WeaponAsset, playerAsset);
-        Inventory.instance.Add(actualWeapon);
 
         playerAsset.Position = transform.position;
         playerAsset.Invicibility = false;
@@ -388,6 +386,14 @@ public class Player : MovingObject
 
     private void FixedUpdate()
     {
+        if (inventorySignal)
+        {
+            actualWeapon = playerAsset.WeaponsList[0];
+            weapon.Init(actualWeapon.GetComponent<WeaponItem>().WeaponAsset, playerAsset);
+            gameObject.GetComponent<Inventory>().Add(actualWeapon);
+            inventorySignal = false;
+        }
+
         if (affected)
             SetLife(playerAsset.Hp - 0.2f);
 
@@ -395,18 +401,10 @@ public class Player : MovingObject
         moveY = PlayerAsset.Speed * Time.deltaTime;
 
         //déplacement et collision
-        if (Input.anyKey)
-        {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                animator.SetTrigger(animDeathID);
-            }
-        }
-        else
+        if (!Input.anyKey)
         {
             animator.SetBool(animMoveHashID, false);
         }
-        
         Camera.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.transform.position.z);
         if (playerAsset.ObjectsList[0] != null)
             SlotItem1.GetComponent<Image>().sprite = playerAsset.ObjectsList[0].GetComponent<Object>().ObjectsAsset.Sprite;

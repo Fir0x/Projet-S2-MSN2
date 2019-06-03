@@ -127,6 +127,8 @@ public abstract class Boss : MonoBehaviour
 
         if (HP <= hpPhase && isFirstPhase)
         {
+            animator.SetTrigger("changePhase");
+            animator.SetBool("phase2", true);
             ChangePhase();
             isFirstPhase = false;
         }

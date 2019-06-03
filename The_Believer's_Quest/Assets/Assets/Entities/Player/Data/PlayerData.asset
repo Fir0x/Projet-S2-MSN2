@@ -25,6 +25,6 @@ MonoBehaviour:
   - {fileID: 6167037201334550808, guid: f60a186df86b32345bc176637acbb710, type: 3}
   - {fileID: 0}
   objectsList:
-  - {fileID: 7599824383928266145, guid: d52e548175accef4fa808e4c335a0865, type: 3}
   - {fileID: 0}
-  position: {x: 45.7826, y: 24.874641, z: 0}
+  - {fileID: 0}
+  position: {x: -0.16000001, y: 4.1599994, z: 0}

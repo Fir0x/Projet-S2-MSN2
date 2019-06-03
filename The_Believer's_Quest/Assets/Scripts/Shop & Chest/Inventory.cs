@@ -21,6 +21,7 @@ public class Inventory : MonoBehaviour
         nbWeapons = 0;
         inventoryUI = InventoryUI.instance;
         instance = this;
+        Player.instance.inventorySignal = true;
     }
 
     // Add a new item. If there is enough room we
