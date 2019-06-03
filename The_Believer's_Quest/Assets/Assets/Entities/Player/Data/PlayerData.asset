@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   floor: 1
-  hp: 80
-  maxHP: 100
+  hp: 2185.73
+  maxHP: 3464.3
   effectValue: 0
   maxEffectValue: 50
   speed: 3
