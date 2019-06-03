@@ -20,7 +20,7 @@ public class Gameover : MonoBehaviour
         playerAsset.MaxEffectValue = 50;
         playerAsset.Gold = 0;
         playerAsset.WeaponsList = new[] { pistol, null };
-        //playerAsset.WeaponsList[0].GetComponent<WeaponItem>().ResetAsset();
+        playerAsset.WeaponsList[0].GetComponent<WeaponItem>().ResetAsset();
         playerAsset.ObjectsList[0] = null;
         playerAsset.ObjectsList[1] = null;
         playerAsset.Floor = -1;

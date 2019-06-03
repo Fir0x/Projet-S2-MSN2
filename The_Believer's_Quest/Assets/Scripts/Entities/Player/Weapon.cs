@@ -58,9 +58,6 @@ public class Weapon : MonoBehaviour
             temp = playerAsset.WeaponsList[1];
             playerAsset.WeaponsList[1] = playerAsset.WeaponsList[0];
             playerAsset.WeaponsList[0] = temp;
-            temp = playerAsset.weaponsInstance[1];
-            playerAsset.weaponsInstance[1] = playerAsset.weaponsInstance[0];
-            playerAsset.weaponsInstance[0] = temp;
 
             UIController.uIController.changeWeapon.Invoke();
             UIController.uIController.changeAmmo.Invoke();
