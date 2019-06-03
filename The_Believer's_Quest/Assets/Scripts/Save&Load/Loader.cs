@@ -35,7 +35,9 @@ public static class Loader
 
             i++;
         }
-        
+
+        streamRestauration.Close();
+
         //GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(.GetComponent<Player>().PlayerAsset.Floor + 2);
     }
 
@@ -46,6 +48,7 @@ public static class Loader
         //Binary save file opening
         Stream streamRestauration = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
         Saver.PlayerSettings save = (Saver.PlayerSettings)new BinaryFormatter().Deserialize(streamRestauration);
+        streamRestauration.Close();
         return new Tuple<float, float>(save.BGSvolume, save.BGMvolume);
     }
 }
