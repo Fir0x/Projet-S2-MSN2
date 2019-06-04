@@ -131,7 +131,7 @@ public class Weapon : MonoBehaviour
 
     IEnumerator CoolDown()
     {
-        if (weapon.Type == WeaponAsset.WeaponType.CQC || (weapon.Ammunitions >= 0 && weapon.Loader > 0))
+        if (weapon.Type == WeaponAsset.WeaponType.CQC || (weapon.Ammunitions >= 0 && weapon.Loader >= 0))
         {
             Shot();
             shot = false;

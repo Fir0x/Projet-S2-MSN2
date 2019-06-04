@@ -55,7 +55,10 @@ MonoBehaviour:
   canAttack: 0
   playerAsset: {fileID: 11400000, guid: 08a9626c554ad4742867bf5366d3fd7c, type: 2}
   gameover: {fileID: 0}
+  SlotItem1: {fileID: 0}
+  SlotItem2: {fileID: 0}
   unlockedItems: {fileID: 11400000, guid: 047f8f84eb1573e48bc9a66cd3596c84, type: 2}
+  inventorySignal: 0
 --- !u!212 &4659674338766441832
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -248,13 +251,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7892602917040036623}
-  m_LocalRotation: {x: -0, y: -0, z: 0.34512168, w: -0.9385579}
-  m_LocalPosition: {x: 0.371, y: -0.055, z: 0.20779538}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.064, y: -0.232, z: -0.1}
   m_LocalScale: {x: 0.6905, y: 0.6905, z: 0.6905}
   m_Children: []
   m_Father: {fileID: 8283414275979511270}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -40.378002}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &464341575224665629
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -289,8 +292,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2088165611
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f0ea59557350d784ebcefe7aa6d3969a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -315,6 +318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa3792fed4fb024b81246d02702eae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponGO: {fileID: 0}
+  weaponGO: {fileID: 7892602917040036623}
   projectile: {fileID: 3965654078627227375, guid: a345e41e75ad0b94aa845a60b71e5d4f,
     type: 3}
