@@ -91,7 +91,7 @@ public class ShopSlot : MonoBehaviour
             }
         }
         else
-        {
+        { 
             int gold = Player.instance.PlayerAsset.Gold;
             int price = 0;
             if (item.CompareTag("Object"))

@@ -68,8 +68,6 @@ public class Board : MonoBehaviour
 
         public int GetBossDoor()
         {
-            if (type == Type.Boss)
-                print("bossdoro : " + bossDoor);
             return bossDoor;
         }
     }
@@ -156,7 +154,6 @@ public class Board : MonoBehaviour
                     {
                         actual = new RoomBase(new int[] { newX, newY }, k, Type.Boss);
                         isBoss = true;
-                        print("isBoss est true");
                     }
                     else
                         actual = new RoomBase(new int[] { newX, newY }, k, Type.Normal);

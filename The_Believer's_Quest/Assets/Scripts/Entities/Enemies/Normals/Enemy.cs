@@ -162,14 +162,18 @@ public class Enemy : MovingObject
     {
         float x = direction.x;
         float y = direction.y;
+        print("" + direction);
 
-        if (x < 0)
-            animatorController.ChangeDirection(3);
-        else if (x > 0)
-            animatorController.ChangeDirection(1);
-        else if (y < 0)
-            animatorController.ChangeDirection(2);
-        else
-            animatorController.ChangeDirection(0);
+        if (direction.x != 0 && direction.y != 0)
+        {
+            if (x < 0)
+                animatorController.ChangeDirection(3);
+            else if (x > 0)
+                animatorController.ChangeDirection(1);
+            else if (y < 0)
+                animatorController.ChangeDirection(2);
+            else
+                animatorController.ChangeDirection(0);
+        }
     }
 }
