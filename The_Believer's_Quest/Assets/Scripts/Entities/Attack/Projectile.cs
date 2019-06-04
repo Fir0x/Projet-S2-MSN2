@@ -43,13 +43,13 @@ public class Projectile : MovingObject
     }
     private void FixedUpdate()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, direction, 0.1f, LayerMask.GetMask("Aerial", "Ground", "Obstacle", "Default"));
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, direction, 0.1f, LayerMask.GetMask("Aerial", "Ground", "Obstacle"));
    
         if (hitInfo.collider != null)
         {
+            print(hitInfo.collider.tag);
             if (hitInfo.collider.CompareTag("Enemy") && player)
             {
-                print("touché");
                 hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
                 Destroy(gameObject);
             }

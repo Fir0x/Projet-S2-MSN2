@@ -67,6 +67,14 @@ public class Player : MovingObject
         instance = this;
         noForcedMove = true;
 
+        unlockedItems.CheckDuplicate();
+        /*foreach (GameObject itm in unlockedItems.Unlocked)
+        {
+            WeaponItem weaponData = itm.GetComponent<WeaponItem>();
+            if (weaponData != null)
+                weaponData.Init();
+        }*/
+
         inEditor = Application.isEditor;
         actualWeapon = playerAsset.WeaponsList[0];
         weapon.Init(actualWeapon.GetComponent<WeaponItem>().WeaponAsset, playerAsset);
@@ -82,8 +90,30 @@ public class Player : MovingObject
 
         nearShop = false;
         nearChest = false;
+    }
 
-        unlockedItems.CheckDuplicate();
+    public void RestartPlayer()
+    {
+        instance.PlayerAsset.Hp = 100;
+        instance.PlayerAsset.MaxHP = 100;
+        instance.SetEffect(0);
+        instance.PlayerAsset.MaxEffectValue = 50;
+        instance.PlayerAsset.Gold = 0;
+
+        /*foreach (GameObject itm in unlockedItems.Unlocked)
+        {
+            WeaponItem weaponData = itm.GetComponent<WeaponItem>();
+            if (weaponData != null)
+                weaponData.ResetAsset();
+        }*/
+
+        instance.PlayerAsset.WeaponsList = new[] { Resources.Load("Pistol") as GameObject, null };
+        instance.PlayerAsset.ObjectsList[0] = null;
+        instance.PlayerAsset.ObjectsList[1] = null;
+        instance.PlayerAsset.Floor = -1;
+        instance.PlayerAsset.Invicibility = false;
+        instance.PlayerAsset.Speed = 3;
+        Inventory.instance.items.Clear();
     }
 
     private void FixedUpdate()
