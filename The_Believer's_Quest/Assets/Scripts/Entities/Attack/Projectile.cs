@@ -70,7 +70,7 @@ public class Projectile : MovingObject
                Destroy(gameObject);
             }
         }
-        if (lifetime > 10)
+        if (lifetime > 50)
             Destroy(gameObject);
 
         lifetime += 0.2f;
