@@ -138,7 +138,7 @@ public class Enemy : MovingObject
 
     public void ChangeGold()
     {
-        playerAsset.Gold += Random.Range(2, 15) * enemyAsset.Weight;
+        playerAsset.Gold += Random.Range(1, 9) * enemyAsset.Weight;
         UIController.uIController.changeGold.Invoke();
     }
 

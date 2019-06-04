@@ -36,7 +36,6 @@ public class Shop : MonoBehaviour
 
         if (GameObject.Find("Player").GetComponent<Player>().PlayerAsset.Floor != 0)
         {
-            print("o");
             items = shopUI.gameObject.GetComponent<ItemChooser>().ChooseContentShop(allItems, unlockedItems);
         }
         else

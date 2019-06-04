@@ -59,7 +59,7 @@ public class KeyBoardManager : MonoBehaviour
 
         if (Input.GetButtonDown("Dash"))
             player.doDash();
-
+        
         if (Input.GetButtonDown("Map"))
         {
             isMapActive = !isMapActive;
