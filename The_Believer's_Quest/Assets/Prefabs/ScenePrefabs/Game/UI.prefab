@@ -1671,8 +1671,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvaspause: {fileID: 287172975668042503}
-  originWeapon: {fileID: 6167037201334550808, guid: f60a186df86b32345bc176637acbb710,
-    type: 3}
 --- !u!1 &324659145311710302
 GameObject:
   m_ObjectHideFlags: 0
@@ -5167,7 +5165,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 10
 --- !u!1 &5035673233417473538
 GameObject:
   m_ObjectHideFlags: 0
@@ -5202,7 +5200,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -32, y: 0}
+  m_AnchoredPosition: {x: -10, y: 0}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6062606794430520026
@@ -5523,8 +5521,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -32.9, y: 0}
-  m_SizeDelta: {x: 30, y: 20}
+  m_AnchoredPosition: {x: -10, y: 0}
+  m_SizeDelta: {x: 30, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8419514207112839660
 CanvasRenderer:
@@ -7719,7 +7717,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvaspause: {fileID: 287172975668042503}
-  originWeapon: {fileID: 0}
 --- !u!114 &8384547111973298842
 MonoBehaviour:
   m_ObjectHideFlags: 0
