@@ -14,19 +14,19 @@ public class Gameover : MonoBehaviour
 
     public void Return_to_hub()
     {
-        playerAsset.Hp = 100;
-        playerAsset.MaxHP = 100;
+        Player.instance.PlayerAsset.Hp = 100;
+        Player.instance.PlayerAsset.MaxHP = 100;
         Player.instance.SetEffect(0);
-        playerAsset.MaxEffectValue = 50;
-        playerAsset.Gold = 0;
-        playerAsset.WeaponsList[0].GetComponent<WeaponItem>().ResetAsset();
-        playerAsset.WeaponsList[0].GetComponent<WeaponItem>().ResetAsset();
-        playerAsset.WeaponsList = new[] { pistol, null };
-        playerAsset.ObjectsList[0] = null;
-        playerAsset.ObjectsList[1] = null;
-        playerAsset.Floor = -1;
-        playerAsset.Invicibility = false;
-        playerAsset.Speed = 3;
+        Player.instance.PlayerAsset.MaxEffectValue = 50;
+        Player.instance.PlayerAsset.Gold = 0;
+        Player.instance.PlayerAsset.WeaponsList[0].GetComponent<WeaponItem>().ResetAsset();
+        Player.instance.PlayerAsset.WeaponsList[0].GetComponent<WeaponItem>().ResetAsset();
+        Player.instance.PlayerAsset.WeaponsList = new[] { pistol, null };
+        Player.instance.PlayerAsset.ObjectsList[0] = null;
+        Player.instance.PlayerAsset.ObjectsList[1] = null;
+        Player.instance.PlayerAsset.Floor = -1;
+        Player.instance.PlayerAsset.Invicibility = false;
+        Player.instance.PlayerAsset.Speed = 3;
         Inventory.instance.items.Clear();
         UIController.uIController.changeHp.Invoke();
         UIController.uIController.changeMaxHp.Invoke();
