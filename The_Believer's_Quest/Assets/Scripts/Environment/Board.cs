@@ -75,6 +75,12 @@ public class Board : MonoBehaviour
 
     public void BoardCreation()
     {
+        if (playerAsset.Floor == 5)
+        {
+            playerAsset.Floor = -1;
+            Init();
+        }
+
         if (playerAsset.Floor == 0)
         {
             board = new GameObject("Board").transform;
@@ -203,6 +209,7 @@ public class Board : MonoBehaviour
 
     public void Start()
     {
+        playerAsset.Floor = 0;
         instance = this;
         BoardCreation();
 

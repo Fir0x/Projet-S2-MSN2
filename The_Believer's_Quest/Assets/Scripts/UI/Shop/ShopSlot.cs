@@ -34,6 +34,7 @@ public class ShopSlot : MonoBehaviour
         {
             if (item != null)
             {
+                print(item.name);
                 if (item.GetComponent<WeaponItem>().WeaponAsset.Sprite != null)
                 {
                     icon.sprite = item.GetComponent<WeaponItem>().WeaponAsset.Sprite;

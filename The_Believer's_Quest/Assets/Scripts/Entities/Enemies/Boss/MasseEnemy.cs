@@ -21,23 +21,24 @@ public class MasseEnemy : MonoBehaviour
     {
         int x;
         int y;
-        for(int i = 30; i > 0; i--)
+        for (int i = 30; i > 0; i--)
         {
             x = Random.Range(-4, 5);
             y = Random.Range(-3, 4);
             GameObject slime1 = Instantiate(iceSlime, new Vector3(this.gameObject.transform.position.x + x, this.gameObject.transform.position.y + y, 0), Quaternion.identity);
-            slime1.transform.SetParent(this.transform);
-            thisManager.AddEnemies(new GameObject[] { slime1 });
+            slime1.transform.SetParent(gameObject.transform.parent.transform);
+            gameObject.transform.parent.GetComponent<RoomManager>().SpawnEnemiesForThirdBoss(slime1);
 
             x = Random.Range(-4, 5);
             y = Random.Range(-3, 4);
             GameObject slime2 = Instantiate(iceSlime, new Vector3(this.gameObject.transform.position.x + x, this.gameObject.transform.position.y + y, 0), Quaternion.identity);
             slime2.transform.SetParent(this.transform);
 
-            thisManager.AddEnemies(new GameObject[] { slime1 });
+            gameObject.transform.parent.GetComponent<RoomManager>().SpawnEnemiesForThirdBoss(slime1);
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(5);
         }
+        gameObject.transform.parent.GetComponent<RoomManager>().SpawnEnemiesForThirdBoss(null);
     }
 
     private void Update()
