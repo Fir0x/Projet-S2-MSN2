@@ -51,6 +51,8 @@ public class Board : MonoBehaviour
 
         public void AddDoors(DoorPos doorPosition, bool isBossDoor)
         {
+            doorsPosition.Add(doorPosition);
+
             if (isBossDoor)
             {
                 if (doorPosition == DoorPos.Left)
@@ -62,12 +64,12 @@ public class Board : MonoBehaviour
                 else
                     bossDoor = 3;
             }
-
-            doorsPosition.Add(doorPosition);
         }
 
         public int GetBossDoor()
         {
+            if (type == Type.Boss)
+                print("bossdoro : " + bossDoor);
             return bossDoor;
         }
     }
@@ -154,6 +156,7 @@ public class Board : MonoBehaviour
                     {
                         actual = new RoomBase(new int[] { newX, newY }, k, Type.Boss);
                         isBoss = true;
+                        print("isBoss est true");
                     }
                     else
                         actual = new RoomBase(new int[] { newX, newY }, k, Type.Normal);

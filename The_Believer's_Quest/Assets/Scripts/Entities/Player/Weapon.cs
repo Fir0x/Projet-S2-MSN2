@@ -144,10 +144,8 @@ public class Weapon : MonoBehaviour
 
     public void Attack() //tourne l'arme dans le bon sens
     {
-        print("attack");
         if (shot)
         {
-            print("attack2");
             Vector3 angle = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             float rotz = Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg;
             if (!(weapon.Type == WeaponAsset.WeaponType.CQC))

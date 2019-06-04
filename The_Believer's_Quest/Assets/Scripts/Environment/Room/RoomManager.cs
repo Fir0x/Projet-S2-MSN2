@@ -75,6 +75,7 @@ public class RoomManager : MonoBehaviour
         LayerBehind layerB = GetComponent<LayerBehind>();                               //to make the boss room be opened
         LayerFront layerF = GetComponent<LayerFront>();
 
+        print("rm:" + bossDoor);
         if (bossDoor == -1)
         {
             layerB.ClearTiles(doors, doorTiles, floor);
@@ -338,6 +339,7 @@ public class RoomManager : MonoBehaviour
 
     public void OpenDoors()
     {
+
         /*foreach (LayerFront script in gameObject.GetComponentsInChildren<LayerFront>())
         {
             script.ClearTiles(doors, doorTiles, floor);
@@ -357,6 +359,11 @@ public class RoomManager : MonoBehaviour
             }
         }
 
+        if (bossDoor != -1)
+        {
+            print("bossDoodddddr");
+            print("dortles  " + doors[0].ToString());
+        }
         gameObject.GetComponentInChildren<LayerFront>().ClearTiles(doors, doorTiles, floor);
         gameObject.GetComponentInChildren<LayerBehind>().ClearTiles(doors, doorTiles, floor);
     }

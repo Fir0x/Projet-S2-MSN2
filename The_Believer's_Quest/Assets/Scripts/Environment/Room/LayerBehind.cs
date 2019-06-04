@@ -13,16 +13,16 @@ public class LayerBehind : MonoBehaviour
         if (isBoss)
         {
             if (doors.Contains(Board.DoorPos.Up))
-                tilemap.SetTile(new Vector3Int(0, 7, 0), tiles.Tiles[(floor - 1) * 5 + 11]);
+                tilemap.SetTile(new Vector3Int(0, 7, 0), tiles.Tiles[(floor - 1) * 18 + 11]);
 
             if (doors.Contains(Board.DoorPos.Right))
-                tilemap.SetTile(new Vector3Int(8, 0, 0), tiles.Tiles[3 + (floor - 1) * 5 + 11]);
+                tilemap.SetTile(new Vector3Int(8, 0, 0), tiles.Tiles[3 + (floor - 1) * 18 + 11]);
 
             if (doors.Contains(Board.DoorPos.Down))
-                tilemap.SetTile(new Vector3Int(0, -6, 0), tiles.Tiles[6 + (floor - 1) * 5 + 9]);
+                tilemap.SetTile(new Vector3Int(0, -6, 0), tiles.Tiles[6 + (floor - 1) * 18 + 9]);
 
             if (doors.Contains(Board.DoorPos.Left))
-                tilemap.SetTile(new Vector3Int(-8, 0, 0), tiles.Tiles[8 + (floor - 1) * 5 + 9]);
+                tilemap.SetTile(new Vector3Int(-8, 0, 0), tiles.Tiles[8 + (floor - 1) * 18 + 9]);
         }
         else
         {
