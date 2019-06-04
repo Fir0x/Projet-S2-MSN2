@@ -9,6 +9,8 @@ public class Projectile : MovingObject
     private bool player;
     private bool effect;
 
+    private float lifetime;
+
     public void Init(Sprite sprite, float speed, float damage, Vector3 origin, float angle, Vector3 _direction, bool player, bool circle, bool effect) 
     {
         //projectiles ennemis
@@ -17,7 +19,7 @@ public class Projectile : MovingObject
         this.damage = damage;
         this.player = player;
         this.effect = effect;
-
+        lifetime = 0;
         if (circle || _direction == new Vector3(0, 0, 0))
             _direction = transform.up;
         if (angle != 0)
@@ -34,6 +36,7 @@ public class Projectile : MovingObject
         this.speed = speed;
         this.damage = damage;
         this.player = player;
+        lifetime = 0;
         if (angle != 0)
             transform.RotateAround(origin, Vector3.forward, angle);
 
@@ -67,7 +70,10 @@ public class Projectile : MovingObject
                Destroy(gameObject);
             }
         }
-        
+        if (lifetime > 10)
+            Destroy(gameObject);
+
+        lifetime += 0.2f;
         if (player)
             direction = transform.up;
         transform.Translate(direction * speed * Time.deltaTime, Space.World);

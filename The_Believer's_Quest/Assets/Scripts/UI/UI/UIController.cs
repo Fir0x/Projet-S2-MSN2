@@ -103,7 +103,7 @@ public class UIController : MonoBehaviour
         changeWeapon.AddListener(() => WeaponSprite.sprite = player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Sprite);
 
         changeAmmo.AddListener(() => Ammo.text = player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Type == WeaponAsset.WeaponType.CQC ? 
-                                         "" : player.WeaponsList[0].GetComponent<WeaponItem>().Loader + " / " + player.WeaponsList[0].GetComponent<WeaponItem>().Ammunitions);
+                                         "" : player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Loader + " / " + player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Ammunitions);
     }
 
     public void ShowMap()

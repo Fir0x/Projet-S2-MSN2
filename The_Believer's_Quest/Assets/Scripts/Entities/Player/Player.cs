@@ -198,7 +198,7 @@ public class Player : MovingObject
 
     public void Attack()
     {
-        if (canAttack)
+        if (canAttack && playerAsset.Floor != 0)
         {
             weapon.Attack();
         }
