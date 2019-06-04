@@ -144,10 +144,8 @@ public class Weapon : MonoBehaviour
 
     public void Attack() //tourne l'arme dans le bon sens
     {
-        print("attack");
         if (shot)
         {
-            print("attack2");
             Vector3 angle = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             float rotz = Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg;
             if (!(weapon.Type == WeaponAsset.WeaponType.CQC))
@@ -186,8 +184,9 @@ public class Weapon : MonoBehaviour
 
     private void Cqc()
     {
+        Vector3 launching = new Vector3(transform.position.x, transform.position.y, 0);
         Collider2D[] enemiesTouched =
-            Physics2D.OverlapCircleAll(transform.position, 0.5f, LayerMask.GetMask("Aerial", "Ground"));
+            Physics2D.OverlapCircleAll(launching, 0.75f, LayerMask.GetMask("Aerial", "Grounsd"));
         for (int i = 0; i < enemiesTouched.Length; i++)
         {
             if (enemiesTouched[i].CompareTag("Enemy"))
@@ -199,7 +198,8 @@ public class Weapon : MonoBehaviour
     }
     private void LineShot(float speed, int damage, float angle)//tir linéaire
     {
-        Instantiate(projectile, transform.position,
+        Vector3 launching = new Vector3(transform.position.x, transform.position.y, 0);
+        Instantiate(projectile, launching,
             transform.rotation).GetComponent<Projectile>().Init(weapon.Bullet, speed, damage, transform.position, angle, true);
     }
 
