@@ -26,7 +26,7 @@ public class Perspective : MonoBehaviour
         if (playerBox.bounds.center.y < objectBox.bounds.center.y)
         {
             objectRenderer.sortingOrder = -1;
-            if (gameObject.name == "Shopper")
+            if (gameObject.CompareTag("Shop"))
             {
                 for (int i = 0; i < gameObject.transform.childCount; i ++)
                 {

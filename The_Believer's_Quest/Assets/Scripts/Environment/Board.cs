@@ -209,6 +209,7 @@ public class Board : MonoBehaviour
 
     public void Start()
     {
+        playerAsset.Floor = 0;
         instance = this;
         BoardCreation();
 

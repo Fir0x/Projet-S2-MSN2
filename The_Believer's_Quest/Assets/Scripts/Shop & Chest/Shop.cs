@@ -34,9 +34,9 @@ public class Shop : MonoBehaviour
         instance = this;
         shopUI = ShopUI.instance;
 
-        if (isHub == false)
+        if (GameObject.Find("Player").GetComponent<Player>().PlayerAsset.Floor != 0)
         {
-            
+            print("o");
             items = shopUI.gameObject.GetComponent<ItemChooser>().ChooseContentShop(allItems, unlockedItems);
         }
         else
