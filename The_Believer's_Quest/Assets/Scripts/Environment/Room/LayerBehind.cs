@@ -67,6 +67,11 @@ public class LayerBehind : MonoBehaviour
 
     public void ClearTiles(List<Board.DoorPos> doors, TileAsset tiles, int floor)
     {
+        if (floor == 4)
+        {
+            floor = Random.Range(1, 3);
+        }
+
         if (doors.Contains(Board.DoorPos.Up))
         {
             tilemap.SetTile(new Vector3Int(0, 7, 0), null);
