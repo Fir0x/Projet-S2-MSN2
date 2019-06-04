@@ -22,8 +22,8 @@ MonoBehaviour:
   gold: 0
   diamond: 0
   weaponsList:
-  - {fileID: 0}
   - {fileID: 6167037201334550808, guid: f60a186df86b32345bc176637acbb710, type: 3}
+  - {fileID: 0}
   objectsList:
   - {fileID: 0}
   - {fileID: 0}

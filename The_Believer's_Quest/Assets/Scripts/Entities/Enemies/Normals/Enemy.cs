@@ -66,7 +66,6 @@ public class Enemy : MovingObject
             StartCoroutine(AttackWithCoolDown());
         }
         direction = nextPos - firstPos;
-        print("direction");
         ChangeDirection();
         firstPos = nextPos;
 

@@ -26,7 +26,7 @@ public class EnemyAnimation : MonoBehaviour
 
     public void ChangeDirection(int direction)
     {
-
+        animatorOverrideController["Move"] = anims.Move[direction];
         animatorOverrideController["Attack"] = anims.Attack[direction];
     }
 
