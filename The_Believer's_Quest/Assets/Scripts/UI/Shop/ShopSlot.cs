@@ -30,7 +30,7 @@ public class ShopSlot : MonoBehaviour
     public void AddItem(GameObject newItem)
     {
         item = newItem;
-        if (GameObject.Find("Player").GetComponent<Player>().PlayerAsset.Floor == 0)
+        if (Player.instance.PlayerAsset.Floor == 0)
         {
             if (item != null)
             {
@@ -75,7 +75,7 @@ public class ShopSlot : MonoBehaviour
     // Called when the item is pressed
     public void UseItem()
     {
-        if (GameObject.Find("Player").GetComponent<Player>().PlayerAsset.Floor == 0)
+        if (Player.instance.PlayerAsset.Floor == 0)
         {
             int diamond = Player.instance.PlayerAsset.Diamond;
             int price = item.GetComponent<WeaponItem>().WeaponAsset.DiamondPrice;
@@ -87,7 +87,7 @@ public class ShopSlot : MonoBehaviour
                 shop.Remove(item);
                 Player.instance.PlayerAsset.Diamond -= price;
                 UIController.uIController.changeDiamond.Invoke();
-                Saver.SavePlayerData(Player.instance.PlayerAsset, shop.UnlockedItems.Unlocked);
+                Saver.SavePlayerData(Player.instance.PlayerAsset, shop.UnlockedItems);
             }
         }
         else

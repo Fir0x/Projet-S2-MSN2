@@ -22,13 +22,13 @@ public static class Saver
     [Serializable]
     public class PlayerSave
     {
-        public PlayerAsset playerData;
-        public List<GameObject> unlockedItems;
+        public string playerData;
+        public string unlockedItems;
 
-        public PlayerSave(PlayerAsset playerData, List<GameObject> unlockedItems)
+        public PlayerSave(PlayerAsset playerData, UnlockedItemsAsset unlockedItems)
         {
-            this.playerData = playerData;
-            this.unlockedItems = unlockedItems;
+            this.playerData = JsonUtility.ToJson(playerData);
+            this.unlockedItems = JsonUtility.ToJson(unlockedItems);
         }
     }
 
@@ -37,7 +37,7 @@ public static class Saver
         string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerData.bin");
         Debug.Log("Save file path: " + path); //DEBUG
         Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-        new BinaryFormatter().Serialize(stream, JsonUtility.ToJson(save)); //Saving of the GameSave object in the binary file
+        new BinaryFormatter().Serialize(stream, save); //Saving of the GameSave object in the binary file
         stream.Close();
     }
 
@@ -52,7 +52,7 @@ public static class Saver
         stream.Close();
     }
 
-    public static void SavePlayerData(PlayerAsset playerData, List<GameObject> unlockedItems)
+    public static void SavePlayerData(PlayerAsset playerData, UnlockedItemsAsset unlockedItems)
     {
         Saving(new PlayerSave(playerData, unlockedItems));
     }

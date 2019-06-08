@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -6,13 +7,6 @@ using UnityEngine;
 //Nicolas I && Maxence
 public static class Loader
 {
-
-    private enum ISaveType
-    {
-        Data,
-        Settings
-    };
-
     public static void LoadingPlayerData(ref PlayerAsset playerData, ref UnlockedItemsAsset unlockedItems)
     {
         string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerData.bin");
@@ -20,21 +14,11 @@ public static class Loader
         //Binary save file opening
         Stream streamRestauration = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
         //Loading the GameSave object from the binary file
-        Saver.PlayerSave save = JsonUtility.FromJson<Saver.PlayerSave>((string)new BinaryFormatter().Deserialize(streamRestauration));
-        playerData = save.playerData;
-        int i = 0;
-        while (i < save.unlockedItems.Count)
-        {
-            GameObject item = save.unlockedItems[i];
-            if (unlockedItems.Locked.Contains(item))
-            {
-                unlockedItems.Unlocked.Add(item);
-                unlockedItems.Locked.Remove(item);
-                i--;
-            }
-
-            i++;
-        }
+        Saver.PlayerSave save = (Saver.PlayerSave) new BinaryFormatter().Deserialize(streamRestauration);
+        string test = save.playerData;
+        string test2 = save.unlockedItems;
+        JsonUtility.FromJsonOverwrite(save.playerData, playerData);
+        JsonUtility.FromJsonOverwrite(save.unlockedItems, unlockedItems);
 
         streamRestauration.Close();
 

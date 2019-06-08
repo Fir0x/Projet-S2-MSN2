@@ -53,7 +53,7 @@ public class Development : MonoBehaviour
 
     public void Save()
     {
-        Saver.SavePlayerData(Player.instance.PlayerAsset, Player.instance.UnlockedItems.Unlocked);
+        Saver.SavePlayerData(Player.instance.PlayerAsset, Player.instance.UnlockedItems);
     }
 
     public void ResetUnlocked()

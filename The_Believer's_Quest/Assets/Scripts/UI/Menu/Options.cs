@@ -11,6 +11,8 @@ public class Options : MonoBehaviour
     [SerializeField] private Slider soundSlider;
     [SerializeField] private Slider musicSlider;
 
+    private SoundManager soundManager;
+
     public AudioMixer AudioMixer { get => audioMixer; set => audioMixer = value; }
     public Slider SoundSlider { get => soundSlider; set => soundSlider = value; }
     public Slider MusicSlider { get => musicSlider; set => musicSlider = value; }
@@ -19,6 +21,7 @@ public class Options : MonoBehaviour
     {
         if (File.Exists("playerSettings.bin"))
         {
+            soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
             Tuple<float,float> soundInfos =  Loader.LoadingPlayerSettings();
             VolumeEffect(soundInfos.Item1);
             VolumeMusic(soundInfos.Item2);
@@ -38,13 +41,13 @@ public class Options : MonoBehaviour
     public void VolumeMusic(float volume)
     {
         AudioMixer.SetFloat("Music", volume);
-        GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeVolumeMusic(volume);
+        soundManager.ChangeVolumeMusic(volume);
     }
 
     public void VolumeEffect(float volume)
     {
-        //AudioMixer.SetFloat("Sound", volume);
-        GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeVolumeFx(volume);
+        AudioMixer.SetFloat("Sound", volume);
+        soundManager.ChangeVolumeFx(volume);
     }
 
     public void SaveChange()

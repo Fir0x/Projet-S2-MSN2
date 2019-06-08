@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!82 &1397987159 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8585158490761645554, guid: 06705fef10342644c87cfd71544c31d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4241710226202827084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2037134129971654370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -595,6 +601,16 @@ PrefabInstance:
     - target: {fileID: 4241710226174738887, guid: 06705fef10342644c87cfd71544c31d3,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241710226174738886, guid: 06705fef10342644c87cfd71544c31d3,
+        type: 3}
+      propertyPath: currentFx
+      value: 
+      objectReference: {fileID: 1397987159}
+    - target: {fileID: 8585158490761645554, guid: 06705fef10342644c87cfd71544c31d3,
+        type: 3}
+      propertyPath: m_Volume
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
