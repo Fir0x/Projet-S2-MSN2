@@ -23,13 +23,11 @@ public class ChestSlot : MonoBehaviour
     {
         item = newItem;
         if (item.CompareTag("Object"))
-        {
             icon.sprite = item.GetComponent<Object>().ObjectsAsset.Sprite;
-        }
+
         else if (item.CompareTag("Weapon"))
-        {
             icon.sprite = item.GetComponent<WeaponItem>().WeaponAsset.Sprite;
-        }
+
         icon.enabled = true;
     }
 
@@ -45,12 +43,10 @@ public class ChestSlot : MonoBehaviour
     // Called when the item is pressed
     public void UseItem()
     {
-        if (item != null && GameObject.Find("Player").GetComponent<Player>().PlayerAsset.WeaponsList[0] != item && GameObject.Find("Player").GetComponent<Player>().PlayerAsset.WeaponsList[1] != item)
+        if (item != null && Player.instance.PlayerAsset.WeaponsList[0] != item && Player.instance.PlayerAsset.WeaponsList[1] != item)
         {
             if (inventory.Add(item))
-            {
                 chest.Remove(item);
-            }
         }
     }
 

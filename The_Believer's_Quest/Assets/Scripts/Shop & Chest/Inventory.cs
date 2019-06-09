@@ -37,17 +37,18 @@ public class Inventory : MonoBehaviour
         // Check if out of space
         if (items.Count < space)
         {
+            PlayerAsset playerAsset = Player.instance.PlayerAsset;
+
             if (item.CompareTag("Object") && nbItems != 2)
             {
                 nbItems += 1;
                 items.Add(item);    // Add item to list
                 InventoryUI.instance.AddItem(item);
-
                 for (int i = 0; i < 2; i++)
                 {
-                    if (GetComponent<Player>().PlayerAsset.ObjectsList[i] == null || GetComponent<Player>().PlayerAsset.ObjectsList[i] == item)
+                    if (playerAsset.ObjectsList[i] == null || GetComponent<Player>().PlayerAsset.ObjectsList[i] == item)
                     {
-                        GetComponent<Player>().PlayerAsset.ObjectsList[i] = item;
+                        playerAsset.ObjectsList[i] = item;
                         break;
                     }
                 }
@@ -63,9 +64,9 @@ public class Inventory : MonoBehaviour
 
                 for (int i = 0; i < 2; i++)
                 {
-                    if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == null || GetComponent<Player>().PlayerAsset.WeaponsList[i] == item)
+                    if (playerAsset.WeaponsList[i] == null || playerAsset.WeaponsList[i] == item)
                     {
-                        GetComponent<Player>().PlayerAsset.WeaponsList[i] = item;
+                        playerAsset.WeaponsList[i] = item;
                         break;
                     }
                 }
@@ -82,26 +83,28 @@ public class Inventory : MonoBehaviour
     {
         items.Remove(item);     // Remove item from list
         inventoryUI.RemoveItem(item);
+        PlayerAsset playerAsset = Player.instance.PlayerAsset;
         if (item.CompareTag("Object"))
         {
             nbItems -= 1;
             for (int i = 0; i < 2; i++)
             {
-                if (GetComponent<Player>().PlayerAsset.ObjectsList[i] == item)
+                if (playerAsset.ObjectsList[i] == item)
                 {
-                    GetComponent<Player>().PlayerAsset.ObjectsList[i] = null;
+                    playerAsset.ObjectsList[i] = null;
                     break;
                 }
             }
         }
+
         else if (item.CompareTag("Weapon"))
         {
             nbWeapons -= 1;
             for (int i = 0; i < 2; i++)
             {
-                if (GetComponent<Player>().PlayerAsset.WeaponsList[i] == item)
+                if (playerAsset.WeaponsList[i] == item)
                 {
-                    GetComponent<Player>().PlayerAsset.WeaponsList[i] = null;
+                    playerAsset.WeaponsList[i] = null;
                     break;
                 }
             }

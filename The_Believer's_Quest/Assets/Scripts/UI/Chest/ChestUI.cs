@@ -38,13 +38,10 @@ public class ChestUI : MonoBehaviour
         for (int i = 0; i < slots.Length; i++)
         {
             if (i < itemsInChest.Count)
-            {
                 slots[i].AddItem(itemsInChest[i]);
-            }
+
             else
-            {
                 slots[i].ClearSlot();
-            }
         }
     }
 }

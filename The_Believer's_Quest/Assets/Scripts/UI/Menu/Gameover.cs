@@ -12,7 +12,7 @@ public class Gameover : MonoBehaviour
     private bool debug;
 
 
-    public void Return_to_hub()
+    public void ReturnToHub()
     {
         Player.instance.RestartPlayer();
         UIController.uIController.changeHp.Invoke();

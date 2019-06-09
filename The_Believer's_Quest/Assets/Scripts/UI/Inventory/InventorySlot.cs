@@ -39,18 +39,16 @@ public class InventorySlot : MonoBehaviour
     // Called when the item is pressed
     public void UseItem()
     {
-        if (GameObject.Find("Player").GetComponent<Player>().RoomType == Board.Type.Chest)
+        if (Player.instance.RoomType == Board.Type.Chest)
         {
             if (item != null)
             {
                 if (Chest.instance.Add(item))
-                {
                     Inventory.instance.Remove(item);
-                }
             }
         }
 
-        if (GameObject.Find("Player").GetComponent<Player>().RoomType == Board.Type.Shop)
+        if (Player.instance.RoomType == Board.Type.Shop)
         {
             if (item != null)
             {
@@ -62,6 +60,8 @@ public class InventorySlot : MonoBehaviour
 
                 if (Shop.instance.Add(item))
                 {
+                    if (item.CompareTag("Weapon"))
+                        item.GetComponent<WeaponItem>().WeaponAsset.ResetWeapon();
                     Inventory.instance.Remove(item);
                     Player.instance.PlayerAsset.Gold += price / 2;
                     UIController.uIController.changeGold.Invoke();

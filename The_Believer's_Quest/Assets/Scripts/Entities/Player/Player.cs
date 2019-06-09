@@ -94,18 +94,17 @@ public class Player : MovingObject
 
     public void RestartPlayer()
     {
-        instance.PlayerAsset.Hp = 100;
-        instance.PlayerAsset.MaxHP = 100;
-        instance.SetEffect(0);
-        instance.PlayerAsset.MaxEffectValue = 50;
-        instance.PlayerAsset.Gold = 0;
+        playerAsset.Hp = 100;
+        playerAsset.MaxHP = 100;
+        SetEffect(0);
+        playerAsset.MaxEffectValue = 50;
+        playerAsset.Gold = 0;
 
-        /*foreach (GameObject itm in unlockedItems.Unlocked)
+        for (int i = 0; i < 2; i++)
         {
-            WeaponItem weaponData = itm.GetComponent<WeaponItem>();
-            if (weaponData != null)
-                weaponData.ResetAsset();
-        }*/
+            if (playerAsset.WeaponsList[i] != null)
+                playerAsset.WeaponsList[i].GetComponent<WeaponItem>().WeaponAsset.ResetWeapon();
+        }
 
         instance.PlayerAsset.WeaponsList = new[] { Resources.Load("Pistol") as GameObject, null };
         instance.PlayerAsset.ObjectsList[0] = null;
@@ -182,9 +181,7 @@ public class Player : MovingObject
         playerAsset.Hp = value;
 
         if (playerAsset.Hp > playerAsset.MaxHP)
-        {
             playerAsset.Hp = playerAsset.MaxHP;
-        }
 
         UIController.uIController.changeHp.Invoke();
         if (playerAsset.Hp <= 0)
@@ -192,14 +189,14 @@ public class Player : MovingObject
             animator.SetTrigger(animDeathID);
             SoundManager soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
             soundManager.PlaySingle(soundManager.lfx[4]);
+            StartCoroutine(GameOver());
             gameover.SetActive(true);
-            //StartCoroutine(GameOver());
         }
     }
 
     IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.4f);
     }
 
     IEnumerator InvicibilityCoolDown()

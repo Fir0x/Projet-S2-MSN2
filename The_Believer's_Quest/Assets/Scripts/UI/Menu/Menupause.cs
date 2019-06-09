@@ -46,6 +46,7 @@ public class Menupause : MonoBehaviour
     public void LoadMenu()
     {
         Player.instance.RestartPlayer();
+        Saver.SavePlayerData(Player.instance.PlayerAsset, Player.instance.UnlockedItems);
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
         GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(0);

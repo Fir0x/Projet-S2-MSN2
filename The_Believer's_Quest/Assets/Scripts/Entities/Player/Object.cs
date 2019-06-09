@@ -65,7 +65,7 @@ public class Object : MonoBehaviour
             playerAsset.Invicibility = true;
 
         if (objectsAsset.Ammo != 0)
-            player.GetComponentInChildren<Weapon>().MultiplyDamage(2);
+            player.GetComponentInChildren<Weapon>().AddAmmunitions(objectsAsset.Ammo);
 
         if (objectsAsset.Duration != 0)
             Instantiate(gameObject).GetComponent<Object>().StartDuration(player, objectsAsset, objectsAsset.Duration); //Instantiate to use coroutine
