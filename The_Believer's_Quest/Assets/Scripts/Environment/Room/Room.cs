@@ -57,7 +57,7 @@ public class Room : MonoBehaviour
         GameObject room;
         id = roomNumber;
         this.type = type;
-        if (playerAsset.Floor == 5)
+        if (playerAsset.Floor > 5)
         {
             playerAsset.Floor = 0;
             playerAsset.Gold = 0;

@@ -19,7 +19,7 @@ public class Player : MovingObject
     private bool goDown;
 
     private bool noForcedMove;
-    private bool testForDash;
+    public bool testForDash;
     private bool testForInvincibility;
 
     private bool nearShop;
@@ -109,7 +109,7 @@ public class Player : MovingObject
         instance.PlayerAsset.WeaponsList = new[] { Resources.Load("Pistol") as GameObject, null };
         instance.PlayerAsset.ObjectsList[0] = null;
         instance.PlayerAsset.ObjectsList[1] = null;
-        instance.PlayerAsset.Floor = -1;
+        instance.PlayerAsset.Floor = 0;
         instance.PlayerAsset.Invicibility = false;
         instance.PlayerAsset.Speed = 3;
         Inventory.instance.items.Clear();
@@ -185,18 +185,17 @@ public class Player : MovingObject
 
         UIController.uIController.changeHp.Invoke();
         if (playerAsset.Hp <= 0)
-        {
-            animator.SetTrigger(animDeathID);
-            SoundManager soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
-            soundManager.PlaySingle(soundManager.lfx[4]);
             StartCoroutine(GameOver());
-            gameover.SetActive(true);
-        }
     }
 
     IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(0.4f);
+        animator.SetTrigger(animDeathID);
+        SoundManager soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+        soundManager.PlaySingle(soundManager.lfx[4]);
+        yield return new WaitForSeconds(0.51f);
+        Time.timeScale = 0f;
+        gameover.SetActive(true);
     }
 
     IEnumerator InvicibilityCoolDown()
@@ -324,9 +323,8 @@ public class Player : MovingObject
             playerAsset.Position = transform.position;
 
             testForDash = false;
-
             yield return new WaitForSeconds(1f);
-
+            
             testForDash = true;
         }
     }
@@ -472,7 +470,7 @@ public class Player : MovingObject
 
     public void ActiveChestUI()
     {
-        InventoryUI.instance.EnableUI();
+        InventoryUI.instance.EnableUI(false);
         ChestUI.instance.EnableUI();
     }
 
@@ -490,7 +488,7 @@ public class Player : MovingObject
     {
         if (playerAsset.Floor != 0)
         {
-            InventoryUI.instance.EnableUI();
+            InventoryUI.instance.EnableUI(true);
         }
         ShopUI.instance.EnableUI();
     }

@@ -6,10 +6,12 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
-
     public Image icon;          // Reference to the Icon image
+    [SerializeField] private GameObject goldShow;
 
     GameObject item;  // Current item in the slot
+
+    public GameObject GoldShow { get => goldShow; set => goldShow = value; }
 
     // Add item to the slot
     public void AddItem(GameObject newItem)
@@ -26,6 +28,20 @@ public class InventorySlot : MonoBehaviour
         }
 
         icon.enabled = true;
+    }
+
+    public void ShowSellPrice(bool show)
+    {
+        if (show)
+        {
+            goldShow.SetActive(true);
+            if (item.CompareTag("Object"))
+                goldShow.GetComponent<Text>().text = "" + (item.GetComponent<Object>().ObjectsAsset.Price / 2);
+            else
+                goldShow.GetComponent<Text>().text = "" + (item.GetComponent<WeaponItem>().WeaponAsset.Price / 2);
+        }
+        else
+            goldShow.SetActive(false);
     }
 
     // Clear the slot

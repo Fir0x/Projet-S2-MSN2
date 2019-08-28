@@ -13,8 +13,6 @@ public class KeyBoardManager : MonoBehaviour
 
     [SerializeField] private GameObject developmentTool;
 
-    private bool isMapActive = false;
-
     public GameObject DevelopmentTool { get => developmentTool; set => developmentTool = value; }
 
     // Start is called before the first frame update
@@ -25,81 +23,79 @@ public class KeyBoardManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Backspace) && Input.GetKeyDown(KeyCode.M))
-            developmentTool.SetActive(!developmentTool.activeInHierarchy); //Make development toll appear/disappear
-
-        if (Input.GetButton("Up"))
+        if (Input.anyKey)
         {
-            player.MoveUp();
-        }
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Backspace) && Input.GetKeyDown(KeyCode.M))
+                developmentTool.SetActive(!developmentTool.activeInHierarchy); //Make development toll appear/disappear
 
-        if (Input.GetButtonUp("Up"))
-            player.StopMoveUp();
+            if (Input.GetButton("Up"))
+                player.MoveUp();
 
-        if (Input.GetButton("Left"))
-            player.MoveLeft();
+            if (Input.GetButtonUp("Up"))
+                player.StopMoveUp();
 
-        if (Input.GetButtonUp("Left"))
-            player.StopMoveLeft();
+            if (Input.GetButton("Left"))
+                player.MoveLeft();
 
-        if (Input.GetButton("Down"))
-            player.MoveDown();
+            if (Input.GetButtonUp("Left"))
+                player.StopMoveLeft();
 
-        if (Input.GetButtonUp("Down"))
-            player.StopMoveDown();
+            if (Input.GetButton("Down"))
+                player.MoveDown();
 
-        if (Input.GetButton("Right"))
-            player.MoveRight();
+            if (Input.GetButtonUp("Down"))
+                player.StopMoveDown();
 
-        if (Input.GetButtonUp("Right"))
-            player.StopMoveRight();
+            if (Input.GetButton("Right"))
+                player.MoveRight();
 
-        if (!isMapActive && Input.GetButton("Attack") && SceneManager.GetActiveScene()!= SceneManager.GetSceneByName("MainMenu"))
-            player.Attack();
+            if (Input.GetButtonUp("Right"))
+                player.StopMoveRight();
 
-        if (Input.GetButtonDown("Dash"))
-            player.doDash();
-        
-        if (Input.GetButtonDown("Map"))
-        {
-            isMapActive = !isMapActive;
-            UIController.uIController.ShowMap();
-        }
+            if (Input.GetButton("Attack") && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("MainMenu"))
+                player.Attack();
 
-        if (Input.GetButtonDown("Interact") && Player.instance.GetNearChest())
-        {
-            player.ActiveChestUI();
-            player.canAttack = !player.canAttack;
-        }
+            if (Input.GetButtonDown("Dash"))
+                player.doDash();
 
-        if (Input.GetButtonDown("Interact") && Player.instance.GetNearShop())
-        {
-            player.ActiveShopUI();
-            player.canAttack = !player.canAttack;
-        }
+            if (Input.GetButtonDown("Map"))
+                UIController.uIController.ShowMap();
 
-        if (Input.GetAxis("Mouse ScrollWheel") != 0f) //Change weapon
-        {
-            player.transform.GetChild(0).GetComponent<Weapon>().SetWeapon(player.PlayerAsset.WeaponsList[1]);
-        }
-
-        if (Input.GetButtonDown("Item 1")) //Use item 1
-        {
-            if (player.PlayerAsset.ObjectsList[0] != null)
+            if (Input.GetButtonDown("Interact") && Player.instance.GetNearChest())
             {
-                print("objet 1"); //DEBUG
-                player.PlayerAsset.ObjectsList[0].GetComponent<Object>().ActiveChange();
-                player.PlayerAsset.ObjectsList[0] = null;
+                player.ActiveChestUI();
+                player.canAttack = !player.canAttack;
             }
-        }
 
-        if (Input.GetButtonDown("Item 2")) //Use item 2
-        {
-            if (player.PlayerAsset.ObjectsList[1] != null)
+            if (Input.GetButtonDown("Interact") && Player.instance.GetNearShop())
             {
-                print("objet 2"); //DEBUG
-                player.PlayerAsset.ObjectsList[1].GetComponent<Object>().ActiveChange();
-                player.PlayerAsset.ObjectsList[1] = null;
+                player.ActiveShopUI();
+                player.canAttack = !player.canAttack;
+            }
+
+            if (Input.GetAxis("Mouse ScrollWheel") != 0f) //Change weapon
+            {
+                player.transform.GetChild(0).GetComponent<Weapon>().SetWeapon(player.PlayerAsset.WeaponsList[1]);
+            }
+
+            if (Input.GetButtonDown("Item 1")) //Use item 1
+            {
+                if (player.PlayerAsset.ObjectsList[0] != null)
+                {
+                    print("objet 1"); //DEBUG
+                    player.PlayerAsset.ObjectsList[0].GetComponent<Object>().ActiveChange();
+                    player.PlayerAsset.ObjectsList[0] = null;
+                }
+            }
+
+            if (Input.GetButtonDown("Item 2")) //Use item 2
+            {
+                if (player.PlayerAsset.ObjectsList[1] != null)
+                {
+                    print("objet 2"); //DEBUG
+                    player.PlayerAsset.ObjectsList[1].GetComponent<Object>().ActiveChange();
+                    player.PlayerAsset.ObjectsList[1] = null;
+                }
             }
         }
     }

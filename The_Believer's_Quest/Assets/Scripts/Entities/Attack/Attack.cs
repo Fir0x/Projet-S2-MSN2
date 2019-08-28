@@ -27,7 +27,7 @@ public class Attack : MonoBehaviour
     {
         Transform playerT = GameObject.FindGameObjectWithTag("Player").transform;
         if (traj == Trajectory.Line)
-            LineShot(playerT.position, enemy.Speed, boss.Damage, 0f, false);
+            LineShot(playerT.position, enemy.Speed, boss.Damage, 0f);
         if (traj == Trajectory.Arc)
             ArcShot((int)boss.NbOfProjectiles, playerT.position, boss.ShotSpeed, boss.Damage);
         if (traj == Trajectory.Circle)
@@ -44,7 +44,7 @@ public class Attack : MonoBehaviour
     {
         Transform playerT = Player.instance.transform; //GameObject.FindGameObjectWithTag("Player").transform;
         if (enemy._Trajectory == Trajectory.Line)
-            LineShot(playerT.position, enemy.Speed, enemy.Damage, 0f, false);
+            LineShot(playerT.position, enemy.Speed, enemy.Damage, 0f);
         if (enemy._Trajectory == Trajectory.Arc)
             ArcShot(enemy.NbOfProjectiles, playerT.position, enemy.ShotSpeed, enemy.Damage);
         if (enemy._Trajectory == Trajectory.Circle)
@@ -64,7 +64,7 @@ public class Attack : MonoBehaviour
         {
             for (int i = 0; i < playerTouched.Length; i++)
             {
-                if (playerTouched[i].CompareTag("Player"))
+                if (playerTouched[i].CompareTag("Player") && !player.Invicibility && Player.instance.testForDash)
                 {
                     playerTouched[i].GetComponent<Player>().SetLife(player.Hp - damage);
                     
@@ -76,10 +76,11 @@ public class Attack : MonoBehaviour
             }
         }
     }
-    private void LineShot(Vector3 direction, float speed, float damage, float angle, bool shot)//tir linéaire
+    private void LineShot(Vector3 direction, float speed, float damage, float angle)//tir linéaire
     {
-       Instantiate(projectile, transform.position,
-            transform.rotation).GetComponent<Projectile>().Init(enemy.Projectile, speed, damage, transform.position, angle, (direction-transform.position),false, shot, effect); 
+        Vector3 objPos = transform.position;
+        Vector3 initPos = objPos + new Vector3((direction.x - objPos.x) / 4, (direction.y - objPos.y) / 4, 0);
+       Instantiate(projectile, initPos, transform.rotation).GetComponent<Projectile>().Init(enemy.Projectile, speed, damage, objPos, angle, effect); 
     }
     
     private void CircleShot(int nbprojectile, float speed, float damage, Sprite projo)//tir en cercle
@@ -90,8 +91,8 @@ public class Attack : MonoBehaviour
         for (int i = 0; i < nbprojectile; i++)
         {
             
-            Instantiate(projectile, transform.position,
-                transform.rotation).GetComponent<Projectile>().Init(projo, speed, damage, transform.position, angle, transform.up,false, true, effect); 
+            Instantiate(projectile, transform.position + new Vector3(0.5f, 0, 0),
+                transform.rotation).GetComponent<Projectile>().Init(projo, speed, damage, transform.position, angle * i, effect); 
 
         } 
     }
@@ -99,14 +100,12 @@ public class Attack : MonoBehaviour
     private void ArcShot(int nbprojectile, Vector3 direction, float speed, float damage) //tir type shotgun
     {
         if (nbprojectile % 2 != 0)
-        {
-            LineShot(direction, enemy.Speed, damage, 0, false);
-        }
+            LineShot(direction, speed, damage, 0);
 
         for (int i = 1; i <= nbprojectile / 2; i++)
         {
-            LineShot(direction, speed, damage, 10 * i,true);
-            LineShot(direction, speed, damage, -10 * i, true);
+            LineShot(direction, speed, damage, 10 * i);
+            LineShot(direction, speed, damage, -10 * i);
         }
     }
 
@@ -116,7 +115,7 @@ public class Attack : MonoBehaviour
    
         if (hitInfo.collider != null )
         {
-            if (hitInfo.collider.CompareTag("Player"))
+            if (hitInfo.collider.CompareTag("Player") && !player.Invicibility && Player.instance.testForDash)
             {
                 hitInfo.collider.GetComponent<Player>().SetLife(player.Hp - damage);
                 Destroy(gameObject);

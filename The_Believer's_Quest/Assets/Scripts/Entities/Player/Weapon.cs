@@ -84,7 +84,7 @@ public class Weapon : MonoBehaviour
 
     public void AddAmmunitions(int ammo)
     {
-        weapon.Ammunitions = (weapon.Ammunitions + ammo) % weapon.MaxAmmunitions;
+        weapon.Ammunitions = weapon.Ammunitions + ammo - (weapon.Ammunitions + ammo) % weapon.MaxAmmunitions;
         UIController.uIController.changeAmmo.Invoke();
     }
 
@@ -200,7 +200,7 @@ public class Weapon : MonoBehaviour
     {
         Vector3 launching = new Vector3(transform.position.x, transform.position.y, 0);
         Instantiate(projectile, launching,
-            transform.rotation).GetComponent<Projectile>().Init(weapon.Bullet, speed, damage, transform.position, angle, true);
+            transform.rotation).GetComponent<Projectile>().Init(weapon.Bullet, speed, damage, transform.position, angle);
     }
 
     private void CircleShot(int nbprojectile)//tir en cercle

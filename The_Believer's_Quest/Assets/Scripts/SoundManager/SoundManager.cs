@@ -9,14 +9,14 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] MusicAsset Musics;
     AudioClip[] musics;
-    public static SoundManager instance = null;
 
     public List<AudioClip> lfx;
 
     void Start ()
     {
         musics = Musics.Musics;
-        PlaySingle(currentMusic.clip);
+        if (Player.instance != null && Player.instance.PlayerAsset.Floor != 0)
+            ChangeBO(Player.instance.PlayerAsset.Floor + 3);
     }
 
     public void PlaySingle(AudioClip clip)

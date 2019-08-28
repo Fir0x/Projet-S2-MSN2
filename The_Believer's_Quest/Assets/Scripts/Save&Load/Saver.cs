@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -36,6 +35,9 @@ public static class Saver
     {
         string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerData.bin");
         Debug.Log("Save file path: " + path); //DEBUG
+        if (!File.Exists(path)) //Create file if does not exist (avoid error in game after installation)
+            File.Create(path).Close();
+
         Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
         new BinaryFormatter().Serialize(stream, save); //Saving of the GameSave object in the binary file
         stream.Close();
@@ -46,6 +48,9 @@ public static class Saver
 
         string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerSettings.bin");
         Debug.Log("Save file path: " + path); //DEBUG
+        if (!File.Exists(path)) //Create file if does not exist (avoid error in game after installation)
+            File.Create(path).Close();
+
         //Binary save file opening
         Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
         new BinaryFormatter().Serialize(stream, save); //Saving of the GameSave object in the binary file

@@ -77,6 +77,11 @@ public class Board : MonoBehaviour
     {
         if (playerAsset.Floor == 5)
         {
+            playerAsset.Floor -= 2;
+            Init();
+        }
+        else if (playerAsset.Floor > 5)
+        {
             playerAsset.Floor = -1;
             Init();
         }
@@ -209,7 +214,6 @@ public class Board : MonoBehaviour
 
     public void Start()
     {
-        playerAsset.Floor = 0;
         instance = this;
         BoardCreation();
 

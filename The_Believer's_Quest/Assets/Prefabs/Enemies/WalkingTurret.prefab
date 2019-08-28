@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6634441455969789342}
   - component: {fileID: 6024006248589231551}
   - component: {fileID: 7554333048861493424}
-
   - component: {fileID: 5362020327908296551}
   m_Layer: 9
   m_Name: WalkingTurret
@@ -144,7 +143,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010509491, y: -0.16804886}
+  m_Offset: {x: -0.010509491, y: -0.15801239}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -155,9 +154,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4745865, y: 0.55887604}
+  m_Size: {x: 0.4745865, y: 0.578949}
   m_EdgeRadius: 0
-
 --- !u!114 &5362020327908296551
 MonoBehaviour:
   m_ObjectHideFlags: 0

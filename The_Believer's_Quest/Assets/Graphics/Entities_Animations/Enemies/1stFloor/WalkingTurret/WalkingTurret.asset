@@ -22,4 +22,4 @@ MonoBehaviour:
   - {fileID: 7400000, guid: e187934be6986024ebce5b06d0a5fdcd, type: 2}
   - {fileID: 7400000, guid: a38e8fa1deacfbc4bb0eba594e0bba25, type: 2}
   - {fileID: 7400000, guid: 964556d4759f71b47b3ef73cd2100d27, type: 2}
-  death: {fileID: 7400000, guid: 1aabd64a630fe09448994d4c16055634, type: 2}
+  death: {fileID: 7400000, guid: f730c29094af9cd4cb73a44d27626652, type: 2}

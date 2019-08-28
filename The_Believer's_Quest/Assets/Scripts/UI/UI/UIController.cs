@@ -31,6 +31,8 @@ public class UIController : MonoBehaviour
 
     private float originalTimeScale;
 
+    private float timeMap;
+
     public Text Gold { get => gold; set => gold = value; }
     public Text Diamond { get => diamond; set => diamond = value; }
     public Text Ammo { get => ammo; set => ammo = value; }
@@ -104,16 +106,29 @@ public class UIController : MonoBehaviour
 
         changeAmmo.AddListener(() => Ammo.text = player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Type == WeaponAsset.WeaponType.CQC ? 
                                          "" : player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Loader + " / " + player.WeaponsList[0].GetComponent<WeaponItem>().WeaponAsset.Ammunitions);
+
+        timeMap = 0;
     }
 
     public void ShowMap()
     {
+        if (Player.instance.PlayerAsset.Floor == 0)
+            return;
+
+        float time = Time.time;
+        if (time - timeMap < 0.03f)
+            return;
+
+        timeMap = time;
         mapPannel.SetActive(!mapPannel.activeSelf);
 
         if (mapPannel.activeSelf)
         {
+            Player.instance.canAttack = false;
             foreach (Slider scrollbar in mapPannel.GetComponentsInChildren<Slider>())
                 scrollbar.value = 0.5f;
         }
+        else
+            Player.instance.canAttack = true;
     }
 }

@@ -14,6 +14,7 @@ public class Gameover : MonoBehaviour
 
     public void ReturnToHub()
     {
+        Time.timeScale = 1f;
         Player.instance.RestartPlayer();
         UIController.uIController.changeHp.Invoke();
         UIController.uIController.changeMaxHp.Invoke();

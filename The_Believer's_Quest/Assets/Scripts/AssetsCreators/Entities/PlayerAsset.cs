@@ -16,7 +16,8 @@ public class PlayerAsset : ScriptableObject
     [SerializeField] private GameObject[] weaponsList = new GameObject[2];
     [SerializeField] private GameObject[] objectsList = new GameObject[2];
     [SerializeField] private Vector3 position;
-   
+    private Random.State seed;
+
     public int Floor { get => floor; set => floor = value; }
     public float Hp
     {
@@ -47,4 +48,5 @@ public class PlayerAsset : ScriptableObject
     public GameObject[] WeaponsList { get => weaponsList; set => weaponsList = value; }
     public Vector3 Position { get => position; set => position = value; }
     public GameObject[] ObjectsList { get => objectsList; set => objectsList = value; }
+    public Random.State Seed { get => seed; set => seed = value; }
 }

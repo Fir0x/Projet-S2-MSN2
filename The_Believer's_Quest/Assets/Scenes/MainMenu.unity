@@ -135,6 +135,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2037134130203412970, guid: dc0049b2014fab04fa0d037d00db3a34,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2037134130203412975, guid: dc0049b2014fab04fa0d037d00db3a34,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -533,6 +538,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8585158490761645554, guid: 06705fef10342644c87cfd71544c31d3,
+        type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4241710226174738881, guid: 06705fef10342644c87cfd71544c31d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -608,11 +618,6 @@ PrefabInstance:
       propertyPath: currentFx
       value: 
       objectReference: {fileID: 1397987159}
-    - target: {fileID: 8585158490761645554, guid: 06705fef10342644c87cfd71544c31d3,
-        type: 3}
-      propertyPath: m_Volume
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06705fef10342644c87cfd71544c31d3, type: 3}
 --- !u!1001 &9123344047766331273

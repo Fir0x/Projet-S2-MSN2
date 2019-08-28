@@ -12,6 +12,8 @@ public class InventoryUI : MonoBehaviour
 
     List<GameObject> itemsInInventory;
 
+    private bool inShop;
+
     void Start()
     {
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
@@ -34,8 +36,9 @@ public class InventoryUI : MonoBehaviour
         UpdateUI();
     }
 
-    public void EnableUI()
+    public void EnableUI(bool inShop)
     {
+        this.inShop = inShop;
         inventoryUI.SetActive(!inventoryUI.activeSelf);
         UpdateUI();
     }
@@ -45,7 +48,10 @@ public class InventoryUI : MonoBehaviour
         for (int i = 0; i < slots.Length; i++)
         {
             if (i < itemsInInventory.Count)
+            {
                 slots[i].AddItem(itemsInInventory[i]);
+                slots[i].ShowSellPrice(inShop);
+            }
 
             else
                 slots[i].ClearSlot();
