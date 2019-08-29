@@ -26,6 +26,7 @@ public class NextLevel : MonoBehaviour
         {
             if(firstTrigger)
             {
+                playerAsset.Floor++;
                 Saver.SavePlayerData(playerAsset, Player.instance.UnlockedItems);
                 if (playerAsset.Floor > 0)
                 {

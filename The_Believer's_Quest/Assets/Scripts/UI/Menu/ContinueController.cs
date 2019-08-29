@@ -10,10 +10,21 @@ public class ContinueController : MonoBehaviour
 
     private void Awake()
     {
-        if (!File.Exists("playerData.bin"))
+        if (Application.isEditor)
         {
-            continueButton.interactable = false;
-            continueButton.gameObject.GetComponentInChildren<Text>().color = Color.gray;
+            if (!File.Exists("playerData.bin"))
+            {
+                continueButton.interactable = false;
+                continueButton.gameObject.GetComponentInChildren<Text>().color = Color.gray;
+            }
+        }
+        else
+        {
+            if (!File.Exists(Path.Combine(Application.persistentDataPath, "playerSettings.bin")))
+            {
+                continueButton.interactable = false;
+                continueButton.gameObject.GetComponentInChildren<Text>().color = Color.gray;
+            }
         }
     }
 }

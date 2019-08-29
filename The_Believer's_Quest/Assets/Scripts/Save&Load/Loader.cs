@@ -9,7 +9,11 @@ public static class Loader
 {
     public static void LoadingPlayerData(ref PlayerAsset playerData, ref UnlockedItemsAsset unlockedItems)
     {
-        string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerData.bin");
+        string path;
+        if (Application.isEditor)
+            path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerData.bin");
+        else
+            path = Path.Combine(Application.persistentDataPath, "playerData.bin");
         Debug.Log("File path: " + path); //DEBUG
         //Binary save file opening
         Stream streamRestauration = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -27,7 +31,11 @@ public static class Loader
 
     public static Tuple<float, float> LoadingPlayerSettings()
     {
-        string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerSettings.bin");
+        string path;
+        if (Application.isEditor)
+            path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerSettings.bin");
+        else
+            path = Path.Combine(Application.persistentDataPath, "playerSettings.bin");
         //Debug.Log("File path: " + path); //DEBUG
         //Binary save file opening
         Stream streamRestauration = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);

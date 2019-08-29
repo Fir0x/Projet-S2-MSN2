@@ -33,7 +33,11 @@ public static class Saver
 
     private static void Saving(PlayerSave save)
     {
-        string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerData.bin");
+        string path;
+        if (Application.isEditor)
+            path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerData.bin");
+        else
+            path = Path.Combine(Application.persistentDataPath, "playerData.bin");
         Debug.Log("Save file path: " + path); //DEBUG
         if (!File.Exists(path)) //Create file if does not exist (avoid error in game after installation)
             File.Create(path).Close();
@@ -45,8 +49,11 @@ public static class Saver
 
     private static void Saving(PlayerSettings save)
     {
-
-        string path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerSettings.bin");
+        string path;
+        if (Application.isEditor)
+            path = Path.Combine(Path.GetDirectoryName(Application.dataPath), "playerSettings.bin");
+        else
+            path = Path.Combine(Application.persistentDataPath, "playerSettings.bin");
         Debug.Log("Save file path: " + path); //DEBUG
         if (!File.Exists(path)) //Create file if does not exist (avoid error in game after installation)
             File.Create(path).Close();
