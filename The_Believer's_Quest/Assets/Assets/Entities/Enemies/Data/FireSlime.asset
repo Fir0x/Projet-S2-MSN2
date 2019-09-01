@@ -21,8 +21,8 @@ MonoBehaviour:
   cooldown: 1
   sprite: {fileID: 0}
   nbofprojectiles: 0
-  trajectory: 3
+  trajectory: 4
   shotSpeed: 0
-  range: 0
+  range: 1
   projectile: {fileID: 0}
   effect: 1

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6714353570295188688}
   - component: {fileID: 6607832654445353769}
   - component: {fileID: 4293202495394393026}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: isWalkable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1597,7 +1597,7 @@ GameObject:
   - component: {fileID: 401636938460712554}
   - component: {fileID: 1061050358806887891}
   - component: {fileID: 8018997101209711613}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4793,7 +4793,7 @@ GameObject:
   - component: {fileID: 1919387220288656314}
   - component: {fileID: 5985649270370199932}
   - component: {fileID: 5483140461696793096}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Pattern24
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -90,9 +90,8 @@ public class Attack : MonoBehaviour
         
         for (int i = 0; i < nbprojectile; i++)
         {
-            
-            Instantiate(projectile, transform.position + new Vector3(0.5f, 0, 0),
-                transform.rotation).GetComponent<Projectile>().Init(projo, speed, damage, transform.position, angle * i, effect); 
+
+            LineShot(transform.position + new Vector3(1,0,0), speed, damage, angle * i);
 
         } 
     }

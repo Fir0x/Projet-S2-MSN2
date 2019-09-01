@@ -90,6 +90,8 @@ public class Player : MovingObject
 
         nearShop = false;
         nearChest = false;
+        if (playerAsset.Floor != 0)
+            GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>().ChangeBO(playerAsset.Floor + 3);
     }
 
     public void RestartPlayer()

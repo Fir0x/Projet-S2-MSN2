@@ -15,8 +15,8 @@ MonoBehaviour:
   move:
   - {fileID: 7400000, guid: 97062aa4f0a3dc14eae600371fbdad26, type: 2}
   - {fileID: 7400000, guid: 47fd0c0314c225547a17edaed2d3b3e1, type: 2}
-  - {fileID: 7400000, guid: 819103c49d06aed4aabc65c55e4dd2d9, type: 2}
   - {fileID: 7400000, guid: 22d25715302ef3c4480919d0db9559e5, type: 2}
+  - {fileID: 7400000, guid: 819103c49d06aed4aabc65c55e4dd2d9, type: 2}
   attack:
   - {fileID: 7400000, guid: 114a0bcb287c30846a49d97b8146dcc9, type: 2}
   - {fileID: 7400000, guid: 114a0bcb287c30846a49d97b8146dcc9, type: 2}

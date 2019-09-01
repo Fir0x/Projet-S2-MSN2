@@ -23,6 +23,6 @@ MonoBehaviour:
   nbofprojectiles: 0
   trajectory: 4
   shotSpeed: 0
-  range: 0
+  range: 1.5
   projectile: {fileID: 0}
   effect: 1

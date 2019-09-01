@@ -25,6 +25,7 @@ public class Projectile : MovingObject
         direction = transform.position - origin;
 
         direction.Normalize();
+        gameObject.GetComponent<BoxCollider2D>().size = new Vector2(sprite.rect.size.x / 32, sprite.rect.size.y / 32);
     }
     public void Init(Sprite sprite, float speed, float damage, Vector3 origin, float angle) 
     {

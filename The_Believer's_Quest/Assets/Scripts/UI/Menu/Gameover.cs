@@ -36,6 +36,8 @@ public class Gameover : MonoBehaviour
 
     public void QUIT_GAME()
     {
+        Player.instance.RestartPlayer();
+        Saver.SavePlayerData(playerAsset, Player.instance.UnlockedItems);
         Application.Quit();
     }
 
